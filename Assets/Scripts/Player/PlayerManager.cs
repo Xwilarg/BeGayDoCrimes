@@ -18,6 +18,11 @@ namespace YuriGameJam2023.Player
             Instance = this;
         }
 
+        public void UnsetPlayer()
+        {
+            _currentPlayer = null;
+        }
+
         public void DisplayDistanceText(float value)
         {
             _distanceText.text = $"{value:N1}";

@@ -45,6 +45,7 @@ namespace YuriGameJam2023.Player
         public void Disable()
         {
             _rb.isKinematic = true;
+            PlayerManager.Instance.UnsetPlayer();
             PlayerManager.Instance.DisplayDistanceText(0f);
         }
     }
