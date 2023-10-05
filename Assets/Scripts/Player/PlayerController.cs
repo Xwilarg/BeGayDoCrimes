@@ -28,6 +28,10 @@ namespace YuriGameJam2023.Player
                 {
                     Disable();
                 }
+                else
+                {
+                    PlayerManager.Instance.DisplayDistanceText(_distance);
+                }
             }
         }
 
@@ -35,11 +39,13 @@ namespace YuriGameJam2023.Player
         {
             _rb.isKinematic = false;
             _distance = _maxDistance;
+            PlayerManager.Instance.DisplayDistanceText(_distance);
         }
 
         public void Disable()
         {
             _rb.isKinematic = true;
+            PlayerManager.Instance.DisplayDistanceText(0f);
         }
     }
 }

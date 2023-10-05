@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,9 +10,17 @@ namespace YuriGameJam2023.Player
 
         private PlayerController _currentPlayer;
 
+        [SerializeField]
+        private TMP_Text _distanceText;
+
         private void Awake()
         {
             Instance = this;
+        }
+
+        public void DisplayDistanceText(float value)
+        {
+            _distanceText.text = $"{value:N1}";
         }
 
         public void OnClick(InputAction.CallbackContext value)
