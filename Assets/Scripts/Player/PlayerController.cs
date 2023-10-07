@@ -4,6 +4,9 @@ namespace YuriGameJam2023.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField]
+        private SO.CharacterInfo _info;
+
         private Rigidbody _rb;
         public Vector2 Mov { set; private get; }
 
@@ -47,6 +50,12 @@ namespace YuriGameJam2023.Player
             _rb.isKinematic = true;
             PlayerManager.Instance.UnsetPlayer();
             PlayerManager.Instance.DisplayDistanceText(0f);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position + transform.forward * .75f, transform.position + transform.forward * 1);
         }
     }
 }
