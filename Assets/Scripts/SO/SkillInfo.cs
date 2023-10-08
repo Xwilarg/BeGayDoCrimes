@@ -7,5 +7,6 @@ namespace YuriGameJam2023.SO
     {
         public SkillType Type;
         public int Range;
+        public int Damage;
     }
 }

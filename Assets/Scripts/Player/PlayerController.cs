@@ -57,6 +57,14 @@ namespace YuriGameJam2023.Player
             }
         }
 
+        private void Attack()
+        {
+            foreach (var t in _targets)
+            {
+                t.TakeDamage(_info.Skills[0].Damage);
+            }
+        }
+
         public void Enable()
         {
             _rb.isKinematic = false;

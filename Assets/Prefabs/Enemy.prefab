@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _halo: {fileID: 4630376845406823117}
+  _maxHealth: 100
 --- !u!1 &4630376845406823117
 GameObject:
   m_ObjectHideFlags: 0
