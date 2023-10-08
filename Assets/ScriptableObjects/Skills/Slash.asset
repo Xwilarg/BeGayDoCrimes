@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: 
   Type: 0
-  Range: 1
+  Range: 2

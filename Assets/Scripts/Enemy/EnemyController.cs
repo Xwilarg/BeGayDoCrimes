@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+namespace YuriGameJam2023
 {
+    public class EnemyController : Character
+    {
+    }
 }

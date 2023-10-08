@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd502bda830a57e46a5f2ad1224e5529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _halo: {fileID: 7917631563659450751}
   _info: {fileID: 11400000, guid: 6928ad7a9d05ad34ba52e696c9a9924e, type: 2}
 --- !u!122 &8193742154080806359
 Halo:

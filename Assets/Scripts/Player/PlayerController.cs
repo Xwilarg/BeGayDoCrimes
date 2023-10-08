@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace YuriGameJam2023.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : Character
     {
         [SerializeField]
         private SO.CharacterInfo _info;
@@ -14,6 +15,8 @@ namespace YuriGameJam2023.Player
         private const float _maxDistance = 3f;
 
         private float _distance;
+
+        private readonly List<Character> _targets = new();
 
         private void Awake()
         {
@@ -35,6 +38,20 @@ namespace YuriGameJam2023.Player
                 {
                     PlayerManager.Instance.DisplayDistanceText(_distance);
                 }
+
+                foreach (var t in _targets)
+                {
+                    t.ToggleHalo(false);
+                }
+                _targets.Clear();
+                if (Physics.Raycast(new(transform.position + transform.forward * .75f, transform.forward), out RaycastHit hit, _info.Skills[0].Range))
+                {
+                    Debug.Log(hit.collider.name);
+                    if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
+                    {
+                        hit.collider.GetComponent<Character>().ToggleHalo(true);
+                    }
+                }
             }
         }
 
@@ -47,15 +64,14 @@ namespace YuriGameJam2023.Player
 
         public void Disable()
         {
+            foreach (var t in _targets)
+            {
+                t.ToggleHalo(false);
+            }
+            _targets.Clear();
             _rb.isKinematic = true;
             PlayerManager.Instance.UnsetPlayer();
             PlayerManager.Instance.DisplayDistanceText(0f);
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position + transform.forward * .75f, transform.position + transform.forward * 1);
         }
     }
 }
