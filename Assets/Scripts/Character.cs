@@ -9,7 +9,7 @@ namespace YuriGameJam2023
 
         [SerializeField]
         private int _maxHealth;
-        protected int _health;
+        private int _health;
 
         private void Awake()
         {
