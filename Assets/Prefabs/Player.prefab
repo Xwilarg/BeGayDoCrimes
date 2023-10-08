@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1581232215912681299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3327118467399053921}
+  - component: {fileID: 6831366723670045898}
+  m_Layer: 0
+  m_Name: Halo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3327118467399053921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581232215912681299}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 227957243709958309}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!122 &6831366723670045898
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581232215912681299}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_Size: 1
 --- !u!1 &6310031941206319733
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +58,6 @@ GameObject:
   - component: {fileID: 7969278256205742804}
   - component: {fileID: 8835981129867675918}
   - component: {fileID: 7917631563659450751}
-  - component: {fileID: 8193742154080806359}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -34,7 +77,8 @@ Transform:
   m_LocalPosition: {x: -3.5, y: 0.9, z: -4.5553026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3327118467399053921}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2152731198249954141
@@ -149,17 +193,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd502bda830a57e46a5f2ad1224e5529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _halo: {fileID: 7917631563659450751}
+  _halo: {fileID: 1581232215912681299}
   _info: {fileID: 11400000, guid: 6928ad7a9d05ad34ba52e696c9a9924e, type: 2}
---- !u!122 &8193742154080806359
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6310031941206319733}
-  m_Enabled: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 4278190335
-  m_Size: 1

@@ -49,7 +49,9 @@ namespace YuriGameJam2023.Player
                     Debug.Log(hit.collider.name);
                     if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
                     {
-                        hit.collider.GetComponent<Character>().ToggleHalo(true);
+                        var c = hit.collider.GetComponent<Character>();
+                        c.ToggleHalo(true);
+                        _targets.Add(c);
                     }
                 }
             }

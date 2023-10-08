@@ -5,11 +5,11 @@ namespace YuriGameJam2023
     public abstract class Character : MonoBehaviour
     {
         [SerializeField]
-        private Behaviour _halo;
+        private GameObject _halo;
 
         public void ToggleHalo(bool value)
         {
-            _halo.enabled = value;
+            _halo.SetActive(value);
         }
     }
 }
