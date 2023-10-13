@@ -13,9 +13,15 @@ namespace YuriGameJam2023.Player
         [SerializeField]
         private TMP_Text _distanceText;
 
+        [SerializeField]
+        private TMP_Text _actionCountText;
+
+        private int _totalActionCount = 5;
+
         private void Awake()
         {
             Instance = this;
+            _actionCountText.text = $"Actions Left: {_totalActionCount}";
         }
 
         public void UnsetPlayer()
@@ -25,7 +31,17 @@ namespace YuriGameJam2023.Player
 
         public void DisplayDistanceText(float value)
         {
-            _distanceText.text = $"{value:N1}";
+            _distanceText.text = $"Distance: {value:N1}";
+        }
+
+        public void RemoveAction()
+        {
+            _totalActionCount--;
+            _actionCountText.text = $"Actions Left: {_totalActionCount}";
+            if (_totalActionCount == 0)
+            {
+                // TODO: AI turn
+            }
         }
 
         public void OnClick(InputAction.CallbackContext value)
@@ -35,7 +51,7 @@ namespace YuriGameJam2023.Player
                 if (_currentPlayer == null) // We aren't controlling a player...
                 {
                     // ... so if we click on one we take possession of it
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
+                    if (_totalActionCount > 0 && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
                     {
                         _currentPlayer = hit.collider.GetComponent<PlayerController>();
                         _currentPlayer.Enable();
