@@ -21,6 +21,8 @@ namespace YuriGameJam2023.Player
 
         private void Awake()
         {
+            AwakeParent();
+
             _rb = GetComponent<Rigidbody>();
         }
 
@@ -58,6 +60,12 @@ namespace YuriGameJam2023.Player
                     }
                 }
             }
+        }
+
+        protected override void Die()
+        {
+            Disable();
+            base.Die();
         }
 
         public bool CanAttack()
