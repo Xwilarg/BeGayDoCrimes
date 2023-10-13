@@ -30,12 +30,23 @@ namespace YuriGameJam2023.Player
 
         public void OnClick(InputAction.CallbackContext value)
         {
-            if (value.performed && _currentPlayer == null)
+            if (value.performed)
             {
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
+                if (_currentPlayer == null) // We aren't controlling a player...
                 {
-                    _currentPlayer = hit.collider.GetComponent<PlayerController>();
-                    _currentPlayer.Enable();
+                    // ... so if we click on one we take possession of it
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
+                    {
+                        _currentPlayer = hit.collider.GetComponent<PlayerController>();
+                        _currentPlayer.Enable();
+                    }
+                }
+                else
+                {
+                    if (_currentPlayer.CanAttack())
+                    {
+                        _currentPlayer.Attack();
+                    }
                 }
             }
         }
