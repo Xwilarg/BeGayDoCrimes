@@ -66,6 +66,9 @@ namespace YuriGameJam2023
             _characters.Remove(c);
         }
 
+        public bool AmIActive(Character c)
+            => _currentPlayer != null && _currentPlayer.gameObject.GetInstanceID() == c.gameObject.GetInstanceID();
+
         /// <summary>
         /// Deselect a player (aka we are not controlling it anymore)
         /// </summary>
@@ -89,6 +92,7 @@ namespace YuriGameJam2023
         public void RemoveAction()
         {
             _totalActionCount--;
+            Debug.Log($"[=/=] Ending turn, action left: {_totalActionCount}");
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
             if (_totalActionCount == 0)
             {
@@ -107,6 +111,8 @@ namespace YuriGameJam2023
 
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
 
+            Debug.Log($"===== Starting {(_isPlayerTurn ? "Player" : "Enemy")} turn =====");
+
             if (!_isPlayerTurn)
             {
                 EnemyManager.Instance.DoAction();
@@ -115,6 +121,7 @@ namespace YuriGameJam2023
 
         public void StartTurn(Character c)
         {
+            Debug.Log($"[{c}] Starting turn");
             _currentPlayer = c;
             _currentPlayer.Enable();
 
