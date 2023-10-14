@@ -26,7 +26,9 @@ namespace YuriGameJam2023.Player
         [SerializeField]
         private AoeHint _aoeHint;
 
-        private int _totalActionCount = 5;
+        private const int _totalActionCountRef = 5;
+        private int _totalActionCount = _totalActionCountRef;
+        private bool _isPlayerTurn = true;
 
         private List<Character> _characters = new();
 
@@ -70,6 +72,8 @@ namespace YuriGameJam2023.Player
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
             if (_totalActionCount == 0)
             {
+                _isPlayerTurn = !_isPlayerTurn;
+                _totalActionCount = _totalActionCountRef;
                 // TODO: AI turn
             }
         }
@@ -107,7 +111,7 @@ namespace YuriGameJam2023.Player
                 if (_currentPlayer == null) // We aren't controlling a player...
                 {
                     // ... so if we click on one we take possession of it
-                    if (_totalActionCount > 0 && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
+                    if (_isPlayerTurn && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
                     {
                         _currentPlayer = hit.collider.GetComponent<PlayerController>();
                         _currentPlayer.Enable();
