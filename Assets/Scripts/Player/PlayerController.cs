@@ -45,9 +45,6 @@ namespace YuriGameJam2023.Player
             if (CanMove) // Are we the character currently being moved by the player
             {
                 _rb.velocity = new Vector3(Mov.x, _rb.velocity.y, Mov.y) * Time.fixedDeltaTime * _speed;
-                _distance -= (Mov * Time.fixedDeltaTime).magnitude;
-
-                CharacterManager.Instance.DisplayDistanceText(_distance);
 
                 FixedUpdateParent();
             }

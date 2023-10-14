@@ -51,6 +51,16 @@ namespace YuriGameJam2023
             _distance -= Vector3.Distance(transform.position, _lastPos);
             _lastPos = transform.position;
 
+            if (_distance < 0)
+            {
+                Stop();
+                CharacterManager.Instance.DisplayDistanceText(0f);
+            }
+            else
+            {
+                CharacterManager.Instance.DisplayDistanceText(_distance);
+            }
+
             // Remove halo (that define targets) for all of them
             foreach (var t in _targets)
             {
