@@ -32,6 +32,10 @@ namespace YuriGameJam2023.Player
         [Tooltip("Tooltip that confirm if the player want to end his turn")]
         private GameObject _disablePopup;
 
+        [SerializeField]
+        [Tooltip("Where the camera should look at when no player is selected")]
+        private Transform _cameraDefaultLookAt;
+
         private PlayerController _currentPlayer;
 
         private const int _totalActionCountRef = 5;
@@ -61,6 +65,7 @@ namespace YuriGameJam2023.Player
         public void UnsetPlayer()
         {
             _currentPlayer = null;
+            _vCam.LookAt = _cameraDefaultLookAt;
         }
 
         /// <summary>
@@ -91,7 +96,7 @@ namespace YuriGameJam2023.Player
         /// </summary>
         public void ResetEffectDisplay()
         {
-            _aoeHint.enabled = false;
+            _aoeHint.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -99,7 +104,7 @@ namespace YuriGameJam2023.Player
         /// </summary>
         public void ShowAoeHint(Vector3 pos, int radius)
         {
-            _aoeHint.enabled = true;
+            _aoeHint.gameObject.SetActive(true);
             _aoeHint.Show(pos, radius);
         }
 

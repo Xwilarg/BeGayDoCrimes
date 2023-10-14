@@ -115,6 +115,7 @@ namespace YuriGameJam2023.Player
 
         public void Attack()
         {
+            _rb.velocity = Vector3.zero;
             foreach (var t in _targets)
             {
                 t.TakeDamage(_info.Skills[0].Damage);
@@ -139,13 +140,14 @@ namespace YuriGameJam2023.Player
 
         public void Disable()
         {
-            PlayerManager.Instance.ResetEffectDisplay();
             foreach (var t in _targets)
             {
                 t.ToggleHalo(false);
             }
             _targets.Clear();
             _rb.isKinematic = true;
+            _rb.velocity = Vector3.zero;
+            PlayerManager.Instance.ResetEffectDisplay();
             PlayerManager.Instance.UnsetPlayer();
             PlayerManager.Instance.DisplayDistanceText(0f);
             PlayerManager.Instance.RemoveAction();
