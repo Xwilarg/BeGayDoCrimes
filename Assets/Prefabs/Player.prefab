@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3327118467399053921}
   - component: {fileID: 6831366723670045898}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Halo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 7969278256205742804}
   - component: {fileID: 8835981129867675918}
   - component: {fileID: 7917631563659450751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -106,6 +106,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
