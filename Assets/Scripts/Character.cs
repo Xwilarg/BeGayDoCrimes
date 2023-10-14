@@ -14,8 +14,6 @@ namespace YuriGameJam2023
         [SerializeField]
         private GameObject _halo;
 
-        [SerializeField]
-        private int _maxHealth;
         private int _health;
 
         private float _maxDistance = 10f;
@@ -37,7 +35,7 @@ namespace YuriGameJam2023
 
         protected void AwakeParent()
         {
-            _health = _maxHealth;
+            _health = _info.Health;
         }
 
         protected void StartParent()
@@ -60,14 +58,8 @@ namespace YuriGameJam2023
                 CharacterManager.Instance.DisplayDistanceText(_distance);
             }
 
-            // Remove halo (that define targets) for all of them
-            foreach (var t in _targets)
-            {
-                t.ToggleHalo(false);
-            }
-            // Clear all target
             // TODO: Don't do that each frame
-            _targets.Clear();
+            ClearAllHalo();
             CharacterManager.Instance.ResetEffectDisplay();
 
             var currSkill = _info.Skills[0];
@@ -121,6 +113,15 @@ namespace YuriGameJam2023
 
         public virtual void Disable()
         {
+            ClearAllHalo();
+            CharacterManager.Instance.ResetEffectDisplay();
+            CharacterManager.Instance.UnsetPlayer();
+            CharacterManager.Instance.DisplayDistanceText(0f);
+            CharacterManager.Instance.RemoveAction();
+        }
+
+        public void ClearAllHalo()
+        {
             foreach (var t in _targets)
             {
                 if (t != null)
@@ -129,10 +130,6 @@ namespace YuriGameJam2023
                 }
             }
             _targets.Clear();
-            CharacterManager.Instance.ResetEffectDisplay();
-            CharacterManager.Instance.UnsetPlayer();
-            CharacterManager.Instance.DisplayDistanceText(0f);
-            CharacterManager.Instance.RemoveAction();
         }
 
         /// <summary>
@@ -152,7 +149,7 @@ namespace YuriGameJam2023
 
         public void TakeDamage(int damage)
         {
-            _health = Clamp(_health - damage, 0, _maxHealth);
+            _health = Clamp(_health - damage, 0, _info.Health);
             if (_health == 0)
             {
                 Die();
