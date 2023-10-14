@@ -14,6 +14,8 @@ namespace YuriGameJam2023
 
         protected override Vector3 Forward => transform.forward;
 
+        private bool _isMyTurn;
+
         private void Awake()
         {
             AwakeParent();
@@ -48,15 +50,18 @@ namespace YuriGameJam2023
                 _navigation.destination = target.transform.position;
                 _navigation.stoppingDistance = _info.Skills[0].Range;
             }
+
+            _isMyTurn = true;
         }
 
         private void FixedUpdate()
         {
-            if (CharacterManager.Instance.IsMyTurn(this))
+            if (_isMyTurn)
             {
                 FixedUpdateParent();
                 if ((!_navigation.pathPending && _navigation.remainingDistance < _navigation.stoppingDistance) || _distance <= 0f)
                 {
+                    _isMyTurn = false;
                     if (HaveAnyTarget)
                     {
                         Attack();

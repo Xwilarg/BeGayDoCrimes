@@ -66,9 +66,6 @@ namespace YuriGameJam2023
             _characters.Remove(c);
         }
 
-        public bool IsMyTurn(Character c)
-            => _currentPlayer != null && _currentPlayer.gameObject.GetInstanceID() == c.gameObject.GetInstanceID();
-
         /// <summary>
         /// Deselect a player (aka we are not controlling it anymore)
         /// </summary>
@@ -97,6 +94,11 @@ namespace YuriGameJam2023
             {
                 EndTurn();
             }
+
+            if (!_isPlayerTurn)
+            {
+                EnemyManager.Instance.DoAction();
+            }
         }
 
         public void EndTurn()
@@ -104,10 +106,6 @@ namespace YuriGameJam2023
             _isPlayerTurn = !_isPlayerTurn;
             _totalActionCount = _totalActionCountRef;
 
-            if (!_isPlayerTurn)
-            {
-                EnemyManager.Instance.DoAction();
-            }
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
         }
 
