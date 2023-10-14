@@ -67,14 +67,14 @@ namespace YuriGameJam2023
             // Find all targets and set back the _targets list
             switch (currSkill.Type)
             {
-                case SO.SkillType.CloseContact:
+                case SO.RangeType.CloseContact:
                     if (Physics.Raycast(new(transform.position + Forward * .75f, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(hit.collider.gameObject);
                     }
                     break;
 
-                case SO.SkillType.AOE:
+                case SO.RangeType.AOE:
                     foreach (var coll in Physics.OverlapSphere(transform.position + Forward * 1.5f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(coll.gameObject);

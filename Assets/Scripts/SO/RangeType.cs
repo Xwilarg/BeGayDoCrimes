@@ -1,6 +1,6 @@
 ﻿namespace YuriGameJam2023.SO
 {
-    public enum SkillType
+    public enum RangeType
     {
         CloseContact,
         AOE
