@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -33,6 +34,13 @@ namespace YuriGameJam2023.Player
 
         private readonly List<Character> _targets = new();
 
+        public bool PendingAutoDisable { private set; get; }
+
+
+        private bool CanMove => !_rb.isKinematic && _distance > 0f && !PendingAutoDisable;
+        public bool CanAttack => !_rb.isKinematic && !PendingAutoDisable && _targets.Any();
+
+
         private void Awake()
         {
             AwakeParent();
@@ -42,19 +50,12 @@ namespace YuriGameJam2023.Player
 
         private void FixedUpdate()
         {
-            if (!_rb.isKinematic) // Are we the character currently being moved by the player
+            if (CanMove) // Are we the character currently being moved by the player
             {
                 _rb.velocity = new Vector3(Mov.x, _rb.velocity.y, Mov.y) * Time.fixedDeltaTime * _speed;
                 _distance -= (Mov * Time.fixedDeltaTime).magnitude;
 
-                if (_distance <= 0)
-                {
-                    Disable();
-                }
-                else
-                {
-                    PlayerManager.Instance.DisplayDistanceText(_distance);
-                }
+                PlayerManager.Instance.DisplayDistanceText(_distance);
 
                 // Remove halo (that define targets) for all of them
                 foreach (var t in _targets)
@@ -91,14 +92,14 @@ namespace YuriGameJam2023.Player
             }
         }
 
+        /// <summary>
+        /// Add the element given in parameter to the list of target we can attack
+        /// </summary>
         private void AddToTarget(GameObject go)
         {
-            if (go.CompareTag("Player") || go.CompareTag("Enemy"))
-            {
-                var c = go.GetComponent<Character>();
-                c.ToggleHalo(true);
-                _targets.Add(c);
-            }
+            var c = go.GetComponent<Character>();
+            c.ToggleHalo(true);
+            _targets.Add(c);
         }
 
         protected override void Die()
@@ -107,20 +108,25 @@ namespace YuriGameJam2023.Player
             base.Die();
         }
 
-        public bool CanAttack()
-            => _targets.Any();
-
         public void Attack()
         {
             foreach (var t in _targets)
             {
                 t.TakeDamage(_info.Skills[0].Damage);
             }
+            StartCoroutine(WaitAndDisable(1f));
+        }
+
+        private IEnumerator WaitAndDisable(float timer)
+        {
+            PendingAutoDisable = true;
+            yield return new WaitForSeconds(timer);
             Disable();
         }
 
         public void Enable()
         {
+            PendingAutoDisable = false;
             _rb.isKinematic = false;
             _distance = _maxDistance;
             PlayerManager.Instance.DisplayDistanceText(_distance);

@@ -12,19 +12,27 @@ namespace YuriGameJam2023.Player
     {
         public static PlayerManager Instance { get; private set; }
 
-        private PlayerController _currentPlayer;
-
         [SerializeField]
+        [Tooltip("Text used to display the distance the character can still walk")]
         private TMP_Text _distanceText;
 
         [SerializeField]
+        [Tooltip("Text used to display the amount of actions left")]
         private TMP_Text _actionCountText;
 
         [SerializeField]
+        [Tooltip("Cinemachine virtual camera")]
         private CinemachineVirtualCamera _vCam;
 
         [SerializeField]
+        [Tooltip("Object used to display spell Area Of Effect hints")]
         private AoeHint _aoeHint;
+
+        [SerializeField]
+        [Tooltip("Tooltip that confirm if the player want to end his turn")]
+        private GameObject _disablePopup;
+
+        private PlayerController _currentPlayer;
 
         private const int _totalActionCountRef = 5;
         private int _totalActionCount = _totalActionCountRef;
@@ -104,9 +112,15 @@ namespace YuriGameJam2023.Player
                 .ElementAt(0);
         }
 
+        public void DisableConfirm()
+        {
+            _currentPlayer.Disable();
+            _disablePopup.SetActive(false);
+        }
+
         public void OnClick(InputAction.CallbackContext value)
         {
-            if (value.performed)
+            if (value.performed && !_disablePopup.activeInHierarchy)
             {
                 if (_currentPlayer == null) // We aren't controlling a player...
                 {
@@ -121,7 +135,7 @@ namespace YuriGameJam2023.Player
                 }
                 else
                 {
-                    if (_currentPlayer.CanAttack())
+                    if (_currentPlayer.CanAttack)
                     {
                         _currentPlayer.Attack();
                     }
@@ -129,9 +143,24 @@ namespace YuriGameJam2023.Player
             }
         }
 
+        public void OnClickCancel(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                if (_disablePopup.activeInHierarchy)
+                {
+                    _disablePopup.SetActive(false);
+                }
+                else if (_currentPlayer != null && !_currentPlayer.PendingAutoDisable)
+                {
+                    _disablePopup.SetActive(true);
+                }
+            }
+        }
+
         public void OnMovement(InputAction.CallbackContext value)
         {
-            if (_currentPlayer != null)
+            if (_currentPlayer != null && !_disablePopup.activeInHierarchy)
             {
                 _currentPlayer.Mov = value.ReadValue<Vector2>();
             }
