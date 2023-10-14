@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.HID;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Player;
 
@@ -41,7 +42,7 @@ namespace YuriGameJam2023
         [Tooltip("Where the camera should look at when no player is selected")]
         private Transform _cameraDefaultLookAt;
 
-        private PlayerController _currentPlayer;
+        private Character _currentPlayer;
 
         private const int _totalActionCountRef = 5;
         private int _totalActionCount = _totalActionCountRef;
@@ -111,6 +112,14 @@ namespace YuriGameJam2023
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
         }
 
+        public void StartTurn(Character c)
+        {
+            _currentPlayer = c;
+            _currentPlayer.Enable();
+
+            _vCam.LookAt = _currentPlayer.transform;
+        }
+
         /// <summary>
         /// Disable the display of all effects
         /// </summary>
@@ -158,15 +167,12 @@ namespace YuriGameJam2023
                     // ... so if we click on one we take possession of it
                     if (_isPlayerTurn && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
                     {
-                        _currentPlayer = hit.collider.GetComponent<PlayerController>();
-                        _currentPlayer.Enable();
-
-                        _vCam.LookAt = _currentPlayer.transform;
+                        StartTurn(hit.collider.GetComponent<PlayerController>());
                     }
                 }
                 else
                 {
-                    if (_currentPlayer.CanAttack)
+                    if (((PlayerController)_currentPlayer).CanAttack)
                     {
                         _currentPlayer.Attack();
                     }
@@ -204,7 +210,7 @@ namespace YuriGameJam2023
         {
             if (_currentPlayer != null && _isPlayerTurn && !IsUIActive)
             {
-                _currentPlayer.Mov = value.ReadValue<Vector2>();
+                ((PlayerController)_currentPlayer).Mov = value.ReadValue<Vector2>();
             }
         }
     }

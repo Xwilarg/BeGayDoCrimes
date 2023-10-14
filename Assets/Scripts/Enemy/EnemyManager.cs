@@ -23,6 +23,7 @@ namespace YuriGameJam2023
 
             var player = enemy.GetClosestPlayer();
 
+            CharacterManager.Instance.StartTurn(enemy);
             enemy.Target(player);
         }
     }
