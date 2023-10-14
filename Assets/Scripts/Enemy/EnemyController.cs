@@ -1,4 +1,3 @@
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using YuriGameJam2023.Player;

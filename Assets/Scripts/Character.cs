@@ -88,9 +88,11 @@ namespace YuriGameJam2023
 
         public void Attack()
         {
+            int damage = _info.Skills[0].Damage;
             foreach (var t in _targets)
             {
-                t.TakeDamage(_info.Skills[0].Damage);
+                Debug.Log($"[{this}] Attacking {t} for {damage} damage");
+                t.TakeDamage(damage);
             }
             StopMovements();
             StartCoroutine(WaitAndDisable(1f));
@@ -168,6 +170,11 @@ namespace YuriGameJam2023
             if (value < min) return min;
             if (value > max) return max;
             return value;
+        }
+
+        public override string ToString()
+        {
+            return $"{_info.name} ({_health}/{_info.Health}HP)";
         }
     }
 }
