@@ -24,7 +24,7 @@ namespace YuriGameJam2023.Player
             }
             get => _mov;
         }
-        private Vector3 _forward;
+        private Vector3 _forward = Vector3.forward;
 
         private const float _speed = 300f;
         private const float _maxDistance = 3f;
@@ -42,7 +42,7 @@ namespace YuriGameJam2023.Player
 
         private void FixedUpdate()
         {
-            if (!_rb.isKinematic)
+            if (!_rb.isKinematic) // Are we the character currently being moved by the player
             {
                 _rb.velocity = new Vector3(Mov.x, _rb.velocity.y, Mov.y) * Time.fixedDeltaTime * _speed;
                 _distance -= (Mov * Time.fixedDeltaTime).magnitude;
@@ -62,7 +62,9 @@ namespace YuriGameJam2023.Player
                     t.ToggleHalo(false);
                 }
                 // Clear all target
+                // TODO: Don't do that each frame
                 _targets.Clear();
+                PlayerManager.Instance.ResetEffectDisplay();
 
                 var currSkill = _info.Skills[0];
 
@@ -81,6 +83,7 @@ namespace YuriGameJam2023.Player
                         {
                             AddToTarget(coll.gameObject);
                         }
+                        PlayerManager.Instance.ShowAoeHint(transform.position + _forward * 2f * currSkill.Range, currSkill.Range);
                         break;
 
                     default: throw new NotImplementedException();
@@ -125,6 +128,7 @@ namespace YuriGameJam2023.Player
 
         public void Disable()
         {
+            PlayerManager.Instance.ResetEffectDisplay();
             foreach (var t in _targets)
             {
                 t.ToggleHalo(false);

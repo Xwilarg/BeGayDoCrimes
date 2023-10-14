@@ -2,6 +2,7 @@ using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using YuriGameJam2023.Effect;
 
 namespace YuriGameJam2023.Player
 {
@@ -19,6 +20,9 @@ namespace YuriGameJam2023.Player
 
         [SerializeField]
         private CinemachineVirtualCamera _vCam;
+
+        [SerializeField]
+        private AoeHint _aoeHint;
 
         private int _totalActionCount = 5;
 
@@ -46,6 +50,20 @@ namespace YuriGameJam2023.Player
             {
                 // TODO: AI turn
             }
+        }
+
+        /// <summary>
+        /// Disable the display of all effects
+        /// </summary>
+        public void ResetEffectDisplay()
+        {
+            _aoeHint.enabled = false;
+        }
+
+        public void ShowAoeHint(Vector3 pos, int radius)
+        {
+            _aoeHint.enabled = true;
+            _aoeHint.Show(pos, radius);
         }
 
         public void OnClick(InputAction.CallbackContext value)
