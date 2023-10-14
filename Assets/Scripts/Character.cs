@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using YuriGameJam2023.Player;
 
 namespace YuriGameJam2023
 {
@@ -13,6 +14,7 @@ namespace YuriGameJam2023
 
         public void AwakeParent()
         {
+            PlayerManager.Instance.RegisterCharacter(this);
             _health = _maxHealth;
         }
 
@@ -32,6 +34,7 @@ namespace YuriGameJam2023
 
         protected virtual void Die()
         {
+            PlayerManager.Instance.UnregisterCharacter(this);
             Destroy(gameObject);
         }
 
