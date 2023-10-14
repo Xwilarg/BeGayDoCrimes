@@ -66,6 +66,9 @@ namespace YuriGameJam2023
             _characters.Remove(c);
         }
 
+        public bool IsMyTurn(Character c)
+            => _currentPlayer != null && _currentPlayer.gameObject.GetInstanceID() == c.gameObject.GetInstanceID();
+
         /// <summary>
         /// Deselect a player (aka we are not controlling it anymore)
         /// </summary>
@@ -144,7 +147,6 @@ namespace YuriGameJam2023
         public void DisableConfirm()
         {
             _currentPlayer.Disable();
-            _disablePopup.SetActive(false);
         }
 
         public void OnClick(InputAction.CallbackContext value)
