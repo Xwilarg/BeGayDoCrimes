@@ -65,7 +65,7 @@ namespace YuriGameJam2023.Player
                         break;
 
                     case SO.SkillType.AOE:
-                        foreach (var coll in Physics.OverlapSphere(transform.position + transform.forward * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
+                        foreach (var coll in Physics.OverlapSphere(transform.position + transform.forward * 2f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                         {
                             AddToTarget(coll.gameObject);
                         }
