@@ -12,19 +12,17 @@ namespace YuriGameJam2023
         private int _attackDamage;
 
         private NavMeshAgent _navigation;
-        private Character _target;
 
         protected override Vector3 Forward => Vector3.zero; // TODO
 
         private void Awake()
         {
             AwakeParent();
+            _navigation = GetComponent<NavMeshAgent>();
         }
 
         private void Start()
         {
-            _navigation = GetComponent<NavMeshAgent>();
-
             StartParent();
         }
 
@@ -41,7 +39,7 @@ namespace YuriGameJam2023
         /// Instructs the enemy to attack the target
         /// </summary>
         /// <param name="target">The target to attack</param>
-        public void Attack(Character target)
+        public void Target(Character target)
         {
             var distance = Vector3.Distance(target.transform.position, transform.position);
 
@@ -51,31 +49,26 @@ namespace YuriGameJam2023
                 _navigation.destination = target.transform.position;
                 _navigation.stoppingDistance = _attackDistance;
             }
-
-            _target = target;
         }
 
         private void FixedUpdate()
         {
-            if (_navigation.pathStatus == NavMeshPathStatus.PathComplete && _target != null)
+            if (_navigation.pathStatus == NavMeshPathStatus.PathComplete)
             {
-                _target.TakeDamage(_attackDamage);
-                _target = null;
-
-                Debug.Log("Shoot!");
-
-                CharacterManager.Instance.RemoveAction();
+                if (HaveAnyTarget)
+                {
+                    Attack();
+                }
+                else
+                {
+                    Disable();
+                }
             }
-        }
-
-        private void OnAnimatorMove()
-        {
-            // TODO: Update distance
         }
 
         protected override void Stop()
         {
-            throw new System.NotImplementedException();
+            _navigation.destination = transform.position;
         }
     }
 }

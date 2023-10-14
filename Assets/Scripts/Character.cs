@@ -29,6 +29,8 @@ namespace YuriGameJam2023
 
         protected abstract Vector3 Forward { get; }
 
+        private Vector3 _lastPos;
+
         /// <summary>
         /// Force the current agent to stop
         /// </summary>
@@ -46,6 +48,9 @@ namespace YuriGameJam2023
 
         protected void FixedUpdateParent()
         {
+            _distance -= Vector3.Distance(transform.position, _lastPos);
+            _lastPos = transform.position;
+
             // Remove halo (that define targets) for all of them
             foreach (var t in _targets)
             {
@@ -99,6 +104,7 @@ namespace YuriGameJam2023
 
         public virtual void Enable()
         {
+            _lastPos = transform.position;
             PendingAutoDisable = false;
             _distance = _maxDistance;
             CharacterManager.Instance.DisplayDistanceText(_distance);

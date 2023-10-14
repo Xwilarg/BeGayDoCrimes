@@ -1,6 +1,5 @@
 using System.Linq;
 using UnityEngine;
-using YuriGameJam2023.Player;
 
 namespace YuriGameJam2023
 {
@@ -24,7 +23,7 @@ namespace YuriGameJam2023
 
             var player = enemy.GetClosestPlayer();
 
-            enemy.Attack(player);
+            enemy.Target(player);
         }
     }
 }

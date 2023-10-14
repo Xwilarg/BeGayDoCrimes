@@ -43,7 +43,7 @@ namespace YuriGameJam2023
         private int _totalActionCount = _totalActionCountRef;
         private bool _isPlayerTurn = true;
 
-        private List<Character> _characters = new();
+        private readonly List<Character> _characters = new();
 
         private void Awake()
         {
@@ -83,13 +83,17 @@ namespace YuriGameJam2023
         public void RemoveAction()
         {
             _totalActionCount--;
-            _actionCountText.text = $"Actions Left: {_totalActionCount}";
             if (_totalActionCount == 0)
             {
                 _isPlayerTurn = !_isPlayerTurn;
                 _totalActionCount = _totalActionCountRef;
-                // TODO: AI turn
+                
+                if (!_isPlayerTurn)
+                {
+                    EnemyManager.Instance.DoAction();
+                }
             }
+            _actionCountText.text = $"Actions Left: {_totalActionCount}";
         }
 
         /// <summary>
