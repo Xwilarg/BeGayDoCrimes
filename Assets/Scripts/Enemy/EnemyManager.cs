@@ -19,12 +19,20 @@ namespace YuriGameJam2023
             // Pick the enemy that is closest to a player
             var enemy = enemies
                 .OrderBy(x => Vector3.Distance(x.transform.position, x.GetClosestPlayer().transform.position))
-                .First();
+                .FirstOrDefault();
 
-            var player = enemy.GetClosestPlayer();
+            if (enemy == null)
+            {
+                // TODO: GameOver
+                CharacterManager.Instance.RemoveAction();
+            }
+            else
+            {
+                var player = enemy.GetClosestPlayer();
 
-            CharacterManager.Instance.StartTurn(enemy);
-            enemy.Target(player);
+                CharacterManager.Instance.StartTurn(enemy);
+                enemy.Target(player);
+            }
         }
     }
 }

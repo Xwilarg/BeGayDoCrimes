@@ -94,8 +94,7 @@ namespace YuriGameJam2023
             {
                 EndTurn();
             }
-
-            if (!_isPlayerTurn)
+            else if (!_isPlayerTurn)
             {
                 EnemyManager.Instance.DoAction();
             }
@@ -107,6 +106,11 @@ namespace YuriGameJam2023
             _totalActionCount = _totalActionCountRef;
 
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
+
+            if (!_isPlayerTurn)
+            {
+                EnemyManager.Instance.DoAction();
+            }
         }
 
         public void StartTurn(Character c)
