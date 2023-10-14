@@ -14,6 +14,8 @@ namespace YuriGameJam2023
         private NavMeshAgent _navigation;
         private Character _target;
 
+        protected override Vector3 Forward => Vector3.zero; // TODO
+
         private void Awake()
         {
             AwakeParent();
@@ -69,6 +71,11 @@ namespace YuriGameJam2023
         private void OnAnimatorMove()
         {
             // TODO: Update distance
+        }
+
+        protected override void Stop()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
