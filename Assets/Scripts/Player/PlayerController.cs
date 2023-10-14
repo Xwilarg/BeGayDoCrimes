@@ -60,11 +60,13 @@ namespace YuriGameJam2023.Player
 
         public override void Enable()
         {
+            base.Enable();
             _rb.isKinematic = false;
         }
 
         public override void Disable()
         {
+            base.Disable();
             _rb.isKinematic = true;
         }
     }
