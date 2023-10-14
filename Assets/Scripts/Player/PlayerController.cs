@@ -58,14 +58,14 @@ namespace YuriGameJam2023.Player
                 switch (currSkill.Type)
                 {
                     case SO.SkillType.CloseContact:
-                        if (Physics.Raycast(new(transform.position + transform.forward * .75f, transform.forward), out RaycastHit hit, currSkill.Range))
+                        if (Physics.Raycast(new(transform.position + transform.forward * .75f, transform.forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                         {
                             AddToTarget(hit.collider.gameObject);
                         }
                         break;
 
                     case SO.SkillType.AOE:
-                        foreach (var coll in Physics.OverlapSphere(transform.position + transform.forward * currSkill.Range, currSkill.Range))
+                        foreach (var coll in Physics.OverlapSphere(transform.position + transform.forward * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                         {
                             AddToTarget(coll.gameObject);
                         }
