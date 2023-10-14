@@ -3503,18 +3503,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5264871316099549366, guid: 37a10a5611f65004780c9ea1de1d9ec3, type: 3}
-      propertyPath: _info
-      value: 
-      objectReference: {fileID: 11400000, guid: 5b39895023829b9429ceaaba705c8a0c, type: 2}
-    - target: {fileID: 5264871316099549366, guid: 37a10a5611f65004780c9ea1de1d9ec3, type: 3}
-      propertyPath: _attackDistance
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842109681793304587, guid: 37a10a5611f65004780c9ea1de1d9ec3, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 360
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
