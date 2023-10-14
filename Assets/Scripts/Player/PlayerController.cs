@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
 namespace YuriGameJam2023.Player
 {
@@ -12,7 +11,20 @@ namespace YuriGameJam2023.Player
         private SO.CharacterInfo _info;
 
         private Rigidbody _rb;
-        public Vector2 Mov { set; private get; }
+        private Vector2 _mov;
+        public Vector2 Mov
+        {
+            set
+            {
+                _mov = value;
+                if (value.magnitude != 0f)
+                {
+                    _forward = new(_mov.x, 0f, _mov.y);
+                }
+            }
+            get => _mov;
+        }
+        private Vector3 _forward;
 
         private const float _speed = 300f;
         private const float _maxDistance = 3f;
@@ -58,14 +70,14 @@ namespace YuriGameJam2023.Player
                 switch (currSkill.Type)
                 {
                     case SO.SkillType.CloseContact:
-                        if (Physics.Raycast(new(transform.position + transform.forward * .75f, transform.forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
+                        if (Physics.Raycast(new(transform.position + _forward * .75f, _forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                         {
                             AddToTarget(hit.collider.gameObject);
                         }
                         break;
 
                     case SO.SkillType.AOE:
-                        foreach (var coll in Physics.OverlapSphere(transform.position + transform.forward * 2f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
+                        foreach (var coll in Physics.OverlapSphere(transform.position + _forward * 2f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                         {
                             AddToTarget(coll.gameObject);
                         }
