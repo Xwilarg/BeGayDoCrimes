@@ -74,7 +74,6 @@ namespace YuriGameJam2023
         /// </summary>
         public void UnsetPlayer()
         {
-            Debug.Log("unset");
             _currentPlayer = null;
             _vCam.LookAt = _cameraDefaultLookAt;
         }

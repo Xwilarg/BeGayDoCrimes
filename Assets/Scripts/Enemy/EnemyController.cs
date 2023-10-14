@@ -55,7 +55,6 @@ namespace YuriGameJam2023
             if (CharacterManager.Instance.IsMyTurn(this))
             {
                 FixedUpdateParent();
-                Debug.Log(_navigation.remainingDistance);
                 if ((!_navigation.pathPending && _navigation.remainingDistance < _navigation.stoppingDistance) || _distance <= 0f)
                 {
                     if (HaveAnyTarget)

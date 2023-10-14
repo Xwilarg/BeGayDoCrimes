@@ -123,7 +123,10 @@ namespace YuriGameJam2023
         {
             foreach (var t in _targets)
             {
-                t.ToggleHalo(false);
+                if (t != null)
+                {
+                    t.ToggleHalo(false);
+                }
             }
             _targets.Clear();
             CharacterManager.Instance.ResetEffectDisplay();
