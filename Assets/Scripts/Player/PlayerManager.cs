@@ -1,3 +1,4 @@
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,9 @@ namespace YuriGameJam2023.Player
 
         [SerializeField]
         private TMP_Text _actionCountText;
+
+        [SerializeField]
+        private CinemachineVirtualCamera _vCam;
 
         private int _totalActionCount = 5;
 
@@ -55,6 +59,8 @@ namespace YuriGameJam2023.Player
                     {
                         _currentPlayer = hit.collider.GetComponent<PlayerController>();
                         _currentPlayer.Enable();
+
+                        _vCam.LookAt = _currentPlayer.transform;
                     }
                 }
                 else
