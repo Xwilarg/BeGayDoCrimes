@@ -47,7 +47,7 @@ namespace YuriGameJam2023.Player
                 _rb.velocity = new Vector3(Mov.x, _rb.velocity.y, Mov.y) * Time.fixedDeltaTime * _speed;
                 _distance -= (Mov * Time.fixedDeltaTime).magnitude;
 
-                PlayerManager.Instance.DisplayDistanceText(_distance);
+                CharacterManager.Instance.DisplayDistanceText(_distance);
 
                 FixedUpdateParent();
             }

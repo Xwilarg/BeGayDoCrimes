@@ -5,12 +5,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using YuriGameJam2023.Effect;
+using YuriGameJam2023.Player;
 
-namespace YuriGameJam2023.Player
+namespace YuriGameJam2023
 {
-    public class PlayerManager : MonoBehaviour
+    public class CharacterManager : MonoBehaviour
     {
-        public static PlayerManager Instance { get; private set; }
+        public static CharacterManager Instance { get; private set; }
 
         [SerializeField]
         [Tooltip("Text used to display the distance the character can still walk")]

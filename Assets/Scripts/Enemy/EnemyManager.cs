@@ -15,7 +15,7 @@ namespace YuriGameJam2023
 
         public void DoAction()
         {
-            var enemies = PlayerManager.Instance.GetCharacters<EnemyController>();
+            var enemies = CharacterManager.Instance.GetCharacters<EnemyController>();
 
             // Pick the enemy that is closest to a player
             var enemy = enemies

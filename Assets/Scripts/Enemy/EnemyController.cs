@@ -34,7 +34,7 @@ namespace YuriGameJam2023
         /// <returns>The closest player</returns>
         public Character GetClosestPlayer()
         {
-            return PlayerManager.Instance.GetClosestCharacter<PlayerController>(transform);
+            return CharacterManager.Instance.GetClosestCharacter<PlayerController>(transform);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace YuriGameJam2023
 
                 Debug.Log("Shoot!");
 
-                PlayerManager.Instance.RemoveAction();
+                CharacterManager.Instance.RemoveAction();
             }
         }
 

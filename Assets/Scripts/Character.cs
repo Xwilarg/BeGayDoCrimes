@@ -41,7 +41,7 @@ namespace YuriGameJam2023
 
         protected void StartParent()
         {
-            PlayerManager.Instance.RegisterCharacter(this);
+            CharacterManager.Instance.RegisterCharacter(this);
         }
 
         protected void FixedUpdateParent()
@@ -54,7 +54,7 @@ namespace YuriGameJam2023
             // Clear all target
             // TODO: Don't do that each frame
             _targets.Clear();
-            PlayerManager.Instance.ResetEffectDisplay();
+            CharacterManager.Instance.ResetEffectDisplay();
 
             var currSkill = _info.Skills[0];
 
@@ -73,7 +73,7 @@ namespace YuriGameJam2023
                     {
                         AddToTarget(coll.gameObject);
                     }
-                    PlayerManager.Instance.ShowAoeHint(transform.position + Forward * 2f * currSkill.Range, currSkill.Range);
+                    CharacterManager.Instance.ShowAoeHint(transform.position + Forward * 2f * currSkill.Range, currSkill.Range);
                     break;
 
                 default: throw new NotImplementedException();
@@ -101,7 +101,7 @@ namespace YuriGameJam2023
         {
             PendingAutoDisable = false;
             _distance = _maxDistance;
-            PlayerManager.Instance.DisplayDistanceText(_distance);
+            CharacterManager.Instance.DisplayDistanceText(_distance);
         }
 
         public virtual void Disable()
@@ -111,10 +111,10 @@ namespace YuriGameJam2023
                 t.ToggleHalo(false);
             }
             _targets.Clear();
-            PlayerManager.Instance.ResetEffectDisplay();
-            PlayerManager.Instance.UnsetPlayer();
-            PlayerManager.Instance.DisplayDistanceText(0f);
-            PlayerManager.Instance.RemoveAction();
+            CharacterManager.Instance.ResetEffectDisplay();
+            CharacterManager.Instance.UnsetPlayer();
+            CharacterManager.Instance.DisplayDistanceText(0f);
+            CharacterManager.Instance.RemoveAction();
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace YuriGameJam2023
         protected void Die()
         {
             Disable();
-            PlayerManager.Instance.UnregisterCharacter(this);
+            CharacterManager.Instance.UnregisterCharacter(this);
             Destroy(gameObject);
         }
 
