@@ -30,8 +30,12 @@ namespace YuriGameJam2023
         private AoeHint _aoeHint;
 
         [SerializeField]
-        [Tooltip("Tooltip that confirm if the player want to end his turn")]
+        [Tooltip("Tooltip that confirm if the player want to end his action")]
         private GameObject _disablePopup;
+
+        [SerializeField]
+        [Tooltip("Tooltip that confirm if the player want to end his turn")]
+        private GameObject _endTurnPopup;
 
         [SerializeField]
         [Tooltip("Where the camera should look at when no player is selected")]
@@ -44,6 +48,8 @@ namespace YuriGameJam2023
         private bool _isPlayerTurn = true;
 
         private readonly List<Character> _characters = new();
+
+        private bool IsUIActive => _disablePopup.activeInHierarchy || _endTurnPopup.activeInHierarchy;
 
         private void Awake()
         {
@@ -83,15 +89,21 @@ namespace YuriGameJam2023
         public void RemoveAction()
         {
             _totalActionCount--;
+            _actionCountText.text = $"Actions Left: {_totalActionCount}";
             if (_totalActionCount == 0)
             {
-                _isPlayerTurn = !_isPlayerTurn;
-                _totalActionCount = _totalActionCountRef;
-                
-                if (!_isPlayerTurn)
-                {
-                    EnemyManager.Instance.DoAction();
-                }
+                EndTurn();
+            }
+        }
+
+        public void EndTurn()
+        {
+            _isPlayerTurn = !_isPlayerTurn;
+            _totalActionCount = _totalActionCountRef;
+
+            if (!_isPlayerTurn)
+            {
+                EnemyManager.Instance.DoAction();
             }
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
         }
@@ -137,7 +149,7 @@ namespace YuriGameJam2023
 
         public void OnClick(InputAction.CallbackContext value)
         {
-            if (value.performed && !_disablePopup.activeInHierarchy)
+            if (value.performed && !IsUIActive)
             {
                 if (_currentPlayer == null) // We aren't controlling a player...
                 {
@@ -164,10 +176,21 @@ namespace YuriGameJam2023
         {
             if (value.performed)
             {
-                if (_disablePopup.activeInHierarchy)
+                // Close popups
+                if (_endTurnPopup.activeInHierarchy)
+                {
+                    _endTurnPopup.SetActive(false);
+                }
+                else if (_disablePopup.activeInHierarchy)
                 {
                     _disablePopup.SetActive(false);
                 }
+                // Open popup to end turn
+                else if (_currentPlayer == null)
+                {
+                    _endTurnPopup.SetActive(true);
+                }
+                // If we aren't already disabling the player, open popup to end the current action
                 else if (_currentPlayer != null && !_currentPlayer.PendingAutoDisable)
                 {
                     _disablePopup.SetActive(true);
@@ -177,7 +200,7 @@ namespace YuriGameJam2023
 
         public void OnMovement(InputAction.CallbackContext value)
         {
-            if (_currentPlayer != null && !_disablePopup.activeInHierarchy)
+            if (_currentPlayer != null && !IsUIActive)
             {
                 _currentPlayer.Mov = value.ReadValue<Vector2>();
             }
