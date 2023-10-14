@@ -50,7 +50,7 @@ namespace YuriGameJam2023.Player
             }
         }
 
-        protected override void Stop()
+        protected override void StopMovements()
         {
             _rb.velocity = Vector3.zero;
         }

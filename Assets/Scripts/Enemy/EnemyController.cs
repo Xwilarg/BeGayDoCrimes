@@ -56,8 +56,9 @@ namespace YuriGameJam2023
             if (CharacterManager.Instance.IsMyTurn(this))
             {
                 FixedUpdateParent();
-                if (_navigation.pathStatus == NavMeshPathStatus.PathComplete)
+                if (_navigation.pathStatus == NavMeshPathStatus.PathComplete || _distance <= 0f)
                 {
+                    Debug.Log("reached target");
                     /*if (HaveAnyTarget)
                     {
                         Attack();
@@ -70,7 +71,7 @@ namespace YuriGameJam2023
             }
         }
 
-        protected override void Stop()
+        protected override void StopMovements()
         {
             _navigation.destination = transform.position;
         }

@@ -33,7 +33,7 @@ namespace YuriGameJam2023
         /// <summary>
         /// Force the current agent to stop
         /// </summary>
-        protected abstract void Stop();
+        protected abstract void StopMovements();
 
         protected void AwakeParent()
         {
@@ -52,7 +52,7 @@ namespace YuriGameJam2023
 
             if (_distance <= 0f)
             {
-                Stop();
+                StopMovements();
                 CharacterManager.Instance.DisplayDistanceText(0f);
             }
             else
@@ -96,11 +96,11 @@ namespace YuriGameJam2023
 
         public void Attack()
         {
-            Stop();
             foreach (var t in _targets)
             {
                 t.TakeDamage(_info.Skills[0].Damage);
             }
+            StopMovements();
             StartCoroutine(WaitAndDisable(1f));
         }
 
