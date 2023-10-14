@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using YuriGameJam2023.Player;
@@ -6,8 +7,6 @@ namespace YuriGameJam2023
 {
     public class EnemyController : Character
     {
-        [SerializeField]
-        private float _attackDistance;
         [SerializeField]
         private int _attackDamage;
 
@@ -44,10 +43,10 @@ namespace YuriGameJam2023
             var distance = Vector3.Distance(target.transform.position, transform.position);
 
             // Whether we are close enough to the player
-            if (distance > _attackDistance)
+            if (distance > _info.Skills[0].Range)
             {
                 _navigation.destination = target.transform.position;
-                _navigation.stoppingDistance = _attackDistance;
+                _navigation.stoppingDistance = _info.Skills[0].Range;
             }
         }
 
@@ -56,17 +55,17 @@ namespace YuriGameJam2023
             if (CharacterManager.Instance.IsMyTurn(this))
             {
                 FixedUpdateParent();
-                if (_navigation.pathStatus == NavMeshPathStatus.PathComplete || _distance <= 0f)
+                Debug.Log(_navigation.remainingDistance);
+                if ((!_navigation.pathPending && _navigation.remainingDistance < _navigation.stoppingDistance) || _distance <= 0f)
                 {
-                    Debug.Log("reached target");
-                    /*if (HaveAnyTarget)
+                    if (HaveAnyTarget)
                     {
                         Attack();
                     }
                     else
                     {
                         Disable();
-                    }*/
+                    }
                 }
             }
         }

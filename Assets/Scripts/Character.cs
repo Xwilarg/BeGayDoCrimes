@@ -9,7 +9,7 @@ namespace YuriGameJam2023
     public abstract class Character : MonoBehaviour
     {
         [SerializeField]
-        private SO.CharacterInfo _info;
+        protected SO.CharacterInfo _info;
 
         [SerializeField]
         private GameObject _halo;
