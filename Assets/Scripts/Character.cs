@@ -83,11 +83,11 @@ namespace YuriGameJam2023
                     break;
 
                 case SO.SkillType.AOE:
-                    foreach (var coll in Physics.OverlapSphere(transform.position + Forward * 2f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
+                    foreach (var coll in Physics.OverlapSphere(transform.position + Forward * 1.5f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(coll.gameObject);
                     }
-                    CharacterManager.Instance.ShowAoeHint(transform.position + Forward * 2f * currSkill.Range, currSkill.Range);
+                    CharacterManager.Instance.ShowAoeHint(transform.position + Forward * 1.5f * currSkill.Range, currSkill.Range);
                     break;
 
                 default: throw new NotImplementedException();
