@@ -13,7 +13,7 @@ namespace YuriGameJam2023
 
         private NavMeshAgent _navigation;
 
-        protected override Vector3 Forward => Vector3.zero; // TODO
+        protected override Vector3 Forward => transform.forward;
 
         private void Awake()
         {
