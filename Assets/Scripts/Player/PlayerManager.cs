@@ -117,6 +117,13 @@ namespace YuriGameJam2023.Player
                 .ElementAt(0);
         }
 
+        public IEnumerable<T> GetCharacters<T>()
+        {
+            return _characters
+                .Where(x => x is T)
+                .Cast<T>();
+        }
+
         public void DisableConfirm()
         {
             _currentPlayer.Disable();

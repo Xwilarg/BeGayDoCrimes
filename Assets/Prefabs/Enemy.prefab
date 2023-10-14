@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _halo: {fileID: 4630376845406823117}
   _maxHealth: 100
+  _attackDistance: 2
+  _attackDamage: 10
 --- !u!195 &8842109681793304587
 NavMeshAgent:
   m_ObjectHideFlags: 0
