@@ -2,6 +2,7 @@
 {
     public enum SkillType
     {
-        CloseContact
+        CloseContact,
+        AOE
     }
 }

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 namespace YuriGameJam2023.Player
 {
@@ -49,16 +51,38 @@ namespace YuriGameJam2023.Player
                 }
                 // Clear all target
                 _targets.Clear();
+
+                var currSkill = _info.Skills[0];
+
                 // Find all targets and set back the _targets list
-                if (Physics.Raycast(new(transform.position + transform.forward * .75f, transform.forward), out RaycastHit hit, _info.Skills[0].Range))
+                switch (currSkill.Type)
                 {
-                    if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
-                    {
-                        var c = hit.collider.GetComponent<Character>();
-                        c.ToggleHalo(true);
-                        _targets.Add(c);
-                    }
+                    case SO.SkillType.CloseContact:
+                        if (Physics.Raycast(new(transform.position + transform.forward * .75f, transform.forward), out RaycastHit hit, currSkill.Range))
+                        {
+                            AddToTarget(hit.collider.gameObject);
+                        }
+                        break;
+
+                    case SO.SkillType.AOE:
+                        foreach (var coll in Physics.OverlapSphere(transform.position + transform.forward * currSkill.Range, currSkill.Range))
+                        {
+                            AddToTarget(coll.gameObject);
+                        }
+                        break;
+
+                    default: throw new NotImplementedException();
                 }
+            }
+        }
+
+        private void AddToTarget(GameObject go)
+        {
+            if (go.CompareTag("Player") || go.CompareTag("Enemy"))
+            {
+                var c = go.GetComponent<Character>();
+                c.ToggleHalo(true);
+                _targets.Add(c);
             }
         }
 
