@@ -160,7 +160,10 @@ namespace YuriGameJam2023
 
         protected void Die()
         {
-            Disable();
+            if (CharacterManager.Instance.AmIActive(this))
+            {
+                Disable();
+            }
             CharacterManager.Instance.UnregisterCharacter(this);
             Destroy(gameObject);
         }

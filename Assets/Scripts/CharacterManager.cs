@@ -66,6 +66,9 @@ namespace YuriGameJam2023
             _characters.Remove(c);
         }
 
+        public bool AmIActive(Character c)
+            => _currentPlayer != null && _currentPlayer.gameObject.GetInstanceID() == c.gameObject.GetInstanceID();
+
         /// <summary>
         /// Deselect a player (aka we are not controlling it anymore)
         /// </summary>
