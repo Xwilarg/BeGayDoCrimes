@@ -23,8 +23,8 @@ namespace YuriGameJam2023
 
         public void TakeDamage(int damage)
         {
-            _health -= damage;
-            if (_health <= 0)
+            _health = Clamp(_health - damage, 0, _maxHealth);
+            if (_health == 0)
             {
                 Die();
             }
@@ -33,6 +33,13 @@ namespace YuriGameJam2023
         protected virtual void Die()
         {
             Destroy(gameObject);
+        }
+
+        private int Clamp(int value, int min, int max)
+        {
+            if (value < min) return min;
+            if (value > max) return max;
+            return value;
         }
     }
 }

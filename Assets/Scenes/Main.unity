@@ -398,8 +398,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6310031941206319733, guid: af42761ebe33dd44fadcd18aaedcb383, type: 3}
       propertyPath: m_Name
-      value: Player 2
+      value: Willow
       objectReference: {fileID: 0}
+    - target: {fileID: 7917631563659450751, guid: af42761ebe33dd44fadcd18aaedcb383, type: 3}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 35e361086eb951344a778db6f677c74a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -823,6 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distanceText: {fileID: 1646387593}
+  _actionCountText: {fileID: 0}
 --- !u!1 &1646387591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,8 +1130,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6310031941206319733, guid: af42761ebe33dd44fadcd18aaedcb383, type: 3}
       propertyPath: m_Name
-      value: Player 3
+      value: Yuki
       objectReference: {fileID: 0}
+    - target: {fileID: 7917631563659450751, guid: af42761ebe33dd44fadcd18aaedcb383, type: 3}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: a54f82292f9c0c24a9880b260027b078, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1182,8 +1191,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6310031941206319733, guid: af42761ebe33dd44fadcd18aaedcb383, type: 3}
       propertyPath: m_Name
-      value: Player 4
+      value: Makra
       objectReference: {fileID: 0}
+    - target: {fileID: 7917631563659450751, guid: af42761ebe33dd44fadcd18aaedcb383, type: 3}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: 63f7437a35640b243b67405b6a2b8262, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
