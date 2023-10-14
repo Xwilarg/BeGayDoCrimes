@@ -14,8 +14,12 @@ namespace YuriGameJam2023
 
         public void AwakeParent()
         {
-            PlayerManager.Instance.RegisterCharacter(this);
             _health = _maxHealth;
+        }
+
+        public void StartParent()
+        {
+            PlayerManager.Instance.RegisterCharacter(this);
         }
 
         public void ToggleHalo(bool value)

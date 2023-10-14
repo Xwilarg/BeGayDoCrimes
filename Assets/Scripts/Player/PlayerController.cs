@@ -48,6 +48,11 @@ namespace YuriGameJam2023.Player
             _rb = GetComponent<Rigidbody>();
         }
 
+        private void Start()
+        {
+            StartParent();
+        }
+
         private void FixedUpdate()
         {
             if (CanMove) // Are we the character currently being moved by the player

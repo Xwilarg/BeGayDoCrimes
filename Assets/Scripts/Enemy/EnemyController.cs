@@ -6,5 +6,10 @@ namespace YuriGameJam2023
         {
             AwakeParent();
         }
+
+        private void Start()
+        {
+            StartParent();
+        }
     }
 }
