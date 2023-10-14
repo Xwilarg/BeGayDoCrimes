@@ -146,7 +146,6 @@ namespace YuriGameJam2023.Player
             }
             _targets.Clear();
             _rb.isKinematic = true;
-            _rb.velocity = Vector3.zero;
             PlayerManager.Instance.ResetEffectDisplay();
             PlayerManager.Instance.UnsetPlayer();
             PlayerManager.Instance.DisplayDistanceText(0f);

@@ -1912,6 +1912,7 @@ MonoBehaviour:
   _vCam: {fileID: 1215443431}
   _aoeHint: {fileID: 162966163}
   _disablePopup: {fileID: 1241811814}
+  _cameraDefaultLookAt: {fileID: 910330855}
 --- !u!114 &1559526921
 MonoBehaviour:
   m_ObjectHideFlags: 0
