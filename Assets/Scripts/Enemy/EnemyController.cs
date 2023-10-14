@@ -55,16 +55,17 @@ namespace YuriGameJam2023
         {
             if (CharacterManager.Instance.IsMyTurn(this))
             {
+                FixedUpdateParent();
                 if (_navigation.pathStatus == NavMeshPathStatus.PathComplete)
                 {
-                    if (HaveAnyTarget)
+                    /*if (HaveAnyTarget)
                     {
                         Attack();
                     }
                     else
                     {
                         Disable();
-                    }
+                    }*/
                 }
             }
         }

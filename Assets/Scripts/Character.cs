@@ -19,7 +19,7 @@ namespace YuriGameJam2023
         private int _maxHealth;
         private int _health;
 
-        private float _maxDistance = 3f;
+        private float _maxDistance = 10f;
         protected float _distance;
 
         private readonly List<Character> _targets = new();
@@ -51,7 +51,7 @@ namespace YuriGameJam2023
             _distance -= Vector3.Distance(transform.position, _lastPos);
             _lastPos = transform.position;
 
-            if (_distance < 0)
+            if (_distance <= 0f)
             {
                 Stop();
                 CharacterManager.Instance.DisplayDistanceText(0f);

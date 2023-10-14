@@ -4,7 +4,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.HID;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Player;
 
@@ -75,6 +74,7 @@ namespace YuriGameJam2023
         /// </summary>
         public void UnsetPlayer()
         {
+            Debug.Log("unset");
             _currentPlayer = null;
             _vCam.LookAt = _cameraDefaultLookAt;
         }
