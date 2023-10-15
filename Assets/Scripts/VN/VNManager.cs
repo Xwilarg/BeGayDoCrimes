@@ -96,7 +96,7 @@ namespace YuriGameJam2023.VN
                             _currentCharacter = _characters.FirstOrDefault(x => x.Name.ToUpperInvariant() == content);
                             if (_currentCharacter == null)
                             {
-                                Debug.LogError($"[STORY] Unable to find {content}");
+                                Debug.LogError($"[STORY] Unable to find character {content}");
                             }
                         }
 
@@ -104,8 +104,9 @@ namespace YuriGameJam2023.VN
                         break;
 
                     case "format":
-                        if (content.ToUpperInvariant() == "NONE") _display.SetStyle(FontStyles.Normal);
-                        else if (content.ToUpperInvariant() == "ITALIC") _display.SetStyle(FontStyles.Italic);
+                        if (content == "NONE") _display.SetStyle(FontStyles.Normal);
+                        else if (content == "ITALIC") _display.SetStyle(FontStyles.Italic);
+                        else Debug.LogError($"[STORY] Unable to find format {content}");
                         break;
 
                     default:

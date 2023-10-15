@@ -22,7 +22,7 @@ namespace YuriGameJam2023.VN
             {
                 _index = 0;
                 _timer = _displaySpeedRef;
-                if (_text == null) // TODO: Prob not the best way to do it
+                if (_text == null)
                 {
                     Awake();
                 }
@@ -35,6 +35,10 @@ namespace YuriGameJam2023.VN
 
         public void SetStyle(FontStyles style)
         {
+            if (_text == null)
+            {
+                Awake();
+            }
             _text.fontStyle = style;
         }
 
