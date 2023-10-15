@@ -90,7 +90,7 @@ namespace YuriGameJam2023.VN
                 switch (s[0])
                 {
                     case "speaker":
-                        if (content == "none") _currentCharacter = null;
+                        if (content == "NONE") _currentCharacter = null;
                         else
                         {
                             _currentCharacter = _characters.FirstOrDefault(x => x.Name.ToUpperInvariant() == content);
