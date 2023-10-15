@@ -70,6 +70,7 @@ namespace YuriGameJam2023.VN
         public void ShowStory(TextAsset asset, Action onDone)
         {
             Debug.Log($"[STORY] Playing {asset.name}");
+            _display.SetStyle(FontStyles.Normal);
             _currentCharacter = null;
             _onDone = onDone;
             _story = new(asset.text);
@@ -81,6 +82,7 @@ namespace YuriGameJam2023.VN
         {
             _container.SetActive(true);
             _namePanel.SetActive(false);
+            
             foreach (var tag in _story.currentTags)
             {
                 var s = tag.Split(' ');
@@ -99,6 +101,11 @@ namespace YuriGameJam2023.VN
                         }
 
                         Debug.Log($"[STORY] Speaker set to {_currentCharacter?.Name}");
+                        break;
+
+                    case "format":
+                        if (content.ToUpperInvariant() == "NONE") _display.SetStyle(FontStyles.Normal);
+                        else if (content.ToUpperInvariant() == "ITALIC") _display.SetStyle(FontStyles.Italic);
                         break;
 
                     default:

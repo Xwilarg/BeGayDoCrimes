@@ -33,6 +33,11 @@ namespace YuriGameJam2023.VN
             private get => _toDisplay;
         }
 
+        public void SetStyle(FontStyles style)
+        {
+            _text.fontStyle = style;
+        }
+
         public event EventHandler OnDisplayDone;
 
         private string _displayLeft = string.Empty;

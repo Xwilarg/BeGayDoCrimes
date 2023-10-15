@@ -1,18 +1,18 @@
 -> intro
 == intro ==
- This is a strange world you are looking into on this day.#speaker narrator
+ This is a strange world you are looking into on this day. #speaker narrator
 
-This world is known as Acarno, a wondrous world where monsters and humans coexisted a long time ago, but now monsters and humans mostly became one. Humanoids with animal and monstrous elements roam this land. #speaker narrator
+This world is known as Acarno, a wondrous world where monsters and humans coexisted a long time ago, but now monsters and humans mostly became one. Humanoids with animal and monstrous elements roam this land.
 
-This story is about 4 of those monster girls and their quest to well... pay their rent. #speaker narrator
+This story is about 4 of those monster girls and their quest to well... pay their rent.
 
- Yuki the Soldier Seal, Makra the Shadow Spider, Claire the Noble Dragon and Willow the Obstinate Koala. #speaker narrator
+ Yuki the Soldier Seal, Makra the Shadow Spider, Claire the Noble Dragon and Willow the Obstinate Koala.
 
-On this quest, those 4 will make enemies, friends and perhaps even find love. So let's get to it, shall we? #speaker narrator
+On this quest, those 4 will make enemies, friends and perhaps even find love. So let's get to it, shall we?
 
-The girl's house #format italic  speaker none
+The girl's house #format italic #speaker none
 
-Why Am I the one cleaning the floor?! I was the one who found the most gold this week! I deserve to skip this filthy task! #speaker claire
+Why Am I the one cleaning the floor?! I was the one who found the most gold this week! I deserve to skip this filthy task! #format none #speaker claire
 
  It's your turn Claire stop whinging and keep sweeping! #speaker willow
 
@@ -40,9 +40,9 @@ Hopefully she will buy some fresh bread this time. #speaker willow
 
 Yeah! That would be nice. #speaker yuri
 
-Makra enters the house #format italic speaker none
+Makra enters the house #format italic #speaker none
 
-I got food... bread and some dry goat... #speaker makra
+I got food... bread and some dry goat... #format none #speaker makra
 
 Goat? Why I never would have eaten that if it was not for my current situation. #speaker claire
 
@@ -52,15 +52,15 @@ Oi! I'm starving let's just eat already. #speaker willow
 
 Let's enjoy a nice meal together! I have the feeling this will be a nice day! #speaker yuri
 
-Explosion #format italic speaker none
+Explosion #format italic #speaker none
 
-Ahh dang... #speaker yuri
+Ahh dang... #format none #speaker yuri
 
 You had to run your mouth again Yuki! Let's see what's up girls! #speaker willow
 
-The girls grab their weapons and go outside #format italic 
+The girls grab their weapons and go outside #format italic #speaker none
 
-Bandits... again, sigh Why don't they leave us alone. #speaker makra
+Bandits... again, sigh Why don't they leave us alone. #format none #speaker makra
 
 You filthy brigands! How dare you attack us we? We already told you this house won't be yours! #speaker claire
 
@@ -74,5 +74,5 @@ Can't say, but orders are orders it's just business, if you won't leave then we'
 
 Everyone get ready! #speaker yuri
 
-Battle begins #format italic speaker none
+Battle begins #format italic #speaker none
 -> DONE
