@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: yuki
   DisplayName: Yuki
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: c92db1e7c9c1cef4c821c95df29cf05a, type: 3}

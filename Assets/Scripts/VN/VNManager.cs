@@ -115,9 +115,16 @@ namespace YuriGameJam2023.VN
             else
             {
                 _namePanel.SetActive(true);
-                _bustImage.gameObject.SetActive(true);
                 _nameText.text = _currentCharacter.DisplayName;
-                _bustImage.sprite = _currentCharacter.Sprite;
+                if (_currentCharacter.Sprite == null)
+                {
+                    _bustImage.gameObject.SetActive(false);
+                }
+                else
+                {
+                    _bustImage.gameObject.SetActive(true);
+                    _bustImage.sprite = _currentCharacter.Sprite;
+                }
             }
         }
 

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: claire
   DisplayName: Claire
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: ced3b8f87cbd2974685bd6194f8d53c0, type: 3}
