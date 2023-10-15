@@ -4,7 +4,7 @@
 
 This world is known as Acarno, a wondrous world where monsters and humans coexisted a long time ago, but now monsters and humans mostly became one. Humanoids with animal and monstrous elements roam this land.
 
-This story is about 4 of those monster girls and their quest to well... pay their rent.
+This story is about 4 of those monster girls and their quest to well find a home.
 
  Yuki the Soldier Seal, Makra the Shadow Spider, Claire the Noble Dragon and Willow the Obstinate Koala.
 
