@@ -1,5 +1,6 @@
 ﻿using Ink.Runtime;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace YuriGameJam2023.VN
 
         [SerializeField]
         private VNCharacterInfo[] _characters;
-        private VNCharacterInfo _currentCharacter;
+        private List<VNCharacterInfo> _currentCharacter;
 
         private Story _story;
 
@@ -33,7 +34,10 @@ namespace YuriGameJam2023.VN
         private GameObject _namePanel;
 
         [SerializeField]
-        private Image _bustImage;
+        private Transform _bustContainer;
+
+        [SerializeField]
+        private Image _bustImagePrefab;
 
         [SerializeField]
         private TMP_Text _nameText;
@@ -71,7 +75,7 @@ namespace YuriGameJam2023.VN
         {
             Debug.Log($"[STORY] Playing {asset.name}");
             _display.SetStyle(FontStyles.Normal);
-            _currentCharacter = null;
+            _currentCharacter = new();
             _onDone = onDone;
             _story = new(asset.text);
             _isSkipEnabled = false;
@@ -81,26 +85,38 @@ namespace YuriGameJam2023.VN
         private void DisplayStory(string text)
         {
             _container.SetActive(true);
-            _namePanel.SetActive(false);
+
+            for (int i = 0; i < _bustContainer.childCount; i++) Destroy(_bustContainer.GetChild(i).gameObject);
             
             foreach (var tag in _story.currentTags)
             {
                 var s = tag.Split(' ');
-                var content = string.Join(' ', s.Skip(1)).ToUpperInvariant();
+                var contentList = s.Skip(1).Select(x => x.ToUpperInvariant());
+                var content = string.Join(' ', contentList);
                 switch (s[0])
                 {
                     case "speaker":
-                        if (content == "NONE") _currentCharacter = null;
+                        _currentCharacter = new();
+                        if (content == "NONE")
+                        {
+                            Debug.Log($"[STORY] Speaker set to none");
+                        }
                         else
                         {
-                            _currentCharacter = _characters.FirstOrDefault(x => x.Name.ToUpperInvariant() == content);
-                            if (_currentCharacter == null)
+                            foreach (var c in contentList)
                             {
-                                Debug.LogError($"[STORY] Unable to find character {content}");
+                                var target = _characters.FirstOrDefault(x => x.Name.ToUpperInvariant() == c);
+                                if (target == null)
+                                {
+                                    Debug.LogError($"[STORY] Unable to find character {c}");
+                                }
+                                else
+                                {
+                                    _currentCharacter.Add(target);
+                                }
                             }
+                            Debug.Log($"[STORY] Speaker set to {string.Join(", ", _currentCharacter.Select(x => x.Name))}");
                         }
-
-                        Debug.Log($"[STORY] Speaker set to {_currentCharacter?.Name}");
                         break;
 
                     case "format":
@@ -118,20 +134,20 @@ namespace YuriGameJam2023.VN
             if (_currentCharacter == null)
             {
                 _namePanel.SetActive(false);
-                _bustImage.gameObject.SetActive(false);
             }
             else
             {
                 _namePanel.SetActive(true);
-                _nameText.text = _currentCharacter.DisplayName;
-                if (_currentCharacter.Sprite == null)
+                _nameText.text = string.Join(" & ", _currentCharacter.Select(x => x.DisplayName));
+                _bustContainer.gameObject.SetActive(false);
+                foreach (var c in _currentCharacter)
                 {
-                    _bustImage.gameObject.SetActive(false);
-                }
-                else
-                {
-                    _bustImage.gameObject.SetActive(true);
-                    _bustImage.sprite = _currentCharacter.Sprite;
+                    if (c.Sprite != null)
+                    {
+                        _bustContainer.gameObject.SetActive(true);
+                        var bust = Instantiate(_bustImagePrefab, _bustContainer);
+                        bust.GetComponent<Image>().sprite = c.Sprite;
+                    }
                 }
             }
         }
