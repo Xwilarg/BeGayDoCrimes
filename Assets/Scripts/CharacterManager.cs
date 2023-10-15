@@ -166,9 +166,9 @@ namespace YuriGameJam2023
             _currentPlayer.Disable();
         }
 
-        public void OnClick(InputAction.CallbackContext value)
+        public void OnClick()
         {
-            if (value.performed && _isPlayerTurn && !IsUIActive)
+            if (_isPlayerTurn && !IsUIActive)
             {
                 if (_currentPlayer == null) // We aren't controlling a player...
                 {
@@ -188,9 +188,9 @@ namespace YuriGameJam2023
             }
         }
 
-        public void OnClickCancel(InputAction.CallbackContext value)
+        public void OnClickCancel()
         {
-            if (value.performed && _isPlayerTurn)
+            if (_isPlayerTurn)
             {
                 // Close popups
                 if (_endTurnPopup.activeInHierarchy)
@@ -214,11 +214,11 @@ namespace YuriGameJam2023
             }
         }
 
-        public void OnMovement(InputAction.CallbackContext value)
+        public void OnMovement(Vector2 mov)
         {
             if (_currentPlayer != null && _isPlayerTurn && !IsUIActive)
             {
-                ((PlayerController)_currentPlayer).Mov = value.ReadValue<Vector2>();
+                ((PlayerController)_currentPlayer).Mov = mov;
             }
         }
     }

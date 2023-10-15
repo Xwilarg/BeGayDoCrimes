@@ -51,10 +51,8 @@ namespace YuriGameJam2023.VN
 
         public bool IsPlayingStory => _container.activeInHierarchy;
 
-        private void Start()
-        {
-            ShowStory(_intro, null);
-        }
+        public void ShowIntro()
+            => ShowStory(_intro, null);
 
         private void Update()
         {
