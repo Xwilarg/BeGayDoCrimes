@@ -1450,6 +1450,7 @@ GameObject:
   - component: {fileID: 906955652}
   - component: {fileID: 906955655}
   - component: {fileID: 906955656}
+  - component: {fileID: 906955657}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1496,6 +1497,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &906955657
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906955651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damping: {x: 0.1, y: 0.5, z: 0.3}
+  ShoulderOffset: {x: 0, y: 2.12, z: 0}
+  VerticalArmLength: 0.14
+  CameraSide: 1
+  CameraDistance: 4.5
+  CameraCollisionFilter:
+    serializedVersion: 2
+    m_Bits: 0
+  IgnoreTag: 
+  CameraRadius: 0.2
+  DampingIntoCollision: 0
+  DampingFromCollision: 2
 --- !u!1 &910330851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,8 +1715,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.39584148, y: -0, z: -0, w: 0.91831887}
-  m_LocalPosition: {x: 0, y: 9.52, z: -8.991}
+  m_LocalRotation: {x: 0.28469786, y: -0, z: -0, w: 0.9586173}
+  m_LocalPosition: {x: 0, y: 7.27, z: -11.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2076,8 +2101,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215443430}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.39584148, y: -0, z: -0, w: 0.91831887}
-  m_LocalPosition: {x: 0, y: 9.52, z: -8.991}
+  m_LocalRotation: {x: 0.28469786, y: -0, z: -0, w: 0.9586173}
+  m_LocalPosition: {x: 0, y: 7.27, z: -11.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2449,7 +2474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232b3751d2880b44fb8ca051461f7d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bypassIntro: 0
+  _bypassIntro: 1
 --- !u!1 &1532712310
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Player;
 
@@ -41,6 +40,8 @@ namespace YuriGameJam2023
         [Tooltip("Where the camera should look at when no player is selected")]
         private Transform _cameraDefaultLookAt;
 
+        private Vector3 _iniCamPos;
+
         private Character _currentPlayer;
 
         private const int _totalActionCountRef = 5;
@@ -55,6 +56,7 @@ namespace YuriGameJam2023
         {
             Instance = this;
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
+            _iniCamPos = _vCam.transform.position;
         }
 
         public void RegisterCharacter(Character c)
@@ -76,6 +78,8 @@ namespace YuriGameJam2023
         {
             _currentPlayer = null;
             _vCam.LookAt = _cameraDefaultLookAt;
+            _vCam.Follow = null;
+            _vCam.transform.position = _iniCamPos;
         }
 
         /// <summary>
@@ -126,6 +130,7 @@ namespace YuriGameJam2023
             _currentPlayer.Enable();
 
             _vCam.LookAt = _currentPlayer.transform;
+            _vCam.Follow = _currentPlayer.transform;
         }
 
         /// <summary>
