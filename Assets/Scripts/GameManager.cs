@@ -14,7 +14,7 @@ namespace YuriGameJam2023
 
         private void Start()
         {
-            if (SceneManager.GetActiveScene().name == "VN" || !DebugManager.Instance.BypassIntro) // VN scene is used to debug the VN so we always display the intro there
+            if (!DebugManager.Instance.BypassIntro)
             {
                 VNManager.Instance.ShowIntro();
             }
