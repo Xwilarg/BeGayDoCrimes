@@ -17,7 +17,7 @@ namespace YuriGameJam2023.Effect
             List<Vector3> positions = new();
             for (float i = 0; i < Mathf.PI * 2 + .1f; i += .1f)
             {
-                positions.Add(pos + new Vector3(Mathf.Cos(i) * radius, 0f, Mathf.Sin(i) * radius));
+                positions.Add(new Vector3(pos.x + Mathf.Cos(i) * radius, 0f, pos.z + Mathf.Sin(i) * radius));
             }
             _lr.positionCount = positions.Count;
             _lr.SetPositions(positions.ToArray());
