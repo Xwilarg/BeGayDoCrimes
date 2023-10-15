@@ -4,7 +4,7 @@
 
 This world is known as Acarno, a wondrous world where monsters and humans coexisted a long time ago, but now monsters and humans mostly became one. Humanoids with animal and monstrous elements roam this land.
 
-This story is about 4 of those monster girls and their quest to well... pay their rent.
+This story is about 4 of those monster girls and their quest to well find a home.
 
  Yuki the Soldier Seal, Makra the Shadow Spider, Claire the Noble Dragon and Willow the Obstinate Koala.
 
@@ -30,15 +30,15 @@ Clearly! You would have better manners if I was! #speaker claire
 
 You wanna throw down, you overgrown lizard! #speaker willow 
 
-Girls please, let's calm down... Here both of you drink some tea, this will calm you down. #speaker yuri
+Girls please, let's calm down... Here both of you drink some tea, this will calm you down. #speaker yuki
 
 Grumbles.#speaker willow claire
 
-There, now both of you stay calm while we wait for Makra to come back with the food. #speaker yuri
+There, now both of you stay calm while we wait for Makra to come back with the food. #speaker yuki
 
 Hopefully she will buy some fresh bread this time. #speaker willow
 
-Yeah! That would be nice. #speaker yuri
+Yeah! That would be nice. #speaker yuki
 
 Makra enters the house #format italic #speaker none
 
@@ -50,11 +50,11 @@ Yeah... I get'cha... But we need to eat. #speaker makra
 
 Oi! I'm starving let's just eat already. #speaker willow
 
-Let's enjoy a nice meal together! I have the feeling this will be a nice day! #speaker yuri
+Let's enjoy a nice meal together! I have the feeling this will be a nice day! #speaker yuki
 
 Explosion #format italic #speaker none
 
-Ahh dang... #format none #speaker yuri
+Ahh dang... #format none #speaker yuki
 
 You had to run your mouth again Yuki! Let's see what's up girls! #speaker willow
 
@@ -64,7 +64,7 @@ Bandits... again, sigh Why don't they leave us alone. #format none #speaker makr
 
 You filthy brigands! How dare you attack us we? We already told you this house won't be yours! #speaker claire
 
-It's the only thing we own! Why don't you leave us alone! #speaker yuri
+It's the only thing we own! Why don't you leave us alone! #speaker yuki
 
 Sorry girlies, we need that place, just piss off or it will get ugly! #speaker bc
 
@@ -72,7 +72,7 @@ Oi don't you dare touch that place! We grabbed it first! Why do you even want it
 
 Can't say, but orders are orders it's just business, if you won't leave then we'll make you leave in a casket! Let's go boys! #speaker bc
 
-Everyone get ready! #speaker yuri
+Everyone get ready! #speaker yuki
 
 Battle begins #format italic #speaker none
 -> DONE
