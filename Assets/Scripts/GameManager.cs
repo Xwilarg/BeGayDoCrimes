@@ -22,7 +22,6 @@ namespace YuriGameJam2023
 
         public void OnClick(InputAction.CallbackContext value)
         {
-            Debug.Log("Debug click");
             if (value.performed)
             {
                 if (VNManager.Instance.IsPlayingStory)

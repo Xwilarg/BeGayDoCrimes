@@ -2593,7 +2593,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1559526923}
         m_TargetAssemblyTypeName: YuriGameJam2023.GameManager, Assembly-CSharp
-        m_MethodName: OnClick
+        m_MethodName: OnMovement
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2609,7 +2609,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1559526923}
         m_TargetAssemblyTypeName: YuriGameJam2023.GameManager, Assembly-CSharp
-        m_MethodName: OnClickCancel
+        m_MethodName: OnClick
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2665,7 +2665,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1559526923}
         m_TargetAssemblyTypeName: YuriGameJam2023.GameManager, Assembly-CSharp
-        m_MethodName: OnMovement
+        m_MethodName: OnClickCancel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
