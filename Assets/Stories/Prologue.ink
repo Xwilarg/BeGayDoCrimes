@@ -1,4 +1,4 @@
-﻿-> intro
+-> intro
 == intro ==
  This is a strange world you are looking into on this day.#speaker narrator
 
@@ -10,7 +10,7 @@ This story is about 4 of those monster girls and their quest to well... pay thei
 
 On this quest, those 4 will make enemies, friends and perhaps even find love. So let's get to it, shall we? #speaker narrator
 
-The girl's house #format italic 
+The girl's house #format italic  speaker none
 
 Why Am I the one cleaning the floor?! I was the one who found the most gold this week! I deserve to skip this filthy task! #speaker claire
 
@@ -40,7 +40,7 @@ Hopefully she will buy some fresh bread this time. #speaker willow
 
 Yeah! That would be nice. #speaker yuri
 
-Makra enters the house #format italic 
+Makra enters the house #format italic speaker none
 
 I got food... bread and some dry goat... #speaker makra
 
@@ -52,7 +52,7 @@ Oi! I'm starving let's just eat already. #speaker willow
 
 Let's enjoy a nice meal together! I have the feeling this will be a nice day! #speaker yuri
 
-Explosion #format italic 
+Explosion #format italic speaker none
 
 Ahh dang... #speaker yuri
 
@@ -74,5 +74,5 @@ Can't say, but orders are orders it's just business, if you won't leave then we'
 
 Everyone get ready! #speaker yuri
 
-Battle begins #format italic 
+Battle begins #format italic speaker none
 -> DONE
