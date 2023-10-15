@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace YuriGameJam2023
 {
@@ -14,7 +15,19 @@ namespace YuriGameJam2023
         [SerializeField]
         private GameObject _halo;
 
+        [SerializeField]
+        private Image _healthBar;
+
         private int _health;
+        private int Health
+        {
+            set
+            {
+                _health = value;
+                _healthBar.rectTransform.localScale = new Vector2(value / (float)_info.Health, 1f);
+            }
+            get => _health;
+        }
 
         private float _maxDistance = 10f;
         protected float _distance;
@@ -35,7 +48,8 @@ namespace YuriGameJam2023
 
         protected void AwakeParent()
         {
-            _health = _info.Health;
+            Health = _info.Health;
+            GetComponentInChildren<Canvas>().worldCamera = Camera.main;
         }
 
         protected void StartParent()
@@ -151,8 +165,8 @@ namespace YuriGameJam2023
 
         public void TakeDamage(int damage)
         {
-            _health = Clamp(_health - damage, 0, _info.Health);
-            if (_health == 0)
+            Health = Clamp(Health - damage, 0, _info.Health);
+            if (Health == 0)
             {
                 Die();
             }
@@ -177,7 +191,7 @@ namespace YuriGameJam2023
 
         public override string ToString()
         {
-            return $"{_info.name} ({_health}/{_info.Health}HP)";
+            return $"{_info.name} ({Health}/{_info.Health}HP)";
         }
     }
 }
