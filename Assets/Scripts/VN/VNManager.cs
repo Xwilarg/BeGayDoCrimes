@@ -91,7 +91,14 @@ namespace YuriGameJam2023.VN
                 {
                     case "speaker":
                         if (content == "none") _currentCharacter = null;
-                        else _currentCharacter = _characters.FirstOrDefault(x => x.Name.ToUpperInvariant() == content);
+                        else
+                        {
+                            _currentCharacter = _characters.FirstOrDefault(x => x.Name.ToUpperInvariant() == content);
+                            if (_currentCharacter == null)
+                            {
+                                Debug.LogError($"[STORY] Unable to find {content}");
+                            }
+                        }
 
                         Debug.Log($"[STORY] Speaker set to {_currentCharacter?.Name}");
                         break;

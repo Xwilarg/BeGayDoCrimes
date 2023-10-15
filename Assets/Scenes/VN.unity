@@ -597,6 +597,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec9b7e5c0c3fd034f88d5d52958e63ae, type: 2}
   - {fileID: 11400000, guid: bd253d95a05f4684eb8799578aca2277, type: 2}
   - {fileID: 11400000, guid: badb9e76519234f4a9aff3b8bc6dca66, type: 2}
+  - {fileID: 11400000, guid: 1a401c7fda0de6744982cb0e63583ceb, type: 2}
+  - {fileID: 11400000, guid: 28c5a3045f107244cb9aed50141ccbed, type: 2}
   _container: {fileID: 776203633}
   _intro: {fileID: 4900000, guid: 514344f77f70d784988e8fd3a3ab332f, type: 3}
   _namePanel: {fileID: 1143378042}
