@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Player;
 
@@ -36,6 +37,12 @@ namespace YuriGameJam2023
         [SerializeField]
         [Tooltip("Tooltip that confirm if the player want to end his turn")]
         private GameObject _endTurnPopup;
+
+        [SerializeField]
+        private Transform _skillBar;
+
+        [SerializeField]
+        private GameObject _skillPrefab;
 
         [Header("Camera & Effects")]
         [SerializeField]
@@ -115,6 +122,8 @@ namespace YuriGameJam2023
         /// </summary>
         public void RemoveAction()
         {
+            for (int i = 0; i < _skillBar.childCount; i++) Destroy(_skillBar.GetChild(i).gameObject);
+
             _totalActionCount--;
             Debug.Log($"[=/=] Ending turn, action left: {_totalActionCount}");
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
@@ -146,6 +155,14 @@ namespace YuriGameJam2023
         public void StartTurn(Character c)
         {
             Debug.Log($"[{c}] Starting turn");
+            for (int i = 0; i < c.Info.Skills.Length; i++)
+            {
+                var skill = c.Info.Skills[i];
+                var go = Instantiate(_skillPrefab, _skillBar);
+                go.GetComponent<Image>().sprite = skill.Sprite;
+                go.GetComponentInChildren<TMP_Text>().text = $"{i}";
+            }
+
             _currentPlayer = c;
             _currentPlayer.Enable();
 
