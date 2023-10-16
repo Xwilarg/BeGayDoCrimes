@@ -93,7 +93,7 @@ namespace YuriGameJam2023
             switch (currSkill.Type)
             {
                 case SO.RangeType.CloseContact:
-                    if (Physics.Raycast(new(transform.position + Forward * .75f, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
+                    if (Physics.Raycast(new(transform.position + Forward * .5f, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(hit.collider.gameObject);
                     }
@@ -200,6 +200,13 @@ namespace YuriGameJam2023
         public override string ToString()
         {
             return $"{Info.name} ({Health}/{Info.Health}HP)";
+        }
+
+        public void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            var p = transform.position + Forward * .5f;
+            Gizmos.DrawLine(p, p + Forward * 2f);
         }
     }
 }
