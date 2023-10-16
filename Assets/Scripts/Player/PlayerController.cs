@@ -43,9 +43,10 @@ namespace YuriGameJam2023.Player
 
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, Mathf.Infinity, _terrainLayer))
                 {
-                    var direction = (hit.point - transform.position).normalized;
+                    var direction = hit.point - transform.position;
+                    direction.y = 0f;
 
-                    _forward = direction;
+                    _forward = direction.normalized;
                 }
 
                 FixedUpdateParent();
