@@ -51,5 +51,19 @@ namespace YuriGameJam2023
                 CharacterManager.Instance.OnMovement(value.ReadValue<Vector2>());
             }
         }
+
+        private void OnSkillSelected(InputAction.CallbackContext value, int id) // TODO: Handle controller
+        {
+            if (value.performed && !VNManager.Instance.IsPlayingStory)
+            {
+                CharacterManager.Instance.OnSkillSelected(id);
+            }
+        }
+
+        public void OnSkill1(InputAction.CallbackContext value) => OnSkillSelected(value, 1);
+        public void OnSkill2(InputAction.CallbackContext value) => OnSkillSelected(value, 2);
+        public void OnSkill3(InputAction.CallbackContext value) => OnSkillSelected(value, 3);
+        public void OnSkill4(InputAction.CallbackContext value) => OnSkillSelected(value, 4);
+        public void OnSkill5(InputAction.CallbackContext value) => OnSkillSelected(value, 5);
     }
 }

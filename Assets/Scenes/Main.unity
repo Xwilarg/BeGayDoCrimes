@@ -2373,6 +2373,86 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 20027d65-588a-42c3-ad70-65a595fa554d
     m_ActionName: 'Player/Cancel[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1559526923}
+        m_TargetAssemblyTypeName: YuriGameJam2023.GameManager, Assembly-CSharp
+        m_MethodName: OnSkill1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b821a71b-c1a0-44bc-96fc-547f3f9134a4
+    m_ActionName: 'Player/Skill1[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1559526923}
+        m_TargetAssemblyTypeName: YuriGameJam2023.GameManager, Assembly-CSharp
+        m_MethodName: OnSkill2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: acf28c31-6cad-460d-bc9a-97bd6bc81b67
+    m_ActionName: 'Player/Skill2[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1559526923}
+        m_TargetAssemblyTypeName: YuriGameJam2023.GameManager, Assembly-CSharp
+        m_MethodName: OnSkill3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e0b07c99-692a-426a-a753-9063ef777b1d
+    m_ActionName: 'Player/Skill3[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1559526923}
+        m_TargetAssemblyTypeName: YuriGameJam2023.GameManager, Assembly-CSharp
+        m_MethodName: OnSkill4
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ab719be9-109e-4124-9d2e-e84a87aebb3d
+    m_ActionName: 'Player/Skill4[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1559526923}
+        m_TargetAssemblyTypeName: YuriGameJam2023.GameManager, Assembly-CSharp
+        m_MethodName: OnSkill5
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6bc89632-1805-4537-8a9d-7f30ea803f83
+    m_ActionName: 'Player/Skill5[/Keyboard/5]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2400,6 +2480,8 @@ MonoBehaviour:
   _actionCountText: {fileID: 518237987}
   _disablePopup: {fileID: 1241811814}
   _endTurnPopup: {fileID: 1261194228}
+  _skillBar: {fileID: 1825946214}
+  _skillPrefab: {fileID: 4514796690607702563, guid: 05378274883bfbd408c7b65d42e3df8b, type: 3}
   _vCam: {fileID: 1215443431}
   _aoeHint: {fileID: 162966163}
 --- !u!114 &1559526921

@@ -160,7 +160,7 @@ namespace YuriGameJam2023
                 var skill = c.Info.Skills[i];
                 var go = Instantiate(_skillPrefab, _skillBar);
                 go.GetComponent<Image>().sprite = skill.Sprite;
-                go.GetComponentInChildren<TMP_Text>().text = $"{i}";
+                go.GetComponentInChildren<TMP_Text>().text = $"{i + 1}";
             }
 
             _currentPlayer = c;
@@ -261,6 +261,14 @@ namespace YuriGameJam2023
             if (_currentPlayer != null && _isPlayerTurn && !IsUIActive)
             {
                 ((PlayerController)_currentPlayer).Mov = mov;
+            }
+        }
+
+        public void OnSkillSelected(int id)
+        {
+            if (_currentPlayer != null && id < _currentPlayer.Info.Skills.Length)
+            {
+                _currentPlayer.CurrentSkill = id;
             }
         }
     }

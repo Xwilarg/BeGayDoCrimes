@@ -38,6 +38,8 @@ namespace YuriGameJam2023
             get => _health;
         }
 
+        public int CurrentSkill { set; private get; }
+
         private float _maxDistance = 10f;
         protected float _distance;
 
