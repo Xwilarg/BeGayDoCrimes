@@ -9,8 +9,17 @@ namespace YuriGameJam2023
 {
     public abstract class Character : MonoBehaviour
     {
-        [SerializeField]
-        protected SO.CharacterInfo _info;
+        private SO.CharacterInfo _info;
+        public SO.CharacterInfo Info
+        {
+            set
+            {
+                _info = value;
+                GetComponentInChildren<SpriteRenderer>().sprite = value.Sprite;
+                Health = Info.Health;
+            }
+            get => _info;
+        }
 
         [SerializeField]
         private GameObject _halo;
@@ -24,7 +33,7 @@ namespace YuriGameJam2023
             set
             {
                 _health = value;
-                _healthBar.rectTransform.localScale = new Vector2(value / (float)_info.Health, 1f);
+                _healthBar.rectTransform.localScale = new Vector2(value / (float)Info.Health, 1f);
             }
             get => _health;
         }
@@ -48,7 +57,6 @@ namespace YuriGameJam2023
 
         protected void AwakeParent()
         {
-            Health = _info.Health;
             GetComponentInChildren<Canvas>().worldCamera = Camera.main;
         }
 
@@ -76,7 +84,7 @@ namespace YuriGameJam2023
             ClearAllHalo();
             CharacterManager.Instance.ResetEffectDisplay();
 
-            var currSkill = _info.Skills[0];
+            var currSkill = Info.Skills[0];
 
             // Find all targets and set back the _targets list
             switch (currSkill.Type)
@@ -102,7 +110,7 @@ namespace YuriGameJam2023
 
         public void Attack()
         {
-            int damage = _info.Skills[0].Damage;
+            int damage = Info.Skills[0].Damage;
             foreach (var t in _targets)
             {
                 Debug.Log($"[{this}] Attacking {t} for {damage} damage");
@@ -165,7 +173,7 @@ namespace YuriGameJam2023
 
         public void TakeDamage(int damage)
         {
-            Health = Clamp(Health - damage, 0, _info.Health);
+            Health = Clamp(Health - damage, 0, Info.Health);
             if (Health == 0)
             {
                 Die();
@@ -191,7 +199,7 @@ namespace YuriGameJam2023
 
         public override string ToString()
         {
-            return $"{_info.name} ({Health}/{_info.Health}HP)";
+            return $"{Info.name} ({Health}/{Info.Health}HP)";
         }
     }
 }

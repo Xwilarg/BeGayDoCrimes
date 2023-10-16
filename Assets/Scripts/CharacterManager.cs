@@ -1,4 +1,5 @@
 using Cinemachine;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -12,6 +13,14 @@ namespace YuriGameJam2023
     {
         public static CharacterManager Instance { get; private set; }
 
+        [Header("Players")]
+        [SerializeField]
+        private SO.CharacterInfo[] _players;
+
+        [SerializeField]
+        private GameObject _playerPrefab;
+
+        [Header("UI")]
         [SerializeField]
         [Tooltip("Text used to display the distance the character can still walk")]
         private TMP_Text _distanceText;
@@ -21,14 +30,6 @@ namespace YuriGameJam2023
         private TMP_Text _actionCountText;
 
         [SerializeField]
-        [Tooltip("Cinemachine virtual camera")]
-        private CinemachineVirtualCamera _vCam;
-
-        [SerializeField]
-        [Tooltip("Object used to display spell Area Of Effect hints")]
-        private AoeHint _aoeHint;
-
-        [SerializeField]
         [Tooltip("Tooltip that confirm if the player want to end his action")]
         private GameObject _disablePopup;
 
@@ -36,8 +37,15 @@ namespace YuriGameJam2023
         [Tooltip("Tooltip that confirm if the player want to end his turn")]
         private GameObject _endTurnPopup;
 
+        [Header("Camera & Effects")]
         [SerializeField]
-        [Tooltip("Where the camera should look at when no player is selected")]
+        [Tooltip("Cinemachine virtual camera")]
+        private CinemachineVirtualCamera _vCam;
+
+        [SerializeField]
+        [Tooltip("Object used to display spell Area Of Effect hints")]
+        private AoeHint _aoeHint;
+
         private Transform _cameraDefaultLookAt;
 
         private Vector3 _iniCamPos;
@@ -57,6 +65,18 @@ namespace YuriGameJam2023
             Instance = this;
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
             _iniCamPos = _vCam.transform.position;
+        }
+
+        private void Start()
+        {
+            _cameraDefaultLookAt = GameObject.FindGameObjectWithTag("CameraNeutralFocus").transform;
+            var spawns = GameObject.FindGameObjectsWithTag("PlayerSpawn");
+            Assert.GreaterOrEqual(spawns.Length, _players.Length, "Not enough spawn points for the whole team");
+            for (int i = 0; i < _players.Length; i++)
+            {
+                var go = Instantiate(_playerPrefab, spawns[i].transform.position + Vector3.up, Quaternion.identity);
+                go.GetComponent<Character>().Info = _players[i];
+            }
         }
 
         public void RegisterCharacter(Character c)

@@ -9,6 +9,9 @@ namespace YuriGameJam2023
         [SerializeField]
         private int _attackDamage;
 
+        [SerializeField]
+        private SO.CharacterInfo _enemyInfo;
+
         private NavMeshAgent _navigation;
 
         protected override Vector3 Forward => transform.forward;
@@ -19,6 +22,7 @@ namespace YuriGameJam2023
         {
             AwakeParent();
             _navigation = GetComponent<NavMeshAgent>();
+            Info = _enemyInfo;
         }
 
         private void Start()
@@ -44,10 +48,10 @@ namespace YuriGameJam2023
             var distance = Vector3.Distance(target.transform.position, transform.position);
 
             // Whether we are close enough to the player
-            if (distance > _info.Skills[0].Range)
+            if (distance > Info.Skills[0].Range)
             {
                 _navigation.destination = target.transform.position;
-                _navigation.stoppingDistance = _info.Skills[0].Range;
+                _navigation.stoppingDistance = Info.Skills[0].Range;
             }
 
             _isMyTurn = true;

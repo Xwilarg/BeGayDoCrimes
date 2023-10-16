@@ -7,5 +7,6 @@ namespace YuriGameJam2023.SO
     {
         public int Health;
         public SkillInfo[] Skills;
+        public Sprite Sprite;
     }
 }

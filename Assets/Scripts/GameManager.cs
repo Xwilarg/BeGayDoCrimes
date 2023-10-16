@@ -10,6 +10,7 @@ namespace YuriGameJam2023
         private void Awake()
         {
             SceneManager.LoadScene("VN", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Level_01", LoadSceneMode.Additive);
         }
 
         private void Start()
