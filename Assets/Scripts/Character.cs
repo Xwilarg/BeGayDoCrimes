@@ -21,8 +21,7 @@ namespace YuriGameJam2023
             get => _info;
         }
 
-        [SerializeField]
-        private GameObject _halo;
+        public Light Halo { private set; get; }
 
         [SerializeField]
         private Image _healthBar;
@@ -59,6 +58,8 @@ namespace YuriGameJam2023
 
         protected void AwakeParent()
         {
+            Halo = GetComponentInChildren<Light>();
+            Halo.gameObject.SetActive(false);
             GetComponentInChildren<Canvas>().worldCamera = Camera.main;
         }
 
@@ -153,7 +154,7 @@ namespace YuriGameJam2023
             {
                 if (t != null)
                 {
-                    t.ToggleHalo(false);
+                    t.Halo.gameObject.SetActive(false);
                 }
             }
             _targets.Clear();
@@ -165,13 +166,9 @@ namespace YuriGameJam2023
         private void AddToTarget(GameObject go)
         {
             var c = go.GetComponent<Character>();
-            c.ToggleHalo(true);
+            c.Halo.gameObject.SetActive(true);
+            c.Halo.color = _info.Skills[CurrentSkill].Damage >= 0 ? Color.red : Color.green;
             _targets.Add(c);
-        }
-
-        public void ToggleHalo(bool value)
-        {
-            _halo.SetActive(value);
         }
 
         public void TakeDamage(int damage)
