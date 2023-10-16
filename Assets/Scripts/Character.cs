@@ -43,7 +43,9 @@ namespace YuriGameJam2023
         protected float _distance;
 
         private readonly List<Character> _targets = new();
+
         protected bool HaveAnyTarget => _targets.Any();
+        protected bool HaveAnyNonFriendlyTarget => _targets.Any(x => !x.CompareTag(tag));
 
         public bool PendingAutoDisable { private set; get; }
 
