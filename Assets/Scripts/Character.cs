@@ -86,7 +86,7 @@ namespace YuriGameJam2023
             ClearAllHalo();
             CharacterManager.Instance.ResetEffectDisplay();
 
-            var currSkill = Info.Skills[0];
+            var currSkill = Info.Skills[CurrentSkill];
 
             // Find all targets and set back the _targets list
             switch (currSkill.Type)
@@ -112,7 +112,7 @@ namespace YuriGameJam2023
 
         public void Attack()
         {
-            int damage = Info.Skills[0].Damage;
+            int damage = Info.Skills[CurrentSkill].Damage;
             foreach (var t in _targets)
             {
                 Debug.Log($"[{this}] Attacking {t} for {damage} damage");
@@ -135,6 +135,7 @@ namespace YuriGameJam2023
             PendingAutoDisable = false;
             _distance = _maxDistance;
             CharacterManager.Instance.DisplayDistanceText(_distance);
+            CurrentSkill = 0;
         }
 
         public virtual void Disable()

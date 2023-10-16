@@ -268,7 +268,7 @@ namespace YuriGameJam2023
         {
             if (_currentPlayer != null && id < _currentPlayer.Info.Skills.Length)
             {
-                _currentPlayer.CurrentSkill = id;
+                _currentPlayer.CurrentSkill = id - 1;
             }
         }
     }
