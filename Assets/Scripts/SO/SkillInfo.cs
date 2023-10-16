@@ -9,5 +9,6 @@ namespace YuriGameJam2023.SO
         public int Range;
         public int Damage;
         public EffectType Effects;
+        public Sprite Sprite;
     }
 }
