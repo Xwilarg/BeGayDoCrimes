@@ -159,8 +159,14 @@ namespace YuriGameJam2023
             {
                 var skill = c.Info.Skills[i];
                 var go = Instantiate(_skillPrefab, _skillBar);
-                go.GetComponent<Image>().sprite = skill.Sprite;
+                go.transform.GetChild(0).GetComponent<Image>().sprite = skill.Sprite;
                 go.GetComponentInChildren<TMP_Text>().text = $"{i + 1}";
+
+                if (i == 0) // Display selected hint on first skill
+                {
+                    var hint = go.transform.GetComponent<Image>();
+                    hint.color = new(hint.color.r, hint.color.g, hint.color.b, 1f);
+                }
             }
 
             _currentPlayer = c;
@@ -266,9 +272,14 @@ namespace YuriGameJam2023
 
         public void OnSkillSelected(int id)
         {
+            id--;
             if (_currentPlayer != null && id < _currentPlayer.Info.Skills.Length)
             {
-                _currentPlayer.CurrentSkill = id - 1;
+                var hint = _skillBar.GetChild(_currentPlayer.CurrentSkill).transform.GetComponent<Image>();
+                hint.color = new(hint.color.r, hint.color.g, hint.color.b, 0f);
+                _currentPlayer.CurrentSkill = id;
+                hint = _skillBar.GetChild(_currentPlayer.CurrentSkill).transform.GetComponent<Image>();
+                hint.color = new(hint.color.r, hint.color.g, hint.color.b, 1f);
             }
         }
     }
