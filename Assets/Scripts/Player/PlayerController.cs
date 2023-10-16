@@ -4,18 +4,13 @@ namespace YuriGameJam2023.Player
 {
     public class PlayerController : Character
     {
+        private const int _terrainLayer = 1 << 7;
+
         private Rigidbody _rb;
         private Vector2 _mov;
         public Vector2 Mov
         {
-            set
-            {
-                _mov = value;
-                if (value.magnitude != 0f)
-                {
-                    _forward = new(_mov.x, 0f, _mov.y);
-                }
-            }
+            set => _mov = value;
             get => _mov;
         }
         private Vector3 _forward = Vector3.forward;
@@ -45,6 +40,13 @@ namespace YuriGameJam2023.Player
             if (CanMove) // Are we the character currently being moved by the player
             {
                 _rb.velocity = new Vector3(Mov.x, _rb.velocity.y, Mov.y) * Time.fixedDeltaTime * _speed;
+
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, Mathf.Infinity, _terrainLayer))
+                {
+                    var direction = (hit.point - transform.position).normalized;
+
+                    _forward = direction;
+                }
 
                 FixedUpdateParent();
             }
