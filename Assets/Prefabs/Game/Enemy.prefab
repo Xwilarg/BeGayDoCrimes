@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4112fd4d7d94d418c1cf2a8acf4532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _info: {fileID: 11400000, guid: 5b39895023829b9429ceaaba705c8a0c, type: 2}
-  _halo: {fileID: 6977202849217084618}
   _healthBar: {fileID: 8343850022409304686}
   _attackDamage: 10
+  _alertRange: 3
+  _enemyInfo: {fileID: 0}
 --- !u!195 &8842109681793304587
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -185,11 +185,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
---- !u!1 &6977202849217084618 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8682216426875895779, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
-  m_PrefabInstance: {fileID: 1777071174146245417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8052709618930006536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8604571750084344097, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
