@@ -173,7 +173,7 @@ namespace YuriGameJam2023
             _targets.Add(c);
         }
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             Health = Clamp(Health - damage, 0, Info.Health);
             if (Health == 0)
