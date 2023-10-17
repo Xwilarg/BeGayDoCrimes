@@ -17,6 +17,7 @@ namespace YuriGameJam2023
         protected override Vector3 Forward => transform.forward;
 
         private bool _isMyTurn;
+        private Character _target;
 
         private void Awake()
         {
@@ -55,6 +56,7 @@ namespace YuriGameJam2023
             }
 
             _isMyTurn = true;
+            _target = target;
         }
 
         private void FixedUpdate()
@@ -62,10 +64,26 @@ namespace YuriGameJam2023
             if (_isMyTurn)
             {
                 FixedUpdateParent();
-                if ((!_navigation.pathPending && _navigation.remainingDistance < _navigation.stoppingDistance) || _distance <= 0f)
+                if ((!_navigation.pathPending && _navigation.remainingDistance < Info.Skills[0].Range) || _distance <= 0f)
                 {
+                    // Check if we have no targets, but are close to one
+                    if (!HaveAnyNonFriendlyTarget &&
+                        Vector3.Distance(_target.transform.position, transform.position) < Info.Skills[0].Range)
+                    {
+                        var direction = _target.transform.position - transform.position;
+                        direction.y = 0f;
+
+                        var rotation = Quaternion.LookRotation(direction.normalized);
+
+                        // Rotate towards the target this frame and return
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * (_navigation.angularSpeed / 2));
+
+                        return;
+                    }
+
                     _isMyTurn = false;
-                    if (HaveAnyTarget)
+
+                    if (HaveAnyNonFriendlyTarget)
                     {
                         Attack();
                     }
