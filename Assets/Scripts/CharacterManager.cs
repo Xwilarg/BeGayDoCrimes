@@ -82,13 +82,18 @@ namespace YuriGameJam2023
                 var go = Instantiate(_playerPrefab, spawns[i].transform.position + Vector3.up, Quaternion.identity);
                 go.GetComponent<Character>().Info = _players[i];
             }
-
-            EndTurn();
         }
 
+        private bool _gameStarted;
         public void RegisterCharacter(Character c)
         {
             _characters.Add(c);
+
+            if (!_gameStarted && _characters.Count(x => x is PlayerController) == _players.Length)
+            {
+                _gameStarted = true;
+                EndTurn();
+            }
         }
         public void UnregisterCharacter(Character c)
         {
