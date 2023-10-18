@@ -20,7 +20,7 @@ Are you even able to relax? You're always training, fighting or helping others. 
 
  What?#Speaker Yuki
 
- Yuki you're wonderful! I envy the fact  that you always go to help others without even thinking of a reward! The fact that you give your all in every situation! The fact that you're always smiling even in dire situation! I love this about you! I love the fact that your dream is to help others with an orphanage! Someone as selfish as me, cannot comprehend doing that much good in the world! #speaker Claire
+ Yuki you're wonderful! I envy the fact that you always go to help others without even thinking of a reward! The fact that you give your all in every situation! The fact that you're always smiling even in dire situation! I love this about you! I love the fact that your dream is to help others with an orphanage! Someone as selfish as me, cannot comprehend doing that much good in the world! #speaker Claire
 
  Claire...#Speaker Yuki
 
