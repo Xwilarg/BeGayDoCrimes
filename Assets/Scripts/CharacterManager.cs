@@ -158,7 +158,7 @@ namespace YuriGameJam2023
 
             if (!_isPlayerTurn)
             {
-                EnemyManager.Instance.DoAction();
+                EnemyManager.Instance.StartTurn();
             }
         }
 
