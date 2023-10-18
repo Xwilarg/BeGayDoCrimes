@@ -14,41 +14,22 @@ namespace YuriGameJam2023
 
         public void DoAction()
         {
-            var enemy = PickEnemy();
+            foreach (var enemy in CharacterManager.Instance.GetCharacters<EnemyController>()
+                .OrderBy(x => x.IsAlerted ? 1 : 0) // All turns that will be skipped are done last
+                .ThenBy(x => Vector3.Distance(x.transform.position, x.GetClosestPlayer().transform.position)))
+            {
+                if (!enemy.IsAlerted)
+                {
+                    // Enemy can't play so we skip his turn
+                    enemy.CanBePlayed = false;
+                    CharacterManager.Instance.RemoveAction();
+                    continue;
+                }
 
-            if (enemy == null)
-            {
-                CharacterManager.Instance.RemoveAction();
-            }
-            else
-            {
                 var player = enemy.GetClosestPlayer();
-
                 CharacterManager.Instance.StartTurn(enemy);
                 enemy.Target(player);
             }
-        }
-
-        /// <summary>
-        /// Pick the best enemy for this round
-        /// </summary>
-        /// <returns>The best enemy or null if no tasks</returns>
-        private EnemyController PickEnemy()
-        {
-            var enemies = CharacterManager.Instance.GetCharacters<EnemyController>();
-
-            // Check if any enemies have been alerted
-            if (enemies.Any(x => x.IsAlerted))
-            {
-                // Return the alerted enemy closest to player
-                return enemies
-                    .Where(x => x.IsAlerted)
-                    .OrderBy(x => Vector3.Distance(x.transform.position, x.GetClosestPlayer().transform.position))
-                    .FirstOrDefault();
-            }
-
-            // Return no enemy for now if not alerted
-            return null;
         }
     }
 }

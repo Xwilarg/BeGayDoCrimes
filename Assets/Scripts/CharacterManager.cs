@@ -59,9 +59,8 @@ namespace YuriGameJam2023
 
         private Character _currentPlayer;
 
-        private const int _totalActionCountRef = 5;
-        private int _totalActionCount = _totalActionCountRef;
-        private bool _isPlayerTurn = true;
+        private int _totalActionCount;
+        private bool _isPlayerTurn;
 
         private readonly List<Character> _characters = new();
 
@@ -70,7 +69,6 @@ namespace YuriGameJam2023
         private void Awake()
         {
             Instance = this;
-            _actionCountText.text = $"Actions Left: {_totalActionCount}";
             _iniCamPos = _vCam.transform.position;
         }
 
@@ -84,6 +82,8 @@ namespace YuriGameJam2023
                 var go = Instantiate(_playerPrefab, spawns[i].transform.position + Vector3.up, Quaternion.identity);
                 go.GetComponent<Character>().Info = _players[i];
             }
+
+            EndTurn();
         }
 
         public void RegisterCharacter(Character c)
@@ -140,7 +140,12 @@ namespace YuriGameJam2023
         public void EndTurn()
         {
             _isPlayerTurn = !_isPlayerTurn;
-            _totalActionCount = _totalActionCountRef;
+            var currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
+            foreach (var c in currCharacters)
+            {
+                c.CanBePlayed = true;
+            }
+            _totalActionCount = currCharacters.Count();
 
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
 
@@ -223,7 +228,11 @@ namespace YuriGameJam2023
                     // ... so if we click on one we take possession of it
                     if (_isPlayerTurn && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
                     {
-                        StartTurn(hit.collider.GetComponent<PlayerController>());
+                        var c = hit.collider.GetComponent<PlayerController>();
+                        if (c.CanBePlayed)
+                        {
+                            StartTurn(c);
+                        }
                     }
                 }
                 else

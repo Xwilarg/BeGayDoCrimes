@@ -53,6 +53,19 @@ namespace YuriGameJam2023
 
         private Vector3 _lastPos;
 
+        private bool _canBePlayed;
+        public bool CanBePlayed
+        {
+            set
+            {
+                _canBePlayed = value;
+                _sr.color = _canBePlayed ? Color.white : Color.gray;
+            }
+            get => _canBePlayed;
+        }
+
+        private SpriteRenderer _sr;
+
         /// <summary>
         /// Force the current agent to stop
         /// </summary>
@@ -60,6 +73,7 @@ namespace YuriGameJam2023
 
         protected void AwakeParent()
         {
+            _sr = GetComponentInChildren<SpriteRenderer>();
             Halo = GetComponentInChildren<Light>();
             Halo.gameObject.SetActive(false);
             GetComponentInChildren<Canvas>().worldCamera = Camera.main;
@@ -143,6 +157,7 @@ namespace YuriGameJam2023
 
         public virtual void Disable()
         {
+            CanBePlayed = false;
             ClearAllHalo();
             CharacterManager.Instance.ResetEffectDisplay();
             CharacterManager.Instance.UnsetPlayer();
