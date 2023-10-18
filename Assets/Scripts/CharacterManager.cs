@@ -254,6 +254,10 @@ namespace YuriGameJam2023
         {
             if (_isPlayerTurn)
             {
+                if (_currentPlayer != null && _isPlayerTurn)
+                {
+                    ((PlayerController)_currentPlayer).Mov = Vector2.zero;
+                }
                 // Close popups
                 if (_endTurnPopup.activeInHierarchy)
                 {
