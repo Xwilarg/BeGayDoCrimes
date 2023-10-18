@@ -1,9 +1,11 @@
 using Cinemachine;
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Player;
@@ -98,6 +100,21 @@ namespace YuriGameJam2023
         public void UnregisterCharacter(Character c)
         {
             _characters.Remove(c);
+
+            if (!_characters.Any(x => x is PlayerController))
+            {
+                // TODO: GameOver
+            }
+            else if (!_characters.Any(x => x is EnemyController))
+            {
+                StartCoroutine(WaitAndLoadCampfire());
+            }
+        }
+
+        private IEnumerator WaitAndLoadCampfire()
+        {
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene("Campfire");
         }
 
         public bool AmIActive(Character c)

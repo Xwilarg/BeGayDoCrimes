@@ -27,6 +27,12 @@ namespace YuriGameJam2023
 
         public void DoAction()
         {
+            if (!_enemies.Any())
+            {
+                CharacterManager.Instance.RemoveAction();
+                return;
+            }
+
             var enemy = _enemies[0];
             _enemies.RemoveAt(0);
 
