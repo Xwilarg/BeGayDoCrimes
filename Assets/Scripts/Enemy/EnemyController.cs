@@ -48,9 +48,33 @@ namespace YuriGameJam2023
         }
 
         /// <summary>
+        /// Gets the first player in range
+        /// </summary>
+        /// <param name="range">The range</param>
+        /// <returns>The player in range or null</returns>
+        public Character GetPlayerInRange(float range)
+        {
+            var colliders = Physics.OverlapSphere(transform.position, range);
+
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("Player"))
+                {
+                    // Check if there is no terrain between the enemy and the player
+                    if (!Physics.Linecast(transform.position, collider.transform.position, 1 << 7))
+                    {
+                        return collider.GetComponent<Character>();
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Gets other enemies in range
         /// </summary>
-        /// <param name="distance">The range</param>
+        /// <param name="range">The range</param>
         /// <returns>The enemies in range</returns>
         public IEnumerable<EnemyController> GetCloseFriends(float range)
         {
@@ -59,24 +83,6 @@ namespace YuriGameJam2023
             return enemies
                 .Where(x => x != this)
                 .Where(x => Vector3.Distance(x.transform.position, transform.position) < range);
-        }
-
-        /// <summary>
-        /// Gets the player the enemy is looking at
-        /// </summary>
-        /// <returns>The enemy the player is looking at or null</returns>
-        public Character GetPlayerInSight()
-        {
-            // TODO: more of a line of sight idea
-            if (Physics.Raycast(transform.position, transform.forward, out var hit, 1 << 7 | 1 << 6))
-            {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    return hit.collider.GetComponent<PlayerController>();
-                }
-            }
-
-            return null;
         }
 
         /// <summary>
@@ -156,8 +162,8 @@ namespace YuriGameJam2023
             // TODO: Not every frame?
             if (!_isMyTurn && !IsAlerted)
             {
-                // Check for players walking past us
-                var player = GetPlayerInSight();
+                var player = GetPlayerInRange(_alertRange);
+
                 if (player != null)
                 {
                     Alert(true);
@@ -165,6 +171,14 @@ namespace YuriGameJam2023
                     Debug.Log(name + " just saw walking past them " + player.name + ", we're alerted!");
                 }
             }
+        }
+
+        private new void OnDrawGizmos()
+        {
+            base.OnDrawGizmos();
+
+            Gizmos.color = IsAlerted ? Color.red : Color.green;
+            Gizmos.DrawWireSphere(transform.position, _alertRange);
         }
 
         public override void TakeDamage(int damage)

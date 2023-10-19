@@ -118,7 +118,11 @@ namespace YuriGameJam2023
                 case SO.RangeType.AOE:
                     foreach (var coll in Physics.OverlapSphere(transform.position + Forward * 1.5f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
-                        AddToTarget(coll.gameObject);
+                        // Check whether the target is not behind a wall
+                        if (!Physics.Linecast(transform.position, coll.transform.position, 1 << 7))
+                        {
+                            AddToTarget(coll.gameObject);
+                        }
                     }
                     CharacterManager.Instance.ShowAoeHint(transform.position + Forward * 1.5f * currSkill.Range, currSkill.Range);
                     break;
