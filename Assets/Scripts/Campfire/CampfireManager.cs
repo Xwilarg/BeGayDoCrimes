@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using YuriGameJam2023.Player;
 
 namespace YuriGameJam2023.Campfire
 {
     public class CampfireManager : MonoBehaviour
     {
-        private Light _selected;
+        private CharacterCamp _selected;
 
         private void Awake()
         {
@@ -17,13 +16,13 @@ namespace YuriGameJam2023.Campfire
         {
             if (_selected != null)
             {
-                _selected.gameObject.SetActive(false);
+                _selected.Toggle(false);
             }
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
             {
-                _selected = hit.collider.GetComponentInChildren<Light>();
-                _selected.gameObject.SetActive(true);
+                _selected = hit.collider.GetComponent<CharacterCamp>();
+                _selected.Toggle(true);
             }
             else
             {
