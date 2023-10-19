@@ -7,9 +7,17 @@ namespace YuriGameJam2023.Campfire
         [SerializeField]
         private Light _light;
 
-        public void Toggle(bool value)
+        [SerializeField]
+        private GameObject _interaction;
+
+        public void ToggleLight(bool value)
         {
             _light.enabled = value;
+        }
+
+        public void ToggleInteraction(bool value)
+        {
+            _interaction.SetActive(value);
         }
     }
 }

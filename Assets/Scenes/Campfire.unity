@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &145526469 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+  m_PrefabInstance: {fileID: 6078761981991120285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b044f752b9e03c94e862a609e87d1c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &187289002
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,12 +369,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6404508659272452101, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_Name
-      value: CharacterCamp (2)
+      value: Yuki
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3557576737097378566, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
 --- !u!1001 &325578579
 PrefabInstance:
@@ -415,13 +429,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6404508659272452101, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_Name
-      value: CharacterCamp (3)
+      value: Claire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3557576737097378566, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+--- !u!114 &424006107 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+  m_PrefabInstance: {fileID: 325578579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b044f752b9e03c94e862a609e87d1c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1144429826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+  m_PrefabInstance: {fileID: 277434720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b044f752b9e03c94e862a609e87d1c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1289364918
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +554,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1429530031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+  m_PrefabInstance: {fileID: 1944699893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b044f752b9e03c94e862a609e87d1c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1581452889
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +702,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56feafd4b517b764daa59dc034c9d4ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _couples:
+  - A: {fileID: 145526469}
+    B: {fileID: 424006107}
+    Stories:
+    - {fileID: 4900000, guid: c646aa4578ef12b478df3cd06d07b179, type: 3}
+    - {fileID: 4900000, guid: 004dd41fc5f58684ea29fdbbb9e7be5d, type: 3}
+    - {fileID: 4900000, guid: 6f661980d8e1ea047b6b07dc5b7c1a99, type: 3}
+  - A: {fileID: 1144429826}
+    B: {fileID: 424006107}
+    Stories:
+    - {fileID: 4900000, guid: 0b8d5bffb3a93744ca162e66028ef32e, type: 3}
+    - {fileID: 4900000, guid: 3c4c22d2cf22a7c498c1eeec50e88c11, type: 3}
+    - {fileID: 4900000, guid: 025607bdf9fc6f64092dd4e067274d75, type: 3}
+  _characters:
+  - {fileID: 145526469}
+  - {fileID: 1429530031}
+  - {fileID: 1144429826}
+  - {fileID: 424006107}
 --- !u!4 &1830768048
 Transform:
   m_ObjectHideFlags: 0
@@ -721,12 +789,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6404508659272452101, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_Name
-      value: CharacterCamp (1)
+      value: Willow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3557576737097378566, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
 --- !u!1001 &6078761981991120285
 PrefabInstance:
@@ -782,12 +853,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6404508659272452101, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_Name
-      value: CharacterCamp
+      value: Makra
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3557576737097378566, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
