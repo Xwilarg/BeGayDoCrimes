@@ -178,7 +178,7 @@ namespace YuriGameJam2023
             base.OnDrawGizmos();
 
             Gizmos.color = IsAlerted ? Color.red : Color.green;
-            Gizmos.DrawWireSphere(transform.position, _alertRange);
+            DebugHelper.DrawCircle(transform.position, _alertRange);
         }
 
         public override void TakeDamage(int damage)

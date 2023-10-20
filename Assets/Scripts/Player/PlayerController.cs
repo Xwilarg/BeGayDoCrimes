@@ -96,7 +96,7 @@ namespace YuriGameJam2023.Player
 
             // In the color of love
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(transform.position, _loveRange);
+            DebugHelper.DrawCircle(transform.position, _loveRange);
         }
     }
 }
