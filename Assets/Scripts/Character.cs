@@ -131,7 +131,7 @@ namespace YuriGameJam2023
             }
         }
 
-        public void Attack()
+        public virtual void Attack()
         {
             int damage = Info.Skills[CurrentSkill].Damage;
             foreach (var t in _targets)

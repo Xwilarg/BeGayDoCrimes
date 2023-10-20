@@ -4,7 +4,11 @@ namespace YuriGameJam2023.Player
 {
     public class PlayerController : Character
     {
-        private const int _terrainLayer = 1 << 7;
+        [SerializeField]
+        private int _loveRange;
+
+        [SerializeField]
+        private int _loveIncrease;
 
         private Rigidbody _rb;
         private Vector2 _mov;
@@ -41,7 +45,7 @@ namespace YuriGameJam2023.Player
             {
                 _rb.velocity = new Vector3(Mov.x, _rb.velocity.y, Mov.y) * Time.fixedDeltaTime * _speed;
 
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, Mathf.Infinity, _terrainLayer))
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, Mathf.Infinity, 1 << 7))
                 {
                     var direction = hit.point - transform.position;
                     direction.y = 0f;
@@ -50,6 +54,22 @@ namespace YuriGameJam2023.Player
                 }
 
                 FixedUpdateParent();
+            }
+        }
+
+        public override void Attack()
+        {
+            base.Attack();
+
+            // Check for any close players to bond with
+            var colliders = Physics.OverlapSphere(transform.position, _loveRange, 1 << 6);
+
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("Player") && collider.GetComponent<Character>() != this)
+                {
+                    CharacterManager.Instance.IncreaseLove(this, collider.GetComponent<Character>(), _loveIncrease);
+                }
             }
         }
 
@@ -68,6 +88,15 @@ namespace YuriGameJam2023.Player
         {
             base.Disable();
             _rb.isKinematic = true;
+        }
+
+        private new void OnDrawGizmos()
+        {
+            base.OnDrawGizmos();
+
+            // In the color of love
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position, _loveRange);
         }
     }
 }

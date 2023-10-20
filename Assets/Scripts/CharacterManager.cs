@@ -1,5 +1,6 @@
 using Cinemachine;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YuriGameJam2023.Effect;
+using YuriGameJam2023.Persistency;
 using YuriGameJam2023.Player;
 
 namespace YuriGameJam2023
@@ -68,6 +70,8 @@ namespace YuriGameJam2023
 
         private bool IsUIActive => _disablePopup.activeInHierarchy || _endTurnPopup.activeInHierarchy;
 
+        private readonly Dictionary<Tuple<Character, Character>, int> _love = new();
+
         private void Awake()
         {
             Instance = this;
@@ -107,6 +111,7 @@ namespace YuriGameJam2023
             }
             else if (!_characters.Any(x => x is EnemyController))
             {
+                UnlockSupport();
                 StartCoroutine(WaitAndLoadCampfire());
             }
         }
@@ -115,6 +120,21 @@ namespace YuriGameJam2023
         {
             yield return new WaitForSeconds(2f);
             SceneManager.LoadScene("Campfire");
+        }
+
+        private void UnlockSupport()
+        {
+            var couple = _love.OrderByDescending(x => x.Value).FirstOrDefault();
+
+            // Not much love during this game
+            if (couple.Key == default)
+            {
+                return;
+            }
+
+            Debug.Log(couple);
+
+            //PersistencyManager.Instance.SaveData.UnlockSupport()
         }
 
         public bool AmIActive(Character c)
@@ -239,6 +259,21 @@ namespace YuriGameJam2023
         public void DisableConfirm()
         {
             _currentPlayer.Disable();
+        }
+
+        public void IncreaseLove(Character a, Character b, int love)
+        {
+            var couple = _love
+                .FirstOrDefault(x => (x.Key.Item1 == a || x.Key.Item1 == b) &&
+                    (x.Key.Item2 == a || x.Key.Item2 == b));
+
+            if (couple.Key == default)
+            {
+                _love.Add(new Tuple<Character, Character>(a, b), love);
+                return;
+            }
+
+            _love[couple.Key] += love;
         }
 
         public void OnClick()

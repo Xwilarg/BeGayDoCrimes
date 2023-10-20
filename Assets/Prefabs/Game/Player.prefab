@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 499587536064809463}
+  _loveRange: 3
+  _loveIncrease: 10
 --- !u!1001 &7893903623503917232
 PrefabInstance:
   m_ObjectHideFlags: 0
