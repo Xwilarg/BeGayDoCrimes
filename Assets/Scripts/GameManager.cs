@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using YuriGameJam2023.Persistency;
 using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023
@@ -17,7 +18,10 @@ namespace YuriGameJam2023
         {
             if (!DebugManager.Instance.BypassIntro)
             {
-                VNManager.Instance.ShowIntro();
+                if (PersistencyManager.Instance.SaveData.CurrentLevel == 1)
+                {
+                    VNManager.Instance.ShowIntro();
+                }
             }
         }
 

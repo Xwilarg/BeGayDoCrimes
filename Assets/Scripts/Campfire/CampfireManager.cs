@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -28,9 +27,6 @@ namespace YuriGameJam2023.Campfire
         private void Awake()
         {
             SceneManager.LoadScene("VN", LoadSceneMode.Additive);
-
-            /// DEBUG !!!
-            PersistencyManager.Instance.SaveData.UnlockSupport(GetSupportKey(_couples[0].A, _couples[0].B));
         }
 
         private void Update()
@@ -98,6 +94,13 @@ namespace YuriGameJam2023.Campfire
                     }
                 }
             }
+        }
+
+        public void NextLevel()
+        {
+            PersistencyManager.Instance.SaveData.CurrentLevel++;
+            PersistencyManager.Instance.Save();
+            SceneManager.LoadScene("Main");
         }
 
         public void OnClick(InputAction.CallbackContext value)
@@ -170,7 +173,7 @@ namespace YuriGameJam2023.Campfire
             }
         }
 
-        public string GetSupportKey(CharacterCamp a, CharacterCamp b)
+        private string GetSupportKey(CharacterCamp a, CharacterCamp b)
         {
             var name1 = a.name;
             var name2 = b.name;

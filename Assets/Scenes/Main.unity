@@ -2146,6 +2146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bypassIntro: 1
+  _deleteSaveData: 0
 --- !u!1 &1532712310
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,6 +47,8 @@ namespace YuriGameJam2023.Persistency
             }
         }
 
+        public int CurrentLevel { set; get; } = 1;
+
         [EditorBrowsable(EditorBrowsableState.Never)] // TODO: Doesn't work
         public Dictionary<string, int> SupportData { set; get; } = new();
         [EditorBrowsable(EditorBrowsableState.Never)]
