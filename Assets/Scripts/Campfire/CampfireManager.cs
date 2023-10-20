@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using YuriGameJam2023.Persistency;
 using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023.Campfire
@@ -58,8 +60,28 @@ namespace YuriGameJam2023.Campfire
                 {
                     _current = _selected;
                     _selected = null;
+
+                    foreach (var couple in _couples.Where(x => x.A == _current && x.B == _current))
+                    {
+                        var key = GetSupportKey(couple);
+                        var level = PersistencyManager.Instance.SaveData.GetCurrentSupportLevel(key);
+                        if (PersistencyManager.Instance.SaveData.CanPlaySupport(key, level))
+                        {
+                            if (couple.A == _selected) couple.B.ToggleInteraction(true);
+                            else couple.A.ToggleInteraction(true);
+                        }
+                    }
                 }
             }
+        }
+
+        public string GetSupportKey(Couple couple)
+        {
+            var name1 = couple.A.name;
+            var name2 = couple.B.name;
+
+            if (name1.CompareTo(name2) < 0) return $"{name1}{name2}";
+            return $"{name2}{name1}";
         }
     }
 }

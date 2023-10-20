@@ -19,5 +19,21 @@ namespace YuriGameJam2023.Campfire
         {
             _interaction.SetActive(value);
         }
+
+        public override bool Equals(object obj)
+            => obj is CharacterCamp camp && name == camp.name;
+
+        public override int GetHashCode()
+            => name.GetHashCode();
+
+        public static bool operator ==(CharacterCamp a, CharacterCamp b)
+        {
+            if (a is null) return b is null;
+            if (b is null) return false;
+            return a.name == b.name;
+        }
+
+        public static bool operator !=(CharacterCamp a, CharacterCamp b)
+            => !(a == b);
     }
 }
