@@ -12,7 +12,6 @@ namespace YuriGameJam2023.VN
 {
     public class VNManager : MonoBehaviour
     {
-        public static bool QuickRetry = false;
         public static VNManager Instance { private set; get; }
 
         [SerializeField]

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -34,6 +35,11 @@ namespace YuriGameJam2023.Campfire
 
         private void Update()
         {
+            if (VNManager.Instance.IsPlayingStory)
+            {
+                return;
+            }
+
             // Beginning of the loop, removing light if it's not the one of the selected character
             if (_hovered != null && _hovered != _current)
             {
@@ -106,42 +112,71 @@ namespace YuriGameJam2023.Campfire
 
         public void OnClick(InputAction.CallbackContext value)
         {
-            if (value.performed && !VNManager.Instance.IsPlayingStory)
+            if (value.performed)
             {
-                if (_hovered != null) // We clicked on a character
+                if (VNManager.Instance.IsPlayingStory)
                 {
-                    // Already clicked on another character
-                    if (_current != null)
+                    VNManager.Instance.DisplayNextDialogue();
+                }
+                else
+                {
+                    if (_hovered != null) // We clicked on a character
                     {
-                        var key = GetSupportKey(_hovered, _current);
-                        var level = PersistencyManager.Instance.SaveData.GetCurrentSupportLevel(key);
-                        if (PersistencyManager.Instance.SaveData.CanPlaySupport(key, level))
+                        // Already clicked on another character
+                        if (_current != null)
                         {
+                            var key = GetSupportKey(_hovered, _current);
+                            var level = PersistencyManager.Instance.SaveData.GetCurrentSupportLevel(key);
+                            if (PersistencyManager.Instance.SaveData.CanPlaySupport(key, level))
+                            {
+                                // Hide all characters not concerned by story
+                                foreach (var c in _characters)
+                                {
+                                    c.ToggleLight(false);
+                                    c.ToggleInteraction(false);
+                                    if (c != _current && c != _hovered)
+                                    {
+                                        c.gameObject.SetActive(false);
+                                    }
+                                }
 
+                                VNManager.Instance.ShowStory(_couples.First(x => (x.A == _current && x.B == _hovered) || (x.A == _hovered && x.B == _current)).Stories[level], () =>
+                                {
+                                    foreach (var c in _characters)
+                                    {
+                                        c.gameObject.SetActive(true);
+                                    }
+
+                                    _current = null;
+
+                                    PersistencyManager.Instance.SaveData.PlaySupport(key);
+                                    PersistencyManager.Instance.Save();
+                                });
+                            }
+                            else
+                            {
+                                _current.ToggleLight(false);
+                                _current = _hovered;
+                                UpdateSupportDisplay(_current);
+                            }
                         }
                         else
                         {
-                            _current.ToggleLight(false);
                             _current = _hovered;
-                            UpdateSupportDisplay(_current);
                         }
                     }
                     else
                     {
-                        _current = _hovered;
+                        // We clicked on nothing so we remove the light of a possibly selected character
+                        if (_current != null)
+                        {
+                            _current.ToggleLight(false);
+                        }
+                        _current = null;
                     }
-                }
-                else
-                {
-                    // We clicked on nothing so we remove the light of a possibly selected character
-                    if (_current != null)
-                    {
-                        _current.ToggleLight(false);
-                    }
-                    _current = null;
-                }
 
-                _hovered = null;
+                    _hovered = null;
+                }
             }
         }
 
