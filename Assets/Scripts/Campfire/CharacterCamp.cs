@@ -30,10 +30,16 @@ namespace YuriGameJam2023.Campfire
         {
             if (a is null) return b is null;
             if (b is null) return false;
+
             return a.name == b.name;
         }
 
         public static bool operator !=(CharacterCamp a, CharacterCamp b)
             => !(a == b);
+
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

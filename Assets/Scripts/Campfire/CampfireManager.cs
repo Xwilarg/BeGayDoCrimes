@@ -15,29 +15,92 @@ namespace YuriGameJam2023.Campfire
         [SerializeField]
         private CharacterCamp[] _characters;
 
+        /// <summary>
+        /// Character we clicked on with the mouse, considered as 'selected'
+        /// </summary>
         private CharacterCamp _current;
-        private CharacterCamp _selected;
+        /// <summary>
+        /// Character we are currently hovering with our mouse
+        /// </summary>
+        private CharacterCamp _hovered;
 
         private void Awake()
         {
             SceneManager.LoadScene("VN", LoadSceneMode.Additive);
+
+            /// DEBUG !!!
+            PersistencyManager.Instance.SaveData.UnlockSupport(GetSupportKey(_couples[0].A, _couples[0].B));
         }
 
         private void Update()
         {
-            if (_selected != null)
+            // Beginning of the loop, removing light if it's not the one of the selected character
+            if (_hovered != null && _hovered != _current)
             {
-                _selected.ToggleLight(false);
+                _hovered.ToggleLight(false);
+                // We only remove interaction hints if we didn't select a character
+                if (_current == null)
+                {
+                    foreach (var c in _characters)
+                    {
+                        c.ToggleInteraction(false);
+                    }
+                }
             }
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
             {
-                _selected = hit.collider.GetComponent<CharacterCamp>();
-                _selected.ToggleLight(true);
+                _hovered = hit.collider.GetComponent<CharacterCamp>();
+                _hovered.ToggleLight(true);
+
+                // If a character is already selected we don't do anything
+                if (_current == null)
+                {
+                    UpdateSupportDisplay(_hovered);
+                }
             }
             else
             {
-                _selected = null;
+                _hovered = null;
+            }
+        }
+
+        /// <summary>
+        /// For each other character we check if we can display an interaction
+        /// </summary>
+        private void UpdateSupportDisplay(CharacterCamp target)
+        {
+            foreach (var couple in _couples)
+            {
+                // Current iteration doesn't contain target
+                if (couple.A != target && couple.B != target)
+                {
+                    couple.A.ToggleInteraction(false);
+                    couple.B.ToggleInteraction(false);
+                    continue;
+                }
+
+                var key = GetSupportKey(couple.A, couple.B);
+                var level = PersistencyManager.Instance.SaveData.GetCurrentSupportLevel(key);
+
+                if (PersistencyManager.Instance.SaveData.CanPlaySupport(key, level))
+                {
+                    if (couple.A == target)
+                    {
+                        couple.A.ToggleInteraction(false);
+                        couple.B.ToggleInteraction(true);
+                    }
+                    else
+                    {
+                        couple.A.ToggleInteraction(true);
+                        couple.B.ToggleInteraction(false);
+                    }
+                }
+                else
+                {
+                    couple.A.ToggleInteraction(false);
+                    couple.B.ToggleInteraction(false);
+                }
             }
         }
 
@@ -45,40 +108,47 @@ namespace YuriGameJam2023.Campfire
         {
             if (value.performed && !VNManager.Instance.IsPlayingStory)
             {
-                if (_current != null)
+                if (_hovered != null) // We clicked on a character
                 {
-                    _current.ToggleLight(false);
-                }
-                _current = null;
-
-                foreach (var c in _characters)
-                {
-                    c.ToggleInteraction(false);
-                }
-
-                if (_selected != null)
-                {
-                    _current = _selected;
-                    _selected = null;
-
-                    foreach (var couple in _couples.Where(x => x.A == _current && x.B == _current))
+                    // Already clicked on another character
+                    if (_current != null)
                     {
-                        var key = GetSupportKey(couple);
+                        var key = GetSupportKey(_hovered, _current);
                         var level = PersistencyManager.Instance.SaveData.GetCurrentSupportLevel(key);
                         if (PersistencyManager.Instance.SaveData.CanPlaySupport(key, level))
                         {
-                            if (couple.A == _selected) couple.B.ToggleInteraction(true);
-                            else couple.A.ToggleInteraction(true);
+
+                        }
+                        else
+                        {
+                            _current.ToggleLight(false);
+                            _current = _hovered;
+                            UpdateSupportDisplay(_current);
                         }
                     }
+                    else
+                    {
+                        _current = _hovered;
+                    }
                 }
+                else
+                {
+                    // We clicked on nothing so we remove the light of a possibly selected character
+                    if (_current != null)
+                    {
+                        _current.ToggleLight(false);
+                    }
+                    _current = null;
+                }
+
+                _hovered = null;
             }
         }
 
-        public string GetSupportKey(Couple couple)
+        public string GetSupportKey(CharacterCamp a, CharacterCamp b)
         {
-            var name1 = couple.A.name;
-            var name2 = couple.B.name;
+            var name1 = a.name;
+            var name2 = b.name;
 
             if (name1.CompareTo(name2) < 0) return $"{name1}{name2}";
             return $"{name2}{name1}";
