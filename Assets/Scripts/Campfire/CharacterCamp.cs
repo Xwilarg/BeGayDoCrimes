@@ -10,6 +10,8 @@ namespace YuriGameJam2023.Campfire
         [SerializeField]
         private GameObject _interaction;
 
+        public SO.CharacterInfo Info;
+
         public void ToggleLight(bool value)
         {
             _light.enabled = value;
@@ -21,17 +23,17 @@ namespace YuriGameJam2023.Campfire
         }
 
         public override bool Equals(object obj)
-            => obj is CharacterCamp camp && name == camp.name;
+            => obj is CharacterCamp camp && Info.Name == camp.Info.Name;
 
         public override int GetHashCode()
-            => name.GetHashCode();
+            => Info.Name.GetHashCode();
 
         public static bool operator ==(CharacterCamp a, CharacterCamp b)
         {
             if (a is null) return b is null;
             if (b is null) return false;
 
-            return a.name == b.name;
+            return a.Info.Name == b.Info.Name;
         }
 
         public static bool operator !=(CharacterCamp a, CharacterCamp b)
@@ -39,7 +41,7 @@ namespace YuriGameJam2023.Campfire
 
         public override string ToString()
         {
-            return name;
+            return Info.Name;
         }
     }
 }
