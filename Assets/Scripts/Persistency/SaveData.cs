@@ -24,13 +24,13 @@ namespace YuriGameJam2023.Persistency
         /// Get the current support level for the parameter
         /// </summary>
         public int GetCurrentSupportLevel(string support)
-            => AvailableSupport.ContainsKey(support) ? AvailableSupport[support] : -1;
+            => SupportData.ContainsKey(support) ? SupportData[support] : 0;
 
         /// <summary>
         /// Is the current support far enough to reach the level in parameter (so to be played)
         /// </summary>
         public bool CanPlaySupport(string support, int level)
-            => AvailableSupport.ContainsKey(support) && AvailableSupport[support] >= level;
+            => AvailableSupport.ContainsKey(support) && AvailableSupport[support] >= level && (!SupportData.ContainsKey(support) || SupportData[support] < level);
 
         /// <summary>
         /// Play a support conversation
