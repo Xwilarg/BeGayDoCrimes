@@ -27,12 +27,28 @@ namespace YuriGameJam2023
         [Tooltip("Delete existing save data when the game start")]
         private bool _deleteSaveData;
 
+        [SerializeField]
+        [Tooltip("Unlock all support dialogues")]
+        private bool _unlockAllSupports;
+
         public bool BypassIntro
         {
             get
             {
 #if UNITY_EDITOR
                 return _bypassIntro;
+#else
+                return false;
+#endif
+            }
+        }
+
+        public bool AutounlockSupports
+        {
+            get
+            {
+#if UNITY_EDITOR
+                return _unlockAllSupports;
 #else
                 return false;
 #endif

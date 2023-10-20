@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Campfire.unity
     guid: cd67f3d759e3b8847807443007202bb4
+  - enabled: 1
+    path: Assets/Scenes/DebugManager.unity
+    guid: a939ee07e83178e4291cc128a744e47e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

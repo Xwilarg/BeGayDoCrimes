@@ -6,6 +6,7 @@ namespace YuriGameJam2023.SO
     public enum EffectType
     {
         NONE,
-        POISON
+        POISON,
+        SPIDERWEB
     }
 }

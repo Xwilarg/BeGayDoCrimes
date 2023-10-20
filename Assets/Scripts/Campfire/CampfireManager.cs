@@ -15,6 +15,9 @@ namespace YuriGameJam2023.Campfire
         [SerializeField]
         private CharacterCamp[] _characters;
 
+        [SerializeField]
+        private GameObject _nextDayButton;
+
         /// <summary>
         /// Character we clicked on with the mouse, considered as 'selected'
         /// </summary>
@@ -27,6 +30,26 @@ namespace YuriGameJam2023.Campfire
         private void Awake()
         {
             SceneManager.LoadScene("VN", LoadSceneMode.Additive);
+            SceneManager.LoadScene("DebugManager", LoadSceneMode.Additive);
+        }
+
+        private void Start()
+        {
+            if (DebugManager.Instance.AutounlockSupports)
+            {
+                foreach (var couple in _couples)
+                {
+                    var key = GetSupportKey(couple.A, couple.B);
+                    if (!PersistencyManager.Instance.SaveData.AvailableSupport.ContainsKey(key))
+                    {
+                        PersistencyManager.Instance.SaveData.AvailableSupport.Add(key, 2);
+                    }
+                    else
+                    {
+                        PersistencyManager.Instance.SaveData.AvailableSupport[key] = 2;
+                    }
+                }
+            }
         }
 
         private void Update()
@@ -133,6 +156,8 @@ namespace YuriGameJam2023.Campfire
                                     }
                                 }
 
+                                _nextDayButton.SetActive(false);
+
                                 VNManager.Instance.ShowStory(_couples.First(x => (x.A == _current && x.B == _hovered) || (x.A == _hovered && x.B == _current)).Stories[level], () =>
                                 {
                                     foreach (var c in _characters)
@@ -141,6 +166,7 @@ namespace YuriGameJam2023.Campfire
                                     }
 
                                     _current = null;
+                                    _nextDayButton.SetActive(true);
 
                                     PersistencyManager.Instance.SaveData.PlaySupport(key);
                                     PersistencyManager.Instance.Save();
