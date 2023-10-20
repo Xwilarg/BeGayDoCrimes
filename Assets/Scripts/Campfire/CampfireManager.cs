@@ -76,36 +76,26 @@ namespace YuriGameJam2023.Campfire
         /// </summary>
         private void UpdateSupportDisplay(CharacterCamp target)
         {
-            foreach (var couple in _couples)
+            foreach (var c in _characters)
             {
-                // Current iteration doesn't contain target
-                if (couple.A != target && couple.B != target)
-                {
-                    couple.A.ToggleInteraction(false);
-                    couple.B.ToggleInteraction(false);
-                    continue;
-                }
-
+                c.ToggleInteraction(false);
+            }
+            foreach (var couple in _couples.Where(x => x.A == target || x.B == target))
+            {
                 var key = GetSupportKey(couple.A, couple.B);
+
                 var level = PersistencyManager.Instance.SaveData.GetCurrentSupportLevel(key);
 
                 if (PersistencyManager.Instance.SaveData.CanPlaySupport(key, level))
                 {
                     if (couple.A == target)
                     {
-                        couple.A.ToggleInteraction(false);
                         couple.B.ToggleInteraction(true);
                     }
                     else
                     {
                         couple.A.ToggleInteraction(true);
-                        couple.B.ToggleInteraction(false);
                     }
-                }
-                else
-                {
-                    couple.A.ToggleInteraction(false);
-                    couple.B.ToggleInteraction(false);
                 }
             }
         }
