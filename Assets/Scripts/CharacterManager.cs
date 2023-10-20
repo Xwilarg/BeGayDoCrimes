@@ -8,6 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YuriGameJam2023.Campfire;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Persistency;
 using YuriGameJam2023.Player;
@@ -132,9 +133,12 @@ namespace YuriGameJam2023
                 return;
             }
 
-            Debug.Log(couple);
+            var name1 = couple.Key.Item1.Info.Name;
+            var name2 = couple.Key.Item2.Info.Name;
 
-            //PersistencyManager.Instance.SaveData.UnlockSupport()
+            string key = name1.CompareTo(name2) < 0 ? $"{name1}{name2}" : $"{name2}{name1}";
+            PersistencyManager.Instance.SaveData.UnlockSupport(key);
+            PersistencyManager.Instance.Save();
         }
 
         public bool AmIActive(Character c)

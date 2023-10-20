@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadb88a81c553594d87da6016440dfc5, type: 3}
   m_Name: SampleEnemy
   m_EditorClassIdentifier: 
+  Name: Sample Enemy
   Health: 10
   Skills:
   - {fileID: 11400000, guid: 95cdcc5f0d96c6845a7e2a3d895ed6b7, type: 2}
