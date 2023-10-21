@@ -26,6 +26,7 @@ namespace YuriGameJam2023.Player
 
         private bool CanMove => !_rb.isKinematic && _distance > 0f && !PendingAutoDisable;
         public bool CanAttack => !_rb.isKinematic && !PendingAutoDisable && HaveAnyTarget;
+        protected override int TeamId => 1;
 
         private void Awake()
         {

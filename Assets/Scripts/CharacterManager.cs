@@ -201,6 +201,11 @@ namespace YuriGameJam2023
             {
                 EnemyManager.Instance.StartTurn();
             }
+
+            foreach (var character in currCharacters)
+            {
+                character.PassTurn();
+            }
         }
 
         public void StartTurn(Character c)

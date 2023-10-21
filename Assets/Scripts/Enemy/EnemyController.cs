@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using YuriGameJam2023.Player;
+using YuriGameJam2023.SO;
 
 namespace YuriGameJam2023
 {
@@ -25,6 +26,8 @@ namespace YuriGameJam2023
         private Character _target;
 
         public bool IsAlerted { get; private set; } = false;
+
+        protected override int TeamId => 0;
 
         private void Awake()
         {
@@ -181,9 +184,9 @@ namespace YuriGameJam2023
             DebugHelper.DrawCircle(transform.position, _alertRange);
         }
 
-        public override void TakeDamage(int damage)
+        public override void TakeDamage(Character attacker, SkillInfo skill)
         {
-            base.TakeDamage(damage);
+            base.TakeDamage(attacker, skill);
 
             // What the hell, who is hurting me! I'm alerted!
             Alert(true);

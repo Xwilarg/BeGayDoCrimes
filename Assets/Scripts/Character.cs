@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using YuriGameJam2023.SO;
 
 namespace YuriGameJam2023
 {
@@ -65,6 +66,21 @@ namespace YuriGameJam2023
         }
 
         private SpriteRenderer _sr;
+
+        private readonly Dictionary<EffectType, int> _effects = new();
+        public void PassTurn()
+        {
+            foreach (var key in _effects.Keys.ToList())
+            {
+                _effects[key]--;
+                if (_effects[key] == 0)
+                {
+                    _effects.Remove(key);
+                }
+            }
+        }
+
+        protected abstract int TeamId { get; }
 
         /// <summary>
         /// Force the current agent to stop
@@ -133,11 +149,9 @@ namespace YuriGameJam2023
 
         public virtual void Attack()
         {
-            int damage = Info.Skills[CurrentSkill].Damage;
             foreach (var t in _targets)
             {
-                Debug.Log($"[{this}] Attacking {t} for {damage} damage");
-                t.TakeDamage(damage);
+                t.TakeDamage(this, Info.Skills[CurrentSkill]);
             }
             StopMovements();
             StartCoroutine(WaitAndDisable(1f));
@@ -192,12 +206,28 @@ namespace YuriGameJam2023
             _targets.Add(c);
         }
 
-        public virtual void TakeDamage(int damage)
+        public virtual void TakeDamage(Character attacker, SkillInfo skill)
         {
-            Health = Clamp(Health - damage, 0, Info.Health);
+            Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker}");
+            Health = Clamp(Health - skill.Damage, 0, Info.Health);
             if (Health == 0)
             {
                 Die();
+            }
+            else
+            {
+                foreach (var effect in Enum.GetValues(typeof(EffectType)).Cast<Enum>().Where(x => x.HasFlag(x)).Cast<EffectType>())
+                {
+                    var value = TeamId == attacker.TeamId ? 1 : 2;
+                    if (_effects.ContainsKey(effect))
+                    {
+                        _effects[effect] += value;
+                    }
+                    else
+                    {
+                        _effects.Add(effect, value);
+                    }
+                }
             }
         }
 
