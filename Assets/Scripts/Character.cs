@@ -260,7 +260,7 @@ namespace YuriGameJam2023
                 }
             }
 
-            for (int i = 0; i < _effectContainer.childCount; i++) Destroy(_effectContainer.GetChild(0).gameObject);
+            for (int i = 0; i < _effectContainer.childCount; i++) Destroy(_effectContainer.GetChild(i).gameObject);
 
             foreach (var eff in _effects)
             {
