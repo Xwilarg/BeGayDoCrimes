@@ -186,8 +186,15 @@ namespace YuriGameJam2023
 
         public void EndTurn()
         {
-            _isPlayerTurn = !_isPlayerTurn;
             var currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
+            foreach (var character in currCharacters)
+            {
+                character.EndTurn();
+            }
+
+            _isPlayerTurn = !_isPlayerTurn;
+
+            currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
             foreach (var c in currCharacters)
             {
                 c.CanBePlayed = true;
@@ -201,11 +208,6 @@ namespace YuriGameJam2023
             if (!_isPlayerTurn)
             {
                 EnemyManager.Instance.StartTurn();
-            }
-
-            foreach (var character in currCharacters)
-            {
-                character.StartTurn();
             }
         }
 

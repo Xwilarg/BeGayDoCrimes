@@ -74,8 +74,9 @@ namespace YuriGameJam2023
         private SpriteRenderer _sr;
 
         private readonly Dictionary<EffectInfo, int> _effects = new();
-        public void StartTurn()
+        public void EndTurn()
         {
+            // Apply all damage related to effects
             foreach (var eff in _effects)
             {
                 if (eff.Key.AdditionalDamage != null)
@@ -84,6 +85,7 @@ namespace YuriGameJam2023
                 }
             }
 
+            // Remove effects
             foreach (var key in _effects.Keys.ToList())
             {
                 _effects[key]--;
@@ -93,6 +95,7 @@ namespace YuriGameJam2023
                 }
             }
 
+            // Update UI
             UpdateSkills();
         }
 
