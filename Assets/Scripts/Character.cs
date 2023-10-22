@@ -243,7 +243,7 @@ namespace YuriGameJam2023
             }
             else if (skill != null)
             {
-                foreach (var effect in Enum.GetValues(typeof(EffectType)).Cast<Enum>().Where(x => x.HasFlag(x)).Cast<EffectType>().Where(x => x != EffectType.None && x != EffectType.Everything))
+                foreach (var effect in Enum.GetValues(typeof(EffectType)).Cast<Enum>().Where(x => skill.Effects.HasFlag(x)).Cast<EffectType>().Where(x => x != EffectType.None && x != EffectType.Everything))
                 {
                     var value = TeamId == attacker.TeamId ? 1 : 2;
                     if (_effects.ContainsKey(effect))
