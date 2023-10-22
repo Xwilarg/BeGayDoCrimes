@@ -245,7 +245,8 @@ namespace YuriGameJam2023
             {
                 foreach (var effect in Enum.GetValues(typeof(EffectType)).Cast<Enum>().Where(x => skill.Effects.HasFlag(x)).Cast<EffectType>().Where(x => x != EffectType.None && x != EffectType.Everything))
                 {
-                    var value = TeamId == attacker.TeamId ? 1 : 2;
+                    var info = GameManager.Instance.GetEffectInfo(effect);
+                    var value = (TeamId == attacker.TeamId ? 0 : 1) + info.Duration;
                     if (_effects.ContainsKey(effect))
                     {
                         _effects[effect] += value;
