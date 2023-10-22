@@ -2187,8 +2187,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1559526918}
-  - component: {fileID: 1559526923}
   - component: {fileID: 1559526919}
+  - component: {fileID: 1559526923}
   - component: {fileID: 1559526920}
   - component: {fileID: 1559526922}
   m_Layer: 0
@@ -2461,6 +2461,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1954d0307200ba4aa2f15df4b2247d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _effectsInfo:
+  - {fileID: 11400000, guid: 24c14a8462ca32e4ba1ede6c756e400b, type: 2}
+  - {fileID: 11400000, guid: e0a8ee9987123ee48a730cae35dcb411, type: 2}
+  - {fileID: 11400000, guid: b1fcb09b9db3b2447bc8396215a2c4b3, type: 2}
 --- !u!1 &1632833380
 GameObject:
   m_ObjectHideFlags: 0

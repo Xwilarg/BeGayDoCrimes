@@ -205,7 +205,7 @@ namespace YuriGameJam2023
 
             foreach (var character in currCharacters)
             {
-                character.PassTurn();
+                character.StartTurn();
             }
         }
 

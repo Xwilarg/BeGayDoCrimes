@@ -74,7 +74,7 @@ namespace YuriGameJam2023
         private SpriteRenderer _sr;
 
         private readonly Dictionary<EffectType, int> _effects = new();
-        public void PassTurn()
+        public void StartTurn()
         {
             foreach (var key in _effects.Keys.ToList())
             {
@@ -84,6 +84,17 @@ namespace YuriGameJam2023
                     _effects.Remove(key);
                 }
             }
+
+            if (_effects.ContainsKey(EffectType.Fire))
+            {
+                TakeDamage(this, 10);
+            }
+
+            if (_effects.ContainsKey(EffectType.Poison))
+            {
+                TakeDamage(this, 5);
+            }
+
             UpdateSkills();
         }
 
@@ -175,7 +186,7 @@ namespace YuriGameJam2023
         {
             _lastPos = transform.position;
             PendingAutoDisable = false;
-            _distance = _maxDistance;
+            _distance = _effects.ContainsKey(EffectType.Spiderweb) ? 0f : _maxDistance;
             CharacterManager.Instance.DisplayDistanceText(_distance);
             CurrentSkill = 0;
         }
@@ -213,6 +224,15 @@ namespace YuriGameJam2023
             _targets.Add(c);
         }
 
+        public void TakeDamage(Character attacker, int damage)
+        {
+            TakeDamage(attacker, new SkillInfo()
+            {
+                Effects = EffectType.None,
+                Damage = damage
+            });
+        }
+
         public virtual void TakeDamage(Character attacker, SkillInfo skill)
         {
             Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker}");
@@ -221,7 +241,7 @@ namespace YuriGameJam2023
             {
                 Die();
             }
-            else
+            else if (skill != null)
             {
                 foreach (var effect in Enum.GetValues(typeof(EffectType)).Cast<Enum>().Where(x => x.HasFlag(x)).Cast<EffectType>())
                 {

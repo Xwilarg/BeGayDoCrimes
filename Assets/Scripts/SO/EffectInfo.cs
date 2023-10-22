@@ -7,5 +7,6 @@ namespace YuriGameJam2023.SO
     {
         public EffectType Effect;
         public Sprite Sprite;
+        public SkillInfo AdditionalDamage;
     }
 }
