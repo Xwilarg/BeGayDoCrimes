@@ -12,6 +12,7 @@ using YuriGameJam2023.Campfire;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Persistency;
 using YuriGameJam2023.Player;
+using YuriGameJam2023.SO;
 
 namespace YuriGameJam2023
 {

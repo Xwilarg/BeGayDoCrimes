@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 8343850022409304686}
+  _effectContainer: {fileID: 192191059067508168}
+  _effectPrefab: {fileID: 5178977420533353200, guid: 8d55083910e0e1345a7c3fe73c2d11ad, type: 3}
   _attackDamage: 10
   _alertRange: 3
   _enemyInfo: {fileID: 0}
@@ -189,6 +191,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
+--- !u!224 &192191059067508168 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1874518267296175841, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
+  m_PrefabInstance: {fileID: 1777071174146245417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8052709618930006536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8604571750084344097, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}

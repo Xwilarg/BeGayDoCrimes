@@ -1,15 +1,28 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using YuriGameJam2023.Persistency;
+using YuriGameJam2023.SO;
 using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager Instance { private set; get; }
+
+        [SerializeField]
+        private EffectInfo[] _effectsInfo;
+
+        public EffectInfo GetEffectInfo(EffectType eff)
+        {
+            return _effectsInfo.First(x => x.Effect == eff);
+        }
+
         private void Awake()
         {
+            Instance = this;
             SceneManager.LoadScene("VN", LoadSceneMode.Additive);
             SceneManager.LoadScene("Level_01", LoadSceneMode.Additive);
             SceneManager.LoadScene("DebugManager", LoadSceneMode.Additive);

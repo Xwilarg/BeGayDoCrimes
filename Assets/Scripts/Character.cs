@@ -27,6 +27,12 @@ namespace YuriGameJam2023
         [SerializeField]
         private Image _healthBar;
 
+        [SerializeField]
+        private Transform _effectContainer;
+
+        [SerializeField]
+        private GameObject _effectPrefab;
+
         private int _health;
         private int Health
         {
@@ -78,6 +84,7 @@ namespace YuriGameJam2023
                     _effects.Remove(key);
                 }
             }
+            UpdateSkills();
         }
 
         protected abstract int TeamId { get; }
@@ -228,6 +235,24 @@ namespace YuriGameJam2023
                         _effects.Add(effect, value);
                     }
                 }
+
+                // If we are burning, we can be affected with spiderweb
+                if (_effects.ContainsKey(EffectType.Fire))
+                {
+                    _effects.Remove(EffectType.Spiderweb);
+                }
+                UpdateSkills();
+            }
+        }
+
+        private void UpdateSkills()
+        {
+            for (int i = 0; i < _effectContainer.childCount; i++) Destroy(_effectContainer.GetChild(0).gameObject);
+
+            foreach (var eff in _effects)
+            {
+                var go = Instantiate(_effectPrefab, _effectContainer);
+                go.GetComponent<Image>().sprite = GameManager.Instance.GetEffectInfo(eff.Key).Sprite;
             }
         }
 

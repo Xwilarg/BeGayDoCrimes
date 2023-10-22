@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SampleEnemy
   m_EditorClassIdentifier: 
   Name: Sample Enemy
-  Health: 10
+  Health: 20
   Skills:
   - {fileID: 11400000, guid: 95cdcc5f0d96c6845a7e2a3d895ed6b7, type: 2}
   Sprite: {fileID: 21300000, guid: 714cecad46b7e104eb87fb2a4491454f, type: 3}
