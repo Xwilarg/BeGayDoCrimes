@@ -33,6 +33,8 @@ namespace YuriGameJam2023
         [SerializeField]
         private GameObject _effectPrefab;
 
+        public Character TargetOverride { protected set; get; } // Not handled for PlayerController
+
         private int _health;
         private int Health
         {
@@ -93,6 +95,10 @@ namespace YuriGameJam2023
                 {
                     _effects.Remove(key);
                 }
+            }
+            if (!_effects.Any(x => x.Key.DoesAggro))
+            {
+                TargetOverride = null;
             }
 
             // Update UI
@@ -245,6 +251,11 @@ namespace YuriGameJam2023
                     else
                     {
                         _effects.Add(effect, value);
+                    }
+
+                    if (effect.DoesAggro)
+                    {
+                        TargetOverride = attacker;
                     }
                 }
 

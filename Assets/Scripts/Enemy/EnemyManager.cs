@@ -43,10 +43,17 @@ namespace YuriGameJam2023
                 StartCoroutine(WaitAndNextTurn());
                 return;
             }
-
-            var player = enemy.GetClosestPlayer();
             CharacterManager.Instance.StartTurn(enemy);
-            enemy.Target(player);
+
+            if (enemy.TargetOverride != null)
+            {
+                enemy.Target(enemy.TargetOverride);
+            }
+            else
+            {
+                var player = enemy.GetClosestPlayer();
+                enemy.Target(player);
+            }
         }
 
         private IEnumerator WaitAndNextTurn()

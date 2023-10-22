@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Aggro
   m_EditorClassIdentifier: 
   Name: Aggro
-  Sprite: {fileID: 21300000, guid: eeaf06bac89287b4da499a6b83e36cf8, type: 3}
+  Sprite: {fileID: 21300000, guid: c57f6354c11c0784980014ad5d7da5d0, type: 3}
   AdditionalDamage: {fileID: 0}
   Cancels: []
   Duration: 1

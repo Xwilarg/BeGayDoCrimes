@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Yuki
   m_EditorClassIdentifier: 
   Name: Yuki
-  Health: 25
+  Health: 50
   Skills:
   - {fileID: 11400000, guid: 5c4dcfed1ad0c7740b6351a4f6fac281, type: 2}
   - {fileID: 11400000, guid: 190bf2bc1aaa882459b9165f8ee5fdff, type: 2}
