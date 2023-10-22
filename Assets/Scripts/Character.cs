@@ -73,7 +73,7 @@ namespace YuriGameJam2023
 
         private SpriteRenderer _sr;
 
-        private readonly Dictionary<EffectType, int> _effects = new();
+        private readonly Dictionary<EffectInfo, int> _effects = new();
         public void StartTurn()
         {
             foreach (var key in _effects.Keys.ToList())
@@ -85,14 +85,13 @@ namespace YuriGameJam2023
                 }
             }
 
-            if (_effects.ContainsKey(EffectType.Fire))
-            {
-                TakeDamage(this, 10);
-            }
 
-            if (_effects.ContainsKey(EffectType.Poison))
+            foreach (var eff in _effects)
             {
-                TakeDamage(this, 5);
+                if (eff.Key.AdditionalDamage != null)
+                {
+                    TakeDamage(this, eff.Key.AdditionalDamage);
+                }
             }
 
             UpdateSkills();
@@ -186,7 +185,7 @@ namespace YuriGameJam2023
         {
             _lastPos = transform.position;
             PendingAutoDisable = false;
-            _distance = _effects.ContainsKey(EffectType.Spiderweb) ? 0f : _maxDistance;
+            _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : _maxDistance;
             CharacterManager.Instance.DisplayDistanceText(_distance);
             CurrentSkill = 0;
         }
@@ -224,15 +223,6 @@ namespace YuriGameJam2023
             _targets.Add(c);
         }
 
-        public void TakeDamage(Character attacker, int damage)
-        {
-            TakeDamage(attacker, new SkillInfo()
-            {
-                Effects = EffectType.None,
-                Damage = damage
-            });
-        }
-
         public virtual void TakeDamage(Character attacker, SkillInfo skill)
         {
             Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker}");
@@ -243,10 +233,9 @@ namespace YuriGameJam2023
             }
             else if (skill != null)
             {
-                foreach (var effect in Enum.GetValues(typeof(EffectType)).Cast<Enum>().Where(x => skill.Effects.HasFlag(x)).Cast<EffectType>().Where(x => x != EffectType.None && x != EffectType.Everything))
+                foreach (var effect in skill.Effects)
                 {
-                    var info = GameManager.Instance.GetEffectInfo(effect);
-                    var value = (TeamId == attacker.TeamId ? 0 : 1) + info.Duration;
+                    var value = (TeamId == attacker.TeamId ? 0 : 1) + effect.Duration;
                     if (_effects.ContainsKey(effect))
                     {
                         _effects[effect] += value;
@@ -257,23 +246,27 @@ namespace YuriGameJam2023
                     }
                 }
 
-                // If we are burning, we can be affected with spiderweb
-                if (_effects.ContainsKey(EffectType.Fire))
-                {
-                    _effects.Remove(EffectType.Spiderweb);
-                }
                 UpdateSkills();
             }
         }
 
         private void UpdateSkills()
         {
+            // Cancel effects
+            foreach (var eff in _effects.Keys.ToArray())
+            {
+                foreach (var cancel in eff.Cancels)
+                {
+                    _effects.Remove(cancel);
+                }
+            }
+
             for (int i = 0; i < _effectContainer.childCount; i++) Destroy(_effectContainer.GetChild(0).gameObject);
 
             foreach (var eff in _effects)
             {
                 var go = Instantiate(_effectPrefab, _effectContainer);
-                go.GetComponent<Image>().sprite = GameManager.Instance.GetEffectInfo(eff.Key).Sprite;
+                go.GetComponent<Image>().sprite = eff.Key.Sprite;
             }
         }
 

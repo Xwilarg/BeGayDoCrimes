@@ -15,11 +15,6 @@ namespace YuriGameJam2023
         [SerializeField]
         private EffectInfo[] _effectsInfo;
 
-        public EffectInfo GetEffectInfo(EffectType eff)
-        {
-            return _effectsInfo.First(x => x.Effect == eff);
-        }
-
         private void Awake()
         {
             Instance = this;
