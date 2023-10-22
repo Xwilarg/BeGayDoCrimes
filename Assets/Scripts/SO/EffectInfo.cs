@@ -18,6 +18,7 @@ namespace YuriGameJam2023.SO
         public int Duration;
         [Tooltip("Does the effect prevent the character to move")]
         public bool PreventMovement;
+        public bool DoesAggro;
 
         public override bool Equals(object obj)
         {

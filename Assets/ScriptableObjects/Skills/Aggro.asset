@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2542fb7b6241c974aa32f88d90105419, type: 3}
+  m_Name: Aggro
+  m_EditorClassIdentifier: 
+  Type: 1
+  Range: 2
+  Damage: 10
+  Effects:
+  - {fileID: 11400000, guid: 69a31d82391b8a74197f7c16baf785d8, type: 2}
+  Sprite: {fileID: 21300000, guid: 5940d8158d36fac4297bddfdbf7e8cd2, type: 3}
