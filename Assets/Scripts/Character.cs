@@ -76,21 +76,20 @@ namespace YuriGameJam2023
         private readonly Dictionary<EffectInfo, int> _effects = new();
         public void StartTurn()
         {
+            foreach (var eff in _effects)
+            {
+                if (eff.Key.AdditionalDamage != null)
+                {
+                    TakeDamage(this, eff.Key.AdditionalDamage);
+                }
+            }
+
             foreach (var key in _effects.Keys.ToList())
             {
                 _effects[key]--;
                 if (_effects[key] == 0)
                 {
                     _effects.Remove(key);
-                }
-            }
-
-
-            foreach (var eff in _effects)
-            {
-                if (eff.Key.AdditionalDamage != null)
-                {
-                    TakeDamage(this, eff.Key.AdditionalDamage);
                 }
             }
 
