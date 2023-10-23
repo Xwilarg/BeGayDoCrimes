@@ -16,4 +16,5 @@ MonoBehaviour:
   Health: 15
   Skills:
   - {fileID: 11400000, guid: b390bf92a4b8d2145aa82765e4d3be2c, type: 2}
+  - {fileID: 11400000, guid: 0a6d2cc8d9a806f4182308a4c5bfce3c, type: 2}
   Sprite: {fileID: 21300000, guid: ef11dce937fa91e4996f124548db93ca, type: 3}

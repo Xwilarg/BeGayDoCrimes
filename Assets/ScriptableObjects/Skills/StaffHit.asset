@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2542fb7b6241c974aa32f88d90105419, type: 3}
-  m_Name: Stab
+  m_Name: StaffHit
   m_EditorClassIdentifier: 
   Type: 0
   Range: 2
-  Damage: 5
+  Damage: 3
   Effects: []
   Sprite: {fileID: 21300000, guid: 135baf81d57481742a1530c37564fc62, type: 3}
