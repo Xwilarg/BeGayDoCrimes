@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DebugManager.unity
     guid: a939ee07e83178e4291cc128a744e47e
+  - enabled: 1
+    path: "Assets/Scenes/P\xE9tanque.unity"
+    guid: e9ab0d028f6d1724489a358754bd93f8
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
