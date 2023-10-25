@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6494369325791828472, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: m_Height
+      value: 1.0332394
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494369325791828472, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: m_Center.y
+      value: -0.320266
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
     m_RemovedGameObjects:

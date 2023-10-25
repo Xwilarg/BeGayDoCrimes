@@ -131,9 +131,9 @@ GameObject:
   - component: {fileID: 577021294}
   - component: {fileID: 577021293}
   - component: {fileID: 577021292}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Border (3)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 612885289}
   - component: {fileID: 612885288}
   - component: {fileID: 612885293}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cochonet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,9 +386,9 @@ GameObject:
   - component: {fileID: 623502277}
   - component: {fileID: 623502276}
   - component: {fileID: 623502275}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Border (2)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -645,8 +645,11 @@ MonoBehaviour:
   _maxLinear: 3.5
   _maxYaw: 45
   _maxPitch: 45
+  _maxForce: 20
   _linearSpeed: 5
-  _angularSpeed: 50
+  _angularSpeed: 75
+  _forceSpeed: 20
+  _forceToDisplayDivider: 4
   _sprites:
   - {fileID: 11400000, guid: 6928ad7a9d05ad34ba52e696c9a9924e, type: 2}
   - {fileID: 11400000, guid: 63f7437a35640b243b67405b6a2b8262, type: 2}
@@ -889,9 +892,9 @@ GameObject:
   - component: {fileID: 1113878709}
   - component: {fileID: 1113878708}
   - component: {fileID: 1113878707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Border
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -996,9 +999,9 @@ GameObject:
   - component: {fileID: 1643775192}
   - component: {fileID: 1643775191}
   - component: {fileID: 1643775190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1104,9 +1107,9 @@ GameObject:
   - component: {fileID: 1941498663}
   - component: {fileID: 1941498662}
   - component: {fileID: 1941498661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Border (1)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

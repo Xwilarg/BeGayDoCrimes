@@ -12,10 +12,13 @@ namespace YuriGameJam2023.Petanque
         private Transform _spawnPoint;
 
         [SerializeField]
-        private float _maxLinear, _maxYaw, _maxPitch;
+        private float _maxLinear, _maxYaw, _maxPitch, _maxForce;
 
         [SerializeField]
-        private float _linearSpeed, _angularSpeed;
+        private float _linearSpeed, _angularSpeed, _forceSpeed;
+
+        [SerializeField]
+        private float _forceToDisplayDivider;
 
         [SerializeField]
         private SO.CharacterInfo[] _sprites;
@@ -26,6 +29,7 @@ namespace YuriGameJam2023.Petanque
 
         private GameObject _ball;
         private bool _dir;
+        private float _currForce;
 
         private int _indexSprite;
 
@@ -87,12 +91,30 @@ namespace YuriGameJam2023.Petanque
 
                 _ball.transform.rotation = Quaternion.Euler(a, _ball.transform.rotation.eulerAngles.y, _ball.transform.rotation.eulerAngles.z);
             }
+            else if (_currAction == ActionType.Force)
+            {
+                var f = _currForce + (Time.deltaTime * _forceSpeed * (_dir ? 1f : -1f));
+                if (!_dir && f < 0f)
+                {
+                    f = 0f;
+                    _dir = true;
+                }
+                else if (_dir && f > _maxForce)
+                {
+                    f = _maxForce;
+                    _dir = false;
+                }
 
-            _lr.SetPositions(new[] { _ball.transform.position, _ball.transform.position + _ball.transform.forward * 5f });
+                _currForce = f;
+            }
+
+            _lr.SetPositions(new[] { _ball.transform.position, _ball.transform.position + _ball.transform.forward * _currForce / _forceToDisplayDivider });
         }
 
         private void SpawnCharacter()
         {
+            _currForce = _maxForce / 2f;
+
             _ball = Instantiate(_prefab, _spawnPoint);
             _ball.transform.localPosition = Vector3.zero;
             _lr = _ball.GetComponent<LineRenderer>();
@@ -108,9 +130,10 @@ namespace YuriGameJam2023.Petanque
 
                 if (_currAction == ActionType.Done)
                 {
+                    _ball.transform.rotation = Quaternion.identity;
                     var rb = _ball.GetComponent<Rigidbody>();
                     rb.isKinematic = false;
-                    rb.AddForce(_ball.transform.forward * 10f, ForceMode.Impulse);
+                    rb.AddForce(_ball.transform.forward * _currForce, ForceMode.Impulse);
                     _lr.enabled = false;
                     _ball = null;
 
@@ -127,6 +150,7 @@ namespace YuriGameJam2023.Petanque
             Move,
             RotateYaw,
             RotatePitch,
+            Force,
             Done
         }
     }
