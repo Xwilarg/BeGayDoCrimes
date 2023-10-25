@@ -805,6 +805,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Petanque",
+            "id": "499535bc-9ea8-4c23-be3b-58c75b759b6f",
+            "actions": [
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "4ed9c072-e717-43b1-adf0-659b32d3c57e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2cdafedc-e760-4bdd-b4aa-44c3a4947460",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "410eb5ed-243c-4b12-b8c1-00695be327eb",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

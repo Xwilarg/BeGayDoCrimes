@@ -23,7 +23,7 @@ namespace YuriGameJam2023.SO
         public override bool Equals(object obj)
         {
             return obj is EffectInfo info &&
-                   Name == info.Name;
+                   this == info;
         }
 
         public override int GetHashCode()

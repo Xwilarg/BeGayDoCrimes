@@ -23,17 +23,17 @@ namespace YuriGameJam2023.Campfire
         }
 
         public override bool Equals(object obj)
-            => obj is CharacterCamp camp && Info.Name == camp.Info.Name;
+            => obj is CharacterCamp camp && this == camp;
 
-        public override int GetHashCode()
-            => Info.Name.GetHashCode();
+        public override int GetHashCode() // I'm very sorry
+            => Info?.Name?.GetHashCode() ?? 0;
 
         public static bool operator ==(CharacterCamp a, CharacterCamp b)
         {
             if (a is null) return b is null;
             if (b is null) return false;
 
-            return a.Info.Name == b.Info.Name;
+            return a.Info?.Name == b.Info?.Name;
         }
 
         public static bool operator !=(CharacterCamp a, CharacterCamp b)
