@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Petanque;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023.Petanque
 {
@@ -23,6 +26,12 @@ namespace YuriGameJam2023.Petanque
         [SerializeField]
         private SO.CharacterInfo[] _sprites;
 
+        [SerializeField]
+        private GameObject _cochonet;
+
+        [SerializeField]
+        private TextAsset _story;
+
         private LineRenderer _lr;
 
         private ActionType _currAction = ActionType.Move;
@@ -35,7 +44,16 @@ namespace YuriGameJam2023.Petanque
 
         private void Awake()
         {
-            SpawnCharacter();
+            SceneManager.LoadScene("VN", LoadSceneMode.Additive);
+        }
+
+        private void Start()
+        {
+            VNManager.Instance.ShowStory(_story, () =>
+            {
+                Instantiate(_cochonet, _spawnPoint).transform.localPosition = Vector3.zero;
+                SpawnCharacter();
+            });
         }
 
         private void Update()
@@ -125,22 +143,29 @@ namespace YuriGameJam2023.Petanque
         {
             if (value.performed)
             {
-                _currAction++;
-                _dir = true;
-
-                if (_currAction == ActionType.Done)
+                if (VNManager.Instance.IsPlayingStory)
                 {
-                    _ball.transform.rotation = Quaternion.identity;
-                    var rb = _ball.GetComponent<Rigidbody>();
-                    rb.isKinematic = false;
-                    rb.AddForce(_ball.transform.forward * _currForce, ForceMode.Impulse);
-                    _lr.enabled = false;
-                    _ball = null;
+                    VNManager.Instance.DisplayNextDialogue();
+                }
+                else
+                {
+                    _currAction++;
+                    _dir = true;
 
-                    _indexSprite++;
-                    SpawnCharacter();
+                    if (_currAction == ActionType.Done)
+                    {
+                        _ball.transform.rotation = Quaternion.identity;
+                        var rb = _ball.GetComponent<Rigidbody>();
+                        rb.isKinematic = false;
+                        rb.AddForce(_ball.transform.forward * _currForce, ForceMode.Impulse);
+                        _lr.enabled = false;
+                        _ball = null;
 
-                    _currAction = ActionType.Move;
+                        _indexSprite++;
+                        SpawnCharacter();
+
+                        _currAction = ActionType.Move;
+                    }
                 }
             }
         }

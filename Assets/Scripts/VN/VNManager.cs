@@ -130,7 +130,7 @@ namespace YuriGameJam2023.VN
                 }
             }
             _display.ToDisplay = text;
-            if (_currentCharacter == null)
+            if (!_currentCharacter.Any())
             {
                 _namePanel.SetActive(false);
             }
