@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Aggro
   Sprite: {fileID: 21300000, guid: c57f6354c11c0784980014ad5d7da5d0, type: 3}
+  Vfx: {fileID: 4404734940338272959, guid: 0ce2db79986a40e458b2b2f39d767c04, type: 3}
   AdditionalDamage: {fileID: 0}
   Cancels: []
   Duration: 1
