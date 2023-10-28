@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,7 +85,7 @@ namespace YuriGameJam2023
             {
                 if (eff.Key.AdditionalDamage != null)
                 {
-                    if (TakeDamage(this, eff.Key.AdditionalDamage))
+                    if (TakeDamage(null, eff.Key.AdditionalDamage))
                     {
                         return; // Character died, no need to do anything else
                     }
@@ -238,15 +239,16 @@ namespace YuriGameJam2023
         /// <returns>true is the character is dead</returns>
         public virtual bool TakeDamage(Character attacker, SkillInfo skill)
         {
-            Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker}");
+            Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker?.ToString() ?? skill.name}");
             Health = Clamp(Health - skill.Damage, 0, Info.Health);
             if (Health == 0)
             {
                 Die();
                 return true;
             }
-            else if (skill != null)
+            else if (skill != null && skill.Effects.Any())
             {
+                Assert.NotNull(attacker, $"No attacker was provided for the skill {skill.name}");
                 foreach (var effect in skill.Effects)
                 {
                     var value = (TeamId == attacker.TeamId ? 0 : 1) + effect.Duration;
