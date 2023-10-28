@@ -84,7 +84,10 @@ namespace YuriGameJam2023
             {
                 if (eff.Key.AdditionalDamage != null)
                 {
-                    TakeDamage(this, eff.Key.AdditionalDamage);
+                    if (TakeDamage(this, eff.Key.AdditionalDamage))
+                    {
+                        return; // Character died, no need to do anything else
+                    }
                 }
             }
 
@@ -232,13 +235,15 @@ namespace YuriGameJam2023
             _targets.Add(c);
         }
 
-        public virtual void TakeDamage(Character attacker, SkillInfo skill)
+        /// <returns>true is the character is dead</returns>
+        public virtual bool TakeDamage(Character attacker, SkillInfo skill)
         {
             Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker}");
             Health = Clamp(Health - skill.Damage, 0, Info.Health);
             if (Health == 0)
             {
                 Die();
+                return true;
             }
             else if (skill != null)
             {
@@ -262,6 +267,7 @@ namespace YuriGameJam2023
 
                 UpdateSkills();
             }
+            return false;
         }
 
         private void UpdateSkills()

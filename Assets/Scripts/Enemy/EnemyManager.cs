@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,16 +44,25 @@ namespace YuriGameJam2023
                 StartCoroutine(WaitAndNextTurn());
                 return;
             }
-            CharacterManager.Instance.StartTurn(enemy);
 
-            if (enemy.TargetOverride != null)
+            try
             {
-                enemy.Target(enemy.TargetOverride);
+                CharacterManager.Instance.StartTurn(enemy);
+
+                if (enemy.TargetOverride != null)
+                {
+                    enemy.Target(enemy.TargetOverride);
+                }
+                else
+                {
+                    var player = enemy.GetClosestPlayer();
+                    enemy.Target(player);
+                }
             }
-            else
+            catch (Exception e)
             {
-                var player = enemy.GetClosestPlayer();
-                enemy.Target(player);
+                StartCoroutine(WaitAndNextTurn());
+                Debug.LogException(e);
             }
         }
 

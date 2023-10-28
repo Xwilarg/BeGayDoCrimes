@@ -184,12 +184,17 @@ namespace YuriGameJam2023
             DebugHelper.DrawCircle(transform.position, _alertRange);
         }
 
-        public override void TakeDamage(Character attacker, SkillInfo skill)
+        public override bool TakeDamage(Character attacker, SkillInfo skill)
         {
-            base.TakeDamage(attacker, skill);
+            if (base.TakeDamage(attacker, skill))
+            {
+                return true;
+            }
 
             // What the hell, who is hurting me! I'm alerted!
             Alert(true);
+
+            return false;
         }
 
         protected override void StopMovements()

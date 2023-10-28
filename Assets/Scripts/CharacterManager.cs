@@ -187,9 +187,9 @@ namespace YuriGameJam2023
         public void EndTurn()
         {
             var currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
-            foreach (var character in currCharacters)
+            for (int i = currCharacters.Count() - 1; i >= 0; i--)
             {
-                character.EndTurn();
+                currCharacters.ElementAt(i).EndTurn();
             }
 
             _isPlayerTurn = !_isPlayerTurn;
