@@ -5,9 +5,10 @@ namespace YuriGameJam2023.SO
     [CreateAssetMenu(menuName = "ScriptableObject/EffectInfo", fileName = "EffectInfo")]
     public class EffectInfo : ScriptableObject
     {
-        [Header("Metadata")]
+        [Header("Visual")]
         public string Name;
         public Sprite Sprite;
+        public GameObject Vfx;
 
         [Header("Effects")]
         [Tooltip("Damage dealt by the effect")]

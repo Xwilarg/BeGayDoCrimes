@@ -76,6 +76,7 @@ namespace YuriGameJam2023
         private SpriteRenderer _sr;
 
         private readonly Dictionary<EffectInfo, int> _effects = new();
+        private readonly List<GameObject> _vfxs = new();
         public void EndTurn()
         {
             // Apply all damage related to effects
@@ -276,10 +277,22 @@ namespace YuriGameJam2023
 
             for (int i = 0; i < _effectContainer.childCount; i++) Destroy(_effectContainer.GetChild(i).gameObject);
 
+            foreach (var vfx in _vfxs) // TODO: Don't destroy everytimes
+            {
+                Destroy(vfx);
+            }
+            _vfxs.Clear();
+
             foreach (var eff in _effects)
             {
                 var go = Instantiate(_effectPrefab, _effectContainer);
                 go.GetComponent<Image>().sprite = eff.Key.Sprite;
+
+                if (eff.Key.Vfx != null)
+                {
+                    var vfx = Instantiate(eff.Key.Vfx, transform);
+                    _vfxs.Add(vfx);
+                }
             }
         }
 

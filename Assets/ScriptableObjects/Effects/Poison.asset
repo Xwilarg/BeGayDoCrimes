@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Poison
   Sprite: {fileID: 21300000, guid: f79e74cc0dcbddf4fbada441693b69d0, type: 3}
+  Vfx: {fileID: 7172762492704124119, guid: fc64f9a07d4f48248acc9785108efaf7, type: 3}
   AdditionalDamage: {fileID: 11400000, guid: 4cd02dbcaa3f0f64b89ae5d44bb171fd, type: 2}
   Cancels: []
   Duration: 3
   PreventMovement: 0
+  DoesAggro: 0
