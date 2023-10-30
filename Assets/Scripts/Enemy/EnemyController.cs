@@ -10,7 +10,7 @@ namespace YuriGameJam2023
     public class EnemyController : Character
     {
         [SerializeField]
-        private int _attackDamage;
+        private bool _startAwareOfPlayer;
 
         [SerializeField]
         private int _alertRange;
@@ -32,6 +32,7 @@ namespace YuriGameJam2023
         private void Awake()
         {
             AwakeParent();
+            IsAlerted = _startAwareOfPlayer;
             _navigation = GetComponent<NavMeshAgent>();
             Info = _enemyInfo;
         }
