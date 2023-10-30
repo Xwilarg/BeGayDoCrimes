@@ -8,11 +8,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using YuriGameJam2023.Campfire;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Persistency;
 using YuriGameJam2023.Player;
-using YuriGameJam2023.SO;
 
 namespace YuriGameJam2023
 {
@@ -60,6 +58,7 @@ namespace YuriGameJam2023
         private AoeHint _aoeHint;
 
         private Transform _cameraDefaultLookAt;
+        private Vector3 _camMov;
 
         private Vector3 _iniCamPos;
 
@@ -89,6 +88,16 @@ namespace YuriGameJam2023
             {
                 var go = Instantiate(_playerPrefab, spawns[i].transform.position + Vector3.up, Quaternion.identity);
                 go.GetComponent<Character>().Info = _players[i];
+            }
+        }
+
+        private void Update()
+        {
+            if (_isPlayerTurn && !IsUIActive)
+            {
+                var move3d = new Vector3(_camMov.x, 0f, _camMov.y) * Time.deltaTime;
+                _cameraDefaultLookAt.Translate(move3d);
+                _vCam.transform.Translate(move3d);
             }
         }
 
@@ -346,7 +355,8 @@ namespace YuriGameJam2023
 
         public void OnMovement(Vector2 mov)
         {
-            if (_currentPlayer != null && _isPlayerTurn && !IsUIActive)
+            _camMov = new Vector3(mov.x, 0f, mov.y);
+            if (_isPlayerTurn && !IsUIActive && _currentPlayer != null)
             {
                 ((PlayerController)_currentPlayer).Mov = mov;
             }
