@@ -10,6 +10,10 @@ namespace YuriGameJam2023
     public class EnemyController : Character
     {
         [SerializeField]
+        private Transform _targetPos;
+        public Transform TargetPos => _targetPos;
+
+        [SerializeField]
         private bool _startAwareOfPlayer;
 
         [SerializeField]
@@ -126,6 +130,11 @@ namespace YuriGameJam2023
 
             _isMyTurn = true;
             _target = target;
+        }
+
+        public void Target(Transform target)
+        {
+            _navigation.destination = target.transform.position;
         }
 
         private void FixedUpdate()

@@ -37,7 +37,7 @@ namespace YuriGameJam2023
             var enemy = _enemies[0];
             _enemies.RemoveAt(0);
 
-            if (!enemy.IsAlerted)
+            if (!enemy.IsAlerted && enemy.TargetPos == null)
             {
                 // Enemy can't play so we skip his turn
                 enemy.CanBePlayed = false;
@@ -49,7 +49,11 @@ namespace YuriGameJam2023
             {
                 CharacterManager.Instance.StartTurn(enemy);
 
-                if (enemy.TargetOverride != null)
+                if (!enemy.IsAlerted)
+                {
+                    enemy.Target(enemy.TargetPos);
+                }
+                else if (enemy.TargetOverride != null)
                 {
                     enemy.Target(enemy.TargetOverride);
                 }
