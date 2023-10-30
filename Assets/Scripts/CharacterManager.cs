@@ -51,16 +51,19 @@ namespace YuriGameJam2023
         [Header("Camera & Effects")]
         [SerializeField]
         [Tooltip("Cinemachine virtual camera")]
-        private CinemachineVirtualCamera _vCam;
+        private CinemachineVirtualCamera _vCamCloseup;
+
+        [SerializeField]
+        private Transform _cameraDefaultLookAtWorld;
+
+        [SerializeField]
+        private GameObject _worldView, _closeupView;
 
         [SerializeField]
         [Tooltip("Object used to display spell Area Of Effect hints")]
         private AoeHint _aoeHint;
 
-        private Transform _cameraDefaultLookAt;
         private Vector3 _camMov;
-
-        private Vector3 _iniCamPos;
 
         private Character _currentPlayer;
 
@@ -76,12 +79,10 @@ namespace YuriGameJam2023
         private void Awake()
         {
             Instance = this;
-            _iniCamPos = _vCam.transform.position;
         }
 
         private void Start()
         {
-            _cameraDefaultLookAt = GameObject.FindGameObjectWithTag("CameraNeutralFocus").transform;
             var spawns = GameObject.FindGameObjectsWithTag("PlayerSpawn");
             Assert.GreaterOrEqual(spawns.Length, _players.Length, "Not enough spawn points for the whole team");
             for (int i = 0; i < _players.Length; i++)
@@ -95,9 +96,8 @@ namespace YuriGameJam2023
         {
             if (_isPlayerTurn && !IsUIActive)
             {
-                var move3d = new Vector3(_camMov.x, 0f, _camMov.y) * Time.deltaTime;
-                _cameraDefaultLookAt.Translate(move3d);
-                _vCam.transform.Translate(move3d);
+                var move3d = _camMov * Time.deltaTime * 10f;
+                _cameraDefaultLookAtWorld.Translate(move3d);
             }
         }
 
@@ -160,9 +160,8 @@ namespace YuriGameJam2023
         public void UnsetPlayer()
         {
             _currentPlayer = null;
-            _vCam.LookAt = _cameraDefaultLookAt;
-            _vCam.Follow = null;
-            _vCam.transform.position = _iniCamPos;
+            _worldView.SetActive(true);
+            _closeupView.SetActive(false);
         }
 
         /// <summary>
@@ -240,8 +239,10 @@ namespace YuriGameJam2023
             _currentPlayer = c;
             _currentPlayer.Enable();
 
-            _vCam.LookAt = _currentPlayer.transform;
-            _vCam.Follow = _currentPlayer.transform;
+            _worldView.SetActive(false);
+            _closeupView.SetActive(true);
+            _vCamCloseup.LookAt = _currentPlayer.transform;
+            _vCamCloseup.Follow = _currentPlayer.transform;
         }
 
         /// <summary>
