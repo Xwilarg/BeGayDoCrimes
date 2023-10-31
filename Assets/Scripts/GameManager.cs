@@ -14,11 +14,14 @@ namespace YuriGameJam2023
         [SerializeField]
         private EffectInfo[] _effectsInfo;
 
+        [SerializeField]
+        private LevelInfo[] _levels;
+
         private void Awake()
         {
             Instance = this;
             SceneManager.LoadScene("VN", LoadSceneMode.Additive);
-            SceneManager.LoadScene("Level_01", LoadSceneMode.Additive);
+            SceneManager.LoadScene(_levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].SceneName, LoadSceneMode.Additive);
             SceneManager.LoadScene("DebugManager", LoadSceneMode.Additive);
         }
 
