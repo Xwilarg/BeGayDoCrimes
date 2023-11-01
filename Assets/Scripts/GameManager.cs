@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using YuriGameJam2023.Persistency;
@@ -17,12 +19,33 @@ namespace YuriGameJam2023
         [SerializeField]
         private LevelInfo[] _levels;
 
+        [SerializeField]
+        private TMP_Text _explanationText;
+
         private void Awake()
         {
             Instance = this;
+
+            Debug.Log($"Current level: {PersistencyManager.Instance.SaveData.CurrentLevel}");
+
+            var currLevel = _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1];
             SceneManager.LoadScene("VN", LoadSceneMode.Additive);
-            SceneManager.LoadScene(_levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].SceneName, LoadSceneMode.Additive);
+            SceneManager.LoadScene(currLevel.SceneName, LoadSceneMode.Additive);
             SceneManager.LoadScene("DebugManager", LoadSceneMode.Additive);
+
+            _explanationText.text =
+                "Victory Condition:\n" +
+                currLevel.VictoryCondition switch
+                {
+                    VictoryCondition.KillAll => "Kill all enemies"
+                } + "\n\n" +
+                "Defeat Condition:\nLoose all characters\n" +
+                (currLevel.AdditionalDefeatCondition == DefeatCondition.None ? string.Empty :
+                currLevel.AdditionalDefeatCondition switch
+                {
+                    DefeatCondition.EnemyReachPoint => "Enemy reach the exit"
+                });
+            StartCoroutine(WaitAndRemoveText());
         }
 
         private void Start()
@@ -34,6 +57,12 @@ namespace YuriGameJam2023
                     VNManager.Instance.ShowIntro();
                 }
             }
+        }
+
+        private IEnumerator WaitAndRemoveText()
+        {
+            yield return new WaitForSeconds(3f);
+            _explanationText.gameObject.SetActive(false);
         }
 
         public void OnClick(InputAction.CallbackContext value)
