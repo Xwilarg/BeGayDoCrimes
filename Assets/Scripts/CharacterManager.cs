@@ -63,6 +63,12 @@ namespace YuriGameJam2023
         [Tooltip("Object used to display spell Area Of Effect hints")]
         private AoeHint _aoeHint;
 
+        [SerializeField]
+        private GameObject _gameOver;
+
+        [SerializeField]
+        private TMP_Text _gameOverReasonText;
+
         private Vector3 _camMov;
 
         private Character _currentPlayer;
@@ -72,7 +78,7 @@ namespace YuriGameJam2023
 
         private readonly List<Character> _characters = new();
 
-        private bool IsUIActive => _disablePopup.activeInHierarchy || _endTurnPopup.activeInHierarchy;
+        private bool IsUIActive => _disablePopup.activeInHierarchy || _endTurnPopup.activeInHierarchy || _gameOver.activeInHierarchy;
 
         private readonly Dictionary<Tuple<Character, Character>, int> _love = new();
 
@@ -101,9 +107,19 @@ namespace YuriGameJam2023
             }
         }
 
-        public void GameOver()
+        public void GameOver(string reason)
         {
+            if (!_isPlayerTurn)
+            {
+                EndTurn();
+            }
+            _gameOver.SetActive(true);
+            _gameOverReasonText.text = reason;
+        }
 
+        public void ReloadGame()
+        {
+            SceneManager.LoadScene("Main");
         }
 
         private bool _gameStarted;
@@ -123,7 +139,7 @@ namespace YuriGameJam2023
 
             if (!_characters.Any(x => x is PlayerController))
             {
-                GameOver();
+                GameOver("All your characters collapsed");
             }
             else if (!_characters.Any(x => x is EnemyController))
             {
@@ -199,6 +215,11 @@ namespace YuriGameJam2023
 
         public void EndTurn()
         {
+            if (_isPlayerTurn && _gameOver.activeInHierarchy)
+            {
+                return; // Make sure player turn can't end when we lost
+            }
+
             var currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
             for (int i = currCharacters.Count() - 1; i >= 0; i--)
             {
@@ -337,6 +358,12 @@ namespace YuriGameJam2023
                 {
                     ((PlayerController)_currentPlayer).Mov = Vector2.zero;
                 }
+
+                if (_gameOver.activeInHierarchy)
+                {
+                    return;
+                }
+
                 // Close popups
                 if (_endTurnPopup.activeInHierarchy)
                 {
