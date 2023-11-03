@@ -78,7 +78,7 @@ namespace YuriGameJam2023
 
         private readonly Dictionary<EffectInfo, int> _effects = new();
         private readonly List<GameObject> _vfxs = new();
-        public void EndTurn()
+        public virtual void EndTurn()
         {
             // Apply all damage related to effects
             foreach (var eff in _effects)

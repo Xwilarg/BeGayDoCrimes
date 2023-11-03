@@ -207,6 +207,12 @@ namespace YuriGameJam2023
             return false;
         }
 
+        public override void EndTurn()
+        {
+            StopMovements();
+            base.EndTurn();
+        }
+
         protected override void StopMovements()
         {
             _navigation.destination = transform.position;

@@ -8,8 +8,8 @@ namespace YuriGameJam2023
         {
             if (other.CompareTag("Enemy"))
             {
-                CharacterManager.Instance.GameOver("An enemy reached the exit");
                 other.GetComponent<EnemyController>().EndTurn();
+                CharacterManager.Instance.GameOver("An enemy reached the exit");
             }
         }
     }
