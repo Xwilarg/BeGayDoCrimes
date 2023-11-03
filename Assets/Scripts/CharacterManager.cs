@@ -101,6 +101,11 @@ namespace YuriGameJam2023
             }
         }
 
+        public void GameOver()
+        {
+
+        }
+
         private bool _gameStarted;
         public void RegisterCharacter(Character c)
         {
@@ -118,7 +123,7 @@ namespace YuriGameJam2023
 
             if (!_characters.Any(x => x is PlayerController))
             {
-                // TODO: GameOver
+                GameOver();
             }
             else if (!_characters.Any(x => x is EnemyController))
             {
