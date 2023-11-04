@@ -225,14 +225,14 @@ namespace YuriGameJam2023
             {
                 currCharacters.ElementAt(i).EndTurn();
             }
-
-            _isPlayerTurn = !_isPlayerTurn;
-
-            currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
             foreach (var c in currCharacters)
             {
                 c.CanBePlayed = true;
             }
+
+            _isPlayerTurn = !_isPlayerTurn;
+
+            currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
             _totalActionCount = currCharacters.Count();
 
             _actionCountText.text = $"Actions Left: {_totalActionCount}";
