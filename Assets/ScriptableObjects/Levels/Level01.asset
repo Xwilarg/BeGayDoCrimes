@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Level01
   m_EditorClassIdentifier: 
   SceneName: Level_01
+  AdditionalDefeatCondition: 1
+  VictoryCondition: 0
