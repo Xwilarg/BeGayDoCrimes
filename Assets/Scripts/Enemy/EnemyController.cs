@@ -135,6 +135,9 @@ namespace YuriGameJam2023
         public void Target(Transform target)
         {
             _navigation.destination = target.transform.position;
+
+            _isMyTurn = true;
+            _target = null;
         }
 
         private void FixedUpdate()
@@ -145,7 +148,7 @@ namespace YuriGameJam2023
                 if ((!_navigation.pathPending && _navigation.remainingDistance < Info.Skills[0].Range) || _distance <= 0f)
                 {
                     // Check if we have no targets, but are close to one
-                    if (!HaveAnyNonFriendlyTarget &&
+                    if (_target != null && !HaveAnyNonFriendlyTarget &&
                         Vector3.Distance(_target.transform.position, transform.position) < Info.Skills[0].Range)
                     {
                         var direction = _target.transform.position - transform.position;
