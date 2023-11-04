@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using YuriGameJam2023.Player;
@@ -166,7 +168,8 @@ namespace YuriGameJam2023
 
                     if (HaveAnyNonFriendlyTarget)
                     {
-                        Attack();
+                        StopMovements();
+                        StartCoroutine(WaitAndAttack());
                     }
                     else
                     {
@@ -187,6 +190,12 @@ namespace YuriGameJam2023
                     Debug.Log(name + " just saw walking past them " + player.name + ", we're alerted!");
                 }
             }
+        }
+
+        private IEnumerator WaitAndAttack()
+        {
+            yield return new WaitForSeconds(.5f);
+            Attack();
         }
 
         private new void OnDrawGizmos()
