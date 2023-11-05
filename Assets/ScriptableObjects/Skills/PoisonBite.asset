@@ -17,4 +17,4 @@ MonoBehaviour:
   Damage: 10
   Effects:
   - {fileID: 11400000, guid: e0a8ee9987123ee48a730cae35dcb411, type: 2}
-  Sprite: {fileID: 21300000, guid: 8a1c8aa2f7f4c9a42a966fe2e790a10c, type: 3}
+  Sprite: {fileID: 21300000, guid: 157a3b442cc5b2c4da7c7653750c1a4f, type: 3}
