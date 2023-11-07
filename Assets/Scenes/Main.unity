@@ -3476,6 +3476,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1fcb09b9db3b2447bc8396215a2c4b3, type: 2}
   _levels:
   - {fileID: 11400000, guid: 34093ca8c17b232478d333b1a1bf7c4c, type: 2}
+  - {fileID: 11400000, guid: 33a961984011f314fbd9b30dd58d469e, type: 2}
+  - {fileID: 11400000, guid: 461cad615bcf33a4391a48caef8fe196, type: 2}
   _explanationText: {fileID: 609469977}
 --- !u!1 &1578787018
 GameObject:
