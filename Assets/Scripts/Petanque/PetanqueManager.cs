@@ -1,12 +1,9 @@
-﻿using Assets.Scripts.Petanque;
-using Ink.Parsed;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023.Petanque
@@ -54,8 +51,6 @@ namespace YuriGameJam2023.Petanque
         private float _currForce;
 
         private int _indexSprite;
-
-        private int _score;
 
         private void Awake()
         {
@@ -110,7 +105,6 @@ namespace YuriGameJam2023.Petanque
             else if (_currAction == ActionType.RotatePitch)
             {
                 var a = _ball.transform.rotation.eulerAngles.x + (Time.deltaTime * _angularSpeed * (!_dir ? 1f : -1f));
-                Debug.Log(a);
                 if (_dir && a > 180 && a < 360 - _maxPitch)
                 {
                     a = 360 - _maxPitch;
@@ -183,10 +177,10 @@ namespace YuriGameJam2023.Petanque
 
                     if (_currAction == ActionType.Done)
                     {
-                        _ball.transform.rotation = Quaternion.identity;
                         var rb = _ball.GetComponent<Rigidbody>();
                         rb.isKinematic = false;
                         rb.AddForce(_ball.transform.forward * _currForce, ForceMode.Impulse);
+                        _ball.transform.rotation = Quaternion.identity;
                         _lr.enabled = false;
                         _ball = null;
 
