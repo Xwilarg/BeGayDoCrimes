@@ -154,7 +154,7 @@ namespace YuriGameJam2023.Petanque
             if (_indexSprite == _sprites.Length)
             {
                 _gameOver.SetActive(true);
-                _gameOverText.text = "Final Score:\n" + (1000 - _balls.Sum(x => Vector3.Distance(_cochonet.transform.position, x.transform.position))).ToString();
+                _gameOverText.text = "Final Score:\n" + (100 - _balls.Sum(x => Vector3.Distance(_cochonet.transform.position, x.transform.position))).ToString();
                 return;
             }
 
