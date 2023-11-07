@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -40,7 +42,7 @@ namespace YuriGameJam2023.Petanque
         [SerializeField]
         private TMP_Text _gameOverText;
 
-        private List<GameObject> _balls = new();
+        private List<Ball> _balls = new();
 
         private LineRenderer _lr;
 
@@ -159,7 +161,7 @@ namespace YuriGameJam2023.Petanque
             _lr = _ball.GetComponent<LineRenderer>();
             _ball.GetComponentInChildren<SpriteRenderer>().sprite = _sprites[_indexSprite].Sprite;
 
-            _balls.Add(_ball);
+            _balls.Add(_ball.GetComponent<Ball>());
         }
 
         public void OnClick(InputAction.CallbackContext value)
@@ -172,6 +174,11 @@ namespace YuriGameJam2023.Petanque
                 }
                 else
                 {
+                    if (_currAction == ActionType.Pending)
+                    {
+                        return;
+                    }
+
                     _currAction++;
                     _dir = true;
 
@@ -185,12 +192,22 @@ namespace YuriGameJam2023.Petanque
                         _ball = null;
 
                         _indexSprite++;
-                        SpawnCharacter();
 
-                        _currAction = ActionType.Move;
+                        StartCoroutine(WaitAndProceed());
                     }
                 }
             }
+        }
+
+        private IEnumerator WaitAndProceed()
+        {
+            while (!_balls.All(x => x.IsDone))
+            {
+                yield return new WaitForSeconds(.1f);
+            }
+            SpawnCharacter();
+
+            _currAction = ActionType.Move;
         }
 
         private enum ActionType
@@ -199,7 +216,9 @@ namespace YuriGameJam2023.Petanque
             RotateYaw,
             RotatePitch,
             Force,
-            Done
+            Done,
+
+            Pending
         }
     }
 }

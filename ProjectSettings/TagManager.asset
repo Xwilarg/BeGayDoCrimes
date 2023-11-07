@@ -8,6 +8,7 @@ TagManager:
   - CameraNeutralFocus
   - PlayerSpawn
   - Terrain
+  - OOB
   layers:
   - Default
   - TransparentFX
