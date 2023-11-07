@@ -331,7 +331,7 @@ namespace YuriGameJam2023
                 if (_currentPlayer == null) // We aren't controlling a player...
                 {
                     // ... so if we click on one we take possession of it
-                    if (_isPlayerTurn && Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit) && hit.collider.CompareTag("Player"))
                     {
                         var c = hit.collider.GetComponent<PlayerController>();
                         if (c.CanBePlayed)

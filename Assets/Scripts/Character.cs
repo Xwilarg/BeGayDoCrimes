@@ -63,7 +63,7 @@ namespace YuriGameJam2023
 
         private Vector3 _lastPos;
 
-        private bool _canBePlayed;
+        private bool _canBePlayed = true;
         public bool CanBePlayed
         {
             set
