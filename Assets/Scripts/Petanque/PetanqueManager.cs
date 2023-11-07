@@ -1,7 +1,12 @@
 ﻿using Assets.Scripts.Petanque;
+using Ink.Parsed;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023.Petanque
@@ -32,6 +37,14 @@ namespace YuriGameJam2023.Petanque
         [SerializeField]
         private TextAsset _story;
 
+        [SerializeField]
+        private GameObject _gameOver;
+
+        [SerializeField]
+        private TMP_Text _gameOverText;
+
+        private List<GameObject> _balls = new();
+
         private LineRenderer _lr;
 
         private ActionType _currAction = ActionType.Move;
@@ -41,6 +54,8 @@ namespace YuriGameJam2023.Petanque
         private float _currForce;
 
         private int _indexSprite;
+
+        private int _score;
 
         private void Awake()
         {
@@ -129,14 +144,28 @@ namespace YuriGameJam2023.Petanque
             _lr.SetPositions(new[] { _ball.transform.position, _ball.transform.position + _ball.transform.forward * _currForce / _forceToDisplayDivider });
         }
 
+        public void MainMenu()
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
         private void SpawnCharacter()
         {
+            if (_indexSprite == _sprites.Length)
+            {
+                _gameOver.SetActive(true);
+                _gameOverText.text = "Final Score:\n" + (1000 - _balls.Sum(x => Vector3.Distance(_cochonet.transform.position, x.transform.position))).ToString();
+                return;
+            }
+
             _currForce = _maxForce / 2f;
 
             _ball = Instantiate(_prefab, _spawnPoint);
             _ball.transform.localPosition = Vector3.zero;
             _lr = _ball.GetComponent<LineRenderer>();
             _ball.GetComponentInChildren<SpriteRenderer>().sprite = _sprites[_indexSprite].Sprite;
+
+            _balls.Add(_ball);
         }
 
         public void OnClick(InputAction.CallbackContext value)
