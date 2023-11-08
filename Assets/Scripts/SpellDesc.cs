@@ -41,11 +41,14 @@ public class SpellDesc : MonoBehaviour
         if (skill.Damage > 0) {
             _dmgGroup.SetActive(true);
             _dmgText.text = "Dmg: " + skill.Damage;
-        } else {
+        }
+        else
+        {
             _dmgGroup.SetActive(false);
         }
         for (int i = 0; i < _effectGroup.childCount; i++) Destroy(_effectGroup.GetChild(i).gameObject);
-        for (int i = 0; i < skill.Effects.Length; i++) {
+        for (int i = 0; i < skill.Effects.Length; i++)
+        {
             var go = Instantiate(_effectPrefab, _effectGroup);
             go.GetComponent<Image>().sprite = skill.Effects[i].Sprite;
         }
