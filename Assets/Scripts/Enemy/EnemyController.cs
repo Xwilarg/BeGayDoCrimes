@@ -147,6 +147,7 @@ namespace YuriGameJam2023
             if (_isMyTurn)
             {
                 FixedUpdateParent();
+                UpdateAttackEffects();
                 if ((!_navigation.pathPending && _navigation.remainingDistance < Info.Skills[0].Range) || _distance <= 0f)
                 {
                     // Check if we have no targets, but are close to one

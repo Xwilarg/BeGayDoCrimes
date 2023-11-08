@@ -56,6 +56,7 @@ namespace YuriGameJam2023.Player
 
                 FixedUpdateParent();
             }
+            UpdateAttackEffects();
         }
 
         public override void Attack()

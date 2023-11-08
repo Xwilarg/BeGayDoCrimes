@@ -144,7 +144,10 @@ namespace YuriGameJam2023
             {
                 CharacterManager.Instance.DisplayDistanceText(_distance);
             }
+        }
 
+        protected void UpdateAttackEffects()
+        {
             // TODO: Don't do that each frame
             ClearAllHalo();
             CharacterManager.Instance.ResetEffectDisplay();
