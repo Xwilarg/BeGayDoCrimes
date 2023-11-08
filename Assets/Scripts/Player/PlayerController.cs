@@ -56,7 +56,10 @@ namespace YuriGameJam2023.Player
 
                 FixedUpdateParent();
             }
-            UpdateAttackEffects();
+            if (!_rb.isKinematic)
+            {
+                UpdateAttackEffects();
+            }
         }
 
         public override void Attack()
