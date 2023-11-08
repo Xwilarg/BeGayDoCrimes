@@ -64,6 +64,9 @@ namespace YuriGameJam2023
         private AoeHint _aoeHint;
 
         [SerializeField]
+        private SpellDesc _spellDesc;
+
+        [SerializeField]
         private GameObject _gameOver;
 
         [SerializeField]
@@ -199,6 +202,7 @@ namespace YuriGameJam2023
         public void RemoveAction()
         {
             for (int i = 0; i < _skillBar.childCount; i++) Destroy(_skillBar.GetChild(i).gameObject);
+            _spellDesc.Hide();
 
             _totalActionCount--;
             Debug.Log($"[=/=] Ending turn, action left: {_totalActionCount}");
@@ -247,6 +251,7 @@ namespace YuriGameJam2023
 
         public void StartTurn(Character c)
         {
+            _spellDesc.Show();
             Debug.Log($"[{c}] Starting turn");
             for (int i = 0; i < c.Info.Skills.Length; i++)
             {
@@ -259,6 +264,7 @@ namespace YuriGameJam2023
                 {
                     var hint = go.transform.GetComponent<Image>();
                     hint.color = new(hint.color.r, hint.color.g, hint.color.b, 1f);
+                    _spellDesc.SetSpell(c.Info.Skills[i]);
                 }
             }
 
@@ -405,6 +411,7 @@ namespace YuriGameJam2023
                 _currentPlayer.CurrentSkill = id;
                 hint = _skillBar.GetChild(_currentPlayer.CurrentSkill).transform.GetComponent<Image>();
                 hint.color = new(hint.color.r, hint.color.g, hint.color.b, 1f);
+                _spellDesc.SetSpell(_currentPlayer.Info.Skills[_currentPlayer.CurrentSkill]);
             }
         }
     }
