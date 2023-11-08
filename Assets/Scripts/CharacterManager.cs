@@ -315,6 +315,10 @@ namespace YuriGameJam2023
             _currentPlayer.Disable();
         }
 
+        public void DisableDecline() {
+            _spellDesc.Show();
+        }
+
         public void IncreaseLove(Character a, Character b, int love)
         {
             var couple = _love
@@ -378,6 +382,7 @@ namespace YuriGameJam2023
                 else if (_disablePopup.activeInHierarchy)
                 {
                     _disablePopup.SetActive(false);
+                    _spellDesc.Show();
                 }
                 // Open popup to end turn
                 else if (_currentPlayer == null)
@@ -388,6 +393,7 @@ namespace YuriGameJam2023
                 else if (_currentPlayer != null && !_currentPlayer.PendingAutoDisable)
                 {
                     _disablePopup.SetActive(true);
+                    _spellDesc.Hide();
                 }
             }
         }
