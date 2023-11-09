@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.42635277, g: 0.4845761, b: 0.6320754, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -35,7 +35,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
@@ -2158,6 +2158,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 7db945cd17233fb40ac8b5ca535f2056, type: 3}
+    - target: {fileID: 2262253260477512018, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f85ebe0cd76110448aa1af16a7183a4f, type: 2}
     - target: {fileID: 5091277782734916169, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.40599823
@@ -3021,6 +3025,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c92db1e7c9c1cef4c821c95df29cf05a, type: 3}
+    - target: {fileID: 2262253260477512018, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f85ebe0cd76110448aa1af16a7183a4f, type: 2}
     - target: {fileID: 5091277782734916169, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.0869999
@@ -6401,6 +6409,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ef11dce937fa91e4996f124548db93ca, type: 3}
+    - target: {fileID: 2262253260477512018, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f85ebe0cd76110448aa1af16a7183a4f, type: 2}
     - target: {fileID: 5091277782734916169, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.664
@@ -8468,6 +8480,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2262253260477512018, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f85ebe0cd76110448aa1af16a7183a4f, type: 2}
     - target: {fileID: 5091277782734916169, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.026
