@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: Level_03
   AdditionalDefeatCondition: 0
-  VictoryCondition: 0
+  VictoryCondition: 1
