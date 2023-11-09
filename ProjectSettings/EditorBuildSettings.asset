@@ -41,5 +41,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CampLevels/Level_03_Camp.unity
     guid: db71ecaca909fd14191684fcdd6b5b83
+  - enabled: 1
+    path: Assets/Scenes/CampLevels/Level_04_Camp.unity
+    guid: a5d4396c38dc6d04188764c9df7d2b98
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
