@@ -14,6 +14,7 @@ namespace YuriGameJam2023
 #if UNITY_EDITOR
             if (_deleteSaveData)
             {
+                Debug.Log("[DEBUG] Save file deleted");
                 PersistencyManager.Instance.DeleteSaveFolder();
             }
 #endif

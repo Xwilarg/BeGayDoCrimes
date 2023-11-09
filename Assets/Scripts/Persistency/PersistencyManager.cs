@@ -24,7 +24,11 @@ namespace YuriGameJam2023.Persistency
         {
             get
             {
-                _instance ??= new();
+                if (_instance == null)
+                {
+                    Debug.Log($"[PER] Persistency Manager created, data will be saved at {Application.persistentDataPath}/save.bin");
+                    _instance = new();
+                }
                 return _instance;
             }
         }
@@ -44,6 +48,9 @@ namespace YuriGameJam2023.Persistency
                     {
                         _saveData = new();
                     }
+#if UNITY_EDITOR
+                    Debug.Log("SAVE DATA DUMP: " + _saveData);
+#endif
                 }
                 return _saveData;
             }

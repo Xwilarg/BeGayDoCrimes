@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace YuriGameJam2023.Persistency
 {
@@ -10,6 +11,7 @@ namespace YuriGameJam2023.Persistency
         /// </summary>
         public void UnlockSupport(string support)
         {
+            UnityEngine.Debug.Log($"[SUP] Unlocking support {support}");
             if (!AvailableSupport.ContainsKey(support))
             {
                 AvailableSupport.Add(support, 0);
@@ -53,5 +55,12 @@ namespace YuriGameJam2023.Persistency
         public Dictionary<string, int> SupportData { set; get; } = new();
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Dictionary<string, int> AvailableSupport { set; get; } = new();
+
+        public override string ToString()
+        {
+            return $"[Current Level] {CurrentLevel}\n" +
+                $"[Available Support] {string.Join(", ", AvailableSupport.Select(x => $"{x.Key} => {x.Value}"))}\n" +
+                $"[Support Data] {string.Join(", ", SupportData.Select(x => $"{x.Key} => {x.Value}"))}\n";
+        }
     }
 }
