@@ -101,7 +101,9 @@ MonoBehaviour:
   _healthBar: {fileID: 8343850022409304686}
   _effectContainer: {fileID: 192191059067508168}
   _effectPrefab: {fileID: 5178977420533353200, guid: 8d55083910e0e1345a7c3fe73c2d11ad, type: 3}
-  _attackDamage: 10
+  _targetPos: {fileID: 0}
+  _startAwareOfPlayer: 0
+  _hidden: 0
   _alertRange: 3
   _enemyInfo: {fileID: 0}
 --- !u!195 &8842109681793304587

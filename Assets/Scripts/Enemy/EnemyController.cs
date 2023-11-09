@@ -19,6 +19,9 @@ namespace YuriGameJam2023
         private bool _startAwareOfPlayer;
 
         [SerializeField]
+        private bool _hidden;
+
+        [SerializeField]
         private int _alertRange;
 
         [SerializeField]
@@ -41,6 +44,8 @@ namespace YuriGameJam2023
             IsAlerted = _startAwareOfPlayer;
             _navigation = GetComponent<NavMeshAgent>();
             Info = _enemyInfo;
+
+            if (_hidden) Hide(true);
         }
 
         private void Start()
@@ -102,6 +107,7 @@ namespace YuriGameJam2023
         public void Alert(bool alertOthers)
         {
             IsAlerted = true;
+            Hide(false);
 
             Debug.Log(name + " has been alerted");
 
@@ -113,6 +119,16 @@ namespace YuriGameJam2023
                     enemy.Alert(false);
                 }
             }
+        }
+
+        /// <summary>
+        /// Hides the enemy
+        /// </summary>
+        /// <param name="hidden">Whether the enemy should be hidden</param>
+        public void Hide(bool hidden)
+        {
+            // TODO: fixme
+            GetComponent<MeshRenderer>().enabled = !hidden;
         }
 
         /// <summary>
