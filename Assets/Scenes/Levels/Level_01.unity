@@ -6298,6 +6298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverZone
       objectReference: {fileID: 0}
+    - target: {fileID: 7943436238674717569, guid: 81053aadafe87ad44978b23d2466345d, type: 3}
+      propertyPath: _zoneBehavior
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8015618683759532258, guid: 81053aadafe87ad44978b23d2466345d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.433
