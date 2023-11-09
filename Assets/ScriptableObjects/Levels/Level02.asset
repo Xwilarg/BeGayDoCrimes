@@ -15,3 +15,5 @@ MonoBehaviour:
   SceneName: Level_03
   AdditionalDefeatCondition: 0
   VictoryCondition: 0
+  FirecampSceneName: Level_02_Camp
+  FirecampVN: {fileID: 0}

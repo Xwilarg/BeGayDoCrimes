@@ -32,5 +32,11 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/P\xE9tanque.unity"
     guid: e9ab0d028f6d1724489a358754bd93f8
+  - enabled: 1
+    path: Assets/Scenes/CampLevels/Level_01_Camp.unity
+    guid: e812474953694ae4e86551cfd83727a4
+  - enabled: 1
+    path: Assets/Scenes/CampLevels/Level_02_Camp.unity
+    guid: c49e9d54a22213543bf5e2d48dd6b037
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

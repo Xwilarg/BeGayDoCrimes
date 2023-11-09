@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using YuriGameJam2023.Persistency;
+using YuriGameJam2023.SO;
 using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023.Campfire
@@ -19,7 +20,7 @@ namespace YuriGameJam2023.Campfire
         private GameObject _nextDayButton;
 
         [SerializeField]
-        private TextAsset _firstStory;
+        private LevelInfo[] _levels; // TODO: Is in 2 differents scripts, ewh
 
         /// <summary>
         /// Character we clicked on with the mouse, considered as 'selected'
@@ -54,9 +55,9 @@ namespace YuriGameJam2023.Campfire
                 }
             }
 
-            if (PersistencyManager.Instance.SaveData.CurrentLevel == 1)
+            if (_levels[PersistencyManager.Instance.SaveData.CurrentLevel].FirecampVN != null)
             {
-                VNManager.Instance.ShowStory(_firstStory, null);
+                VNManager.Instance.ShowStory(_levels[PersistencyManager.Instance.SaveData.CurrentLevel].FirecampVN, null);
             }
         }
 
