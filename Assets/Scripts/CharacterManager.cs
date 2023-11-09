@@ -168,20 +168,25 @@ namespace YuriGameJam2023
 
         private void UnlockSupport()
         {
-            var couple = _love.OrderByDescending(x => x.Value).FirstOrDefault();
+            var couples = _love.OrderByDescending(x => x.Value).Take(2);
 
             // Not much love during this game
-            if (couple.Key == default)
+            if (!couples.Any())
             {
                 Debug.Log("[SUPPORT] No support unlocked");
                 return;
             }
 
-            var name1 = couple.Key.Item1.Info.Name;
-            var name2 = couple.Key.Item2.Info.Name;
+            foreach (var couple in couples)
+            {
+                var name1 = couple.Key.Item1.Info.Name;
+                var name2 = couple.Key.Item2.Info.Name;
 
-            string key = name1.CompareTo(name2) < 0 ? $"{name1}{name2}" : $"{name2}{name1}";
-            PersistencyManager.Instance.SaveData.UnlockSupport(key);
+                string key = name1.CompareTo(name2) < 0 ? $"{name1}{name2}" : $"{name2}{name1}";
+
+                PersistencyManager.Instance.SaveData.UnlockSupport(key);
+            }
+
             PersistencyManager.Instance.Save();
         }
 
