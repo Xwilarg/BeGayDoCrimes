@@ -4,7 +4,7 @@ You made a promise, now tell us who told you to destroy our home! #Speaker Makra
 
  And if ya think of shutting your mouth, I'll open it by force! #Speaker Willow
 
-Yuki: I don't want to hurt you more, so please tell us. #Speaker Yuki
+I don't want to hurt you more, so please tell us. #Speaker Yuki
 
 Grrr! Fine! Her name is Cassandra Cheese, she told us to destroy the old house you lived in.#Speaker BC
 
