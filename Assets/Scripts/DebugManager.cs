@@ -7,14 +7,17 @@ namespace YuriGameJam2023
     {
         public static DebugManager Instance { get; private set; }
 
+        private static bool _didDebugDelete;
+
         private void Awake()
         {
             Instance = this;
 
 #if UNITY_EDITOR
-            if (_deleteSaveData)
+            if (!_didDebugDelete && _deleteSaveData)
             {
                 Debug.Log("[DEBUG] Save file deleted");
+                _didDebugDelete = true;
                 PersistencyManager.Instance.DeleteSaveFolder();
             }
 #endif
