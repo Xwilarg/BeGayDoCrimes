@@ -1386,6 +1386,7 @@ MonoBehaviour:
   - {fileID: 1144429826}
   - {fileID: 424006107}
   _nextDayButton: {fileID: 1151682692}
+  _firstStory: {fileID: 4900000, guid: 8f93de74b7bc4724fb16177e1081ccda, type: 3}
 --- !u!4 &1830768048
 Transform:
   m_ObjectHideFlags: 0
@@ -1510,6 +1511,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1d34af9f-2571-4c08-9adb-d8fc6bde4fb4
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4ed9c072-e717-43b1-adf0-659b32d3c57e
+    m_ActionName: 'Petanque/Action[/Keyboard/space,/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

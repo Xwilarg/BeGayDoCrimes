@@ -18,6 +18,9 @@ namespace YuriGameJam2023.Campfire
         [SerializeField]
         private GameObject _nextDayButton;
 
+        [SerializeField]
+        private TextAsset _firstStory;
+
         /// <summary>
         /// Character we clicked on with the mouse, considered as 'selected'
         /// </summary>
@@ -49,6 +52,11 @@ namespace YuriGameJam2023.Campfire
                         PersistencyManager.Instance.SaveData.AvailableSupport[key] = 2;
                     }
                 }
+            }
+
+            if (PersistencyManager.Instance.SaveData.CurrentLevel == 1)
+            {
+                VNManager.Instance.ShowStory(_firstStory, null);
             }
         }
 
