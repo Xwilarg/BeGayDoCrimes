@@ -6,7 +6,7 @@ I swear if I see the headmaster from the temple again, I will punch them!#Speake
 
 I should really tell her me true feelings...#Speaker Willow
 
-I hate bandits so much! First they burn the temple and then my home! Those C*nts!#Speaker Willow
+I hate bandits so much! First they burn the temple and then me home! Those C*nts!#Speaker Willow
 
 Yuki! Stop doing squats is time to eat!#Speaker Willow
 
