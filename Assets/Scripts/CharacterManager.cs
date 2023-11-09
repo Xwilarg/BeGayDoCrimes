@@ -169,6 +169,7 @@ namespace YuriGameJam2023
             // Not much love during this game
             if (couple.Key == default)
             {
+                Debug.Log("[SUPPORT] No support unlocked");
                 return;
             }
 
@@ -337,6 +338,7 @@ namespace YuriGameJam2023
             }
 
             _love[couple.Key] += love;
+            Debug.Log($"[SUPPORT] Support increase for {couple.Key}");
         }
 
         public void OnClick()

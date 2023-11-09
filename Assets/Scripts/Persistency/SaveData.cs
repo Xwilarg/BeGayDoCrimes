@@ -11,7 +11,7 @@ namespace YuriGameJam2023.Persistency
         /// </summary>
         public void UnlockSupport(string support)
         {
-            UnityEngine.Debug.Log($"[SUP] Unlocking support {support}");
+            UnityEngine.Debug.Log($"[SUPPORT] Unlocking support {support}");
             if (!AvailableSupport.ContainsKey(support))
             {
                 AvailableSupport.Add(support, 0);
