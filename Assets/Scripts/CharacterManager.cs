@@ -143,9 +143,14 @@ namespace YuriGameJam2023
             }
             else if (!_characters.Any(x => x is EnemyController))
             {
-                UnlockSupport();
-                StartCoroutine(WaitAndLoadCampfire());
+                Victory();
             }
+        }
+
+        public void Victory()
+        {
+            UnlockSupport();
+            StartCoroutine(WaitAndLoadCampfire());
         }
 
         private IEnumerator WaitAndLoadCampfire()
