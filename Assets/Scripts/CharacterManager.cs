@@ -55,6 +55,10 @@ namespace YuriGameJam2023
 
         [SerializeField]
         private Transform _cameraDefaultLookAtWorld;
+        /// <summary>
+        /// Remember where we were looking before a turn start
+        /// </summary>
+        private Vector3 _worldCamPosRef;
 
         [SerializeField]
         private GameObject _worldView, _closeupView;
@@ -190,6 +194,8 @@ namespace YuriGameJam2023
         public void UnsetPlayer()
         {
             _currentPlayer = null;
+
+            _cameraDefaultLookAtWorld.transform.position = _worldCamPosRef;
             _worldView.SetActive(true);
             _closeupView.SetActive(false);
         }
@@ -279,6 +285,7 @@ namespace YuriGameJam2023
 
             _worldView.SetActive(false);
             _closeupView.SetActive(true);
+            _worldCamPosRef = _cameraDefaultLookAtWorld.position;
             _vCamCloseup.LookAt = _currentPlayer.transform;
             _vCamCloseup.Follow = _currentPlayer.transform;
         }
