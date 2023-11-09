@@ -4,7 +4,7 @@ I wonder how dad is doing?#Speaker Willow
 
 I swear if I see the headmaster from the temple again, I will punch them!#Speaker Willow
 
-I should really tell her true my feelings...#Speaker Willow
+I should really tell her me true feelings...#Speaker Willow
 
 I hate bandits so much! First they burn the temple and then my home! Those C*nts!#Speaker Willow
 
