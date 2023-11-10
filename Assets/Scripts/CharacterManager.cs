@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Persistency;
 using YuriGameJam2023.Player;
+using YuriGameJam2023.SO;
 using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023
@@ -151,7 +152,7 @@ namespace YuriGameJam2023
             {
                 GameOver("All your characters collapsed");
             }
-            else if (!_characters.Any(x => x is EnemyController))
+            else if (!_characters.Any(x => x is EnemyController) && GameManager.Instance.CurrentVictoryCondition == VictoryCondition.KillAll)
             {
                 Victory();
             }
