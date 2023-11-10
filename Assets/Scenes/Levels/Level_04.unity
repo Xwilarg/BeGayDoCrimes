@@ -448,7 +448,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 128
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -601,7 +601,8 @@ PrefabInstance:
       value: Flatbed (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 576529460388987880, guid: 2c4a6ad2a9b6e1947be2116c07ccbd8d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c4a6ad2a9b6e1947be2116c07ccbd8d, type: 3}
@@ -1805,7 +1806,8 @@ PrefabInstance:
       value: Flatbed (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 576529460388987880, guid: 2c4a6ad2a9b6e1947be2116c07ccbd8d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c4a6ad2a9b6e1947be2116c07ccbd8d, type: 3}
