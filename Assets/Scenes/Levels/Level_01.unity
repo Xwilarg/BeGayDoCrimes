@@ -3560,7 +3560,7 @@ GameObject:
   - component: {fileID: 1068565204}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: PostVictoryEffect
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3573,8 +3573,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068565203}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 277.11832, y: -183.3568, z: 39.285435}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 285.29, y: -119.314026, z: -306.98337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3609,7 +3609,7 @@ Transform:
   - {fileID: 1222334589}
   - {fileID: 1013370591}
   - {fileID: 742511808}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1388323782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1120550481
 PrefabInstance:
@@ -4604,6 +4604,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4861747679415910176, guid: 37a10a5611f65004780c9ea1de1d9ec3, type: 3}
   m_PrefabInstance: {fileID: 1385587554}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1388323781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1388323782}
+  m_Layer: 0
+  m_Name: FireActivator
+  m_TagString: PostVictoryEffect
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1388323782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388323781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.1717005, y: -64.04277, z: 346.2688}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1068565204}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1392537308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8015618683759532258, guid: 81053aadafe87ad44978b23d2466345d, type: 3}
@@ -8278,4 +8310,4 @@ SceneRoots:
   - {fileID: 1427459794}
   - {fileID: 1452308634}
   - {fileID: 1448279634}
-  - {fileID: 1068565204}
+  - {fileID: 1388323782}

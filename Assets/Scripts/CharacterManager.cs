@@ -166,7 +166,7 @@ namespace YuriGameJam2023
             {
                 foreach (var obj in GameObject.FindGameObjectsWithTag("PostVictoryEffect"))
                 {
-                    obj.SetActive(true);
+                    obj.transform.GetChild(0).gameObject.SetActive(true);
                 }
                 VNManager.Instance.ShowStory(GameManager.Instance.CurrentVictoryScene, () =>
                 {
