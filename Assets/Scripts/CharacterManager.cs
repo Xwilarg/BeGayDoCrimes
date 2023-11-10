@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Persistency;
 using YuriGameJam2023.Player;
+using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023
 {
@@ -156,8 +157,19 @@ namespace YuriGameJam2023
 
         public void Victory()
         {
-            UnlockSupport();
-            StartCoroutine(WaitAndLoadCampfire());
+            if (GameManager.Instance.CurrentVictoryScene == null)
+            {
+                UnlockSupport();
+                StartCoroutine(WaitAndLoadCampfire());
+            }
+            else
+            {
+                VNManager.Instance.ShowStory(GameManager.Instance.CurrentVictoryScene, () =>
+                {
+                    UnlockSupport();
+                    StartCoroutine(WaitAndLoadCampfire());
+                });
+            }
         }
 
         private IEnumerator WaitAndLoadCampfire()

@@ -9,6 +9,7 @@ namespace YuriGameJam2023.SO
         public string SceneName;
         public DefeatCondition AdditionalDefeatCondition;
         public VictoryCondition VictoryCondition;
+        public TextAsset PostVictoryVN;
 
         [Header("Firecamp")]
         public string FirecampSceneName;

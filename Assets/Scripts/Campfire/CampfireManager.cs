@@ -55,9 +55,9 @@ namespace YuriGameJam2023.Campfire
                 }
             }
 
-            if (_levels[PersistencyManager.Instance.SaveData.CurrentLevel].FirecampVN != null)
+            if (_levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].FirecampVN != null)
             {
-                VNManager.Instance.ShowStory(_levels[PersistencyManager.Instance.SaveData.CurrentLevel].FirecampVN, null);
+                VNManager.Instance.ShowStory(_levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].FirecampVN, null);
             }
         }
 

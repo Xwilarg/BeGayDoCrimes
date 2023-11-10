@@ -59,6 +59,8 @@ namespace YuriGameJam2023
             }
         }
 
+        public TextAsset CurrentVictoryScene => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].PostVictoryVN;
+
         private IEnumerator WaitAndRemoveText()
         {
             yield return new WaitForSeconds(3f);
