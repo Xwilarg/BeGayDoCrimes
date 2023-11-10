@@ -41,21 +41,21 @@ namespace YuriGameJam2023
             {
                 var currLevel = _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1];
                 _explanationText.text =
-                "Victory Condition:\n" +
-                currLevel.VictoryCondition switch
-                {
-                    VictoryCondition.KillAll => "Kill all enemies",
-                    VictoryCondition.AllReachPoint => "Player reach the exit",
-                    VictoryCondition.PlantBomb => "Player reach the exit and wait",
-                    _ => throw new NotImplementedException()
-                } + "\n\n" +
-                "Defeat Condition:\nLoose all characters\n" +
-                (currLevel.AdditionalDefeatCondition == DefeatCondition.None ? string.Empty :
-                currLevel.AdditionalDefeatCondition switch
-                {
-                    DefeatCondition.EnemyReachPoint => "Enemy reach the exit",
-                    _ => throw new NotImplementedException()
-                });
+                    "Victory Condition:\n" +
+                    currLevel.VictoryCondition switch
+                    {
+                        VictoryCondition.KillAll => "Kill all enemies",
+                        VictoryCondition.AllReachPoint => "Player reach the exit",
+                        VictoryCondition.PlantBomb => "Player reach the exit and wait",
+                        _ => throw new NotImplementedException()
+                    } + "\n\n" +
+                    "Defeat Condition:\nLoose all characters\n" +
+                    (currLevel.AdditionalDefeatCondition == DefeatCondition.None ? string.Empty :
+                    currLevel.AdditionalDefeatCondition switch
+                    {
+                        DefeatCondition.EnemyReachPoint => "Enemy reach the exit",
+                        _ => throw new NotImplementedException()
+                    });
                 StartCoroutine(WaitAndRemoveText());
             };
             if (!DebugManager.Instance.BypassIntro)
@@ -73,6 +73,12 @@ namespace YuriGameJam2023
             {
                 onDone();
             }
+        }
+
+        public void ShowNewMiddleText(string text)
+        {
+            _explanationText.text = text;
+            StartCoroutine(WaitAndRemoveText());
         }
 
         public TextAsset CurrentVictoryScene => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].PostVictoryVN;

@@ -163,6 +163,7 @@ namespace YuriGameJam2023
             {
                 if (_speConditionCountdown == -1)
                 {
+                    GameManager.Instance.ShowNewMiddleText($"New Victory Condition:\nSurvive 5 turns");
                     _speConditionCountdown = 5;
                 }
             }
@@ -274,9 +275,21 @@ namespace YuriGameJam2023
 
         public void EndTurn()
         {
-            if (_isPlayerTurn && _gameOver.activeInHierarchy)
+            if (_isPlayerTurn)
             {
-                return; // Make sure player turn can't end when we lost
+                if (_gameOver.activeInHierarchy)
+                {
+                    return; // Make sure player turn can't end when we lost
+                }
+                if (_speConditionCountdown > -1)
+                {
+                    _speConditionCountdown--;
+                    if (_speConditionCountdown == 0)
+                    {
+                        Victory();
+                        return;
+                    }
+                }
             }
 
             var currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
