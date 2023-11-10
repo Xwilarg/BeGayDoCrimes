@@ -152,6 +152,7 @@ namespace YuriGameJam2023
         public void Target(Transform target)
         {
             _navigation.destination = target.transform.position;
+            _navigation.stoppingDistance = 0f;
 
             _isMyTurn = true;
             _target = null;
@@ -163,7 +164,13 @@ namespace YuriGameJam2023
             {
                 FixedUpdateParent();
                 UpdateAttackEffects();
-                if ((!_navigation.pathPending && _navigation.remainingDistance < Info.Skills[0].Range) || _distance <= 0f)
+                var isMovementDone =
+                    _distance <= 0f || // We can't move anymore
+                    (!_navigation.pathPending && // OR if there is no path pending AND
+                        (_target != null && _navigation.remainingDistance < Info.Skills[0].Range) || // In the case we have a target: we are in range for the skill
+                        (_target == null && _navigation.remainingDistance == 0f) // In the case we don't have a target: we reached the position where we needed to go
+                    );
+                if (isMovementDone)
                 {
                     // Check if we have no targets, but are close to one
                     if (_target != null && !HaveAnyNonFriendlyTarget &&
