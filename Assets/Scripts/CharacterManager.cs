@@ -258,6 +258,12 @@ namespace YuriGameJam2023
         /// </summary>
         public void RemoveAction()
         {
+            if (_totalActionCount == 0)
+            {
+                EndTurn();
+                return;
+            }
+
             for (int i = 0; i < _skillBar.childCount; i++) Destroy(_skillBar.GetChild(i).gameObject);
             _spellDesc.Hide();
 
