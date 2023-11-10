@@ -108,7 +108,7 @@ namespace YuriGameJam2023
 
         private void Update()
         {
-            if (_isPlayerTurn && !IsUIActive)
+            if (_isPlayerTurn && !IsUIActive && !VNManager.Instance.IsPlayingStory)
             {
                 var move3d = _camMov * Time.deltaTime * 10f;
                 _cameraDefaultLookAtWorld.Translate(move3d);
