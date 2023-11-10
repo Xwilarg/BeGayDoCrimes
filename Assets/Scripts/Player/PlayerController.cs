@@ -46,10 +46,8 @@ namespace YuriGameJam2023.Player
 
         private void FixedUpdate()
         {
-            if (CanMove) // Are we the character currently being moved by the player
+            if (!_rb.isKinematic)
             {
-                _rb.velocity = new Vector3(Mov.x * Time.fixedDeltaTime * _speed, _rb.velocity.y, Mov.y * Time.fixedDeltaTime * _speed);
-
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, Mathf.Infinity, 1 << 7))
                 {
                     var direction = hit.point - transform.position;
@@ -57,6 +55,10 @@ namespace YuriGameJam2023.Player
 
                     _forward = direction.normalized;
                 }
+            }
+            if (CanMove) // Are we the character currently being moved by the player
+            {
+                _rb.velocity = new Vector3(Mov.x * Time.fixedDeltaTime * _speed, _rb.velocity.y, Mov.y * Time.fixedDeltaTime * _speed);
 
                 FixedUpdateParent();
             }
