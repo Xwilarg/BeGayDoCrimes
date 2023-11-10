@@ -167,7 +167,7 @@ namespace YuriGameJam2023
                 {
                     // Check if we have no targets, but are close to one
                     if (_target != null && !HaveAnyNonFriendlyTarget &&
-                        Vector3.Distance(_target.transform.position, transform.position) < Info.Skills[0].Range)
+                        Vector3.Distance(_target.transform.position, transform.position) <= Info.Skills[0].Range)
                     {
                         var direction = _target.transform.position - transform.position;
                         direction.y = 0f;
@@ -175,7 +175,7 @@ namespace YuriGameJam2023
                         var rotation = Quaternion.LookRotation(direction.normalized);
 
                         // Rotate towards the target this frame and return
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * (_navigation.angularSpeed / 2));
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * (_navigation.angularSpeed / 2f));
 
                         return;
                     }

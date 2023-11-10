@@ -29,6 +29,7 @@ namespace YuriGameJam2023
                 {
                     _currEnemy.EndTurn();
                     _turnTimer = -1f;
+                    Debug.LogError("Enemy timeout, this mean the enemy didn't manage to play after 10 seconds!");
                 }
             }
         }

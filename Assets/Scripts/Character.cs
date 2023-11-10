@@ -158,7 +158,7 @@ namespace YuriGameJam2023
             switch (currSkill.Type)
             {
                 case SO.RangeType.CloseContact:
-                    if (Physics.Raycast(new(transform.position + Forward * .5f, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
+                    if (Physics.Raycast(new(transform.position + Vector3.down * .5f + Forward * .5f, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(hit.collider.gameObject);
                     }
