@@ -164,6 +164,10 @@ namespace YuriGameJam2023
             }
             else
             {
+                foreach (var obj in GameObject.FindGameObjectsWithTag("PostVictoryEffect"))
+                {
+                    obj.SetActive(true);
+                }
                 VNManager.Instance.ShowStory(GameManager.Instance.CurrentVictoryScene, () =>
                 {
                     UnlockSupport();

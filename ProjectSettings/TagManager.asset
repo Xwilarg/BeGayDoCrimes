@@ -9,6 +9,7 @@ TagManager:
   - PlayerSpawn
   - Terrain
   - OOB
+  - PostVictoryEffect
   layers:
   - Default
   - TransparentFX
