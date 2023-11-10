@@ -48,7 +48,7 @@ namespace YuriGameJam2023.Player
         {
             if (CanMove) // Are we the character currently being moved by the player
             {
-                _rb.velocity = new Vector3(Mov.x, _rb.velocity.y, Mov.y) * Time.fixedDeltaTime * _speed;
+                _rb.velocity = new Vector3(Mov.x * Time.fixedDeltaTime * _speed, _rb.velocity.y, Mov.y * Time.fixedDeltaTime * _speed);
 
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, Mathf.Infinity, 1 << 7))
                 {
