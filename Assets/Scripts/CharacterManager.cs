@@ -167,14 +167,14 @@ namespace YuriGameJam2023
                 VNManager.Instance.ShowStory(GameManager.Instance.CurrentVictoryScene, () =>
                 {
                     UnlockSupport();
-                    StartCoroutine(WaitAndLoadCampfire());
+                    SceneManager.LoadScene("Campfire");
                 });
             }
         }
 
         private IEnumerator WaitAndLoadCampfire()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("Campfire");
         }
 
