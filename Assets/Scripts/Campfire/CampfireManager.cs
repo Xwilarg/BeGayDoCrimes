@@ -132,7 +132,14 @@ namespace YuriGameJam2023.Campfire
         {
             PersistencyManager.Instance.SaveData.CurrentLevel++;
             PersistencyManager.Instance.Save();
-            SceneManager.LoadScene("Main");
+            if (_levels.Length == PersistencyManager.Instance.SaveData.CurrentLevel)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+            else
+            {
+                SceneManager.LoadScene("Main");
+            }
         }
 
         public void OnClick(InputAction.CallbackContext value)
