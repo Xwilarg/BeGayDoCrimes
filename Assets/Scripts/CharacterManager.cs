@@ -90,6 +90,8 @@ namespace YuriGameJam2023
 
         private readonly Dictionary<Tuple<Character, Character>, int> _love = new();
 
+        private int _speConditionCountdown = -1;
+
         private void Awake()
         {
             Instance = this;
@@ -152,6 +154,21 @@ namespace YuriGameJam2023
             else if (!_characters.Any(x => x is EnemyController))
             {
                 Victory();
+            }
+        }
+
+        public void TriggerSpecialZone()
+        {
+            if (GameManager.Instance.CurrentVictoryCondition == SO.VictoryCondition.AllReachPoint)
+            {
+                if (_speConditionCountdown == -1)
+                {
+                    _speConditionCountdown = 5;
+                }
+            }
+            else
+            {
+                throw new NotImplementedException();
             }
         }
 

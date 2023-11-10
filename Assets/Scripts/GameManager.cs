@@ -33,8 +33,14 @@ namespace YuriGameJam2023
             SceneManager.LoadScene("VN", LoadSceneMode.Additive);
             SceneManager.LoadScene(currLevel.SceneName, LoadSceneMode.Additive);
             SceneManager.LoadScene("DebugManager", LoadSceneMode.Additive);
+        }
 
-            _explanationText.text =
+        private void Start()
+        {
+            Action onDone = () =>
+            {
+                var currLevel = _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1];
+                _explanationText.text =
                 "Victory Condition:\n" +
                 currLevel.VictoryCondition switch
                 {
@@ -50,22 +56,28 @@ namespace YuriGameJam2023
                     DefeatCondition.EnemyReachPoint => "Enemy reach the exit",
                     _ => throw new NotImplementedException()
                 });
-            StartCoroutine(WaitAndRemoveText());
-        }
-
-        private void Start()
-        {
+                StartCoroutine(WaitAndRemoveText());
+            };
             if (!DebugManager.Instance.BypassIntro)
             {
                 if (PersistencyManager.Instance.SaveData.CurrentLevel == 1)
                 {
-                    VNManager.Instance.ShowIntro();
+                    VNManager.Instance.ShowIntro(onDone);
                 }
+                else
+                {
+                    onDone();
+                }
+            }
+            else
+            {
+                onDone();
             }
         }
 
         public TextAsset CurrentVictoryScene => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].PostVictoryVN;
         public Vector2? CamPosOnVictory => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].MoveCamOnVictory ? _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].CamPosOnVictory : null;
+        public VictoryCondition CurrentVictoryCondition => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].VictoryCondition;
 
         private IEnumerator WaitAndRemoveText()
         {

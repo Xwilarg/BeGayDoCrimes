@@ -17,11 +17,18 @@ namespace YuriGameJam2023
                     CharacterManager.Instance.GameOver("An enemy reached the exit");
                 }
             }
-            else
+            else if (_zoneBehavior == GameOverZoneBehavior.Victory)
             {
                 if (other.CompareTag("Player"))
                 {
                     CharacterManager.Instance.Victory();
+                }
+            }
+            else
+            {
+                if (other.CompareTag("Player"))
+                {
+                    CharacterManager.Instance.TriggerSpecialZone();
                 }
             }
         }
@@ -29,7 +36,8 @@ namespace YuriGameJam2023
         private enum GameOverZoneBehavior
         {
             Victory,
-            Defeat
+            Defeat,
+            Special
         }
     }
 }
