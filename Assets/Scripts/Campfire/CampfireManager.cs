@@ -133,7 +133,7 @@ namespace YuriGameJam2023.Campfire
         {
             PersistencyManager.Instance.SaveData.CurrentLevel++;
             PersistencyManager.Instance.Save();
-            if (_levels.Length == PersistencyManager.Instance.SaveData.CurrentLevel + 1)
+            if (_levels.Length + 1 == PersistencyManager.Instance.SaveData.CurrentLevel)
             {
                 SceneManager.LoadScene("Menu");
             }
