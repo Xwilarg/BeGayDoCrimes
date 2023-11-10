@@ -14,7 +14,7 @@ Grrr, aight let's go... #speaker willow
 
 The girls try to put out the fire #format italic #speaker none
 
-We can't let it burn! I can't lose a home again... #speaker yuki
+We can't let it burn! I can't lose a home again... #format none  #speaker yuki
 
 Yuki let it go, we can't save it completely, at least we still have some of our stuf.  #speaker makra
 
