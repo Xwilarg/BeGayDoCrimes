@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   Name: Fire
-  Sprite: {fileID: 21300000, guid: 79f9be21e27023e43ab22e57e5beef02, type: 3}
+  Sprite: {fileID: 21300000, guid: d14436d0303ea874a826c06162266e83, type: 3}
   Vfx: {fileID: 3780965616846026666, guid: 93928b49298594d438d7f4875106d84b, type: 3}
   AdditionalDamage: {fileID: 11400000, guid: dd88270205b736740b357d2b106cfb4f, type: 2}
   Cancels:
