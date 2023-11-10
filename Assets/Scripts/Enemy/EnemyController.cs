@@ -126,8 +126,12 @@ namespace YuriGameJam2023
         /// <param name="hidden">Whether the enemy should be hidden</param>
         public void Hide(bool hidden)
         {
-            // TODO: fixme
-            //GetComponent<MeshRenderer>().enabled = !hidden;
+            foreach (var child in gameObject.GetComponentsInChildren<Renderer>())
+            {
+                child.enabled = !hidden;
+            }
+
+            gameObject.GetComponentInChildren<Canvas>().enabled = !hidden;
         }
 
         /// <summary>
