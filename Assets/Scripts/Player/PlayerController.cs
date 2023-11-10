@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace YuriGameJam2023.Player
 {
@@ -9,6 +10,9 @@ namespace YuriGameJam2023.Player
 
         [SerializeField]
         private int _loveIncrease;
+
+        [SerializeField]
+        private GameObject _heartSprite;
 
         private Rigidbody _rb;
         private Vector2 _mov;
@@ -62,6 +66,13 @@ namespace YuriGameJam2023.Player
             }
         }
 
+        private IEnumerator DisplayHeart()
+        {
+            _heartSprite.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            _heartSprite.SetActive(false);
+        }
+
         public override void Attack()
         {
             base.Attack();
@@ -73,6 +84,8 @@ namespace YuriGameJam2023.Player
             {
                 if (collider.CompareTag("Player") && collider.GetComponent<Character>() != this)
                 {
+                    StartCoroutine(DisplayHeart());
+                    StartCoroutine(collider.GetComponent<PlayerController>().DisplayHeart());
                     CharacterManager.Instance.IncreaseLove(this, collider.GetComponent<Character>(), _loveIncrease);
                 }
             }

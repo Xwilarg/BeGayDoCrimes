@@ -128,7 +128,7 @@ namespace YuriGameJam2023
         public void Hide(bool hidden)
         {
             // TODO: fixme
-            GetComponent<MeshRenderer>().enabled = !hidden;
+            //GetComponent<MeshRenderer>().enabled = !hidden;
         }
 
         /// <summary>
