@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -37,13 +38,17 @@ namespace YuriGameJam2023
                 "Victory Condition:\n" +
                 currLevel.VictoryCondition switch
                 {
-                    VictoryCondition.KillAll => "Kill all enemies"
+                    VictoryCondition.KillAll => "Kill all enemies",
+                    VictoryCondition.AllReachPoint => "Player reach the exit",
+                    VictoryCondition.PlantBomb => "Player reach the exit and wait",
+                    _ => throw new NotImplementedException()
                 } + "\n\n" +
                 "Defeat Condition:\nLoose all characters\n" +
                 (currLevel.AdditionalDefeatCondition == DefeatCondition.None ? string.Empty :
                 currLevel.AdditionalDefeatCondition switch
                 {
-                    DefeatCondition.EnemyReachPoint => "Enemy reach the exit"
+                    DefeatCondition.EnemyReachPoint => "Enemy reach the exit",
+                    _ => throw new NotImplementedException()
                 });
             StartCoroutine(WaitAndRemoveText());
         }

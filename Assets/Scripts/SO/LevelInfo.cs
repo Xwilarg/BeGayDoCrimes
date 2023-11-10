@@ -25,6 +25,7 @@ namespace YuriGameJam2023.SO
     public enum VictoryCondition
     {
         KillAll,
-        AllReachPoint
+        AllReachPoint,
+        PlantBomb
     }
 }

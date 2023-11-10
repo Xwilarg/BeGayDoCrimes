@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: Level_04
   AdditionalDefeatCondition: 0
-  VictoryCondition: 1
+  VictoryCondition: 2
+  PostVictoryVN: {fileID: 0}
   FirecampSceneName: Level_04_Camp
   FirecampVN: {fileID: 0}
