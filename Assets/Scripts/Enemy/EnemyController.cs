@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using YuriGameJam2023.Player;
@@ -238,6 +237,7 @@ namespace YuriGameJam2023
 
         public override void EndTurn()
         {
+            EnemyManager.Instance.StopTimeoutTimer();
             StopMovements();
             base.EndTurn();
         }
