@@ -35,6 +35,7 @@ namespace YuriGameJam2023.Campfire
         {
             SceneManager.LoadScene("VN", LoadSceneMode.Additive);
             SceneManager.LoadScene("DebugManager", LoadSceneMode.Additive);
+            SceneManager.LoadScene(_levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].FirecampSceneName, LoadSceneMode.Additive);
         }
 
         private void Start()
