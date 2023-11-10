@@ -164,6 +164,11 @@ namespace YuriGameJam2023
             }
             else
             {
+                var pos = GameManager.Instance.CamPosOnVictory.Value;
+                if (pos != null)
+                {
+                    _worldCamPosRef = new(pos.x, _worldCamPosRef.y, pos.y);
+                }
                 foreach (var obj in GameObject.FindGameObjectsWithTag("PostVictoryEffect"))
                 {
                     obj.transform.GetChild(0).gameObject.SetActive(true);

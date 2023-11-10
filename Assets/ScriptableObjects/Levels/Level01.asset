@@ -16,5 +16,7 @@ MonoBehaviour:
   AdditionalDefeatCondition: 1
   VictoryCondition: 0
   PostVictoryVN: {fileID: 4900000, guid: e876dbdb7f9df6045957c723b28ea2d1, type: 3}
+  MoveCamOnVictory: 1
+  CamPosOnVictory: {x: 0, y: 0}
   FirecampSceneName: Level_01_Camp
   FirecampVN: {fileID: 4900000, guid: f0a3527eb96f59d4bbf24df6dd1d1609, type: 3}

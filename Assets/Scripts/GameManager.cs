@@ -65,6 +65,7 @@ namespace YuriGameJam2023
         }
 
         public TextAsset CurrentVictoryScene => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].PostVictoryVN;
+        public Vector2? CamPosOnVictory => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].MoveCamOnVictory ? _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].CamPosOnVictory : null;
 
         private IEnumerator WaitAndRemoveText()
         {
