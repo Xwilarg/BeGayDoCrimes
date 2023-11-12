@@ -337,6 +337,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1a401c7fda0de6744982cb0e63583ceb, type: 2}
   - {fileID: 11400000, guid: 28c5a3045f107244cb9aed50141ccbed, type: 2}
   - {fileID: 11400000, guid: 7a66b849c8b00f8439ce669d1ae9b7fd, type: 2}
+  - {fileID: 11400000, guid: 14d9878274e684c44a11c0bbc4e04b7c, type: 2}
   _container: {fileID: 776203633}
   _namePanel: {fileID: 52708433}
   _bustContainer: {fileID: 1084012318}
