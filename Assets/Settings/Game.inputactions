@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "VNSkip",
+                    "type": "Button",
+                    "id": "be390d18-862a-4260-814b-335658135a75",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -285,6 +294,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Skill5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45ad8bbe-3dfb-4bb0-bb17-cfea1d9195f2",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "VNSkip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

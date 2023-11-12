@@ -3656,6 +3656,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4ed9c072-e717-43b1-adf0-659b32d3c57e
     m_ActionName: 'Petanque/Action[/Keyboard/space,/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1559526923}
+        m_TargetAssemblyTypeName: YuriGameJam2023.GameManager, Assembly-CSharp
+        m_MethodName: OnVNSkip
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: be390d18-862a-4260-814b-335658135a75
+    m_ActionName: 'Player/VNSkip[/Keyboard/leftShift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

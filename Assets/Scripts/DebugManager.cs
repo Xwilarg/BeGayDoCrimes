@@ -24,28 +24,12 @@ namespace YuriGameJam2023
         }
 
         [SerializeField]
-        [Tooltip("If true, the intro won't be played")]
-        private bool _bypassIntro;
-
-        [SerializeField]
         [Tooltip("Delete existing save data when the game start")]
         private bool _deleteSaveData;
 
         [SerializeField]
         [Tooltip("Unlock all support dialogues")]
         private bool _unlockAllSupports;
-
-        public bool BypassIntro
-        {
-            get
-            {
-#if UNITY_EDITOR
-                return _bypassIntro;
-#else
-                return false;
-#endif
-            }
-        }
 
         public bool AutounlockSupports
         {

@@ -58,16 +58,9 @@ namespace YuriGameJam2023
                     });
                 StartCoroutine(WaitAndRemoveText());
             };
-            if (!DebugManager.Instance.BypassIntro)
+            if (currLevel.PreBattleVN != null)
             {
-                if (currLevel.PreBattleVN != null)
-                {
-                    VNManager.Instance.ShowStory(currLevel.PreBattleVN, onDone);
-                }
-                else
-                {
-                    onDone();
-                }
+                VNManager.Instance.ShowStory(currLevel.PreBattleVN, onDone);
             }
             else
             {
@@ -135,5 +128,17 @@ namespace YuriGameJam2023
         public void OnSkill3(InputAction.CallbackContext value) => OnSkillSelected(value, 3);
         public void OnSkill4(InputAction.CallbackContext value) => OnSkillSelected(value, 4);
         public void OnSkill5(InputAction.CallbackContext value) => OnSkillSelected(value, 5);
+
+        public void OnVNSkip(InputAction.CallbackContext value)
+        {
+            if (value.phase == InputActionPhase.Started)
+            {
+                VNManager.Instance.ToggleSkip(true);
+            }
+            else if (value.phase == InputActionPhase.Canceled)
+            {
+                VNManager.Instance.ToggleSkip(false);
+            }
+        }
     }
 }
