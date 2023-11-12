@@ -3701,12 +3701,12 @@ MonoBehaviour:
   _endTurnPopup: {fileID: 1261194228}
   _skillBar: {fileID: 1825946214}
   _skillPrefab: {fileID: 4514796690607702563, guid: 05378274883bfbd408c7b65d42e3df8b, type: 3}
+  _spellDesc: {fileID: 1303522615}
   _vCamCloseup: {fileID: 1049575378}
   _cameraDefaultLookAtWorld: {fileID: 776051546}
   _worldView: {fileID: 329788437}
   _closeupView: {fileID: 1578787018}
   _aoeHint: {fileID: 162966163}
-  _spellDesc: {fileID: 1303522615}
   _gameOver: {fileID: 827882321}
   _gameOverReasonText: {fileID: 1299982747}
 --- !u!114 &1559526922
@@ -3737,6 +3737,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24c14a8462ca32e4ba1ede6c756e400b, type: 2}
   - {fileID: 11400000, guid: e0a8ee9987123ee48a730cae35dcb411, type: 2}
   - {fileID: 11400000, guid: b1fcb09b9db3b2447bc8396215a2c4b3, type: 2}
+  _effectsParticle: {fileID: 5952994375227190777, guid: ff23e798a84e60445b5c800bc0753d5f, type: 3}
   _levels:
   - {fileID: 11400000, guid: 34093ca8c17b232478d333b1a1bf7c4c, type: 2}
   - {fileID: 11400000, guid: b9ce1b29bbc001f4a9269d3513162086, type: 2}

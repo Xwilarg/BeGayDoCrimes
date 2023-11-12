@@ -53,6 +53,10 @@ namespace YuriGameJam2023
         [SerializeField]
         private SpellDesc _spellDesc;
 
+        [SerializeField]
+        private EffectParticle _effectsParticle;
+        public EffectParticle EffectsParticle { get => _effectsParticle; }
+
         [Header("Camera & Effects")]
         [SerializeField]
         [Tooltip("Cinemachine virtual camera")]
