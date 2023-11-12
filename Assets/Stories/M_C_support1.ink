@@ -19,7 +19,7 @@ Why would you want to impress your mother!? You should strive to be the greatest
 
  I... well my mother is really powerful and I wish to be at her side in the future.#speaker makra
 
-sigh I guess we won't agree on that topic, family is a hard topic. #speaker claire
+(Sigh) I guess we won't agree on that topic, family is hard to talk about. #speaker claire
 
  Don't you have a family too? You were a Noble weren't you?#speaker makra
 
