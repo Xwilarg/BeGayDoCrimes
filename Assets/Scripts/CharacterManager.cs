@@ -1,11 +1,11 @@
 using Cinemachine;
-using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YuriGameJam2023.Effect;
@@ -105,7 +105,7 @@ namespace YuriGameJam2023
         private void Start()
         {
             var spawns = GameObject.FindGameObjectsWithTag("PlayerSpawn");
-            Assert.GreaterOrEqual(spawns.Length, _players.Length, "Not enough spawn points for the whole team");
+            Assert.IsTrue(spawns.Length >= _players.Length, "Not enough spawn points for the whole team");
             for (int i = 0; i < _players.Length; i++)
             {
                 var go = Instantiate(_playerPrefab, spawns[i].transform.position + Vector3.up, Quaternion.identity);

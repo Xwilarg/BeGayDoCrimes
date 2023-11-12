@@ -1,10 +1,10 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 using YuriGameJam2023.SO;
 
@@ -276,7 +276,7 @@ namespace YuriGameJam2023
             }
             else if (skill != null && skill.Effects.Any())
             {
-                Assert.NotNull(attacker, $"No attacker was provided for the skill {skill.name}");
+                Assert.IsNotNull(attacker, $"No attacker was provided for the skill {skill.name}");
                 foreach (var effect in skill.Effects)
                 {
                     var value = (TeamId == attacker.TeamId ? 0 : 1) + effect.Duration;
