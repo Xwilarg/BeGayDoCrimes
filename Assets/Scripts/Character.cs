@@ -264,7 +264,7 @@ namespace YuriGameJam2023
             List<Tuple<bool, string>> effects = new List<Tuple<bool, string>>();
 
             if (skill.Damage != 0) {
-                effects.Add(Tuple.Create(skill.Damage < 0, Math.Abs(skill.Damage) + "HP"));
+                effects.Add(Tuple.Create(skill.Damage > 0, -skill.Damage + "HP"));
             }
             Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker?.ToString() ?? skill.name}");
             Health = Clamp(Health - skill.Damage, 0, Info.Health);
@@ -286,7 +286,7 @@ namespace YuriGameJam2023
                     }
                     else
                     {
-                        effects.Add(Tuple.Create(false, effect.name));
+                        effects.Add(Tuple.Create(true, "+" + effect.name));
                         _effects.Add(effect, value);
                     }
 
@@ -299,7 +299,7 @@ namespace YuriGameJam2023
                 foreach (var eff in _effects.Keys.ToArray()) {
                     foreach (var cancel in eff.Cancels) {
                         if (_effects.Remove(cancel)) {
-                            effects.Add(Tuple.Create(true, cancel.name));
+                            effects.Add(Tuple.Create(false, "-" + cancel.name));
                         }
                     }
                 }
