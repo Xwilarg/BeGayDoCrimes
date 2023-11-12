@@ -34,6 +34,11 @@ namespace YuriGameJam2023.Campfire
             _sentenceText.gameObject.SetActive(false);
         }
 
+        public void HideSentence()
+        {
+            _sentenceText.gameObject.SetActive(false);
+        }
+
         public SO.CharacterInfo Info;
 
         public void ToggleLight(bool value)

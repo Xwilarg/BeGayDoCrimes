@@ -75,7 +75,10 @@ namespace YuriGameJam2023.Campfire
             yield return new WaitForSeconds(Random.Range(2f, 3f));
             while (true)
             {
-                StartCoroutine(_characters[Random.Range(0, _characters.Length)].ShowRandomSentence());
+                if (!VNManager.Instance.IsPlayingStory)
+                {
+                    StartCoroutine(_characters[Random.Range(0, _characters.Length)].ShowRandomSentence());
+                }
                 yield return new WaitForSeconds(Random.Range(5f, 10f));
             }
         }
@@ -189,6 +192,7 @@ namespace YuriGameJam2023.Campfire
                                     {
                                         c.gameObject.SetActive(false);
                                     }
+                                    c.HideSentence();
                                 }
 
                                 _nextDayButton.SetActive(false);
