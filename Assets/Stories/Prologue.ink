@@ -1,6 +1,6 @@
 -> intro
 == intro ==
- This is a strange world you are looking into on this day. #speaker narrator
+ This is a strange world you are looking into on this day. #speaker none
 
 This world is known as Acarno, a wondrous world where monsters and humans coexisted a long time ago, but now monsters and humans mostly became one. Humanoids with animal and monstrous elements roam this land.
 
