@@ -84,7 +84,9 @@ namespace YuriGameJam2023.Player
 
             foreach (var collider in colliders)
             {
-                if (collider.CompareTag("Player") && collider.GetComponent<Character>() != this)
+                var character = collider.GetComponent<Character>();
+
+                if (collider.CompareTag("Player") && character != this && !_targets.Contains(character))
                 {
                     StartCoroutine(DisplayHeart());
                     StartCoroutine(collider.GetComponent<PlayerController>().DisplayHeart());
