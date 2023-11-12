@@ -56,7 +56,7 @@ namespace YuriGameJam2023
         private float _maxDistance = 10f;
         protected float _distance;
 
-        private readonly List<Character> _targets = new();
+        protected readonly List<Character> _targets = new();
 
         protected bool HaveAnyTarget => _targets.Any();
         protected bool HaveAnyNonFriendlyTarget => _targets.Any(x => !x.CompareTag(tag));
