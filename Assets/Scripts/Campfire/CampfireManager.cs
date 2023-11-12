@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -59,6 +60,17 @@ namespace YuriGameJam2023.Campfire
             if (_levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].FirecampVN != null)
             {
                 VNManager.Instance.ShowStory(_levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].FirecampVN, null);
+            }
+            StartCoroutine(ShowRandomSentence());
+        }
+
+        private IEnumerator ShowRandomSentence()
+        {
+            yield return new WaitForSeconds(Random.Range(2f, 3f));
+            while (true)
+            {
+                StartCoroutine(_characters[Random.Range(0, _characters.Length)].ShowRandomSentence());
+                yield return new WaitForSeconds(Random.Range(5f, 10f));
             }
         }
 

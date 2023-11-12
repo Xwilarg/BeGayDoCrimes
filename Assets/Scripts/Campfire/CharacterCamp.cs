@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using TMPro;
+using UnityEngine;
 
 namespace YuriGameJam2023.Campfire
 {
@@ -9,6 +12,27 @@ namespace YuriGameJam2023.Campfire
 
         [SerializeField]
         private GameObject _interaction;
+
+        [SerializeField]
+        private TextAsset _randomLines;
+
+        [SerializeField]
+        private TMP_Text _sentenceText;
+
+        private string[] _sentences;
+
+        private void Awake()
+        {
+            _sentences = _sentenceText.text.Replace("\r", string.Empty).Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public IEnumerator ShowRandomSentence()
+        {
+            _sentenceText.gameObject.SetActive(true);
+            _sentenceText.text = _sentences[UnityEngine.Random.Range(0, _sentences.Length)];
+            yield return new WaitForSeconds(5f);
+            _sentenceText.gameObject.SetActive(false);
+        }
 
         public SO.CharacterInfo Info;
 

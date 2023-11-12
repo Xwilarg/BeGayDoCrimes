@@ -371,6 +371,14 @@ PrefabInstance:
       propertyPath: Info
       value: 
       objectReference: {fileID: 11400000, guid: a54f82292f9c0c24a9880b260027b078, type: 2}
+    - target: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: _randomLines
+      value: 
+      objectReference: {fileID: 4900000, guid: eb6be12f5a44df344bb029cde9efe548, type: 3}
+    - target: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: _sentenceText
+      value: 
+      objectReference: {fileID: 277434721}
     - target: {fileID: 6404508659272452101, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_Name
       value: Yuki
@@ -380,6 +388,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+--- !u!114 &277434721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1761515157722461377, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+  m_PrefabInstance: {fileID: 277434720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &325578579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,6 +451,14 @@ PrefabInstance:
       propertyPath: Info
       value: 
       objectReference: {fileID: 11400000, guid: 6928ad7a9d05ad34ba52e696c9a9924e, type: 2}
+    - target: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: _randomLines
+      value: 
+      objectReference: {fileID: 4900000, guid: d34086824d006b848ab400a57ba43c88, type: 3}
+    - target: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: _sentenceText
+      value: 
+      objectReference: {fileID: 325578580}
     - target: {fileID: 6404508659272452101, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_Name
       value: Claire
@@ -441,6 +468,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+--- !u!114 &325578580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1761515157722461377, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+  m_PrefabInstance: {fileID: 325578579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &424006107 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
@@ -1088,6 +1126,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b044f752b9e03c94e862a609e87d1c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1538425863 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1761515157722461377, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+  m_PrefabInstance: {fileID: 6078761981991120285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1581452889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1629,14 @@ PrefabInstance:
       propertyPath: Info
       value: 
       objectReference: {fileID: 11400000, guid: 35e361086eb951344a778db6f677c74a, type: 2}
+    - target: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: _randomLines
+      value: 
+      objectReference: {fileID: 4900000, guid: e6f19a0f63cb8104a922eed41c329bcb, type: 3}
+    - target: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: _sentenceText
+      value: 
+      objectReference: {fileID: 1944699894}
     - target: {fileID: 6404508659272452101, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_Name
       value: Willow
@@ -1589,6 +1646,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+--- !u!114 &1944699894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1761515157722461377, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+  m_PrefabInstance: {fileID: 1944699893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6078761981991120285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1645,6 +1713,14 @@ PrefabInstance:
       propertyPath: Info
       value: 
       objectReference: {fileID: 11400000, guid: 63f7437a35640b243b67405b6a2b8262, type: 2}
+    - target: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: _randomLines
+      value: 
+      objectReference: {fileID: 4900000, guid: 3fee0ddc6b2cac84cba12ada264b846c, type: 3}
+    - target: {fileID: 5810823538539701496, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      propertyPath: _sentenceText
+      value: 
+      objectReference: {fileID: 1538425863}
     - target: {fileID: 6404508659272452101, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
       propertyPath: m_Name
       value: Makra
@@ -1652,7 +1728,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 562804020682188708, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
