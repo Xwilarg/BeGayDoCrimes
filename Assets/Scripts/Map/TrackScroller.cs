@@ -1,31 +1,52 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Linq;
+using UnityEngine;
 
 namespace YuriGameJam2023.Map
 {
     public class TrackScroller : MonoBehaviour
     {
         [SerializeField]
-        private float _size;
+        private Scrollable[] _scrollables;
 
-        [SerializeField]
-        private float _min;
-
-        [SerializeField]
-        private GameObject[] _tracks;
-
-        [SerializeField]
-        private float _speed;
+        private void Awake()
+        {
+            foreach (var s in _scrollables)
+            {
+                s.Min = s.Elements.Min(x => x.transform.position.z);
+                s.Max = (s.Elements.Max(x => x.transform.position.z) - s.Min) + s.Size;
+            }
+        }
 
         private void Update()
         {
-            foreach (var track in _tracks)
+            foreach (var s in _scrollables)
             {
-                track.transform.Translate(-Time.deltaTime * _speed, 0f, 0f);
-                if (track.transform.position.z < _min)
+                foreach (var e in s.Elements)
                 {
-                    track.transform.Translate(-_min * 2f, 0f, 0f);
+                    e.transform.Translate(-Time.deltaTime * s.Speed, 0f, 0f);
+                    if (e.transform.position.z < s.Min)
+                    {
+                        e.transform.Translate(s.Max, 0f, 0f);
+                    }
                 }
             }
         }
+    }
+
+    [Serializable]
+    public class Scrollable
+    {
+        [SerializeField]
+        public float Size;
+
+        [SerializeField]
+        public GameObject[] Elements;
+
+        [SerializeField]
+        public float Speed;
+
+        public float Min { set; get; }
+        public float Max { set; get; }
     }
 }
