@@ -160,7 +160,7 @@ namespace YuriGameJam2023
 
         public void TriggerSpecialZone()
         {
-            if (GameManager.Instance.CurrentVictoryCondition == SO.VictoryCondition.AllReachPoint)
+            if (GameManager.Instance.CurrentVictoryCondition == SO.VictoryCondition.PlantBomb)
             {
                 if (_speConditionCountdown == -1)
                 {
