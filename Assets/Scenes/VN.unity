@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 305}
-  m_SizeDelta: {x: 200, y: 100}
+  m_AnchoredPosition: {x: 0, y: 205}
+  m_SizeDelta: {x: 200, y: 75}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &52708435
 MonoBehaviour:
@@ -338,7 +338,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 28c5a3045f107244cb9aed50141ccbed, type: 2}
   - {fileID: 11400000, guid: 7a66b849c8b00f8439ce669d1ae9b7fd, type: 2}
   _container: {fileID: 776203633}
-  _intro: {fileID: 4900000, guid: 514344f77f70d784988e8fd3a3ab332f, type: 3}
   _namePanel: {fileID: 52708433}
   _bustContainer: {fileID: 1084012318}
   _bustImagePrefab: {fileID: 8316895936948502757, guid: d1eaf125f8bcd4c49935a45cfd616946, type: 3}
@@ -456,7 +455,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1143378044
 MonoBehaviour:
@@ -558,8 +557,6 @@ MonoBehaviour:
 
     New Text
 
-    New Text
-
     New Text'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -599,7 +596,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 25
+  m_lineSpacing: 50
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
