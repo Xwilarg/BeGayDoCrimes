@@ -353,9 +353,9 @@ GameObject:
   - component: {fileID: 66917764}
   - component: {fileID: 66917763}
   - component: {fileID: 66917762}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: DieZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1095,9 +1095,9 @@ GameObject:
   - component: {fileID: 293426429}
   - component: {fileID: 293426428}
   - component: {fileID: 293426427}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: DieZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3581,9 +3581,9 @@ GameObject:
   - component: {fileID: 1207905522}
   - component: {fileID: 1207905521}
   - component: {fileID: 1207905520}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: DieZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5050,9 +5050,9 @@ GameObject:
   - component: {fileID: 1857881798}
   - component: {fileID: 1857881797}
   - component: {fileID: 1857881796}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: DieZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5158,9 +5158,9 @@ GameObject:
   - component: {fileID: 1871266617}
   - component: {fileID: 1871266616}
   - component: {fileID: 1871266615}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: DieZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

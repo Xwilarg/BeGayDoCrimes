@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -248,15 +247,12 @@ namespace YuriGameJam2023
         private const float _effectSpacing = 5.0f;
         private void SpawnEffect(List<Tuple<bool, string>> effects)
         {
-            Debug.LogWarning("test start");
             for (int i = 0; i < effects.Count; i++) {
                 EffectParticle eff = Instantiate(CharacterManager.Instance.EffectsParticle, this._effectSpawner);
                 eff.transform.localPosition += Vector3.up * _effectSpacing * ((effects.Count - 1) - i) ;
                 eff.Added = effects[i].Item1;
                 eff.Name = effects[i].Item2;
-                Debug.LogWarning(effects[i].Item2 + (effects[i].Item1 ? "true" : "false"));
             }
-            Debug.LogWarning("test end");
         }
 
         /// <returns>true is the character is dead</returns>
