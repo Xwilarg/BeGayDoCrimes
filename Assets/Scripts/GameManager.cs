@@ -71,6 +71,7 @@ namespace YuriGameJam2023
 
         public void ShowNewMiddleText(string text)
         {
+            _explanationText.gameObject.SetActive(true);
             _explanationText.text = text;
             StartCoroutine(WaitAndRemoveText());
         }
