@@ -196,7 +196,7 @@ MonoBehaviour:
   _effectContainer: {fileID: 8615218871956530769}
   _effectPrefab: {fileID: 5178977420533353200, guid: 8d55083910e0e1345a7c3fe73c2d11ad, type: 3}
   _effectSpawner: {fileID: 5133128719038198769}
-  _loveRange: 3
+  _loveRange: 2
   _loveIncrease: 10
   _heartSprite: {fileID: 4891338841773222888}
 --- !u!1001 &7893903623503917232
