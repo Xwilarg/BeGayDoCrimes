@@ -42,7 +42,7 @@ What's that?  #speaker willow
 
 The guards are looking for us in the market, we will need to be careful while getting the rest of our material for the heist. #speaker Makra
 
- Sergeant! I found them!  #speaker guard
+ Sergeant! I found them!  #speaker none
 
 Well f*ck that!  #speaker willow
 

@@ -1,6 +1,6 @@
 -> intro
 == intro ==
- This is a strange world you are looking into on this day. #speaker narrator
+ This is a strange world you are looking into on this day. #speaker none
 
 This world is known as Acarno, a wondrous world where monsters and humans coexisted a long time ago, but now monsters and humans mostly became one. Humanoids with animal and monstrous elements roam this land.
 
@@ -62,7 +62,7 @@ The girls grab their weapons and go outside #format italic #speaker none
 
 Bandits... again, sigh Why don't they leave us alone. #format none #speaker makra
 
-You filthy brigands! How dare you attack us we? We already told you this house won't be yours! #speaker claire
+You filthy brigands! How dare you attack us? We already told you this house won't be yours! #speaker claire
 
 It's the only thing we own! Why don't you leave us alone! #speaker yuki
 
