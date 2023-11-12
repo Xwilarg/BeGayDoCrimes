@@ -62,7 +62,7 @@ The girls grab their weapons and go outside #format italic #speaker none
 
 Bandits... again, sigh Why don't they leave us alone. #format none #speaker makra
 
-You filthy brigands! How dare you attack us we? We already told you this house won't be yours! #speaker claire
+You filthy brigands! How dare you attack us? We already told you this house won't be yours! #speaker claire
 
 It's the only thing we own! Why don't you leave us alone! #speaker yuki
 
