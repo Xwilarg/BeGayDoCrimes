@@ -248,7 +248,6 @@ namespace YuriGameJam2023
 
         public override void EndTurn()
         {
-            EnemyManager.Instance.StopTimeoutTimer();
             StopMovements();
             base.EndTurn();
         }
