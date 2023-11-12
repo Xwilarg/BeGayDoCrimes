@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using YuriGameJam2023.SO;
@@ -33,6 +34,9 @@ namespace YuriGameJam2023
 
         [SerializeField]
         private GameObject _effectPrefab;
+
+        [SerializeField]
+        private Transform _effectSpawner;
 
         public Character TargetOverride { protected set; get; } // Not handled for PlayerController
 
@@ -100,6 +104,7 @@ namespace YuriGameJam2023
                 {
                     _effects.Remove(key);
                 }
+                //TODO display removed effects
             }
             if (!_effects.Any(x => x.Key.DoesAggro))
             {
@@ -107,7 +112,7 @@ namespace YuriGameJam2023
             }
 
             // Update UI
-            UpdateSkills();
+            RerenderEffect();
         }
 
         protected abstract int TeamId { get; }
@@ -239,13 +244,33 @@ namespace YuriGameJam2023
             _targets.Add(c);
         }
 
+        private const float _effectSpacing = 5.0f;
+        private void SpawnEffect(List<Tuple<bool, string>> effects)
+        {
+            Debug.LogWarning("test start");
+            for (int i = 0; i < effects.Count; i++) {
+                EffectParticle eff = Instantiate(CharacterManager.Instance.EffectsParticle, this._effectSpawner);
+                eff.transform.localPosition += Vector3.up * _effectSpacing * ((effects.Count - 1) - i) ;
+                eff.Added = effects[i].Item1;
+                eff.Name = effects[i].Item2;
+                Debug.LogWarning(effects[i].Item2 + (effects[i].Item1 ? "true" : "false"));
+            }
+            Debug.LogWarning("test end");
+        }
+
         /// <returns>true is the character is dead</returns>
         public virtual bool TakeDamage(Character attacker, SkillInfo skill)
         {
+            List<Tuple<bool, string>> effects = new List<Tuple<bool, string>>();
+
+            if (skill.Damage != 0) {
+                effects.Add(Tuple.Create(skill.Damage < 0, Math.Abs(skill.Damage) + "HP"));
+            }
             Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker?.ToString() ?? skill.name}");
             Health = Clamp(Health - skill.Damage, 0, Info.Health);
             if (Health == 0)
             {
+                SpawnEffect(effects);
                 Die();
                 return true;
             }
@@ -261,6 +286,7 @@ namespace YuriGameJam2023
                     }
                     else
                     {
+                        effects.Add(Tuple.Create(false, effect.name));
                         _effects.Add(effect, value);
                     }
 
@@ -269,42 +295,47 @@ namespace YuriGameJam2023
                         TargetOverride = attacker;
                     }
                 }
-
-                UpdateSkills();
+                // Cancel old effects
+                foreach (var eff in _effects.Keys.ToArray()) {
+                    foreach (var cancel in eff.Cancels) {
+                        if (_effects.Remove(cancel)) {
+                            effects.Add(Tuple.Create(true, cancel.name));
+                        }
+                    }
+                }
+                RerenderEffect();
             }
+            SpawnEffect(effects);
             return false;
         }
 
-        private void UpdateSkills()
+        private void RerenderVfx()
         {
-            // Cancel effects
-            foreach (var eff in _effects.Keys.ToArray())
-            {
-                foreach (var cancel in eff.Cancels)
-                {
-                    _effects.Remove(cancel);
-                }
-            }
-
-            for (int i = 0; i < _effectContainer.childCount; i++) Destroy(_effectContainer.GetChild(i).gameObject);
-
             foreach (var vfx in _vfxs) // TODO: Don't destroy everytimes
             {
                 Destroy(vfx);
             }
             _vfxs.Clear();
-
-            foreach (var eff in _effects)
-            {
-                var go = Instantiate(_effectPrefab, _effectContainer);
-                go.GetComponent<Image>().sprite = eff.Key.Sprite;
-
-                if (eff.Key.Vfx != null)
-                {
+            foreach (var eff in _effects) {
+                if (eff.Key.Vfx != null) {
                     var vfx = Instantiate(eff.Key.Vfx, transform);
                     _vfxs.Add(vfx);
                 }
             }
+        }
+
+        private void RerenderEffectBar() {
+            for (int i = 0; i < _effectContainer.childCount; i++) Destroy(_effectContainer.GetChild(i).gameObject);
+            foreach (var eff in _effects) {
+                var go = Instantiate(_effectPrefab, _effectContainer);
+                go.GetComponent<Image>().sprite = eff.Key.Sprite;
+            }
+        }
+
+        private void RerenderEffect()
+        {
+            RerenderEffectBar();
+            RerenderVfx();
         }
 
         protected void Die()

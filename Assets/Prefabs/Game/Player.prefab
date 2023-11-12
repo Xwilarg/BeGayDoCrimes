@@ -195,6 +195,7 @@ MonoBehaviour:
   _healthBar: {fileID: 499587536064809463}
   _effectContainer: {fileID: 8615218871956530769}
   _effectPrefab: {fileID: 5178977420533353200, guid: 8d55083910e0e1345a7c3fe73c2d11ad, type: 3}
+  _effectSpawner: {fileID: 5133128719038198769}
   _loveRange: 3
   _loveIncrease: 10
   _heartSprite: {fileID: 4891338841773222888}
@@ -272,6 +273,11 @@ MonoBehaviour:
 --- !u!4 &1938047502397589905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8604571750084344097, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
+  m_PrefabInstance: {fileID: 7893903623503917232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5133128719038198769 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3076045243817001793, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
   m_PrefabInstance: {fileID: 7893903623503917232}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &8615218871956530769 stripped

@@ -101,6 +101,7 @@ MonoBehaviour:
   _healthBar: {fileID: 8343850022409304686}
   _effectContainer: {fileID: 192191059067508168}
   _effectPrefab: {fileID: 5178977420533353200, guid: 8d55083910e0e1345a7c3fe73c2d11ad, type: 3}
+  _effectSpawner: {fileID: 3609954008248926312}
   _targetPos: {fileID: 0}
   _startAwareOfPlayer: 0
   _hidden: 0
@@ -196,6 +197,11 @@ PrefabInstance:
 --- !u!224 &192191059067508168 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1874518267296175841, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
+  m_PrefabInstance: {fileID: 1777071174146245417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3609954008248926312 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3076045243817001793, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
   m_PrefabInstance: {fileID: 1777071174146245417}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8052709618930006536 stripped

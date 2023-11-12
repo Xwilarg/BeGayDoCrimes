@@ -50,6 +50,13 @@ namespace YuriGameJam2023
         [SerializeField]
         private GameObject _skillPrefab;
 
+        [SerializeField]
+        private SpellDesc _spellDesc;
+
+        [SerializeField]
+        private EffectParticle _effectsParticle;
+        public EffectParticle EffectsParticle { get => _effectsParticle; }
+
         [Header("Camera & Effects")]
         [SerializeField]
         [Tooltip("Cinemachine virtual camera")]
@@ -68,9 +75,6 @@ namespace YuriGameJam2023
         [SerializeField]
         [Tooltip("Object used to display spell Area Of Effect hints")]
         private AoeHint _aoeHint;
-
-        [SerializeField]
-        private SpellDesc _spellDesc;
 
         [SerializeField]
         private GameObject _gameOver;
