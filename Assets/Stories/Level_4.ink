@@ -22,5 +22,5 @@ Mate, stop, you're gonna make me cry! #speaker Willow
 
 Truly, thank you, Yuki, let's do this together! #speaker Makra
 
-As our group of rogues goes to their last mission, mixed with the uneasiness, hope and love formed. This would be one of the most important days of their lives, they either succeed and get their home back, or fail and get captured by the family who burned it. But in the end, they shall all be together.  #speaker Narrator.
+As our group of rogues goes to their last mission, mixed with the uneasiness, hope and love formed. This would be one of the most important days of their lives, they either succeed and get their home back, or fail and get captured by the family who burned it. But in the end, they shall all be together.  #speaker narrator
     -> END
