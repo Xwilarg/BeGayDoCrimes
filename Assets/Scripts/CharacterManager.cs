@@ -183,10 +183,10 @@ namespace YuriGameJam2023
             }
             else
             {
-                var pos = GameManager.Instance.CamPosOnVictory.Value;
+                var pos = GameManager.Instance.CamPosOnVictory;
                 if (pos != null)
                 {
-                    _worldCamPosRef = new(pos.x, _worldCamPosRef.y, pos.y);
+                    _worldCamPosRef = new(pos.Value.x, _worldCamPosRef.y, pos.Value.y);
                 }
                 foreach (var obj in GameObject.FindGameObjectsWithTag("PostVictoryEffect"))
                 {
@@ -295,6 +295,10 @@ namespace YuriGameJam2023
                     {
                         Victory();
                         return;
+                    }
+                    else
+                    {
+                        GameManager.Instance.ShowNewMiddleText($"{_speConditionCountdown} turn{(_speConditionCountdown == 1 ? string.Empty : "s")} left");
                     }
                 }
             }
