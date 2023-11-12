@@ -15,6 +15,7 @@ MonoBehaviour:
   SceneName: Level_02
   AdditionalDefeatCondition: 0
   VictoryCondition: 0
+  PreBattleVN: {fileID: 4900000, guid: b94d590926ecda4459232b40283f43d3, type: 3}
   PostVictoryVN: {fileID: 4900000, guid: f04af0f027fb60d46afc9d57e2747d5d, type: 3}
   MoveCamOnVictory: 0
   CamPosOnVictory: {x: 0, y: 0}

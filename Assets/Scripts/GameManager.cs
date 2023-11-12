@@ -37,9 +37,9 @@ namespace YuriGameJam2023
 
         private void Start()
         {
+            var currLevel = _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1];
             Action onDone = () =>
             {
-                var currLevel = _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1];
                 _explanationText.text =
                     "Victory Condition:\n" +
                     currLevel.VictoryCondition switch
@@ -60,9 +60,9 @@ namespace YuriGameJam2023
             };
             if (!DebugManager.Instance.BypassIntro)
             {
-                if (PersistencyManager.Instance.SaveData.CurrentLevel == 1)
+                if (currLevel.PreBattleVN != null)
                 {
-                    VNManager.Instance.ShowIntro(onDone);
+                    VNManager.Instance.ShowStory(currLevel.PreBattleVN, onDone);
                 }
                 else
                 {

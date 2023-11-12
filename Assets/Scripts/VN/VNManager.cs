@@ -27,9 +27,6 @@ namespace YuriGameJam2023.VN
         private GameObject _container;
 
         [SerializeField]
-        private TextAsset _intro;
-
-        [SerializeField]
         private GameObject _namePanel;
 
         [SerializeField]
@@ -53,9 +50,6 @@ namespace YuriGameJam2023.VN
         }
 
         public bool IsPlayingStory => _container.activeInHierarchy;
-
-        public void ShowIntro(Action onDone)
-            => ShowStory(_intro, onDone);
 
         private void Update()
         {

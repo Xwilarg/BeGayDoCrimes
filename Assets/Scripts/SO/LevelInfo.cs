@@ -12,6 +12,8 @@ namespace YuriGameJam2023.SO
         public DefeatCondition AdditionalDefeatCondition;
         [Tooltip("Victory condition")]
         public VictoryCondition VictoryCondition;
+        [Tooltip("Story to be played before the fight")]
+        public TextAsset PreBattleVN;
         [Tooltip("Story to be played after winning")]
         public TextAsset PostVictoryVN;
         [Tooltip("Do we move the camera at a specific point while playing the story?")]
