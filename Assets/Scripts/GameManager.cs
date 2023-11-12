@@ -40,6 +40,7 @@ namespace YuriGameJam2023
             var currLevel = _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1];
             Action onDone = () =>
             {
+                _explanationText.gameObject.SetActive(true);
                 _explanationText.text =
                     "Victory Condition:\n" +
                     currLevel.VictoryCondition switch
