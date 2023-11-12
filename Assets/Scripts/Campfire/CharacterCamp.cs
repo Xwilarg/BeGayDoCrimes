@@ -23,7 +23,7 @@ namespace YuriGameJam2023.Campfire
 
         private void Awake()
         {
-            _sentences = _sentenceText.text.Replace("\r", string.Empty).Split('\n', StringSplitOptions.RemoveEmptyEntries);
+            _sentences = _randomLines.text.Replace("\r", string.Empty).Split('\n', StringSplitOptions.RemoveEmptyEntries);
         }
 
         public IEnumerator ShowRandomSentence()
