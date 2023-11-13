@@ -1429,6 +1429,18 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 487cd270306401d42ac87a031e5202fd, type: 3}
     - {fileID: 4900000, guid: e85148bb3ea791641954b217ce434266, type: 3}
     - {fileID: 4900000, guid: 72a428322db949843a4b55ace85b5c27, type: 3}
+  - A: {fileID: 145526469}
+    B: {fileID: 1429530031}
+    Stories:
+    - {fileID: 4900000, guid: 8609097a8ef6307488cf7bf46613ef0a, type: 3}
+    - {fileID: 4900000, guid: 6e6f43fcc1aec8d4aa993e84f5300b8f, type: 3}
+    - {fileID: 4900000, guid: c35a24be22afef846ac89a079531f2d3, type: 3}
+  - A: {fileID: 145526469}
+    B: {fileID: 1144429826}
+    Stories:
+    - {fileID: 4900000, guid: e11ae6a770a614c4bac7ad863ca718e9, type: 3}
+    - {fileID: 4900000, guid: da7111061a11714458507b276e653694, type: 3}
+    - {fileID: 4900000, guid: bba0705536bc55541bc692255df29902, type: 3}
   _characters:
   - {fileID: 145526469}
   - {fileID: 1429530031}
@@ -1568,6 +1580,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4ed9c072-e717-43b1-adf0-659b32d3c57e
     m_ActionName: 'Petanque/Action[/Keyboard/space,/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: be390d18-862a-4260-814b-335658135a75
+    m_ActionName: 'Player/VNSkip[/Keyboard/leftShift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1728,10 +1744,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 562804020682188708, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 268a6257b2fd41143898835af3cf42cf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
