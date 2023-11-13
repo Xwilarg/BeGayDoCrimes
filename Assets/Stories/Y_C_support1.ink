@@ -22,7 +22,7 @@ Nah, those people abandoned me for a reason, it might be a good one or a bad one
 
  I do not think I can... I wish to rebuild my name as a Noble. For that, I don't think I will have that luxury.#speaker Claire
 
- That's so sad Claire... Hey, I'm gonna visit someplace I like soon, wanna come with me  when I do? I'm sure you will like it! #speaker Yuki
+ That's so sad Claire... Hey, I'm gonna visit someplace I like soon, wanna come with me when I do? I'm sure you will like it! #speaker Yuki
 
  If you say it with that much enthusiasm I might take you one that offer, if I have time.#speaker Claire
 
