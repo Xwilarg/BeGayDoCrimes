@@ -33,7 +33,7 @@ namespace YuriGameJam2023
         private bool _isMyTurn;
         private Character _target;
 
-        public bool IsAlerted { get; private set; } = false;
+        public bool IsAlerted { get; set; } = false;
 
         protected override int TeamId => 0;
 
@@ -42,7 +42,7 @@ namespace YuriGameJam2023
             AwakeParent();
             IsAlerted = _startAwareOfPlayer;
             _navigation = GetComponent<NavMeshAgent>();
-            Info = _enemyInfo;
+            if(_enemyInfo != null) Info = _enemyInfo;
 
             if (_hidden) Hide(true);
         }

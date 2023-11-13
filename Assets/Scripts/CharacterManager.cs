@@ -9,6 +9,7 @@ using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YuriGameJam2023.Effect;
+using YuriGameJam2023.Enemy;
 using YuriGameJam2023.Persistency;
 using YuriGameJam2023.Player;
 using YuriGameJam2023.SO;
@@ -303,6 +304,7 @@ namespace YuriGameJam2023
                     else
                     {
                         GameManager.Instance.ShowNewMiddleText($"{_speConditionCountdown} turn{(_speConditionCountdown == 1 ? string.Empty : "s")} left");
+                        GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemySpawner>().Spawn();
                     }
                 }
             }
