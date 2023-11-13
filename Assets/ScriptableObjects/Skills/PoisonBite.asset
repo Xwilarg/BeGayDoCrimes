@@ -18,4 +18,5 @@ MonoBehaviour:
   Effects:
   - {fileID: 11400000, guid: e0a8ee9987123ee48a730cae35dcb411, type: 2}
   Sprite: {fileID: 21300000, guid: 157a3b442cc5b2c4da7c7653750c1a4f, type: 3}
-  Description: Bite the target
+  Name: Poison Bite
+  Description: Bite the target and inflict poison damage

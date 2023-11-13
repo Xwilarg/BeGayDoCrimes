@@ -1,12 +1,14 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using YuriGameJam2023.SO;
 
 namespace YuriGameJam2023
 {
     public class SpellDesc : MonoBehaviour
     {
+        [SerializeField]
+        private TMP_Text _titleText;
+
         [SerializeField]
         private TMP_Text _descText;
 
@@ -16,19 +18,11 @@ namespace YuriGameJam2023
         [SerializeField]
         private TMP_Text _dmgText;
 
-        [SerializeField]
-        private Transform _effectGroup;
-
-        [SerializeField]
-        private GameObject _effectPrefab;
-
         private void Start()
         {
             Debug.Assert(_descText != null);
             Debug.Assert(_dmgGroup != null);
             Debug.Assert(_dmgText != null);
-            Debug.Assert(_effectGroup != null);
-            Debug.Assert(_effectPrefab != null);
         }
 
         public void Hide()
@@ -43,6 +37,7 @@ namespace YuriGameJam2023
 
         public void SetSpell(SkillInfo skill)
         {
+            _titleText.text = skill.Name;
             _descText.text = skill.Description;
 
             if (skill.Damage > 0)
@@ -53,13 +48,6 @@ namespace YuriGameJam2023
             else
             {
                 _dmgGroup.SetActive(false);
-            }
-
-            for (int i = 0; i < _effectGroup.childCount; i++) Destroy(_effectGroup.GetChild(i).gameObject);
-            for (int i = 0; i < skill.Effects.Length; i++)
-            {
-                var go = Instantiate(_effectPrefab, _effectGroup);
-                go.GetComponent<Image>().sprite = skill.Effects[i].Sprite;
             }
         }
     }
