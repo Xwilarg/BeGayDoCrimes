@@ -18,11 +18,11 @@
 
  Here it is... Willow how did you grow up like this? Did your parents not told you not to be so aggressive! #speaker Claire
 
- My ma wasn't there, just me dad and me siblings. We didn't have the luxury of education like you. #speaker willow
+ Me ma wasn't there, just me dad and me siblings. We didn't have the luxury of education like you. #speaker willow
 
 Really? That's a shame. for all your... lack of tact your are indeed a good healer. #speaker Claire
 
- Well f**ck me sideways, thanks for that Claire! By the way how did ya grow up? You didn't become like that on you own did ya? You dad and mom must have been all up on your education he? Or maybe you had one of those fancy tutors. Which one is it?#speaker willow
+ Well f**ck me sideways, thanks for that Claire! By the way how did ya grow up? You didn't become like that on you own did ya? You dad and mom must have been all up on your education eh? Or maybe you had one of those fancy tutors. Which one is it?#speaker willow
 
  I do not want to talk about them! My parents are a subject I am not comfortable with!#speaker Claire
 
@@ -30,7 +30,7 @@ Really? That's a shame. for all your... lack of tact your are indeed a good heal
 
  I said no! #speaker Claire
 
- Well that ain't fair! You made my run me mouth about my past!  Be fair Claire!#speaker willow
+ Well that ain't fair! You made me run me mouth about me past!  Be fair Claire!#speaker willow
 
 That... is true... I did ask about your education... fine... let me reorder my thoughts and next time I will tell you about me. #speaker Claire
 
