@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using YuriGameJam2023.Achievement;
 using YuriGameJam2023.VN;
 
 namespace YuriGameJam2023.Petanque
@@ -149,6 +150,7 @@ namespace YuriGameJam2023.Petanque
         {
             if (_indexSprite == _sprites.Length)
             {
+                AchievementManager.Instance.Unlock(AchievementID.Petanque);
                 _gameOver.SetActive(true);
                 _gameOverText.text = "Final Score:\n" + (100 - _balls.Sum(x => Vector3.Distance(_cochonet.transform.position, x.transform.position))).ToString();
                 return;

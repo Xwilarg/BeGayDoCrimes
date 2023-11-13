@@ -39,5 +39,10 @@ namespace YuriGameJam2023.Menu
             }
             SceneManager.LoadScene("Main");
         }
+
+        public void Credits()
+        {
+            AchievementManager.Instance.Unlock(AchievementID.Credits);
+        }
     }
 }

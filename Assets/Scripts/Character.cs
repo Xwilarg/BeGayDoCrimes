@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using YuriGameJam2023.Achievement;
+using YuriGameJam2023.Player;
 using YuriGameJam2023.SO;
 
 namespace YuriGameJam2023
@@ -86,6 +89,10 @@ namespace YuriGameJam2023
         {
             if (collision.collider.CompareTag("DieZone"))
             {
+                if (_info.Name == "Yuki")
+                {
+                    AchievementManager.Instance.Unlock(AchievementID.JumpTrainYuki);
+                }
                 transform.parent = collision.transform;
                 if (CharacterManager.Instance.AmIActive(this))
                 {
@@ -290,6 +297,12 @@ namespace YuriGameJam2023
                 Assert.IsNotNull(attacker, $"No attacker was provided for the skill {skill.name}");
                 foreach (var effect in skill.Effects)
                 {
+                    if (this is PlayerController && effect.Name == "Aggro")
+                    {
+                        AchievementManager.Instance.Unlock(AchievementID.AggroFriend);
+                        continue; // Can't aggro friends
+                    }
+
                     var value = (TeamId == attacker.TeamId ? 0 : 1) + effect.Duration;
                     if (_effects.ContainsKey(effect))
                     {
@@ -314,6 +327,12 @@ namespace YuriGameJam2023
                         }
                     }
                 }
+
+                if (this is EnemyController && _effects.Count >= 3)
+                {
+                    AchievementManager.Instance.Unlock(AchievementID.Effects3);
+                }
+
                 RerenderEffect();
             }
             SpawnEffect(effects);
