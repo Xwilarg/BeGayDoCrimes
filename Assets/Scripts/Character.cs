@@ -281,11 +281,12 @@ namespace YuriGameJam2023
         {
             List<Tuple<bool, string>> effects = new List<Tuple<bool, string>>();
 
-            if (skill.Damage != 0) {
-                effects.Add(Tuple.Create(skill.Damage > 0, -skill.Damage + "HP"));
+            var dmg = Mathf.RoundToInt(skill.Damage + skill.Damage * Mathf.Clamp(attacker._effects.Sum(x => x.Key.IncreaseDamage), -1f, 1f));
+            if (dmg != 0) {
+                effects.Add(Tuple.Create(dmg > 0, -dmg + "HP"));
             }
-            Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker?.ToString() ?? skill.name}");
-            Health = Clamp(Health - skill.Damage, 0, Info.Health);
+            Debug.Log($"[{this}] Took {dmg} damage from {attacker?.ToString() ?? skill.name}");
+            Health = Clamp(Health - dmg, 0, Info.Health);
             if (Health == 0)
             {
                 SpawnEffect(effects);
