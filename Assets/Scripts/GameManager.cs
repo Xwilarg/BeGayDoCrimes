@@ -21,6 +21,9 @@ namespace YuriGameJam2023
         private LevelInfo[] _levels;
 
         [SerializeField]
+        private GameObject _explanationContainer;
+
+        [SerializeField]
         private TMP_Text _explanationText;
 
         private void Awake()
@@ -40,7 +43,7 @@ namespace YuriGameJam2023
             var currLevel = _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1];
             Action onDone = () =>
             {
-                _explanationText.gameObject.SetActive(true);
+                _explanationContainer.gameObject.SetActive(true);
                 _explanationText.text =
                     "Victory Condition:\n" +
                     currLevel.VictoryCondition switch
@@ -71,7 +74,7 @@ namespace YuriGameJam2023
 
         public void ShowNewMiddleText(string text)
         {
-            _explanationText.gameObject.SetActive(true);
+            _explanationContainer.gameObject.SetActive(true);
             _explanationText.text = text;
             StartCoroutine(WaitAndRemoveText());
         }
@@ -83,7 +86,7 @@ namespace YuriGameJam2023
         private IEnumerator WaitAndRemoveText()
         {
             yield return new WaitForSeconds(3f);
-            _explanationText.gameObject.SetActive(false);
+            _explanationContainer.gameObject.SetActive(false);
         }
 
         public void OnClick(InputAction.CallbackContext value)
