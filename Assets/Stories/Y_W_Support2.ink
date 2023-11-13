@@ -2,7 +2,7 @@
 
  Stab! Punch! Roll!  #speaker willow
 
-: Yeah Willow! You got it! I'm proud of you! You're almost as good as me! #speaker Yuki
+Yeah Willow! You got it! I'm proud of you! You're almost as good as me! #speaker Yuki
 
  Fiou! I'm beat! Here I thought this was gonna be a piece of piss! #speaker willow
 
