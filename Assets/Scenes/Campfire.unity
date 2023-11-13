@@ -1458,6 +1458,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9ce1b29bbc001f4a9269d3513162086, type: 2}
   - {fileID: 11400000, guid: 33a961984011f314fbd9b30dd58d469e, type: 2}
   - {fileID: 11400000, guid: 461cad615bcf33a4391a48caef8fe196, type: 2}
+  _nextDayText: {fileID: 938500190}
 --- !u!4 &1830768048
 Transform:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,9 @@ namespace YuriGameJam2023.Campfire
 
         [SerializeField]
         private LevelInfo[] _levels; // TODO: Is in 2 differents scripts, ewh
+
+        [SerializeField]
+        private TMP_Text _nextDayText;
 
         /// <summary>
         /// Character we clicked on with the mouse, considered as 'selected'
@@ -56,6 +60,11 @@ namespace YuriGameJam2023.Campfire
                         PersistencyManager.Instance.SaveData.AvailableSupport[key] = 2;
                     }
                 }
+            }
+
+            if (PersistencyManager.Instance.SaveData.CurrentLevel == 4)
+            {
+                _nextDayText.text = "Back to Menu";
             }
 
             if (_levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].FirecampVN != null)
