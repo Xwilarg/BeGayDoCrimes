@@ -11,6 +11,7 @@ namespace YuriGameJam2023.SO
         public GameObject Vfx;
 
         [Header("Effects")]
+        public bool IsBuff;
         [Tooltip("Damage dealt by the effect")]
         public SkillInfo AdditionalDamage;
         [Tooltip("When this effect is active, it cancel out the following effects")]
@@ -20,6 +21,10 @@ namespace YuriGameJam2023.SO
         [Tooltip("Does the effect prevent the character to move")]
         public bool PreventMovement;
         public bool DoesAggro;
+        [Range(-1f, 1f)]
+        public float IncreaseDamage;
+        [Range(-1f, 1f)]
+        public float IncreaseSpeed;
 
         public override bool Equals(object obj)
         {

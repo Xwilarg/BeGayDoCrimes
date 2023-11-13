@@ -3,6 +3,7 @@
     public enum RangeType
     {
         CloseContact,
-        AOE
+        AOE,
+        Self
     }
 }

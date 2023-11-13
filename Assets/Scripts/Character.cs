@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -182,14 +183,18 @@ namespace YuriGameJam2023
             // Find all targets and set back the _targets list
             switch (currSkill.Type)
             {
-                case SO.RangeType.CloseContact:
+                case RangeType.Self:
+                    AddToTarget(gameObject);
+                    break;
+
+                case RangeType.CloseContact:
                     if (Physics.Raycast(new(transform.position + Vector3.down * .5f + Forward * .5f, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(hit.collider.gameObject);
                     }
                     break;
 
-                case SO.RangeType.AOE:
+                case RangeType.AOE:
                     foreach (var coll in Physics.OverlapSphere(transform.position + Forward * 1.5f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         // Check whether the target is not behind a wall
@@ -226,7 +231,7 @@ namespace YuriGameJam2023
         {
             _lastPos = transform.position;
             PendingAutoDisable = false;
-            _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : _maxDistance;
+            _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : _maxDistance + _maxDistance * _effects.Sum(x => x.Key.IncreaseSpeed);
             CharacterManager.Instance.DisplayDistanceText(_distance);
             CurrentSkill = 0;
         }
@@ -281,11 +286,12 @@ namespace YuriGameJam2023
         {
             List<Tuple<bool, string>> effects = new List<Tuple<bool, string>>();
 
-            if (skill.Damage != 0) {
-                effects.Add(Tuple.Create(skill.Damage > 0, -skill.Damage + "HP"));
+            var dmg = Mathf.RoundToInt(skill.Damage + skill.Damage * Mathf.Clamp(attacker._effects.Sum(x => x.Key.IncreaseDamage), -1f, 1f));
+            if (dmg != 0) {
+                effects.Add(Tuple.Create(dmg > 0, -dmg + "HP"));
             }
-            Debug.Log($"[{this}] Took {skill.Damage} damage from {attacker?.ToString() ?? skill.name}");
-            Health = Clamp(Health - skill.Damage, 0, Info.Health);
+            Debug.Log($"[{this}] Took {dmg} damage from {attacker?.ToString() ?? skill.name}");
+            Health = Clamp(Health - dmg, 0, Info.Health);
             if (Health == 0)
             {
                 SpawnEffect(effects);
