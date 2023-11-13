@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Makra
   m_EditorClassIdentifier: 
   Name: Makra
-  Health: 25
+  Health: 20
   Skills:
   - {fileID: 11400000, guid: 7a3b6334d546cf64cb3599bbc2d50370, type: 2}
   - {fileID: 11400000, guid: cad494e836410ef448782b1c39cfded3, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Claire
   m_EditorClassIdentifier: 
   Name: Claire
-  Health: 25
+  Health: 30
   Skills:
   - {fileID: 11400000, guid: a193ea2ed47426b4fab715038ef24700, type: 2}
   - {fileID: 11400000, guid: 95cdcc5f0d96c6845a7e2a3d895ed6b7, type: 2}

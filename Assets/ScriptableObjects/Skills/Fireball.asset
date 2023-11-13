@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   Range: 2
-  Damage: 10
+  Damage: 5
   Effects:
   - {fileID: 11400000, guid: 24c14a8462ca32e4ba1ede6c756e400b, type: 2}
   Sprite: {fileID: 21300000, guid: d14436d0303ea874a826c06162266e83, type: 3}
