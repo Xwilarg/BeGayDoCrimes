@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2542fb7b6241c974aa32f88d90105419, type: 3}
+  m_Name: Flight
+  m_EditorClassIdentifier: 
+  Type: 2
+  Range: 2
+  Damage: 0
+  Effects:
+  - {fileID: 11400000, guid: f0401abfb8d8d2743af1cacc171b9391, type: 2}
+  Sprite: {fileID: 21300000, guid: 187229ce468d73642bf5c60fc8c9f028, type: 3}
+  Name: Flight
+  Description: Increase the distance you can move in a turn

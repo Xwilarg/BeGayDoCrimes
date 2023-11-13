@@ -23,6 +23,8 @@ namespace YuriGameJam2023.SO
         public bool DoesAggro;
         [Range(-1f, 1f)]
         public float IncreaseDamage;
+        [Range(-1f, 1f)]
+        public float IncreaseSpeed;
 
         public override bool Equals(object obj)
         {

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -182,14 +183,18 @@ namespace YuriGameJam2023
             // Find all targets and set back the _targets list
             switch (currSkill.Type)
             {
-                case SO.RangeType.CloseContact:
+                case RangeType.Self:
+                    AddToTarget(gameObject);
+                    break;
+
+                case RangeType.CloseContact:
                     if (Physics.Raycast(new(transform.position + Vector3.down * .5f + Forward * .5f, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(hit.collider.gameObject);
                     }
                     break;
 
-                case SO.RangeType.AOE:
+                case RangeType.AOE:
                     foreach (var coll in Physics.OverlapSphere(transform.position + Forward * 1.5f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         // Check whether the target is not behind a wall
@@ -226,7 +231,7 @@ namespace YuriGameJam2023
         {
             _lastPos = transform.position;
             PendingAutoDisable = false;
-            _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : _maxDistance;
+            _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : _maxDistance + _maxDistance * _effects.Sum(x => x.Key.IncreaseSpeed);
             CharacterManager.Instance.DisplayDistanceText(_distance);
             CurrentSkill = 0;
         }
