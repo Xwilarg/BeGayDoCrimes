@@ -27,7 +27,7 @@ namespace YuriGameJam2023.Map
                     e.transform.Translate(-Time.deltaTime * s.Speed, 0f, 0f);
                     if (e.transform.position.z < s.Min)
                     {
-                        foreach (var c in GetComponentsInChildren<Character>())
+                        foreach (var c in e.GetComponentsInChildren<Character>())
                         {
                             Destroy(c.gameObject);
                         }

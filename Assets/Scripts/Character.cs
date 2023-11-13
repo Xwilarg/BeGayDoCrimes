@@ -81,6 +81,20 @@ namespace YuriGameJam2023
 
         private readonly Dictionary<EffectInfo, int> _effects = new();
         private readonly List<GameObject> _vfxs = new();
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.CompareTag("DieZone"))
+            {
+                transform.parent = collision.transform;
+                if (CharacterManager.Instance.AmIActive(this))
+                {
+                    Disable();
+                }
+                CharacterManager.Instance.UnregisterCharacter(this);
+            }
+        }
+
         public virtual void EndTurn()
         {
             // Apply all damage related to effects

@@ -68,19 +68,6 @@ namespace YuriGameJam2023.Player
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.collider.CompareTag("DieZone"))
-            {
-                transform.parent = collision.transform;
-                if (CharacterManager.Instance.AmIActive(this))
-                {
-                    Disable();
-                }
-                CharacterManager.Instance.UnregisterCharacter(this);
-            }
-        }
-
         private IEnumerator DisplayHeart()
         {
             _heartSprite.SetActive(true);
