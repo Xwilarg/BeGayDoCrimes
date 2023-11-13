@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using YuriGameJam2023.Achievement;
 using YuriGameJam2023.Persistency;
 using YuriGameJam2023.SO;
 using YuriGameJam2023.VN;

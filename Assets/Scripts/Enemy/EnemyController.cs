@@ -176,6 +176,10 @@ namespace YuriGameJam2023
                     );
                 if (isMovementDone)
                 {
+                    Debug.Log(_navigation.isOnNavMesh);
+                    Debug.Log(_navigation.isPathStale);
+                    Debug.Log(_navigation.isStopped);
+
                     // Check if we have no targets, but are close to one
                     if (_target != null && !HaveAnyNonFriendlyTarget &&
                         Vector3.Distance(_target.transform.position, transform.position) <= Info.Skills[0].Range)

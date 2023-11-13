@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using YuriGameJam2023.Achievement;
 
 namespace YuriGameJam2023.Persistency
 {
@@ -48,6 +49,8 @@ namespace YuriGameJam2023.Persistency
                 SupportData[support] += 1;
             }
         }
+
+        public List<AchievementID> UnlockedAchievements { get; } = new();
 
         public int CurrentLevel { set; get; } = 1;
 

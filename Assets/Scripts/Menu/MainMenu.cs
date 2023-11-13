@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using YuriGameJam2023.Achievement;
 using YuriGameJam2023.Persistency;
 
 namespace YuriGameJam2023.Menu
@@ -11,6 +12,7 @@ namespace YuriGameJam2023.Menu
 
         private void Awake()
         {
+            SceneManager.LoadScene("VN", LoadSceneMode.Additive);
             if (PersistencyManager.Instance.SaveData.CurrentLevel == 5)
             {
                 _newVersion.gameObject.SetActive(true);
@@ -18,6 +20,14 @@ namespace YuriGameJam2023.Menu
             else
             {
                 _oldVersion.gameObject.SetActive(true);
+            }
+        }
+
+        private void Start()
+        {
+            if (PersistencyManager.Instance.SaveData.CurrentLevel == 5)
+            {
+                AchievementManager.Instance.Unlock(AchievementID.CompleteGame);
             }
         }
 
