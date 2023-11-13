@@ -398,7 +398,10 @@ namespace YuriGameJam2023
 
         public void DisableConfirm()
         {
-            _currentPlayer.Disable();
+            if (_currentPlayer != null)
+            {
+                _currentPlayer.Disable();
+            }
         }
 
         public void DisableDecline() {
