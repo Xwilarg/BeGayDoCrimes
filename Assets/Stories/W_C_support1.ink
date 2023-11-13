@@ -1,10 +1,10 @@
  ... #speaker willow
 
-Claire: ...
+... #speaker Claire
 
  What're you lookin' at!#speaker willow
 
- What are you looking at! #spaker Claire
+ What are you looking at! #speaker Claire
 
  I asked first you wanker!#speaker willow
 
