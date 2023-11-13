@@ -1411,36 +1411,42 @@ MonoBehaviour:
     - {fileID: 4900000, guid: c646aa4578ef12b478df3cd06d07b179, type: 3}
     - {fileID: 4900000, guid: 004dd41fc5f58684ea29fdbbb9e7be5d, type: 3}
     - {fileID: 4900000, guid: 6f661980d8e1ea047b6b07dc5b7c1a99, type: 3}
+    MaxRankAchievement: 6
   - A: {fileID: 1144429826}
     B: {fileID: 424006107}
     Stories:
     - {fileID: 4900000, guid: 0b8d5bffb3a93744ca162e66028ef32e, type: 3}
     - {fileID: 4900000, guid: 3c4c22d2cf22a7c498c1eeec50e88c11, type: 3}
     - {fileID: 4900000, guid: 025607bdf9fc6f64092dd4e067274d75, type: 3}
+    MaxRankAchievement: 9
   - A: {fileID: 1429530031}
     B: {fileID: 424006107}
     Stories:
     - {fileID: 4900000, guid: 9d59af3f326297444b0dbcc184c2c07a, type: 3}
     - {fileID: 4900000, guid: 2acf10c532f09664db0f5a63b1793549, type: 3}
     - {fileID: 4900000, guid: 30ed5fe64010f9e478924df7b18a5354, type: 3}
+    MaxRankAchievement: 7
   - A: {fileID: 1144429826}
     B: {fileID: 1429530031}
     Stories:
     - {fileID: 4900000, guid: 487cd270306401d42ac87a031e5202fd, type: 3}
     - {fileID: 4900000, guid: e85148bb3ea791641954b217ce434266, type: 3}
     - {fileID: 4900000, guid: 72a428322db949843a4b55ace85b5c27, type: 3}
+    MaxRankAchievement: 11
   - A: {fileID: 145526469}
     B: {fileID: 1429530031}
     Stories:
     - {fileID: 4900000, guid: 8609097a8ef6307488cf7bf46613ef0a, type: 3}
     - {fileID: 4900000, guid: 6e6f43fcc1aec8d4aa993e84f5300b8f, type: 3}
     - {fileID: 4900000, guid: c35a24be22afef846ac89a079531f2d3, type: 3}
+    MaxRankAchievement: 8
   - A: {fileID: 145526469}
     B: {fileID: 1144429826}
     Stories:
     - {fileID: 4900000, guid: e11ae6a770a614c4bac7ad863ca718e9, type: 3}
     - {fileID: 4900000, guid: da7111061a11714458507b276e653694, type: 3}
     - {fileID: 4900000, guid: bba0705536bc55541bc692255df29902, type: 3}
+    MaxRankAchievement: 0
   _characters:
   - {fileID: 145526469}
   - {fileID: 1429530031}

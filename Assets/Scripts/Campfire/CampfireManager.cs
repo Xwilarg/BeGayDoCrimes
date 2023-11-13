@@ -198,7 +198,8 @@ namespace YuriGameJam2023.Campfire
 
                                 _nextDayButton.SetActive(false);
 
-                                VNManager.Instance.ShowStory(_couples.First(x => (x.A == _current && x.B == _hovered) || (x.A == _hovered && x.B == _current)).Stories[level], () =>
+                                var couple = _couples.First(x => (x.A == _current && x.B == _hovered) || (x.A == _hovered && x.B == _current));
+                                VNManager.Instance.ShowStory(couple.Stories[level], () =>
                                 {
                                     foreach (var c in _characters)
                                     {
@@ -210,6 +211,11 @@ namespace YuriGameJam2023.Campfire
 
                                     PersistencyManager.Instance.SaveData.PlaySupport(key);
                                     PersistencyManager.Instance.Save();
+
+                                    if (level == 2)
+                                    {
+                                        AchievementManager.Instance.Unlock(couple.MaxRankAchievement);
+                                    }
                                 });
                             }
                             else

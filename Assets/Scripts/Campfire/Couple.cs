@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using YuriGameJam2023.Achievement;
 
 namespace YuriGameJam2023.Campfire
 {
@@ -10,5 +11,7 @@ namespace YuriGameJam2023.Campfire
         public CharacterCamp B;
 
         public TextAsset[] Stories;
+
+        public AchievementID MaxRankAchievement;
     }
 }
