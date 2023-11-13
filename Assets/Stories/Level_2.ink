@@ -46,5 +46,5 @@ We will see who comes out on top, then we will think about your punishment! #spe
 
 We won't hold back!#speaker Yuki
 
-Perfectly fine by me! Let's go boys!#Speaker BC
+Perfectly fine by me! Let's go boys!#speaker BC
     -> END
