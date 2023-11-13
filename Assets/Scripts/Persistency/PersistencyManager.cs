@@ -48,9 +48,6 @@ namespace YuriGameJam2023.Persistency
                     {
                         _saveData = new();
                     }
-#if UNITY_EDITOR
-                    Debug.Log("SAVE DATA DUMP: " + _saveData);
-#endif
                 }
                 return _saveData;
             }
@@ -58,6 +55,9 @@ namespace YuriGameJam2023.Persistency
 
         public void Save()
         {
+#if UNITY_EDITOR
+            Debug.Log("Saving Data: " + _saveData);
+#endif
             File.WriteAllText($"{Application.persistentDataPath}/save.bin", Encrypt(JsonConvert.SerializeObject(_saveData)));
         }
 

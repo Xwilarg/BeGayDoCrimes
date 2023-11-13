@@ -27,7 +27,7 @@ namespace YuriGameJam2023.Persistency
         /// Get the current support level for the parameter
         /// </summary>
         public int GetCurrentSupportLevel(string support)
-            => SupportData.ContainsKey(support) ? SupportData[support] : 0;
+            => SupportData.ContainsKey(support) ? (SupportData[support] + 1) : 0;
 
         /// <summary>
         /// Is the current support far enough to reach the level in parameter (so to be played)
