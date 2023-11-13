@@ -20,7 +20,7 @@ Oh. Oh! Claire... are you saying?#speaker Makra
 
  ...Makra after all this is over... would... you stay by my side. I... I love you. I have loved you for a long time now. I know you want to impress your mother and I want to meet her to ask for your hand someday. Would that be.. would you...#speaker Claire
 
-Makra kisses Claire #italic #speaker none
+Makra kisses Claire #format italic #speaker none
 
 You had me at ''I love you''. I love you too Claire! I'll stay with you! We will show our parents how we can become better, together...#speaker Makra
 
