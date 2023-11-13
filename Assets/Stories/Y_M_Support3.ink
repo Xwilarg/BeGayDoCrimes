@@ -20,7 +20,7 @@ How are the repairs going along? Do you need my help with anything? #speaker yuk
 
  Really? #Speaker makra
 
- It's a simple wish, but It will change my life for the better if it comes true! #speaker yuki
+ It's a simple wish, but it will change my life for the better if it comes true! #speaker yuki
 
  Well I hope it does come true... so what is it? #Speaker makra
 
