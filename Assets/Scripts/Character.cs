@@ -300,7 +300,7 @@ namespace YuriGameJam2023
             if (dmg != 0) {
                 effects.Add(Tuple.Create(dmg > 0, -dmg + "HP"));
             }
-            Debug.Log($"[{this}] Took {dmg} damage from {attacker?.ToString() ?? skill.name}");
+            Debug.Log($"[{this}] Took {dmg} damage from {attacker?.ToString() ?? skill.Name}");
             Health = Clamp(Health - dmg, 0, Info.Health);
             if (Health == 0)
             {
@@ -310,7 +310,7 @@ namespace YuriGameJam2023
             }
             else if (skill != null && skill.Effects.Any())
             {
-                Assert.IsNotNull(attacker, $"No attacker was provided for the skill {skill.name}");
+                Assert.IsNotNull(attacker, $"No attacker was provided for the skill {skill.Name}");
                 foreach (var effect in skill.Effects)
                 {
                     if (this is PlayerController)
@@ -334,7 +334,7 @@ namespace YuriGameJam2023
                     }
                     else
                     {
-                        effects.Add(Tuple.Create(true, "+" + effect.name));
+                        effects.Add(Tuple.Create(true, "+" + effect.Name));
                         _effects.Add(effect, value);
                     }
 
@@ -347,7 +347,7 @@ namespace YuriGameJam2023
                 foreach (var eff in _effects.Keys.ToArray()) {
                     foreach (var cancel in eff.Cancels) {
                         if (_effects.Remove(cancel)) {
-                            effects.Add(Tuple.Create(false, "-" + cancel.name));
+                            effects.Add(Tuple.Create(false, "-" + cancel.Name));
                         }
                     }
                 }
@@ -359,6 +359,18 @@ namespace YuriGameJam2023
 
                 RerenderEffect();
             }
+
+            if (skill.RemoveAllEffects)
+            {
+                foreach (var eff in _effects.Keys.ToArray())
+                {
+                    if (!eff.IsBuff && _effects.Remove(eff))
+                    {
+                        effects.Add(Tuple.Create(false, "-" + eff.Name));
+                    }
+                }
+            }
+
             SpawnEffect(effects);
             return false;
         }
@@ -411,7 +423,7 @@ namespace YuriGameJam2023
 
         public override string ToString()
         {
-            return $"{Info.name} ({Health}/{Info.Health}HP)";
+            return $"{Info.Name} ({Health}/{Info.Health}HP)";
         }
 
         public void OnDrawGizmos()
