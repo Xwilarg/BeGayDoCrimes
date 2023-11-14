@@ -55,7 +55,7 @@ namespace YuriGameJam2023.Achievement
             { AchievementID.Credits, new() { Name = "The Curtain Rises", Description = "Open the credits", Hint = "Show respect to some great people" } },
             { AchievementID.Petanque, new() { Name = "Cracking the Egg", Description = "Play a full game of pétanque", Hint = "Get more of these and come back" } },
             { AchievementID.Effects4, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 4 differents effects", Hint = "The hardest stains requires the strongest cleaning efforts" } },
-            { AchievementID.Insult3, new() { Name = "I'm not a Rapper", Description = "Insult 3 enemies at once", Hint = "With words bad enough, you can easily ruin everyone day!" } },
+            { AchievementID.Insult3, new() { Name = "I'm not a Rapper", Description = "Insult 3 enemies at once", Hint = "With bad enough words, you can easily ruin everyone day!" } },
 
             { AchievementID.Rel_MC, new() { Name = "Sticky Parental Issues", Description = "Reach max support for Makra and Claire", Hint = "Get two specifics characters to love each other enough" } },
             { AchievementID.Rel_WC, new() { Name = "Not Fucking Around", Description = "Reach max support for Willow and Claire", Hint = "Get two specifics characters to love each other enough"} },
