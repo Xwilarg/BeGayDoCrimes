@@ -43,6 +43,12 @@ namespace YuriGameJam2023.Menu
         public void Credits()
         {
             AchievementManager.Instance.Unlock(AchievementID.Credits);
+            AchievementDisplay.Instance.Refresh();
+        }
+
+        public void Petanque()
+        {
+            SceneManager.LoadScene("Pétanque");
         }
     }
 }

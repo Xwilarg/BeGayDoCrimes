@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using YuriGameJam2023.Persistency;
 
 namespace YuriGameJam2023.Achievement
@@ -21,9 +22,12 @@ namespace YuriGameJam2023.Achievement
             Instance = this;
         }
 
+        public bool IsUnlocked(AchievementID id)
+            => PersistencyManager.Instance.SaveData.UnlockedAchievements.Contains(id);
+
         public void Unlock(AchievementID achievement)
         {
-            if (PersistencyManager.Instance.SaveData.UnlockedAchievements.Contains(achievement))
+            if (IsUnlocked(achievement))
             {
                 return;
             }
@@ -44,21 +48,21 @@ namespace YuriGameJam2023.Achievement
 
         public Dictionary<AchievementID, Achievement> Achievements { get; } = new()
         {
-            { AchievementID.CompleteGame, new() { Name = "Be Gay, Do Crimes", Description = "Complete the game" } },
-            { AchievementID.JumpTrainYuki, new() { Name = "So Long, and Thanks for All the Fish", Description = "Jump out of the train with Yuki" } },
-            { AchievementID.AggroFriend, new() { Name = "Keep your Friends Close, and your Enemies Closer", Description = "Attempt to use the aggro skill on an allie with Willow" } },
-            { AchievementID.HideUseless, new() { Name = "Hidden in Plain Sight", Description = "Attempt to use the hide skill when all your allies are out as Makra" } },
-            { AchievementID.Credits, new() { Name = "The Curtain Rises", Description = "Open the credits" } },
-            { AchievementID.Petanque, new() { Name = "Cracking the Egg", Description = "Play a full game of pétanque" } },
-            { AchievementID.Effects4, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 4 differents effects" } },
-            { AchievementID.Insult3, new() { Name = "I'm not a Rapper", Description = "Insult 3 enemies at once" } },
+            { AchievementID.CompleteGame, new() { Name = "Be Gay, Do Crimes", Description = "Complete the game", Hint = "Try playing the game and come back" } },
+            { AchievementID.JumpTrainYuki, new() { Name = "So Long, and Thanks for All the Fish", Description = "Jump out of the train with Yuki", Hint = "Stay safe while riding public transportations" } },
+            { AchievementID.AggroFriend, new() { Name = "Keep your Friends Close, and your Enemies Closer", Description = "Attempt to use the aggro skill on an allie with Willow", Hint = "Some skills are only meant for the bad guys" } },
+            { AchievementID.HideUseless, new() { Name = "Hidden in Plain Sight", Description = "Attempt to use the hide skill when all your allies are out as Makra", Hint = "It's too late for that now!" } },
+            { AchievementID.Credits, new() { Name = "The Curtain Rises", Description = "Open the credits", Hint = "Show respect to some great people" } },
+            { AchievementID.Petanque, new() { Name = "Cracking the Egg", Description = "Play a full game of pétanque", Hint = "Get more of these and come back" } },
+            { AchievementID.Effects4, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 4 differents effects", Hint = "The hardest stains requires the strongest cleaning efforts" } },
+            { AchievementID.Insult3, new() { Name = "I'm not a Rapper", Description = "Insult 3 enemies at once", Hint = "With words bad enough, you can easily ruin everyone day!" } },
 
-            { AchievementID.Rel_MC, new() { Name = "Sticky Parental Issues", Description = "Reach max support for Makra and Claire" } },
-            { AchievementID.Rel_WC, new() { Name = "Not Fucking Around", Description = "Reach max support for Willow and Claire"} },
-            { AchievementID.Rel_WM, new() { Name = "A Love Sweater than Cinnamon", Description = "Reach max support for Willow and Makra"} },
-            { AchievementID.Rel_YC, new() { Name = "Burning Dreams for the Future", Description = "Reach max support for Yuki and Claire"} },
-            { AchievementID.Rel_YM, new() { Name = "Red Thread of Fate", Description = "Reach max support for Yuki and Makra"} },
-            { AchievementID.Rel_YW, new() { Name = "My Heart Beating for You", Description = "Reach max support for Yuki and Willow"} }
+            { AchievementID.Rel_MC, new() { Name = "Sticky Parental Issues", Description = "Reach max support for Makra and Claire", Hint = "Get two specifics characters to love each other enough" } },
+            { AchievementID.Rel_WC, new() { Name = "Not Fucking Around", Description = "Reach max support for Willow and Claire", Hint = "Get two specifics characters to love each other enough"} },
+            { AchievementID.Rel_WM, new() { Name = "A Love Sweeter than Cinnamon", Description = "Reach max support for Willow and Makra", Hint = "Get two specifics characters to love each other enough"} },
+            { AchievementID.Rel_YC, new() { Name = "Burning Dreams for the Future", Description = "Reach max support for Yuki and Claire", Hint = "Get two specifics characters to love each other enough"} },
+            { AchievementID.Rel_YM, new() { Name = "Red Thread of Fate", Description = "Reach max support for Yuki and Makra", Hint = "Get two specifics characters to love each other enough"} },
+            { AchievementID.Rel_YW, new() { Name = "My Heart Beats for You", Description = "Reach max support for Yuki and Willow", Hint = "Get two specifics characters to love each other enough"} }
         };
     }
 
@@ -85,5 +89,6 @@ namespace YuriGameJam2023.Achievement
     {
         public string Name;
         public string Description;
+        public string Hint;
     }
 }

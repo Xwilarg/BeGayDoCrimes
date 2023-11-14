@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eadb88a81c553594d87da6016440dfc5, type: 3}
-  m_Name: SampleEnemy
+  m_Name: Goon
   m_EditorClassIdentifier: 
-  Name: Sample Enemy
+  Name: Bandit
   Health: 20
   Skills:
   - {fileID: 11400000, guid: a193ea2ed47426b4fab715038ef24700, type: 2}
