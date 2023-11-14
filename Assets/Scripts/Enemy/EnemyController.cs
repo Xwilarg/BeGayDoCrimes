@@ -143,10 +143,10 @@ namespace YuriGameJam2023
             var distance = Vector3.Distance(target.transform.position, transform.position);
 
             // Whether we are close enough to the player
-            if (distance > Info.Skills[0].Range)
+            if (distance > Info.Skills[0].Range + 1f)
             {
                 _navigation.destination = target.transform.position;
-                _navigation.stoppingDistance = Info.Skills[0].Range;
+                _navigation.stoppingDistance = Info.Skills[0].Range + 1f;
             }
 
             _isMyTurn = true;
@@ -171,7 +171,7 @@ namespace YuriGameJam2023
                 var isMovementDone =
                     _distance <= 0f || // We can't move anymore
                     (!_navigation.pathPending && // OR if there is no path pending AND
-                        (_target != null && _navigation.remainingDistance < Info.Skills[0].Range) || // In the case we have a target: we are in range for the skill
+                        (_target != null && _navigation.remainingDistance < Info.Skills[0].Range + 1f) || // In the case we have a target: we are in range for the skill
                         (_target == null && _navigation.remainingDistance == 0f) // In the case we don't have a target: we reached the position where we needed to go
                     );
                 if (isMovementDone)
@@ -182,7 +182,7 @@ namespace YuriGameJam2023
 
                     // Check if we have no targets, but are close to one
                     if (_target != null && !HaveAnyNonFriendlyTarget &&
-                        Vector3.Distance(_target.transform.position, transform.position) <= Info.Skills[0].Range)
+                        Vector3.Distance(_target.transform.position, transform.position) <= Info.Skills[0].Range + 1f)
                     {
                         var direction = _target.transform.position - transform.position;
                         direction.y = 0f;
