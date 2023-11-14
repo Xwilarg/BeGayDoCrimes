@@ -2,7 +2,7 @@
 
  Fine! I did promise after all. You wanted to know about my education right? #speaker Claire
 
- Sure, don't try to dodge now! I all ears! #speaker willow
+ Sure, don't try to dodge now! I'm all ears! #speaker willow
 
 Well. I did have a personal tutor in a way... #speaker Claire
 
@@ -10,7 +10,7 @@ In a way? #speaker willow
 
  Let me finish. My father was actually the one to help me with my studies. He was a great teacher, he always took time with me, but he was also pushing me to become better. I would not be the way I am without him. I respect him for that, greatly.#speaker Claire
 
- Ah! I see, my dad was kinda the same. But instead of teaching ''academatic'' stuff it was more how to cure people, or chop wood for the fire and all that stuff. #speaker willow
+ Ah! I see, me dad was kinda the same. But instead of teaching ''academatic'' stuff it was more how to cure people, or chop wood for the fire and all that stuff. #speaker willow
 
  It's called academic Willow. So I guess you respect your father too. #speaker Claire
 
