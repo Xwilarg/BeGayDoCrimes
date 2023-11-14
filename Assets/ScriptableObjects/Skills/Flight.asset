@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flight
   m_EditorClassIdentifier: 
   Type: 2
-  Range: 2
+  Range: 0
   Damage: 0
   Effects:
   - {fileID: 11400000, guid: f0401abfb8d8d2743af1cacc171b9391, type: 2}

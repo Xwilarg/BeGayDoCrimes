@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: 
   Type: 0
-  Range: 2
+  Range: 1
   Damage: 10
   Effects: []
   Sprite: {fileID: 21300000, guid: 135baf81d57481742a1530c37564fc62, type: 3}

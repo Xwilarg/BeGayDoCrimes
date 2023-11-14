@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Aggro
   m_EditorClassIdentifier: 
   Type: 0
-  Range: 2
+  Range: 1
   Damage: 0
   Effects:
   - {fileID: 11400000, guid: 69a31d82391b8a74197f7c16baf785d8, type: 2}

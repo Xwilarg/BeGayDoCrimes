@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PoisonBite
   m_EditorClassIdentifier: 
   Type: 0
-  Range: 2
+  Range: 1
   Damage: 8
   Effects:
   - {fileID: 11400000, guid: e0a8ee9987123ee48a730cae35dcb411, type: 2}

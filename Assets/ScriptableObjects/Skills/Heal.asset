@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   Type: 0
-  Range: 2
+  Range: 1
   Damage: -20
   Effects: []
   Sprite: {fileID: 21300000, guid: 187229ce468d73642bf5c60fc8c9f028, type: 3}
