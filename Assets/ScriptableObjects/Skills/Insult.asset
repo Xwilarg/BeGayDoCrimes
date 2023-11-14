@@ -19,5 +19,5 @@ MonoBehaviour:
   Effects:
   - {fileID: 11400000, guid: 7ecb49797348c424da2f7bae7554b382, type: 2}
   Sprite: {fileID: 21300000, guid: 99f4bad4962e4e94ca4e7057af9e1974, type: 3}
-  Name: Too close to the truth insult
+  Name: Gaslighting
   Description: Lower target attack
