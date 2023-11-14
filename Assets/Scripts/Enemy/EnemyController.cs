@@ -225,7 +225,36 @@ namespace YuriGameJam2023
 
         private IEnumerator WaitAndAttack()
         {
+            // Choose what skill we want to use depending on what is the best effective one
+            int _bestIndex = 0;
+            int _bestEffectiveness = 0;
+
+            int i = 0;
+            foreach (var skill in _enemyInfo.Skills)
+            {
+                CurrentSkill = i;
+                UpdateAttackEffects();
+
+                if (_targets.Any(x => x is EnemyController))
+                {
+                    continue;
+                }
+
+                var eff = skill.Damage * _targets.Count;
+                if (eff > _bestEffectiveness)
+                {
+                    _bestIndex = i;
+                    _bestEffectiveness = eff;
+                }
+
+                i++;
+            }
+
+            CurrentSkill = _bestIndex;
+            UpdateAttackEffects();
+
             yield return new WaitForSeconds(.5f);
+
             Attack();
         }
 
