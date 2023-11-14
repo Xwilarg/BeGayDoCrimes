@@ -304,7 +304,9 @@ namespace YuriGameJam2023
                     else
                     {
                         GameManager.Instance.ShowNewMiddleText($"{_speConditionCountdown} turn{(_speConditionCountdown == 1 ? string.Empty : "s")} left");
-                        GameObject.FindGameObjectWithTag("EnemySpawn").GetComponent<EnemySpawner>().Spawn();
+                        
+                        // Drive the train by and spawn the enemy
+                        GameObject.FindGameObjectWithTag("Train").GetComponent<EnemyTrain>().Drive();
                     }
                 }
             }
