@@ -49,7 +49,7 @@ namespace YuriGameJam2023.Achievement
             { AchievementID.AggroFriend, new() { Name = "Keep your Friends Close, and your Enemies Closer", Description = "Attempt to use aggro spell on an allie with Willow" } },
             { AchievementID.Credits, new() { Name = "The Curtain Rises", Description = "Open the credits" } },
             { AchievementID.Petanque, new() { Name = "Cracking the Egg", Description = "Play a full game of pétanque" } },
-            { AchievementID.Effects3, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 3 differents effects" } },
+            { AchievementID.Effects4, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 3 differents effects" } },
 
             { AchievementID.Rel_MC, new() { Name = "Sticky Parental Issues", Description = "Reach max support for Makra and Claire" } },
             { AchievementID.Rel_WC, new() { Name = "Not Fucking Around", Description = "Reach max support for Willow and Claire"} },
@@ -67,7 +67,7 @@ namespace YuriGameJam2023.Achievement
         AggroFriend,
         Petanque,
         Credits,
-        Effects3,
+        Effects4,
 
         Rel_MC,
         Rel_WC,

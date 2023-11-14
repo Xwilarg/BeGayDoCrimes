@@ -342,9 +342,9 @@ namespace YuriGameJam2023
                     }
                 }
 
-                if (this is EnemyController && _effects.Count >= 3)
+                if (this is EnemyController && _effects.Count >= 4)
                 {
-                    AchievementManager.Instance.Unlock(AchievementID.Effects3);
+                    AchievementManager.Instance.Unlock(AchievementID.Effects4);
                 }
 
                 RerenderEffect();
