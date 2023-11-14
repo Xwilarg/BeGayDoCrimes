@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Goon
   m_EditorClassIdentifier: 
   Name: Bandit
-  Health: 20
+  Health: 10
   Skills:
-  - {fileID: 11400000, guid: a193ea2ed47426b4fab715038ef24700, type: 2}
+  - {fileID: 11400000, guid: 5c4dcfed1ad0c7740b6351a4f6fac281, type: 2}
   Sprite: {fileID: 21300000, guid: 714cecad46b7e104eb87fb2a4491454f, type: 3}
