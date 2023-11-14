@@ -38,7 +38,7 @@ namespace YuriGameJam2023.Achievement
 
         private IEnumerator WaitAndClosePopup()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(5f);
             _achievementPanel.SetActive(false);
         }
 
