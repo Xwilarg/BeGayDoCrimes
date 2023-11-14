@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2542fb7b6241c974aa32f88d90105419, type: 3}
   m_Name: Aggro
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 0
   Range: 1
   Damage: 0
+  RemoveAllEffects: 0
   Effects:
   - {fileID: 11400000, guid: 69a31d82391b8a74197f7c16baf785d8, type: 2}
   Sprite: {fileID: 21300000, guid: 99f4bad4962e4e94ca4e7057af9e1974, type: 3}
