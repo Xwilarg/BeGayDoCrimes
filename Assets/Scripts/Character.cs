@@ -286,7 +286,15 @@ namespace YuriGameJam2023
         {
             List<Tuple<bool, string>> effects = new List<Tuple<bool, string>>();
 
-            var dmg = Mathf.RoundToInt(skill.Damage + skill.Damage * Mathf.Clamp(attacker._effects.Sum(x => x.Key.IncreaseDamage), -1f, 1f));
+            int dmg;
+            if (attacker == null)
+            {
+                dmg = skill.Damage;
+            }
+            else
+            {
+                dmg = Mathf.RoundToInt(skill.Damage + skill.Damage * Mathf.Clamp(attacker._effects.Sum(x => x.Key.IncreaseDamage), -1f, 1f));
+            }
             if (dmg != 0) {
                 effects.Add(Tuple.Create(dmg > 0, -dmg + "HP"));
             }
