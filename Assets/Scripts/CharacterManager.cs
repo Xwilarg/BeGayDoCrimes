@@ -382,12 +382,16 @@ namespace YuriGameJam2023
             _aoeHint.Show(pos, radius);
         }
 
-        public Character GetClosestCharacter<T>(Transform transform)
+        public Character GetClosestCharacter<T>(Transform transform, bool useHideModifier)
             where T : Character
         {
             return _characters
                 .Where(x => x is T)
-                .OrderBy(x => Vector3.Distance(transform.position, x.transform.position))
+                .OrderBy(x =>
+                {
+                    if (useHideModifier && x.IsHidden) return float.MaxValue;
+                    return Vector3.Distance(transform.position, x.transform.position);
+                })
                 .ElementAt(0);
         }
 

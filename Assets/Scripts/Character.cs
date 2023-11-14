@@ -2,10 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using YuriGameJam2023.Achievement;
 using YuriGameJam2023.Player;
@@ -80,6 +78,10 @@ namespace YuriGameJam2023
             }
             get => _canBePlayed;
         }
+
+        public bool IsHidden => _effects.Any(x => x.Key.Hide);
+
+        public string Name => _info.Name;
 
         private SpriteRenderer _sr;
 

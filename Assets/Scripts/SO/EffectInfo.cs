@@ -21,6 +21,7 @@ namespace YuriGameJam2023.SO
         [Tooltip("Does the effect prevent the character to move")]
         public bool PreventMovement;
         public bool DoesAggro;
+        public bool Hide;
         [Range(-1f, 1f)]
         public float IncreaseDamage;
         [Range(-1f, 1f)]

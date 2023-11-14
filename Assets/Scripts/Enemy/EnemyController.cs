@@ -58,7 +58,7 @@ namespace YuriGameJam2023
         /// <returns>The closest player</returns>
         public Character GetClosestPlayer()
         {
-            return CharacterManager.Instance.GetClosestCharacter<PlayerController>(transform);
+            return CharacterManager.Instance.GetClosestCharacter<PlayerController>(transform, true);
         }
 
         /// <summary>
