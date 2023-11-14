@@ -356,8 +356,6 @@ namespace YuriGameJam2023
                 {
                     AchievementManager.Instance.Unlock(AchievementID.Effects4);
                 }
-
-                RerenderEffect();
             }
 
             if (skill.RemoveAllEffects)
@@ -370,6 +368,8 @@ namespace YuriGameJam2023
                     }
                 }
             }
+
+            RerenderEffect();
 
             SpawnEffect(effects);
             return false;
