@@ -382,6 +382,12 @@ namespace YuriGameJam2023
             _aoeHint.Show(pos, radius);
         }
 
+        public int GetAliveCount<T>()
+            where T : Character
+        {
+            return _characters.Count(x => x is T);
+        }
+
         public Character GetClosestCharacter<T>(Transform transform, bool useHideModifier)
             where T : Character
         {

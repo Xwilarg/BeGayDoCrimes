@@ -313,10 +313,18 @@ namespace YuriGameJam2023
                 Assert.IsNotNull(attacker, $"No attacker was provided for the skill {skill.name}");
                 foreach (var effect in skill.Effects)
                 {
-                    if (this is PlayerController && effect.Name == "Aggro")
+                    if (this is PlayerController)
                     {
-                        AchievementManager.Instance.Unlock(AchievementID.AggroFriend);
-                        continue; // Can't aggro friends
+                        if (effect.Name == "Aggro")
+                        {
+                            AchievementManager.Instance.Unlock(AchievementID.AggroFriend);
+                            continue; // Can't aggro friends
+                        }
+
+                        if (effect.Name == "Hide" && CharacterManager.Instance.GetAliveCount<PlayerController>() == 1)
+                        {
+                            AchievementManager.Instance.Unlock(AchievementID.HideUseless);
+                        }
                     }
 
                     var value = (TeamId == attacker.TeamId ? 0 : 1) + effect.Duration;

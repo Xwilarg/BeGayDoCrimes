@@ -46,7 +46,8 @@ namespace YuriGameJam2023.Achievement
         {
             { AchievementID.CompleteGame, new() { Name = "Be Gay, Do Crimes", Description = "Complete the game" } },
             { AchievementID.JumpTrainYuki, new() { Name = "So Long, and Thanks for All the Fish", Description = "Jump out of the train with Yuki" } },
-            { AchievementID.AggroFriend, new() { Name = "Keep your Friends Close, and your Enemies Closer", Description = "Attempt to use aggro spell on an allie with Willow" } },
+            { AchievementID.AggroFriend, new() { Name = "Keep your Friends Close, and your Enemies Closer", Description = "Attempt to use the aggro skill on an allie with Willow" } },
+            { AchievementID.HideUseless, new() { Name = "Hidden in Plain Sight", Description = "Attempt to use the hide skill when all your allies are out as Makra" } },
             { AchievementID.Credits, new() { Name = "The Curtain Rises", Description = "Open the credits" } },
             { AchievementID.Petanque, new() { Name = "Cracking the Egg", Description = "Play a full game of pétanque" } },
             { AchievementID.Effects4, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 3 differents effects" } },
@@ -68,6 +69,7 @@ namespace YuriGameJam2023.Achievement
         Petanque,
         Credits,
         Effects4,
+        HideUseless,
 
         Rel_MC,
         Rel_WC,
