@@ -214,6 +214,10 @@ namespace YuriGameJam2023
 
         public virtual void Attack()
         {
+            if (this is PlayerController && Info.Skills[CurrentSkill].Name == "Gaslighting" && _targets.Count(x => x is EnemyController) >= 3)
+            {
+                AchievementManager.Instance.Unlock(AchievementID.Insult3);
+            }
             foreach (var t in _targets)
             {
                 t.TakeDamage(this, Info.Skills[CurrentSkill]);

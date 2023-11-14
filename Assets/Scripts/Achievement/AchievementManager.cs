@@ -50,7 +50,8 @@ namespace YuriGameJam2023.Achievement
             { AchievementID.HideUseless, new() { Name = "Hidden in Plain Sight", Description = "Attempt to use the hide skill when all your allies are out as Makra" } },
             { AchievementID.Credits, new() { Name = "The Curtain Rises", Description = "Open the credits" } },
             { AchievementID.Petanque, new() { Name = "Cracking the Egg", Description = "Play a full game of pétanque" } },
-            { AchievementID.Effects4, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 3 differents effects" } },
+            { AchievementID.Effects4, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 4 differents effects" } },
+            { AchievementID.Insult3, new() { Name = "Sick Burn", Description = "Insult 3 enemies at once" } },
 
             { AchievementID.Rel_MC, new() { Name = "Sticky Parental Issues", Description = "Reach max support for Makra and Claire" } },
             { AchievementID.Rel_WC, new() { Name = "Not Fucking Around", Description = "Reach max support for Willow and Claire"} },
@@ -70,6 +71,7 @@ namespace YuriGameJam2023.Achievement
         Credits,
         Effects4,
         HideUseless,
+        Insult3,
 
         Rel_MC,
         Rel_WC,
