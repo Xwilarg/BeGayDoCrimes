@@ -61,6 +61,7 @@ namespace YuriGameJam2023
 
         protected bool HaveAnyTarget => _targets.Any();
         protected bool HaveAnyNonFriendlyTarget => _targets.Any(x => !x.CompareTag(tag));
+        protected bool HaveAnyFriendlyTarget => _targets.Any(x => x.CompareTag(tag));
 
         public bool PendingAutoDisable { private set; get; }
 
@@ -87,6 +88,8 @@ namespace YuriGameJam2023
 
         private readonly Dictionary<EffectInfo, int> _effects = new();
         private readonly List<GameObject> _vfxs = new();
+
+        public float HPLeft => _health / _info.Health;
 
         private void OnCollisionEnter(Collision collision)
         {

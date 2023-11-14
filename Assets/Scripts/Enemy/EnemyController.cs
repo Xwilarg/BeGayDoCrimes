@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using YuriGameJam2023.Player;
 using YuriGameJam2023.SO;
 
 namespace YuriGameJam2023
@@ -25,6 +24,8 @@ namespace YuriGameJam2023
 
         [SerializeField]
         private SO.CharacterInfo _enemyInfo;
+
+        public bool IsHealer => _enemyInfo.Skills[0].Damage < 0f;
 
         private NavMeshAgent _navigation;
 
@@ -56,9 +57,10 @@ namespace YuriGameJam2023
         /// Gets the closest player from the enemy
         /// </summary>
         /// <returns>The closest player</returns>
-        public Character GetClosestPlayer()
+        public Character GetClosest<T>()
+            where T : Character
         {
-            return CharacterManager.Instance.GetClosestCharacter<PlayerController>(transform, true);
+            return CharacterManager.Instance.GetClosestCharacter<T>(transform, true, this);
         }
 
         /// <summary>
@@ -181,7 +183,7 @@ namespace YuriGameJam2023
                     Debug.Log(_navigation.isStopped);
 
                     // Check if we have no targets, but are close to one
-                    if (_target != null && !HaveAnyNonFriendlyTarget &&
+                    if (_target != null && ((IsHealer && !HaveAnyFriendlyTarget) || (!IsHealer && !HaveAnyNonFriendlyTarget)) &&
                         Vector3.Distance(_target.transform.position, transform.position) <= Info.Skills[0].Range + 1f)
                     {
                         var direction = _target.transform.position - transform.position;
@@ -190,14 +192,21 @@ namespace YuriGameJam2023
                         var rotation = Quaternion.LookRotation(direction.normalized);
 
                         // Rotate towards the target this frame and return
+                        var old = transform.rotation;
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * (_navigation.angularSpeed / 2f));
+
+                        if (old == transform.rotation)
+                        {
+                            Debug.LogWarning($"{_enemyInfo.Name} failed to find a target");
+                            Disable(); // We somehow didn't find a target
+                        }
 
                         return;
                     }
 
                     _isMyTurn = false;
 
-                    if (HaveAnyNonFriendlyTarget)
+                    if ((IsHealer && HaveAnyFriendlyTarget) || (!IsHealer && HaveAnyNonFriendlyTarget))
                     {
                         StopMovements();
                         StartCoroutine(WaitAndAttack());

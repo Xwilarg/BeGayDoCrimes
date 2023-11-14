@@ -388,15 +388,27 @@ namespace YuriGameJam2023
             return _characters.Count(x => x is T);
         }
 
-        public Character GetClosestCharacter<T>(Transform transform, bool useHideModifier)
+        public Character GetClosestCharacter<T>(Transform transform, bool useHideModifier, Character filterOut)
             where T : Character
         {
             return _characters
-                .Where(x => x is T)
+                .Where(x => x is T && x.gameObject.GetInstanceID() != filterOut.gameObject.GetInstanceID())
                 .OrderBy(x =>
                 {
                     if (useHideModifier && x.IsHidden) return float.MaxValue;
                     return Vector3.Distance(transform.position, x.transform.position);
+                })
+                .ElementAt(0);
+        }
+        public Character GetWeakestCharacter<T>(Transform transform, bool useHideModifier, Character filterOut)
+            where T : Character
+        {
+            return _characters
+                .Where(x => x is T && x.gameObject.GetInstanceID() != filterOut.gameObject.GetInstanceID())
+                .OrderBy(x =>
+                {
+                    if (useHideModifier && x.IsHidden) return float.MaxValue;
+                    return x.HPLeft;
                 })
                 .ElementAt(0);
         }

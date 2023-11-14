@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eadb88a81c553594d87da6016440dfc5, type: 3}
-  m_Name: ChiefBandit
+  m_Name: City Doc
   m_EditorClassIdentifier: 
-  Name: Bandir Chief
-  Health: 40
+  Name: City Doctor
+  Health: 15
   Skills:
-  - {fileID: 11400000, guid: a193ea2ed47426b4fab715038ef24700, type: 2}
-  - {fileID: 11400000, guid: 138897bdb91d38d478860b052929f40d, type: 2}
+  - {fileID: 11400000, guid: b390bf92a4b8d2145aa82765e4d3be2c, type: 2}
   Sprite: {fileID: 21300000, guid: 714cecad46b7e104eb87fb2a4491454f, type: 3}

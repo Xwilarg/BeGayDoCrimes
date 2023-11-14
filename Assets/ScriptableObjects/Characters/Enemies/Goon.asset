@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadb88a81c553594d87da6016440dfc5, type: 3}
   m_Name: Goon
   m_EditorClassIdentifier: 
-  Name: Bandit
+  Name: Goon
   Health: 10
   Skills:
   - {fileID: 11400000, guid: 5c4dcfed1ad0c7740b6351a4f6fac281, type: 2}

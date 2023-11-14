@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using YuriGameJam2023.Player;
 
 namespace YuriGameJam2023
 {
@@ -38,7 +39,8 @@ namespace YuriGameJam2023
         {
             _enemies = CharacterManager.Instance.GetCharacters<EnemyController>()
                 .OrderBy(x => x.IsAlerted ? 0 : 1) // All turns that will be skipped are done last
-                .ThenBy(x => Vector3.Distance(x.transform.position, x.GetClosestPlayer().transform.position))
+                .OrderBy(x => x.IsHealer ? 1 : 0) // Healers play last
+                .ThenBy(x => Vector3.Distance(x.transform.position, x.GetClosest<PlayerController>().transform.position))
                 .ToList();
             DoAction();
         }
@@ -76,7 +78,7 @@ namespace YuriGameJam2023
                 }
                 else
                 {
-                    var player = enemy.GetClosestPlayer();
+                    var player = enemy.IsHealer ? CharacterManager.Instance.GetWeakestCharacter<EnemyController>(enemy.transform, true, enemy) : enemy.GetClosest<PlayerController>();
                     enemy.Target(player);
                 }
                 _currEnemy = enemy;
