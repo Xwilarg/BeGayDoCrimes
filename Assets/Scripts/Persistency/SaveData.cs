@@ -50,7 +50,7 @@ namespace YuriGameJam2023.Persistency
             }
         }
 
-        public List<AchievementID> UnlockedAchievements { get; } = new();
+        public List<AchievementID> UnlockedAchievements { set; get; } = new();
 
         public int CurrentLevel { set; get; } = 1;
 
