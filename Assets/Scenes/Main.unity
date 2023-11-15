@@ -3818,6 +3818,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 461cad615bcf33a4391a48caef8fe196, type: 2}
   _explanationContainer: {fileID: 1818300374}
   _explanationText: {fileID: 609469977}
+  _bgm: {fileID: 254331261}
+  _level4Bgm: {fileID: 8300000, guid: 9977047591ead6948a149e2c4a2a162e, type: 3}
 --- !u!1 &1578787018
 GameObject:
   m_ObjectHideFlags: 0
