@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7cc2892a58a5b484a8061b77932bc614, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7cc2892a58a5b484a8061b77932bc614, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7cc2892a58a5b484a8061b77932bc614, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7cc2892a58a5b484a8061b77932bc614, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.45
       objectReference: {fileID: 0}
@@ -88,5 +100,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0035331352, y: 0.0034672187, z: 0.018832488}
-  m_Center: {x: 0, y: 0.000000003026798, z: 0.009416244}
+  m_Size: {x: 0.011721681, y: 0.011502995, z: 0.062479477}
+  m_Center: {x: 0, y: 0.000000009778886, z: 0.031239739}
