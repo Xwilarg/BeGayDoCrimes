@@ -126,7 +126,7 @@ namespace YuriGameJam2023
             foreach (var key in _effects.Keys.ToList())
             {
                 _effects[key]--;
-                if (_effects[key] == 0)
+                if (_effects[key] <= 0)
                 {
                     _effects.Remove(key);
                 }
@@ -341,7 +341,7 @@ namespace YuriGameJam2023
                     }
                     else
                     {
-                        effects.Add(Tuple.Create(true, "+" + effect.Name));
+                        effects.Add(Tuple.Create(!effect.IsBuff, "+" + effect.Name));
                         _effects.Add(effect, value);
                     }
 
@@ -354,7 +354,7 @@ namespace YuriGameJam2023
                 foreach (var eff in _effects.Keys.ToArray()) {
                     foreach (var cancel in eff.Cancels) {
                         if (_effects.Remove(cancel)) {
-                            effects.Add(Tuple.Create(false, "-" + cancel.Name));
+                            effects.Add(Tuple.Create(eff.IsBuff, "-" + cancel.Name));
                         }
                     }
                 }
