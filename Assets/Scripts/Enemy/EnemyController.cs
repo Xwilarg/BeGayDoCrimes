@@ -25,7 +25,7 @@ namespace YuriGameJam2023
         [SerializeField]
         private SO.CharacterInfo _enemyInfo;
 
-        public bool IsHealer => _enemyInfo.Skills[0].Damage < 0f;
+        public bool IsHealer => Info.Skills[0].Damage < 0f;
 
         private NavMeshAgent _navigation;
 
@@ -197,7 +197,7 @@ namespace YuriGameJam2023
 
                         if (old == transform.rotation)
                         {
-                            Debug.LogWarning($"{_enemyInfo.Name} failed to find a target");
+                            Debug.LogWarning($"{Info.Name} failed to find a target");
                             Disable(); // We somehow didn't find a target
                         }
 
@@ -239,7 +239,7 @@ namespace YuriGameJam2023
             int _bestEffectiveness = 0;
 
             int i = 0;
-            foreach (var skill in _enemyInfo.Skills)
+            foreach (var skill in Info.Skills)
             {
                 CurrentSkill = i;
                 UpdateAttackEffects();
