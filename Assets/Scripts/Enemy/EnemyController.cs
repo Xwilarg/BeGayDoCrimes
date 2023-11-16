@@ -160,7 +160,11 @@ namespace YuriGameJam2023
             var path = new NavMeshPath();
             if (!_navigation.CalculatePath(target.transform.position, path))
             {
-                Debug.LogError("Cannot calculate path to target, this is bad!");
+                Debug.LogError("Cannot calculate path for " + name + " to target, this is bad!");
+
+                // You have been bad, now die
+                Die();
+                return;
             }
 
             _navigation.path = path;
