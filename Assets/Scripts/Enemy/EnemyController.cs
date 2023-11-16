@@ -157,7 +157,14 @@ namespace YuriGameJam2023
 
         public void Target(Transform target)
         {
-            _navigation.destination = target.transform.position;
+            var path = new NavMeshPath();
+            if (!_navigation.CalculatePath(target.transform.position, path))
+            {
+                Debug.LogError("Cannot calculate path to target, this is bad!");
+            }
+
+            _navigation.path = path;
+            //_navigation.destination = target.transform.position;
             _navigation.stoppingDistance = 0f;
 
             _isMyTurn = true;
