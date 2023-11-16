@@ -126,7 +126,7 @@ namespace YuriGameJam2023
             foreach (var key in _effects.Keys.ToList())
             {
                 _effects[key]--;
-                if (_effects[key] == 0)
+                if (_effects[key] <= 0)
                 {
                     _effects.Remove(key);
                 }
