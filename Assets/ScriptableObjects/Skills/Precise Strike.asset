@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2542fb7b6241c974aa32f88d90105419, type: 3}
+  m_Name: Precise Strike
+  m_EditorClassIdentifier: 
+  Type: 0
+  Range: 1
+  Damage: 15
+  RemoveAllEffects: 0
+  Effects: []
+  Sprite: {fileID: 21300000, guid: 135baf81d57481742a1530c37564fc62, type: 3}
+  Name: Precise Sword Slash
+  Description: Attack the target with a large powerful slash
