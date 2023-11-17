@@ -333,6 +333,8 @@ namespace YuriGameJam2023
 
         private IEnumerator WaitAndAttack()
         {
+            _turnTimer = -1f;
+
             // Choose what skill we want to use depending on what is the best effective one
             int _bestIndex = 0;
             int _bestEffectiveness = 0;
