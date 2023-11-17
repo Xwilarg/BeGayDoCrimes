@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 using YuriGameJam2023.SO;
@@ -23,7 +24,12 @@ namespace YuriGameJam2023
         private int _alertRange;
 
         [SerializeField]
+        private bool _slowerWhenNotAlerted;
+
+        [SerializeField]
         private SO.CharacterInfo _enemyInfo;
+
+        private float _baseSpeed;
 
         public bool IsHealer => Info.Skills[0].Damage < 0f;
 
@@ -43,7 +49,8 @@ namespace YuriGameJam2023
             AwakeParent();
             IsAlerted = _startAwareOfPlayer;
             _navigation = GetComponent<NavMeshAgent>();
-            if(_enemyInfo != null) Info = _enemyInfo;
+            _baseSpeed = _navigation.speed;
+            if (_enemyInfo != null) Info = _enemyInfo;
 
             if (_hidden) Hide(true);
         }
@@ -153,6 +160,7 @@ namespace YuriGameJam2023
 
             _isMyTurn = true;
             _target = target;
+            _navigation.speed = _baseSpeed;
         }
 
         public void Target(Transform target)
@@ -165,6 +173,16 @@ namespace YuriGameJam2023
                 // You have been bad, now die
                 Die();
                 return;
+            }
+
+            if (!IsAlerted && _slowerWhenNotAlerted)
+            {
+                _distance /= 2f;
+                _navigation.speed = _baseSpeed / 2f;
+            }
+            else
+            {
+                _navigation.speed = _baseSpeed;
             }
 
             _navigation.path = path;
