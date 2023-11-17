@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 using YuriGameJam2023.Achievement;
 
 namespace YuriGameJam2023.Player
@@ -15,6 +16,7 @@ namespace YuriGameJam2023.Player
         [SerializeField]
         private GameObject _heartSprite;
 
+        private NavMeshObstacle _obs;
         private Rigidbody _rb;
         private Vector2 _mov;
         public Vector2 Mov
@@ -38,6 +40,7 @@ namespace YuriGameJam2023.Player
             AwakeParent();
 
             _rb = GetComponent<Rigidbody>();
+            _obs = GetComponent<NavMeshObstacle>();
         }
 
         private void Start()
@@ -112,12 +115,14 @@ namespace YuriGameJam2023.Player
         public override void Enable()
         {
             base.Enable();
+            _obs.enabled = false;
             _rb.isKinematic = false;
         }
 
         public override void Disable()
         {
             base.Disable();
+            _obs.enabled = true;
             _rb.isKinematic = true;
         }
 
