@@ -86,6 +86,7 @@ namespace YuriGameJam2023
         public string Name => _info.Name;
 
         private SpriteRenderer _sr;
+        protected Rigidbody _rb;
 
         private readonly Dictionary<EffectInfo, int> _effects = new();
         private readonly List<GameObject> _vfxs = new();
@@ -154,6 +155,7 @@ namespace YuriGameJam2023
         protected void AwakeParent()
         {
             _sr = GetComponentInChildren<SpriteRenderer>();
+            _rb = GetComponent<Rigidbody>();
             Halo = GetComponentInChildren<Light>();
             Halo.gameObject.SetActive(false);
             GetComponentInChildren<Canvas>().worldCamera = Camera.main;

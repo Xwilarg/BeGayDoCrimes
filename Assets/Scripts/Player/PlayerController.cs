@@ -17,7 +17,6 @@ namespace YuriGameJam2023.Player
         private GameObject _heartSprite;
 
         private NavMeshObstacle _obs;
-        private Rigidbody _rb;
         private Vector2 _mov;
         public Vector2 Mov
         {
@@ -39,7 +38,6 @@ namespace YuriGameJam2023.Player
         {
             AwakeParent();
 
-            _rb = GetComponent<Rigidbody>();
             _obs = GetComponent<NavMeshObstacle>();
         }
 

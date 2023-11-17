@@ -148,7 +148,13 @@ namespace YuriGameJam2023
         /// <param name="target">The target to attack</param>
         public void Target(Character target)
         {
-            _navigation.isStopped = false;
+            _target = target;
+            if (_target is PlayerController pc)
+            {
+                pc.ToggleObstacleCollider(false);
+            }
+
+            //_navigation.isStopped = false;
             var distance = Vector3.Distance(target.transform.position, transform.position);
 
             // Whether we are close enough to the player
@@ -159,18 +165,13 @@ namespace YuriGameJam2023
             }
 
             _isMyTurn = true;
-            _target = target;
             _navigation.speed = _baseSpeed;
             _turnTimer = 10f;
-            if (_target is PlayerController pc)
-            {
-                pc.ToggleObstacleCollider(false);
-            }
         }
 
         public void Target(Transform target)
         {
-            _navigation.isStopped = false;
+            //_navigation.isStopped = false;
             var path = new NavMeshPath();
             if (!_navigation.CalculatePath(target.transform.position, path))
             {
@@ -409,7 +410,8 @@ namespace YuriGameJam2023
 
         protected override void StopMovements()
         {
-            _navigation.isStopped = true;
+            _navigation.destination = transform.position;
+            // _navigation.isStopped = true; -> this make the agent slide, nice job Unity
         }
     }
 }
