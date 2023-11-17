@@ -89,7 +89,7 @@ namespace YuriGameJam2023.Campfire
                 {
                     StartCoroutine(_characters[Random.Range(0, _characters.Length)].ShowRandomSentence());
                 }
-                yield return new WaitForSeconds(Random.Range(5f, 10f));
+                yield return new WaitForSeconds(Random.Range(20f, 30f));
             }
         }
 
