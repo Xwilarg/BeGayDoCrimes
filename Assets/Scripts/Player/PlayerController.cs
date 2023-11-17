@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using YuriGameJam2023.Achievement;
 
 namespace YuriGameJam2023.Player
 {
@@ -65,6 +66,14 @@ namespace YuriGameJam2023.Player
             if (!_rb.isKinematic)
             {
                 UpdateAttackEffects();
+            }
+        }
+
+        public void TryBurnHouse()
+        {
+            if (!_rb.isKinematic && !PendingAutoDisable && _isTargetingHouse)
+            {
+                AchievementManager.Instance.Unlock(AchievementID.BurnHouse);
             }
         }
 

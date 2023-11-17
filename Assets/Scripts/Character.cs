@@ -91,6 +91,8 @@ namespace YuriGameJam2023
 
         public float HPLeft => _health / _info.Health;
 
+        protected bool _isTargetingHouse;
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.CompareTag("DieZone"))
@@ -185,6 +187,8 @@ namespace YuriGameJam2023
 
             var currSkill = Info.Skills[CurrentSkill];
 
+            _isTargetingHouse = false;
+
             // Find all targets and set back the _targets list
             switch (currSkill.Type)
             {
@@ -209,6 +213,17 @@ namespace YuriGameJam2023
                         }
                     }
                     CharacterManager.Instance.ShowAoeHint(transform.position + Forward * 1.5f * currSkill.Range, currSkill.Range);
+
+                    if (currSkill.Effects.Any(x => x.Name == "Fire"))
+                    {
+                        foreach (var coll in Physics.OverlapSphere(transform.position + Forward * 1.5f * currSkill.Range, currSkill.Range, 1 << LayerMask.NameToLayer("Obstacle")))
+                        {
+                            if (coll.CompareTag("MainHouse"))
+                            {
+                                _isTargetingHouse = true;
+                            }
+                        }
+                    }
                     break;
 
                 default: throw new NotImplementedException();

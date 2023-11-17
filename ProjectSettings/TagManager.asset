@@ -12,6 +12,8 @@ TagManager:
   - PostVictoryEffect
   - DieZone
   - EnemySpawn
+  - Train
+  - MainHouse
   layers:
   - Default
   - TransparentFX

@@ -58,6 +58,7 @@ namespace YuriGameJam2023.Achievement
             { AchievementID.Insult3, new() { Name = "I'm not a Rapper", Description = "Insult 3 enemies at once", Hint = "With bad enough words, you can easily ruin everyone day!" } },
             { AchievementID.Cancel, new() { Name = "Innovative Strategy", Description = "Attempt to use both spiderweb and fire on a target", Hint = "Who through playing this game would require paying attention?!" } },
             { AchievementID.KillGeneral, new() { Name = "Four Girls Army", Description = "Kill the general in the last level", Hint = "Kill the strongest enemy of the game then go directly to join without passing go" } },
+            { AchievementID.BurnHouse, new() { Name = "What are we Even Fighting for Anymore", Description = "Attempt to burn the girl's house", Hint = "The first level sure would go by faster if the plot point were to disappear" } },
 
             { AchievementID.Rel_MC, new() { Name = "Sticky Parental Issues", Description = "Reach max support for Makra and Claire", Hint = "Get two specifics characters to love each other enough" } },
             { AchievementID.Rel_WC, new() { Name = "Not Fucking Around", Description = "Reach max support for Willow and Claire", Hint = "Get two specifics characters to love each other enough"} },
@@ -80,6 +81,7 @@ namespace YuriGameJam2023.Achievement
         Insult3,
         Cancel,
         KillGeneral,
+        BurnHouse,
 
         Rel_MC,
         Rel_WC,

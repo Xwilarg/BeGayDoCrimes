@@ -466,6 +466,7 @@ namespace YuriGameJam2023
                 }
                 else
                 {
+                    ((PlayerController)_currentPlayer).TryBurnHouse(); // Achievement
                     if (((PlayerController)_currentPlayer).CanAttack)
                     {
                         _currentPlayer.Attack();
