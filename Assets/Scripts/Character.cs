@@ -268,7 +268,6 @@ namespace YuriGameJam2023
             CharacterManager.Instance.UnsetPlayer();
             CharacterManager.Instance.DisplayDistanceText(0f);
             CharacterManager.Instance.RemoveAction();
-            EnemyManager.Instance.StopTimeoutTimer();
         }
 
         public void ClearAllHalo()

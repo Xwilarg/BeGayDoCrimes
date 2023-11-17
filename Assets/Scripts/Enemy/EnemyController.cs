@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.AI;
 using YuriGameJam2023.SO;
@@ -43,6 +42,7 @@ namespace YuriGameJam2023
         public bool IsAlerted { get; set; } = false;
 
         protected override int TeamId => 0;
+        private float _turnTimer = -1f;
 
         private void Awake()
         {
@@ -161,6 +161,7 @@ namespace YuriGameJam2023
             _isMyTurn = true;
             _target = target;
             _navigation.speed = _baseSpeed;
+            _turnTimer = 10f;
         }
 
         public void Target(Transform target)
@@ -191,6 +192,7 @@ namespace YuriGameJam2023
 
             _isMyTurn = true;
             _target = null;
+            _turnTimer = 10f;
         }
 
         private void FixedUpdate()
@@ -255,6 +257,26 @@ namespace YuriGameJam2023
                     Debug.Log(name + " just saw walking past them " + player.name + ", we're alerted!");
                 }
             }
+        }
+
+        private void Update()
+        {
+            if (_turnTimer > 0f)
+            {
+                _turnTimer -= Time.deltaTime;
+                if (_turnTimer < 0f)
+                {
+                    Debug.LogError("Enemy timeout, this mean the enemy didn't manage to play after 10 seconds!");
+                    Disable();
+                }
+            }
+        }
+
+        public override void Disable()
+        {
+            base.Disable();
+            StopMovements();
+            _turnTimer = -1f;
         }
 
         private IEnumerator WaitAndAttack()

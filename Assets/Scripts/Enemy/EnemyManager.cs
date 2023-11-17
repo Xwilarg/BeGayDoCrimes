@@ -14,25 +14,10 @@ namespace YuriGameJam2023
         private List<EnemyController> _enemies;
 
         private EnemyController _currEnemy;
-        private float _turnTimer = -1f;
 
         private void Awake()
         {
             Instance = this;
-        }
-
-        private void Update()
-        {
-            if (_turnTimer > 0f)
-            {
-                _turnTimer -= Time.deltaTime;
-                if (_turnTimer < 0f)
-                {
-                    _currEnemy.EndTurn();
-                    _turnTimer = -1f;
-                    Debug.LogError("Enemy timeout, this mean the enemy didn't manage to play after 10 seconds!");
-                }
-            }
         }
 
         public void StartTurn()
@@ -82,18 +67,12 @@ namespace YuriGameJam2023
                     enemy.Target(player);
                 }
                 _currEnemy = enemy;
-                _turnTimer = 10f;
             }
             catch (Exception e)
             {
                 StartCoroutine(WaitAndNextTurn());
                 Debug.LogException(e);
             }
-        }
-
-        public void StopTimeoutTimer()
-        {
-            _turnTimer = -1f;
         }
 
         private IEnumerator WaitAndNextTurn()
