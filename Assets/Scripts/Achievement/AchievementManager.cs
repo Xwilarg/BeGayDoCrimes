@@ -56,7 +56,7 @@ namespace YuriGameJam2023.Achievement
             { AchievementID.Petanque, new() { Name = "Cracking the Egg", Description = "Play a full game of pétanque", Hint = "Get more of these and come back" } },
             { AchievementID.Effects4, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 4 differents effects", Hint = "The hardest stains requires the strongest cleaning efforts" } },
             { AchievementID.Insult3, new() { Name = "I'm not a Rapper", Description = "Insult 3 enemies at once", Hint = "With bad enough words, you can easily ruin everyone day!" } },
-            { AchievementID.Cancel, new() { Name = "Innovative Strategy", Description = "Attempt to use both spiderweb and fire on a target", Hint = "Who through playing would require paying attention?!" } },
+            { AchievementID.Cancel, new() { Name = "Innovative Strategy", Description = "Attempt to use spiderweb on a target on fire", Hint = "Who through playing would require paying attention?!" } },
             { AchievementID.KillGeneral, new() { Name = "Four Girls Army", Description = "Kill the general in the last level", Hint = "Flex on the game by killing its strongest enemy" } },
             { AchievementID.BurnHouse, new() { Name = "What are we Even Fighting for Anymore", Description = "Attempt to burn the girl's house", Hint = "If only I could make the level 1 plot disappear" } },
 

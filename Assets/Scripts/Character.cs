@@ -370,7 +370,7 @@ namespace YuriGameJam2023
                     foreach (var cancel in eff.Cancels) {
                         if (_effects.Remove(cancel)) {
                             effects.Add(Tuple.Create(eff.IsBuff, "-" + cancel.Name));
-                            if (this is EnemyController)
+                            if (this is EnemyController && skill.Effects.Any(x => x.PreventMovement))
                             {
                                 AchievementManager.Instance.Unlock(AchievementID.Cancel);
                             }
