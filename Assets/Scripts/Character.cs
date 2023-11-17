@@ -81,6 +81,7 @@ namespace YuriGameJam2023
         }
 
         public bool IsHidden => _effects.Any(x => x.Key.Hide);
+        public bool IsHealer => Info.Skills.Any(x => x.Damage < 0f);
 
         public string Name => _info.Name;
 

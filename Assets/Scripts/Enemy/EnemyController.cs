@@ -31,8 +31,6 @@ namespace YuriGameJam2023
 
         private float _baseSpeed;
 
-        public bool IsHealer => Info.Skills[0].Damage < 0f;
-
         private NavMeshAgent _navigation;
 
         protected override Vector3 Forward => transform.forward;
@@ -275,7 +273,15 @@ namespace YuriGameJam2023
                 {
                     return _maxDistance - ttLength;
                 }
-                return 1f - pc.HPLeft; // We attack the player with the less HP because we are a bad person
+                var score = 1f - pc.HPLeft; // We attack the player with the less HP because we are a bad person
+                score = (int)(score * 100);
+
+                if (pc.IsHealer) // If we are not sure who to attack we might as well aim for the healer...
+                {
+                    score += 50;
+                }
+
+                return score; 
             }
             return float.NegativeInfinity;
         }
