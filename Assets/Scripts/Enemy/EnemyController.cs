@@ -162,6 +162,10 @@ namespace YuriGameJam2023
             _target = target;
             _navigation.speed = _baseSpeed;
             _turnTimer = 10f;
+            if (_target is PlayerController pc)
+            {
+                pc.ToggleObstacleCollider(false);
+            }
         }
 
         public void Target(Transform target)
@@ -264,6 +268,8 @@ namespace YuriGameJam2023
 
         public float GetTargetScore(PlayerController pc)
         {
+            pc.ToggleObstacleCollider(false);
+
             NavMeshPath path = new();
             if (_navigation.CalculatePath(pc.transform.position, path))
             {
@@ -306,8 +312,10 @@ namespace YuriGameJam2023
                     else score += 1_000_000f;
                 }
 
-                return score; 
+                pc.ToggleObstacleCollider(true);
+                return score;
             }
+            pc.ToggleObstacleCollider(true);
             return float.NegativeInfinity;
         }
 
@@ -327,6 +335,10 @@ namespace YuriGameJam2023
         public override void Disable()
         {
             base.Disable();
+            if (_target != null && _target is PlayerController pc)
+            {
+                pc.ToggleObstacleCollider(true);
+            }
             StopMovements();
             _turnTimer = -1f;
         }

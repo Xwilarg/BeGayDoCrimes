@@ -112,17 +112,22 @@ namespace YuriGameJam2023.Player
             _rb.velocity = Vector3.zero;
         }
 
+        public void ToggleObstacleCollider(bool value)
+        {
+            _obs.enabled = value;
+        }
+
         public override void Enable()
         {
             base.Enable();
-            _obs.enabled = false;
+            ToggleObstacleCollider(false);
             _rb.isKinematic = false;
         }
 
         public override void Disable()
         {
             base.Disable();
-            _obs.enabled = true;
+            ToggleObstacleCollider(true);
             _rb.isKinematic = true;
         }
 
