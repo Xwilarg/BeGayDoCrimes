@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using YuriGameJam2023.Player;
 
 namespace YuriGameJam2023
@@ -63,8 +64,26 @@ namespace YuriGameJam2023
                 }
                 else
                 {
-                    var player = enemy.IsHealer ? CharacterManager.Instance.GetWeakestCharacter<EnemyController>(enemy.transform, true, enemy) : enemy.GetClosest<PlayerController>();
-                    enemy.Target(player);
+                    Character target = null;
+                    if (enemy.IsHealer)
+                    {
+                        target = CharacterManager.Instance.GetWeakestCharacter<EnemyController>(enemy.transform, true, enemy);
+                    }
+                    else
+                    {
+                        float bestScore = 0f;
+                        foreach (var pc in CharacterManager.Instance.GetCharacters<PlayerController>())
+                        {
+                            var score = enemy.GetTargetScore(pc);
+                            Debug.Log($"Interest score for {pc.Info.Name}: {score}");
+                            if (target == null || score > bestScore)
+                            {
+                                bestScore = score;
+                                target = pc;
+                            }
+                        }
+                    }
+                    enemy.Target(target);
                 }
                 _currEnemy = enemy;
             }

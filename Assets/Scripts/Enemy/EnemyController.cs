@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using YuriGameJam2023.Player;
 using YuriGameJam2023.SO;
 
 namespace YuriGameJam2023
@@ -224,7 +225,7 @@ namespace YuriGameJam2023
 
                         if (old == transform.rotation)
                         {
-                            Debug.LogWarning($"{Info.Name} failed to find a target");
+                            Debug.LogWarning($"[DISABLE] {Info.Name} failed to find a target");
                             Disable(); // We somehow didn't find a target
                         }
 
@@ -240,6 +241,7 @@ namespace YuriGameJam2023
                     }
                     else
                     {
+                        Debug.LogWarning($"[DISABLE] {Info.Name} is looking to attack but noone is there");
                         Disable();
                     }
                 }
@@ -259,6 +261,25 @@ namespace YuriGameJam2023
             }
         }
 
+        public float GetTargetScore(PlayerController pc)
+        {
+            NavMeshPath path = new();
+            if (_navigation.CalculatePath(pc.transform.position, path))
+            {
+                float ttLength = 0f;
+                for (int i = 1; i < path.corners.Length; i++)
+                {
+                    ttLength += Vector3.Distance(path.corners[i - 1], path.corners[i]);
+                }
+                if (ttLength > _maxDistance)
+                {
+                    return _maxDistance - ttLength;
+                }
+                return 1f - pc.HPLeft; // We attack the player with the less HP because we are a bad person
+            }
+            return float.NegativeInfinity;
+        }
+
         private void Update()
         {
             if (_turnTimer > 0f)
@@ -266,7 +287,7 @@ namespace YuriGameJam2023
                 _turnTimer -= Time.deltaTime;
                 if (_turnTimer < 0f)
                 {
-                    Debug.LogError("Enemy timeout, this mean the enemy didn't manage to play after 10 seconds!");
+                    Debug.LogWarning($"[DISABLE] {Info.Name} timeout, this mean the enemy didn't manage to play after 10 seconds");
                     Disable();
                 }
             }

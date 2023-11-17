@@ -54,7 +54,7 @@ namespace YuriGameJam2023
 
         public int CurrentSkill { set; get; }
 
-        private float _maxDistance = 10f;
+        protected float _maxDistance = 10f;
         protected float _distance;
 
         protected readonly List<Character> _targets = new();
@@ -89,7 +89,7 @@ namespace YuriGameJam2023
         private readonly Dictionary<EffectInfo, int> _effects = new();
         private readonly List<GameObject> _vfxs = new();
 
-        public float HPLeft => _health / _info.Health;
+        public float HPLeft => _health / (float)_info.Health;
 
         protected bool _isTargetingHouse;
 
