@@ -262,5 +262,17 @@ namespace YuriGameJam2023.Campfire
             if (name1.CompareTo(name2) < 0) return $"{name1}{name2}";
             return $"{name2}{name1}";
         }
+
+        public void OnVNSkip(InputAction.CallbackContext value)
+        {
+            if (value.phase == InputActionPhase.Started)
+            {
+                VNManager.Instance.ToggleSkip(true);
+            }
+            else if (value.phase == InputActionPhase.Canceled)
+            {
+                VNManager.Instance.ToggleSkip(false);
+            }
+        }
     }
 }
