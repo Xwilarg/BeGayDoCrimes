@@ -371,7 +371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4861747679415910176, guid: 37a10a5611f65004780c9ea1de1d9ec3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 42.474815
+      value: 41.549
       objectReference: {fileID: 0}
     - target: {fileID: 4861747679415910176, guid: 37a10a5611f65004780c9ea1de1d9ec3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -668,6 +668,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverZone (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2327334363529026066, guid: 81053aadafe87ad44978b23d2466345d, type: 3}
+      propertyPath: m_text
+      value: 'Go
+
+        Here'
+      objectReference: {fileID: 0}
     - target: {fileID: 7943436238674717569, guid: 81053aadafe87ad44978b23d2466345d, type: 3}
       propertyPath: _zoneBehavior
       value: 2
@@ -715,7 +721,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3147852433914685806, guid: 81053aadafe87ad44978b23d2466345d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 81053aadafe87ad44978b23d2466345d, type: 3}
 --- !u!1001 &124289413
 PrefabInstance:
@@ -5682,7 +5691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4861747679415910176, guid: 37a10a5611f65004780c9ea1de1d9ec3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.474815
+      value: 42.549
       objectReference: {fileID: 0}
     - target: {fileID: 4861747679415910176, guid: 37a10a5611f65004780c9ea1de1d9ec3, type: 3}
       propertyPath: m_LocalRotation.w
