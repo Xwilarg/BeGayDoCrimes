@@ -227,7 +227,7 @@ namespace YuriGameJam2023
                         {
                             Debug.LogWarning($"[DISABLE] {Info.Name} failed to find a target");
                             Disable(); // We somehow didn't find a target
-                            return,
+                            return;
                         }
 
                         return;
