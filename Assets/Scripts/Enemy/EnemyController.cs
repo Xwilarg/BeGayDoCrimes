@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 using YuriGameJam2023.Player;
 using YuriGameJam2023.SO;
 
@@ -384,6 +385,15 @@ namespace YuriGameJam2023
         private new void OnDrawGizmos()
         {
             base.OnDrawGizmos();
+
+            if (_navigation != null)
+            {
+                Gizmos.color = Color.white;
+                for (int i = 1; i < _navigation.path.corners.Length; i++)
+                {
+                    Gizmos.DrawLine(_navigation.path.corners[i - 1], _navigation.path.corners[i]);
+                }
+            }
 
             Gizmos.color = IsAlerted ? Color.red : Color.green;
             DebugHelper.DrawCircle(transform.position, _alertRange);
