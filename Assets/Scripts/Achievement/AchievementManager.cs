@@ -56,6 +56,8 @@ namespace YuriGameJam2023.Achievement
             { AchievementID.Petanque, new() { Name = "Cracking the Egg", Description = "Play a full game of pétanque", Hint = "Get more of these and come back" } },
             { AchievementID.Effects4, new() { Name = "Feeling Under the Weather?", Description = "Have an enemy under 4 differents effects", Hint = "The hardest stains requires the strongest cleaning efforts" } },
             { AchievementID.Insult3, new() { Name = "I'm not a Rapper", Description = "Insult 3 enemies at once", Hint = "With bad enough words, you can easily ruin everyone day!" } },
+            { AchievementID.Cancel, new() { Name = "Innovative Strategy", Description = "Attempt to use both spiderweb and fire on a target", Hint = "Who through playing this game would require paying attention?!" } },
+            { AchievementID.KillGeneral, new() { Name = "Four Girls Army", Description = "Kill the general in the last level", Hint = "Kill the strongest enemy of the game then go directly to join without passing go" } },
 
             { AchievementID.Rel_MC, new() { Name = "Sticky Parental Issues", Description = "Reach max support for Makra and Claire", Hint = "Get two specifics characters to love each other enough" } },
             { AchievementID.Rel_WC, new() { Name = "Not Fucking Around", Description = "Reach max support for Willow and Claire", Hint = "Get two specifics characters to love each other enough"} },
@@ -76,6 +78,8 @@ namespace YuriGameJam2023.Achievement
         Effects4,
         HideUseless,
         Insult3,
+        Cancel,
+        KillGeneral,
 
         Rel_MC,
         Rel_WC,

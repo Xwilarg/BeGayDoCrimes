@@ -355,6 +355,10 @@ namespace YuriGameJam2023
                     foreach (var cancel in eff.Cancels) {
                         if (_effects.Remove(cancel)) {
                             effects.Add(Tuple.Create(eff.IsBuff, "-" + cancel.Name));
+                            if (this is EnemyController)
+                            {
+                                AchievementManager.Instance.Unlock(AchievementID.Cancel);
+                            }
                         }
                     }
                 }
@@ -413,6 +417,10 @@ namespace YuriGameJam2023
 
         protected void Die()
         {
+            if (Info.Name == "General")
+            {
+                AchievementManager.Instance.Unlock(AchievementID.KillGeneral);
+            }
             if (CharacterManager.Instance.AmIActive(this))
             {
                 Disable();
