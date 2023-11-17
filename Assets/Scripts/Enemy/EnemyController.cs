@@ -273,12 +273,34 @@ namespace YuriGameJam2023
                 {
                     return _maxDistance - ttLength;
                 }
+
+                // Score from there:
+                // 1 000 000
+                //
+                // 1 digit:
+                // 1 if we can oneshot the enemy
+                // 2 if we can do it and it's a healer
+                // Else 0
+                //
+                // Next 3 digits is the health of the target compared to its max health
+                // The lower it is, the higher this score will be
+                //
+                // The 3 lasts digits are used to determine who to attack if everyone is full life
+                // For now we just add 50 if the target is an healer
+
+
                 var score = 1f - pc.HPLeft; // We attack the player with the less HP because we are a bad person
-                score = (int)(score * 100);
+                score = (int)(score * 100) * 1000f;
 
                 if (pc.IsHealer) // If we are not sure who to attack we might as well aim for the healer...
                 {
                     score += 50;
+                }
+
+                if (pc.Health - Info.Skills.OrderBy(x => x.Damage).First().Damage < 0f) // We can oneshot the player!
+                {
+                    if (pc.IsHealer) score += 2_000_000f;
+                    else score += 1_000_000f;
                 }
 
                 return score; 

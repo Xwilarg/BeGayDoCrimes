@@ -42,9 +42,9 @@ namespace YuriGameJam2023
         public Character TargetOverride { protected set; get; } // Not handled for PlayerController
 
         private int _health;
-        private int Health
+        public int Health
         {
-            set
+            private set
             {
                 _health = value;
                 _healthBar.rectTransform.localScale = new Vector2(value / (float)Info.Health, 1f);
