@@ -148,6 +148,7 @@ namespace YuriGameJam2023
         /// <param name="target">The target to attack</param>
         public void Target(Character target)
         {
+            _navigation.isStopped = false;
             var distance = Vector3.Distance(target.transform.position, transform.position);
 
             // Whether we are close enough to the player
@@ -165,6 +166,7 @@ namespace YuriGameJam2023
 
         public void Target(Transform target)
         {
+            _navigation.isStopped = false;
             var path = new NavMeshPath();
             if (!_navigation.CalculatePath(target.transform.position, path))
             {
@@ -392,7 +394,7 @@ namespace YuriGameJam2023
 
         protected override void StopMovements()
         {
-            _navigation.destination = transform.position;
+            _navigation.isStopped = true;
         }
     }
 }
