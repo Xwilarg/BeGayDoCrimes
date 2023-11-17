@@ -241,7 +241,7 @@ namespace YuriGameJam2023
                     }
                     else
                     {
-                        Debug.LogWarning($"[DISABLE] {Info.Name} is looking to attack but noone is there");
+                        Debug.Log($"[DISABLE] {Info.Name} is out of movements and/or somehow couldn't find a target");
                         Disable();
                     }
                 }
