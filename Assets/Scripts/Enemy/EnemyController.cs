@@ -158,10 +158,10 @@ namespace YuriGameJam2023
             var distance = Vector3.Distance(target.transform.position, transform.position);
 
             // Whether we are close enough to the player
-            if (distance > Info.Skills[0].Range + 1f)
+            if (distance > Info.Skills[0].Range)
             {
                 _navigation.destination = target.transform.position;
-                _navigation.stoppingDistance = Info.Skills[0].Range + 1f;
+                _navigation.stoppingDistance = Info.Skills[0].Range;
             }
 
             _isMyTurn = true;
@@ -210,14 +210,14 @@ namespace YuriGameJam2023
                 var isMovementDone =
                     _distance <= 0f || // We can't move anymore
                     (!_navigation.pathPending && // OR if there is no path pending AND
-                        (_target != null && _navigation.remainingDistance < Info.Skills[0].Range + 1f) || // In the case we have a target: we are in range for the skill
+                        (_target != null && _navigation.remainingDistance < Info.Skills[0].Range) || // In the case we have a target: we are in range for the skill
                         (_target == null && _navigation.remainingDistance == 0f) // In the case we don't have a target: we reached the position where we needed to go
                     );
                 if (isMovementDone)
                 {
                     // Check if we have no targets, but are close to one
                     if (_target != null && ((IsHealer && !HaveAnyFriendlyTarget) || (!IsHealer && !HaveAnyNonFriendlyTarget)) &&
-                        Vector3.Distance(_target.transform.position, transform.position) <= Info.Skills[0].Range + 1f)
+                        Vector3.Distance(_target.transform.position, transform.position) <= Info.Skills[0].Range)
                     {
                         var direction = _target.transform.position - transform.position;
                         direction.y = 0f;
@@ -227,9 +227,8 @@ namespace YuriGameJam2023
 
                         StopMovements();
 
-                        // We want to make sure we only modify rotation around Y to not mess everything up
-                        var newRot = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction.normalized), Time.fixedDeltaTime * (_navigation.angularSpeed / 2f));
-                        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, newRot.y, transform.rotation.eulerAngles.z);
+                        var target = Quaternion.LookRotation(direction, Vector3.up);
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, target, Time.fixedDeltaTime * (_navigation.angularSpeed / 2f));
 
                         if (old == transform.rotation)
                         {
