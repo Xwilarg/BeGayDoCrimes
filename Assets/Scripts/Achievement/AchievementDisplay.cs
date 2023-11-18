@@ -15,7 +15,7 @@ namespace YuriGameJam2023.Achievement
         private GameObject _prefab;
 
         [SerializeField]
-        private Button _fiftyPercents;
+        private Button _tenPercents, _twentyPercents, _thirtyPercents, _fourtyPercents, _fiftyPercents;
 
         private bool _displayCompletion = true;
 
@@ -65,6 +65,10 @@ namespace YuriGameJam2023.Achievement
                 texts[1].text = unlocked ? achievement.Value.Description : $"Hint: {achievement.Value.Hint}";
             }
             ttUnlocked /= AchievementManager.Instance.Achievements.Count;
+            _tenPercents.interactable = ttUnlocked >= .1f;
+            _twentyPercents.interactable = ttUnlocked >= .2f;
+            _thirtyPercents.interactable = ttUnlocked >= .3f;
+            _fourtyPercents.interactable = ttUnlocked >= .4f;
             _fiftyPercents.interactable = ttUnlocked >= .5f;
         }
     }
