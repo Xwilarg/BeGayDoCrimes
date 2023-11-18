@@ -20,4 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1fcb09b9db3b2447bc8396215a2c4b3, type: 2}
   Sprite: {fileID: 21300000, guid: 218adb1662dea4f49b3f187b47071cac, type: 3}
   Name: Spiderweb
-  Description: Throw a spiderweb onto targets immobilizing them
+  Description: Throw a spiderweb onto targets immobilizing them, can't be used on
+    a burning target
