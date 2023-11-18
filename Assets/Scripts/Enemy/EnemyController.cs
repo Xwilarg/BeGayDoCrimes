@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 using YuriGameJam2023.Player;
 using YuriGameJam2023.SO;
 
@@ -228,7 +227,9 @@ namespace YuriGameJam2023
 
                         StopMovements();
 
-                        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + Time.fixedDeltaTime * (_navigation.angularSpeed / 2f), transform.rotation.eulerAngles.z);
+                        // We want to make sure we only modify rotation around Y to not mess everything up
+                        var newRot = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction.normalized), Time.fixedDeltaTime * (_navigation.angularSpeed / 2f));
+                        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, newRot.y, transform.rotation.eulerAngles.z);
 
                         if (old == transform.rotation)
                         {

@@ -39,6 +39,9 @@ namespace YuriGameJam2023
         [SerializeField]
         private Transform _effectSpawner;
 
+        [SerializeField]
+        private Transform _rayOut;
+
         public Character TargetOverride { protected set; get; } // Not handled for PlayerController
 
         private int _health;
@@ -200,7 +203,7 @@ namespace YuriGameJam2023
                     break;
 
                 case RangeType.CloseContact:
-                    if (Physics.Raycast(new(transform.position + Vector3.down * .5f + Forward * .5f, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
+                    if (Physics.Raycast(new(_rayOut.transform.position, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(hit.collider.gameObject);
                     }
@@ -461,7 +464,7 @@ namespace YuriGameJam2023
         public void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
-            var p = transform.position + Forward * .5f;
+            var p = _rayOut.transform.position;
             Gizmos.DrawLine(p, p + Forward * 2f);
         }
     }
