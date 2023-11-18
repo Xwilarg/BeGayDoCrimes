@@ -118,6 +118,7 @@ namespace YuriGameJam2023.Player
         public override void Enable()
         {
             base.Enable();
+            _mov = Vector2.zero;
             ToggleObstacleCollider(false);
             _rb.isKinematic = false;
         }
