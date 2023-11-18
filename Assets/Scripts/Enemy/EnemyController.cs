@@ -227,7 +227,7 @@ namespace YuriGameJam2023
 
                         // Rotate towards the target this frame and return
                         var old = transform.rotation;
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * (_navigation.angularSpeed / 2f));
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.fixedDeltaTime * (_navigation.angularSpeed / 2f));
 
                         if (old == transform.rotation)
                         {
