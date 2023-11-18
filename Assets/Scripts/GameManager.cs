@@ -32,6 +32,12 @@ namespace YuriGameJam2023
         [SerializeField]
         private AudioClip _level4Bgm;
 
+        [SerializeField]
+        private TMP_Text _explanationPause;
+
+        [SerializeField]
+        private GameObject _pauseMenu;
+
         private void Awake()
         {
             Instance = this;
@@ -72,6 +78,7 @@ namespace YuriGameJam2023
                         DefeatCondition.EnemyReachPoint => "Enemy reach the exit",
                         _ => throw new NotImplementedException()
                     });
+                _explanationPause.text = _explanationText.text;
                 StartCoroutine(WaitAndRemoveText());
             };
             if (currLevel.PreBattleVN != null)
@@ -88,6 +95,7 @@ namespace YuriGameJam2023
         {
             _explanationContainer.gameObject.SetActive(true);
             _explanationText.text = text;
+            _explanationPause.text = _explanationText.text;
             StartCoroutine(WaitAndRemoveText());
         }
 
@@ -155,6 +163,14 @@ namespace YuriGameJam2023
             else if (value.phase == InputActionPhase.Canceled)
             {
                 VNManager.Instance.ToggleSkip(false);
+            }
+        }
+
+        public void OnPause(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                _pauseMenu.SetActive(!_pauseMenu.activeInHierarchy);
             }
         }
     }

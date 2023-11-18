@@ -138,6 +138,11 @@ namespace YuriGameJam2023
             SceneManager.LoadScene("Main");
         }
 
+        public void BackToMenu()
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
         private bool _gameStarted;
         public void RegisterCharacter(Character c)
         {
