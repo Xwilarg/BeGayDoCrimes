@@ -42,6 +42,9 @@ namespace YuriGameJam2023
         [SerializeField]
         private Transform _rayOut;
 
+        private Vector3 _rayOutIniPos;
+        private float _rayOutDist;
+
         public Character TargetOverride { protected set; get; } // Not handled for PlayerController
 
         private int _health;
@@ -157,6 +160,9 @@ namespace YuriGameJam2023
 
         protected void AwakeParent()
         {
+            _rayOutIniPos = _rayOut.position;
+            _rayOutDist = Vector3.Distance(transform.position, _rayOut.position);
+
             _sr = GetComponentInChildren<SpriteRenderer>();
             _rb = GetComponent<Rigidbody>();
             Halo = GetComponentInChildren<Light>();
@@ -203,6 +209,9 @@ namespace YuriGameJam2023
                     break;
 
                 case RangeType.CloseContact:
+                    var p = transform.position + Forward * _rayOutDist;
+                    p.y = _rayOutIniPos.y;
+                    _rayOut.position = p;
                     if (Physics.Raycast(new(_rayOut.transform.position, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(hit.collider.gameObject);
