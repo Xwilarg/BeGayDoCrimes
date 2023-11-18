@@ -223,11 +223,12 @@ namespace YuriGameJam2023
                         var direction = _target.transform.position - transform.position;
                         direction.y = 0f;
 
-                        var rotation = Quaternion.LookRotation(direction.normalized);
-
                         // Rotate towards the target this frame and return
                         var old = transform.rotation;
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.fixedDeltaTime * (_navigation.angularSpeed / 2f));
+
+                        StopMovements();
+
+                        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + Time.fixedDeltaTime * (_navigation.angularSpeed / 2f), transform.rotation.eulerAngles.z);
 
                         if (old == transform.rotation)
                         {
@@ -337,6 +338,7 @@ namespace YuriGameJam2023
         public override void Disable()
         {
             base.Disable();
+            _isMyTurn = false;
             if (_target != null && _target is PlayerController pc)
             {
                 pc.ToggleObstacleCollider(true);
