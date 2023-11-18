@@ -22,7 +22,7 @@ Don't you dare use some of our precious gold for that! I need it to reclaim my t
 
  Then stop crying about it and sweep! Why do you even want to go back to being a noble, didn't you folks throw you out like garbage? #speaker willow
 
-Willow! You do not have permission to talk about me with that tone of voice and how dare you call me garbage!#speaker claire
+Willow! How dare you call me garbage! Treat me with more respect!#speaker claire
 
 Shaddup' You ain't my mom! #speaker willow
 

@@ -1,6 +1,6 @@
 Makra as been gone for a long time, do you think she's okay? #speaker yuki
 
-I hope so, we fount mostly nothing on our end. #speaker willow
+I hope so, we found mostly nothing on our end. #speaker willow
 
 Speak for yourself! I found everything you asked me to buy for the heist!  #speaker claire
 
@@ -46,7 +46,7 @@ The guards are looking for us in the market, we will need to be careful while ge
 
 Well f*ck that!  #speaker willow
 
-Did they ear us or something? How are they are? #speaker yuki
+Did they hear us or something? How are they here? #speaker yuki
 
 Never mind why, we need to protect ourselves before more come! #speaker claire
     -> END
