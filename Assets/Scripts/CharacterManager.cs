@@ -107,6 +107,8 @@ namespace YuriGameJam2023
         {
             set
             {
+                _shouldDisplayTutorial = value;
+                Debug.Log(_shouldDisplayTutorial);
                 if (_shouldDisplayTutorial == 0)
                 {
                     foreach (var go in _tutorialPart1)
@@ -132,7 +134,6 @@ namespace YuriGameJam2023
                         go.SetActive(false);
                     }
                 }
-                _shouldDisplayTutorial = value;
             }
             get => _shouldDisplayTutorial;
         }
@@ -309,6 +310,8 @@ namespace YuriGameJam2023
         /// </summary>
         public void RemoveAction()
         {
+            ShouldDisplayTutorial++;
+
             if (_totalActionCount == 0)
             {
                 EndTurn();
@@ -333,7 +336,6 @@ namespace YuriGameJam2023
 
         public void EndTurn()
         {
-            ShouldDisplayTutorial++;
             if (_isPlayerTurn)
             {
                 if (_gameOver.activeInHierarchy)
