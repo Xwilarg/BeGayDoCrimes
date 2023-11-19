@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using YuriGameJam2023.Persistency;
 using YuriGameJam2023.SO;
 
 namespace YuriGameJam2023.VN
@@ -47,6 +48,12 @@ namespace YuriGameJam2023.VN
         private void Awake()
         {
             Instance = this;
+
+            // Feel free to change that if you don't like it
+            foreach (var source in FindObjectsByType<AudioSource>(FindObjectsSortMode.None))
+            {
+                source.volume = PersistencyManager.Instance.SaveData.MusicVolume;
+            }
         }
 
         public bool IsPlayingStory => _container.activeInHierarchy;

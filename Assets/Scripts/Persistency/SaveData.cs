@@ -59,6 +59,9 @@ namespace YuriGameJam2023.Persistency
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Dictionary<string, int> AvailableSupport { set; get; } = new();
 
+        public float MusicVolume { set; get; } = .4f;
+        public bool IsEasyMode { set; get; }
+
         public override string ToString()
         {
             return $"[Current Level] {CurrentLevel}\n" +
