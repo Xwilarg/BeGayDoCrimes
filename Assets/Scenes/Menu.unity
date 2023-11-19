@@ -12768,7 +12768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _musicSlider: {fileID: 1559044942}
-  _easyMode: {fileID: 0}
+  _easyMode: {fileID: 2014599195}
   _bgm: {fileID: 1826540528}
 --- !u!1001 &1934093635
 PrefabInstance:
