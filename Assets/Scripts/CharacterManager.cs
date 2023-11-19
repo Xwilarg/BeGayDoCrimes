@@ -21,6 +21,10 @@ namespace YuriGameJam2023
     {
         public static CharacterManager Instance { get; private set; }
 
+        [Header("Tutorial")]
+        [SerializeField]
+        private GameObject[] _tutorialPart1, _tutorialPart2;
+
         [Header("Players")]
         [SerializeField]
         private SO.CharacterInfo[] _players;
@@ -98,6 +102,41 @@ namespace YuriGameJam2023
 
         private int _speConditionCountdown = -1;
 
+        private int _shouldDisplayTutorial;
+        private int ShouldDisplayTutorial
+        {
+            set
+            {
+                if (_shouldDisplayTutorial == 0)
+                {
+                    foreach (var go in _tutorialPart1)
+                    {
+                        go.SetActive(true);
+                    }
+                }
+                else if (_shouldDisplayTutorial == 1)
+                {
+                    foreach (var go in _tutorialPart1)
+                    {
+                        go.SetActive(false);
+                    }
+                    foreach (var go in _tutorialPart2)
+                    {
+                        go.SetActive(true);
+                    }
+                }
+                else
+                {
+                    foreach (var go in _tutorialPart2)
+                    {
+                        go.SetActive(false);
+                    }
+                }
+                _shouldDisplayTutorial = value;
+            }
+            get => _shouldDisplayTutorial;
+        }
+
         private void Awake()
         {
             Instance = this;
@@ -112,6 +151,8 @@ namespace YuriGameJam2023
                 var go = Instantiate(_playerPrefab, spawns[i].transform.position + Vector3.up, Quaternion.identity);
                 go.GetComponent<Character>().Info = _players[i];
             }
+
+            ShouldDisplayTutorial = PersistencyManager.Instance.SaveData.CurrentLevel == 1 ? 0 : 10;
         }
 
         private void Update()
@@ -292,6 +333,7 @@ namespace YuriGameJam2023
 
         public void EndTurn()
         {
+            ShouldDisplayTutorial++;
             if (_isPlayerTurn)
             {
                 if (_gameOver.activeInHierarchy)
@@ -466,6 +508,7 @@ namespace YuriGameJam2023
                         if (c.CanBePlayed)
                         {
                             StartTurn(c);
+                            ShouldDisplayTutorial++;
                         }
                     }
                 }
