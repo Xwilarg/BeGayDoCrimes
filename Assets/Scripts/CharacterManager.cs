@@ -108,7 +108,6 @@ namespace YuriGameJam2023
             set
             {
                 _shouldDisplayTutorial = value;
-                Debug.Log(_shouldDisplayTutorial);
                 if (_shouldDisplayTutorial == 0)
                 {
                     foreach (var go in _tutorialPart1)
