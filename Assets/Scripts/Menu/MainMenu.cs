@@ -50,5 +50,10 @@ namespace YuriGameJam2023.Menu
         {
             SceneManager.LoadScene("Pétanque");
         }
+
+        public void Quit()
+        {
+            Application.Quit();
+        }
     }
 }
