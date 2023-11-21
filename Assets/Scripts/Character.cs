@@ -215,6 +215,11 @@ namespace YuriGameJam2023
                     if (Physics.Raycast(new(_rayOut.transform.position, Forward), out RaycastHit hit, currSkill.Range, 1 << LayerMask.NameToLayer("Character")))
                     {
                         AddToTarget(hit.collider.gameObject);
+                        CharacterManager.Instance.ShowCRHint(hit.collider.transform.position);
+                    }
+                    else
+                    {
+                        CharacterManager.Instance.ShowCRHint(transform.position + Forward);
                     }
                     break;
 

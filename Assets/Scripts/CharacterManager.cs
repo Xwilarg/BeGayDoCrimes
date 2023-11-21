@@ -82,6 +82,8 @@ namespace YuriGameJam2023
         [SerializeField]
         [Tooltip("Object used to display spell Area Of Effect hints")]
         private AoeHint _aoeHint;
+        [SerializeField]
+        private CloseRangeHint _crHint;
 
         [SerializeField]
         private GameObject _gameOver;
@@ -427,6 +429,7 @@ namespace YuriGameJam2023
         public void ResetEffectDisplay()
         {
             _aoeHint.gameObject.SetActive(false);
+            _crHint.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -436,6 +439,12 @@ namespace YuriGameJam2023
         {
             _aoeHint.gameObject.SetActive(true);
             _aoeHint.Show(pos, radius);
+        }
+
+        public void ShowCRHint(Vector3 pos)
+        {
+            _crHint.gameObject.SetActive(true);
+            _crHint.Show(pos);
         }
 
         public int GetAliveCount<T>()
