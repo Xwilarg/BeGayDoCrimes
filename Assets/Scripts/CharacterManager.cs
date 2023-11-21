@@ -6,6 +6,8 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YuriGameJam2023.Effect;
@@ -395,6 +397,12 @@ namespace YuriGameJam2023
                 go.transform.GetChild(0).GetComponent<Image>().sprite = skill.Sprite;
                 go.GetComponentInChildren<TMP_Text>().text = $"{i + 1}";
 
+                var cIndex = i;
+                go.GetComponentInChildren<Button>().onClick.AddListener(() =>
+                {
+                    OnSkillSelected(cIndex + 1);
+                });
+
                 if (i == 0) // Display selected hint on first skill
                 {
                     var hint = go.transform.GetComponent<Image>();
@@ -500,6 +508,23 @@ namespace YuriGameJam2023
         {
             if (_isPlayerTurn && !IsUIActive)
             {
+                // Why the fuck is there no easy way to know if we are over the UI
+                // https://discussions.unity.com/t/check-if-ui-was-clicked-with-unity-new-input-system-1-2-0/249987/4
+                PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+                pointerEventData.position = Mouse.current.position.ReadValue();
+                List<RaycastResult> raycastResultsList = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointerEventData, raycastResultsList);
+                var mouseOverUI = false;
+                for (int i = 0; i < raycastResultsList.Count; i++)
+                {
+                    if (raycastResultsList[i].gameObject.GetType() == typeof(GameObject))
+                {
+                        mouseOverUI = true;
+                        break;
+                    }
+                }
+                if (mouseOverUI) return;
+
                 if (_currentPlayer == null) // We aren't controlling a player...
                 {
                     // ... so if we click on one we take possession of it
