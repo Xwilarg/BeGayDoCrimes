@@ -76,6 +76,7 @@ namespace YuriGameJam2023
                     currLevel.AdditionalDefeatCondition switch
                     {
                         DefeatCondition.EnemyReachPoint => "Enemy reach the exit",
+                        DefeatCondition.TimeLimit => "10 turns pass",
                         _ => throw new NotImplementedException()
                     });
                 _explanationPause.text = _explanationText.text;
@@ -102,6 +103,7 @@ namespace YuriGameJam2023
         public TextAsset CurrentVictoryScene => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].PostVictoryVN;
         public Vector2? CamPosOnVictory => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].MoveCamOnVictory ? _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].CamPosOnVictory : null;
         public VictoryCondition CurrentVictoryCondition => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].VictoryCondition;
+        public DefeatCondition CurrentDefeatCondition => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].AdditionalDefeatCondition;
 
         private IEnumerator WaitAndRemoveText()
         {

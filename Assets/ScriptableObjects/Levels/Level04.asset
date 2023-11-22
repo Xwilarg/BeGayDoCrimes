@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level04
   m_EditorClassIdentifier: 
   SceneName: Level_04
-  AdditionalDefeatCondition: 0
+  AdditionalDefeatCondition: 2
   VictoryCondition: 2
   PreBattleVN: {fileID: 4900000, guid: 7e9d5cfdc0c1afd4eab086293b6763aa, type: 3}
   PostVictoryVN: {fileID: 4900000, guid: e1d9c018069c24546b044142a11d2502, type: 3}

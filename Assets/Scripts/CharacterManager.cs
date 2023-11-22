@@ -105,6 +105,7 @@ namespace YuriGameJam2023
         private readonly Dictionary<Tuple<Character, Character>, int> _love = new();
 
         private int _speConditionCountdown = -1;
+        private int _defeatCountdown = -1;
 
         private int _shouldDisplayTutorial;
         private int ShouldDisplayTutorial
@@ -157,6 +158,11 @@ namespace YuriGameJam2023
             }
 
             ShouldDisplayTutorial = PersistencyManager.Instance.SaveData.CurrentLevel == 1 ? 0 : 10;
+
+            if (GameManager.Instance.CurrentDefeatCondition == DefeatCondition.TimeLimit)
+            {
+                _defeatCountdown = 10;
+            }
         }
 
         private void Update()
@@ -221,6 +227,7 @@ namespace YuriGameJam2023
                 {
                     GameManager.Instance.ShowNewMiddleText($"New Victory Condition:\nSurvive 5 turns");
                     _speConditionCountdown = 5;
+                    _defeatCountdown = -1;
                 }
             }
             else
@@ -344,6 +351,14 @@ namespace YuriGameJam2023
                 if (_gameOver.activeInHierarchy)
                 {
                     return; // Make sure player turn can't end when we lost
+                }
+                if (_defeatCountdown > -1)
+                {
+                    _defeatCountdown--;
+                    if (_defeatCountdown == 0)
+                    {
+                        GameOver("Time ran out");
+                    }
                 }
                 if (_speConditionCountdown > -1)
                 {

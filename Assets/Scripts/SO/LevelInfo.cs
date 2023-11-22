@@ -31,7 +31,8 @@ namespace YuriGameJam2023.SO
     public enum DefeatCondition
     {
         None,
-        EnemyReachPoint
+        EnemyReachPoint,
+        TimeLimit
     }
 
     public enum VictoryCondition
