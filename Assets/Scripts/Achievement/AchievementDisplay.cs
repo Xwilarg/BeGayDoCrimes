@@ -47,18 +47,19 @@ namespace YuriGameJam2023.Achievement
             for (int i = 0; i < _container.childCount; i++) Destroy(_container.GetChild(i).gameObject);
             foreach (var achievement in AchievementManager.Instance.Achievements)
             {
+                var unlocked = AchievementManager.Instance.IsUnlocked(achievement.Key);
+                if (unlocked)
+                {
+                    ttUnlocked++;
+                }
+
                 var isProg = achievement.Key == AchievementID.CompleteGame || achievement.Key.ToString().StartsWith("Rel_");
                 if ((_displayCompletion && !isProg) || (!_displayCompletion && isProg)) continue;
 
                 var a = Instantiate(_prefab, _container);
-                var unlocked = AchievementManager.Instance.IsUnlocked(achievement.Key);
                 if (!unlocked)
                 {
                     a.GetComponentInChildren<Image>().color = Color.black;
-                }
-                else
-                {
-                    ttUnlocked++;
                 }
                 var texts = a.GetComponentsInChildren<TMP_Text>(); // TODO: Ewh
                 texts[0].text = unlocked ? achievement.Value.Name : "???";
