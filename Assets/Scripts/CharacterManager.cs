@@ -214,6 +214,23 @@ namespace YuriGameJam2023
 
             var preview = Instantiate(_characProfile, _recapContainer);
             preview.transform.GetChild(0).GetComponent<Image>().sprite = c.Info.Sprite;
+
+            var hover = preview.GetComponent<UIHoverCallback>();
+            hover.EnterCallback.AddListener(() =>
+            {
+                if (!VNManager.Instance.IsPlayingStory && _isPlayerTurn && !IsUIActive && _currentPlayer == null)
+                {
+                    c.Halo.gameObject.SetActive(true);
+                }
+            });
+            hover.ExitCallback.AddListener(() =>
+            {
+                if (!VNManager.Instance.IsPlayingStory && _isPlayerTurn && !IsUIActive && _currentPlayer == null)
+                {
+                    c.Halo.gameObject.SetActive(false);
+                }
+            });
+
             if (c is PlayerController)
             {
                 preview.GetComponent<Button>().onClick.AddListener(() =>
@@ -455,6 +472,7 @@ namespace YuriGameJam2023
             p.Button.interactable = false;
 
             _spellDesc.Show();
+            c.Halo.gameObject.SetActive(false);
             Debug.Log($"[{c}] Starting turn");
             for (int i = 0; i < c.Info.Skills.Length; i++)
             {
