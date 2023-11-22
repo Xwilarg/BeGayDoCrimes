@@ -23,6 +23,7 @@ namespace YuriGameJam2023.Menu
         public void OnVolumeChange(float value)
         {
             PersistencyManager.Instance.SaveData.MusicVolume = value;
+            _bgm.volume = value;
         }
 
         public void OnEasyModeChange(bool value)
