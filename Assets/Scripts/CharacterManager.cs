@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YuriGameJam2023.Effect;
 using YuriGameJam2023.Enemy;
+using YuriGameJam2023.Map;
 using YuriGameJam2023.Persistency;
 using YuriGameJam2023.Player;
 using YuriGameJam2023.SO;
@@ -93,6 +94,14 @@ namespace YuriGameJam2023
 
         [SerializeField]
         private TMP_Text _defeatCountdownText;
+
+        [SerializeField]
+        private Transform _recapContainer;
+
+        [SerializeField]
+        private GameObject _characProfile;
+
+        private readonly List<CharacPreview> _previews = new();
         
         private Vector3 _camMov;
 
@@ -203,6 +212,29 @@ namespace YuriGameJam2023
         {
             _characters.Add(c);
 
+            var preview = Instantiate(_characProfile, _recapContainer);
+            preview.transform.GetChild(0).GetComponent<Image>().sprite = c.Info.Sprite;
+            if (c is PlayerController)
+            {
+                preview.GetComponent<Button>().onClick.AddListener(() =>
+                {
+                    if (!VNManager.Instance.IsPlayingStory && _isPlayerTurn && !IsUIActive && _currentPlayer == null)
+                    {
+                        StartTurn(c);
+                    }
+                });
+            }
+            else
+            {
+                preview.GetComponent<Button>().interactable = false;
+            }
+            _previews.Add(new()
+            {
+                Character = c,
+                WorldPreview = preview,
+                Button = preview.GetComponent<Button>()
+            });
+
             if (!_gameStarted && _characters.Count(x => x is PlayerController) == _players.Length)
             {
                 _gameStarted = true;
@@ -212,6 +244,10 @@ namespace YuriGameJam2023
         public void UnregisterCharacter(Character c)
         {
             _characters.Remove(c);
+
+            var p = _previews.First(x => x.Character.gameObject.GetInstanceID() == c.gameObject.GetInstanceID());
+            Destroy(p.WorldPreview);
+            _previews.Remove(p);
 
             if (!_characters.Any(x => x is PlayerController))
             {
@@ -390,6 +426,7 @@ namespace YuriGameJam2023
             var currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
             for (int i = currCharacters.Count() - 1; i >= 0; i--)
             {
+                _previews.First(x => x.Character.gameObject.GetInstanceID() == currCharacters.ElementAt(i).gameObject.GetInstanceID()).Button.interactable = true;
                 currCharacters.ElementAt(i).EndTurn();
             }
             foreach (var c in currCharacters)
@@ -414,6 +451,9 @@ namespace YuriGameJam2023
 
         public void StartTurn(Character c)
         {
+            var p = _previews.First(x => x.Character.gameObject.GetInstanceID() == c.gameObject.GetInstanceID());
+            p.Button.interactable = false;
+
             _spellDesc.Show();
             Debug.Log($"[{c}] Starting turn");
             for (int i = 0; i < c.Info.Skills.Length; i++)
