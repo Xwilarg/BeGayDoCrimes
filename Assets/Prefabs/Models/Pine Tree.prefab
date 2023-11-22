@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5731323930314901228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7742154582277371014}
+  - component: {fileID: 3009412908114926634}
+  m_Layer: 8
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7742154582277371014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5731323930314901228}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0, z: 0.0751}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6919218832570594172}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!136 &3009412908114926634
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5731323930314901228}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.075
+  m_Height: 0.21
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7461542792916718743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14,15 +69,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b319e270760e0a14eb050a335ea9b5be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.56
+      value: 4.409999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b319e270760e0a14eb050a335ea9b5be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000009536743
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b319e270760e0a14eb050a335ea9b5be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.13
+      value: 9.130001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b319e270760e0a14eb050a335ea9b5be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62,35 +117,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b319e270760e0a14eb050a335ea9b5be, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b319e270760e0a14eb050a335ea9b5be, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4746632940898090762}
+      addedObject: {fileID: 7742154582277371014}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b319e270760e0a14eb050a335ea9b5be, type: 3}
---- !u!1 &7732065326600317382 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b319e270760e0a14eb050a335ea9b5be, type: 3}
+--- !u!4 &6919218832570594172 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b319e270760e0a14eb050a335ea9b5be, type: 3}
   m_PrefabInstance: {fileID: 7461542792916718743}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &4746632940898090762
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7732065326600317382}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.1695603, y: 0.17085423, z: 0.1781932}
-  m_Center: {x: 0.0006019212, y: -0.00031470144, z: 0.07871657}
