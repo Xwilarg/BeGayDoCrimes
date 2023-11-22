@@ -60,7 +60,7 @@ namespace YuriGameJam2023
 
         public int CurrentSkill { set; get; }
 
-        protected float _maxDistance = 10f;
+        public float MaxDistance => 10f;
         protected float _distance;
 
         protected readonly List<Character> _targets = new();
@@ -275,7 +275,7 @@ namespace YuriGameJam2023
         {
             _lastPos = transform.position;
             PendingAutoDisable = false;
-            _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : _maxDistance + _maxDistance * _effects.Sum(x => x.Key.IncreaseSpeed);
+            _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : MaxDistance + MaxDistance * _effects.Sum(x => x.Key.IncreaseSpeed);
             CharacterManager.Instance.DisplayDistanceText(_distance);
             CurrentSkill = 0;
         }

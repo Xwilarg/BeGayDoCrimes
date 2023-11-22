@@ -281,9 +281,9 @@ namespace YuriGameJam2023
                 {
                     ttLength += Vector3.Distance(path.corners[i - 1], path.corners[i]);
                 }
-                if (ttLength > _maxDistance)
+                if (ttLength > MaxDistance)
                 {
-                    return _maxDistance - ttLength;
+                    return MaxDistance - ttLength;
                 }
 
                 // Score from there:

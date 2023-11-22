@@ -221,6 +221,7 @@ namespace YuriGameJam2023
                 if (!VNManager.Instance.IsPlayingStory && _isPlayerTurn && !IsUIActive && _currentPlayer == null)
                 {
                     c.Halo.gameObject.SetActive(true);
+                    ShowSkillBar(c);
                 }
             });
             hover.ExitCallback.AddListener(() =>
@@ -228,6 +229,7 @@ namespace YuriGameJam2023
                 if (!VNManager.Instance.IsPlayingStory && _isPlayerTurn && !IsUIActive && _currentPlayer == null)
                 {
                     c.Halo.gameObject.SetActive(false);
+                    HideSkillBar();
                 }
             });
 
@@ -466,8 +468,30 @@ namespace YuriGameJam2023
             }
         }
 
+        public void ShowSkillBar(Character c)
+        {
+            for (int i = 0; i < c.Info.Skills.Length; i++)
+            {
+                var skill = c.Info.Skills[i];
+                var go = Instantiate(_skillPrefab, _skillBar);
+                go.transform.GetChild(0).GetComponent<Image>().sprite = skill.Sprite;
+                go.GetComponentInChildren<TMP_Text>().gameObject.SetActive(false);
+                ShowAoeHint(c.transform.position, Mathf.CeilToInt(c.MaxDistance));
+            }
+        }
+
+        public void HideSkillBar()
+        {
+            for (int i = 0; i < _skillBar.childCount; i++) Destroy(_skillBar.GetChild(i).gameObject);
+            ResetEffectDisplay();
+        }
+
         public void StartTurn(Character c)
         {
+            ShouldDisplayTutorial++;
+
+            HideSkillBar();
+
             var p = _previews.First(x => x.Character.gameObject.GetInstanceID() == c.gameObject.GetInstanceID());
             p.Button.interactable = false;
 
@@ -479,6 +503,7 @@ namespace YuriGameJam2023
                 var skill = c.Info.Skills[i];
                 var go = Instantiate(_skillPrefab, _skillBar);
                 go.transform.GetChild(0).GetComponent<Image>().sprite = skill.Sprite;
+                go.GetComponentInChildren<TMP_Text>().gameObject.SetActive(true);
                 go.GetComponentInChildren<TMP_Text>().text = $"{i + 1}";
 
                 var cIndex = i;
@@ -625,7 +650,6 @@ namespace YuriGameJam2023
                         if (c.CanBePlayed)
                         {
                             StartTurn(c);
-                            ShouldDisplayTutorial++;
                         }
                     }
                 }
