@@ -13202,6 +13202,8 @@ MonoBehaviour:
   _images:
   - Text: Makra Concept Art
     Sprite: {fileID: 21300000, guid: 7406298aec728554c898ab4739927e8f, type: 3}
+  - Text: Makra Concept Art
+    Sprite: {fileID: 21300000, guid: 220b6eaac555dda4b9266bb295e32fac, type: 3}
   _gallery: {fileID: 1665783090}
 --- !u!114 &1949713577
 MonoBehaviour:
