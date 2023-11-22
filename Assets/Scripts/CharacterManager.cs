@@ -91,6 +91,9 @@ namespace YuriGameJam2023
         [SerializeField]
         private TMP_Text _gameOverReasonText;
 
+        [SerializeField]
+        private TMP_Text _defeatCountdownText;
+        
         private Vector3 _camMov;
 
         private Character _currentPlayer;
@@ -162,6 +165,7 @@ namespace YuriGameJam2023
             if (GameManager.Instance.CurrentDefeatCondition == DefeatCondition.TimeLimit)
             {
                 _defeatCountdown = 10;
+                _defeatCountdownText.gameObject.SetActive(true);
             }
         }
 
@@ -228,6 +232,7 @@ namespace YuriGameJam2023
                     GameManager.Instance.ShowNewMiddleText($"New Victory Condition:\nSurvive 5 turns");
                     _speConditionCountdown = 5;
                     _defeatCountdown = -1;
+                    _defeatCountdownText.gameObject.SetActive(false);
                 }
             }
             else
@@ -358,6 +363,10 @@ namespace YuriGameJam2023
                     if (_defeatCountdown == 0)
                     {
                         GameOver("Time ran out");
+                    }
+                    else
+                    {
+                        _defeatCountdownText.text = $"{_defeatCountdown} turns to reach the end of the train!";
                     }
                 }
                 if (_speConditionCountdown > -1)
