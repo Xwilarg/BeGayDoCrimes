@@ -158,10 +158,10 @@ namespace YuriGameJam2023
             var distance = Vector3.Distance(target.transform.position, transform.position);
 
             // Whether we are close enough to the player
-            if (distance > Info.Skills[0].Range)
+            if (distance > SkillRange)
             {
                 _navigation.destination = target.transform.position;
-                _navigation.stoppingDistance = Info.Skills[0].Range;
+                _navigation.stoppingDistance = SkillRange;
             }
 
             _isMyTurn = true;
@@ -201,6 +201,8 @@ namespace YuriGameJam2023
             _turnTimer = 10f;
         }
 
+        public float SkillRange => Info.Skills[0].Range;
+
         private void FixedUpdate()
         {
             if (_isMyTurn)
@@ -210,14 +212,14 @@ namespace YuriGameJam2023
                 var isMovementDone =
                     _distance <= 0f || // We can't move anymore
                     (!_navigation.pathPending && // OR if there is no path pending AND
-                        (_target != null && _navigation.remainingDistance < Info.Skills[0].Range) || // In the case we have a target: we are in range for the skill
+                        (_target != null && _navigation.remainingDistance < SkillRange) || // In the case we have a target: we are in range for the skill
                         (_target == null && _navigation.remainingDistance == 0f) // In the case we don't have a target: we reached the position where we needed to go
                     );
                 if (isMovementDone)
                 {
                     // Check if we have no targets, but are close to one
                     if (_target != null && ((IsHealer && !HaveAnyFriendlyTarget) || (!IsHealer && !HaveAnyNonFriendlyTarget)) &&
-                        Vector3.Distance(_target.transform.position, transform.position) <= Info.Skills[0].Range)
+                        Vector3.Distance(_target.transform.position, transform.position) <= SkillRange)
                     {
                         var direction = _target.transform.position - transform.position;
                         direction.y = 0f;
@@ -249,7 +251,7 @@ namespace YuriGameJam2023
                     }
                     else
                     {
-                        Debug.Log($"[DISABLE] {Info.Name} is out of movements and/or somehow couldn't find a target");
+                        Debug.Log($"[DISABLE] {Info.Name} is out of movements and/or somehow couldn't find a target, target info: have friendly target? {HaveAnyFriendlyTarget} have enemy target? {HaveAnyNonFriendlyTarget}");
                         Disable();
                     }
                 }
