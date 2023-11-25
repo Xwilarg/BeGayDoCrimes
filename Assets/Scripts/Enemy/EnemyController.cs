@@ -234,7 +234,7 @@ namespace YuriGameJam2023
 
                         if (old == transform.rotation)
                         {
-                            Debug.LogWarning($"[DISABLE] {Info.Name} failed to find a target");
+                            Debug.LogWarning($"[DISABLE] {name} failed to find a target");
                             Disable(); // We somehow didn't find a target
                             return;
                         }
@@ -251,7 +251,7 @@ namespace YuriGameJam2023
                     }
                     else
                     {
-                        Debug.Log($"[DISABLE] {Info.Name} is out of movements and/or somehow couldn't find a target, target info: have friendly target? {HaveAnyFriendlyTarget} have enemy target? {HaveAnyNonFriendlyTarget}");
+                        Debug.Log($"[DISABLE] {name} is out of movements and/or somehow couldn't find a target, target info: have friendly target? {HaveAnyFriendlyTarget} have enemy target? {HaveAnyNonFriendlyTarget}");
                         Disable();
                     }
                 }
@@ -331,7 +331,7 @@ namespace YuriGameJam2023
                 _turnTimer -= Time.deltaTime;
                 if (_turnTimer < 0f)
                 {
-                    Debug.LogWarning($"[DISABLE] {Info.Name} timeout, this mean the enemy didn't manage to play after 10 seconds");
+                    Debug.LogWarning($"[DISABLE] {name} timeout, this mean the enemy didn't manage to play after 10 seconds");
                     Disable();
                 }
             }
