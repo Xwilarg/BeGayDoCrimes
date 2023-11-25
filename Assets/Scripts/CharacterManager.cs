@@ -26,7 +26,7 @@ namespace YuriGameJam2023
 
         [Header("Tutorial")]
         [SerializeField]
-        private GameObject[] _tutorialPart1, _tutorialPart2;
+        private GameObject[] _tutorialPart1, _tutorialPart2, _tutorialPart3;
 
         [Header("Players")]
         [SerializeField]
@@ -125,6 +125,9 @@ namespace YuriGameJam2023
             set
             {
                 _shouldDisplayTutorial = value;
+
+                // I would like to apologize
+
                 if (_shouldDisplayTutorial == 0)
                 {
                     foreach (var go in _tutorialPart1)
@@ -143,9 +146,20 @@ namespace YuriGameJam2023
                         go.SetActive(true);
                     }
                 }
-                else
+                else if (_shouldDisplayTutorial == 2)
                 {
                     foreach (var go in _tutorialPart2)
+                    {
+                        go.SetActive(false);
+                    }
+                    foreach (var go in _tutorialPart3)
+                    {
+                        go.SetActive(true);
+                    }
+                }
+                else
+                {
+                    foreach (var go in _tutorialPart3)
                     {
                         go.SetActive(false);
                     }
@@ -412,6 +426,7 @@ namespace YuriGameJam2023
                 {
                     return; // Make sure player turn can't end when we lost
                 }
+                ShouldDisplayTutorial++;
                 if (_defeatCountdown > -1)
                 {
                     _defeatCountdown--;
