@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -29,6 +30,9 @@ namespace YuriGameJam2023
 
         [SerializeField]
         private Image _healthBar;
+        
+        [SerializeField]
+        private TMP_Text _healthText;
 
         [SerializeField]
         private Transform _effectContainer;
@@ -54,6 +58,7 @@ namespace YuriGameJam2023
             {
                 _health = value;
                 _healthBar.rectTransform.localScale = new Vector2(value / (float)Info.Health, 1f);
+                _healthText.text = value + "/" + Info.Health;
             }
             get => _health;
         }

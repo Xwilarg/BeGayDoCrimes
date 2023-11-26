@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 8343850022409304686}
+  _healthText: {fileID: 7554514750946258}
   _effectContainer: {fileID: 192191059067508168}
   _effectPrefab: {fileID: 5178977420533353200, guid: 8d55083910e0e1345a7c3fe73c2d11ad, type: 3}
   _effectSpawner: {fileID: 3609954008248926312}
@@ -196,6 +197,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
+--- !u!114 &7554514750946258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1779970906152302843, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
+  m_PrefabInstance: {fileID: 1777071174146245417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &192191059067508168 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1874518267296175841, guid: 3ffe35776928b9041a68fbe0e3cd14f2, type: 3}
