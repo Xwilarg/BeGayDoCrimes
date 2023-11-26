@@ -95,9 +95,9 @@ namespace YuriGameJam2023.VN
                 var s = tag.Split(' ');
                 var contentList = s.Skip(1).Select(x => x.ToUpperInvariant());
                 var content = string.Join(' ', contentList);
-                switch (s[0])
+                switch (s[0].ToUpperInvariant())
                 {
-                    case "speaker":
+                    case "SPEAKER":
                         _currentCharacter = new();
                         if (content == "NONE")
                         {
@@ -121,7 +121,7 @@ namespace YuriGameJam2023.VN
                         }
                         break;
 
-                    case "format":
+                    case "FORMAT":
                         if (content == "NONE") _display.SetStyle(FontStyles.Normal);
                         else if (content == "ITALIC") _display.SetStyle(FontStyles.Italic);
                         else Debug.LogError($"[STORY] Unable to find format {content}");
