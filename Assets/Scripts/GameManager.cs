@@ -170,7 +170,7 @@ namespace YuriGameJam2023
 
         public void OnPause(InputAction.CallbackContext value)
         {
-            if (value.performed)
+            if (value.performed && !VNManager.Instance.IsPlayingStory)
             {
                 _pauseMenu.SetActive(!_pauseMenu.activeInHierarchy);
             }
