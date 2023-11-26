@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace YuriGameJam2023.SO
 {
@@ -20,6 +21,8 @@ namespace YuriGameJam2023.SO
         public bool MoveCamOnVictory;
         [Tooltip("Position where we are moving the camera while playing the story")]
         public Vector2 CamPosOnVictory;
+        [Tooltip("List of camera points in the level")]
+        public CameraPoint[] CamPoints;
 
         [Header("Firecamp")]
         [Tooltip("Scene to be loaded on top of the firecamp")]
@@ -40,5 +43,13 @@ namespace YuriGameJam2023.SO
         KillAll,
         AllReachPoint,
         PlantBomb
+    }
+
+    [Serializable]
+    public class CameraPoint
+    {
+        public string Name;
+        public Vector3 Position;
+        public Vector3 Rotation;
     }
 }
