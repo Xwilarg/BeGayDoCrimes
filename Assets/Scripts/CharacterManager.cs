@@ -457,10 +457,12 @@ namespace YuriGameJam2023
                 }
             }
 
+            foreach (Character currCharacter in _characters) {
+                _previews.First(x => x.Character.gameObject.GetInstanceID() == currCharacter.gameObject.GetInstanceID()).Button.interactable = !_isPlayerTurn ? currCharacter is PlayerController : currCharacter is EnemyController;
+            }
             var currCharacters = _characters.Where(x => _isPlayerTurn ? x is PlayerController : x is EnemyController);
             for (int i = currCharacters.Count() - 1; i >= 0; i--)
             {
-                _previews.First(x => x.Character.gameObject.GetInstanceID() == currCharacters.ElementAt(i).gameObject.GetInstanceID()).Button.interactable = true;
                 currCharacters.ElementAt(i).EndTurn();
             }
             foreach (var c in currCharacters)
