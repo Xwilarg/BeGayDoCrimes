@@ -12,7 +12,7 @@
 
  We could do more combat training if you want? #speaker Yuki
 
- That would be fun for sure, Sometimes I really want to be able to better at beating the crap out of our opponents! #speaker Willow
+ That would be fun for sure, Sometimes I really want to be better at beating the crap out of our opponents! #speaker Willow
 
  I could teach you, but you have to promise me not to use what I teach you in bad ways. My parents trained me to be responsible with my techniques. #speaker Yuki
 
