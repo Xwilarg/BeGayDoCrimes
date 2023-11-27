@@ -322,7 +322,7 @@ namespace YuriGameJam2023
         private void SpawnEffect(List<Tuple<bool, string>> effects)
         {
             for (int i = 0; i < effects.Count; i++) {
-                EffectParticle eff = Instantiate(CharacterManager.Instance.EffectsParticle, this._effectSpawner);
+                EffectParticle eff = Instantiate(CharacterManager.Instance.EffectsParticle, _effectSpawner);
                 eff.transform.localPosition += Vector3.up * _effectSpacing * ((effects.Count - 1) - i) ;
                 eff.Added = effects[i].Item1;
                 eff.Name = effects[i].Item2;
