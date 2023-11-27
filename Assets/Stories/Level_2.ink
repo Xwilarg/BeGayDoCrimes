@@ -1,4 +1,4 @@
- Did we really need to go to the next village's market to get the tools needed? My feet are getting sore! #speaker Claire
+ Did we really need to go to the next village's market to get the tools needed? My feet are getting sore! #speaker Claire #camera girls
 
  We have been walking for 3 hours, Claire can you go on for a bit longer? #speaker Makra
 
@@ -26,7 +26,7 @@ Can't we relax for more than 5 minutes in this world!#speaker Claire
 
 Our group grab their weapons, preparing for the worst and it came. #speaker none
 
-Looki looki here! What do we have? It's the little girlies. #speaker bc
+Looki looki here! What do we have? It's the little girlies. #speaker bc #camera chief
 
 It's those c*nts again!#speaker Willow
 
