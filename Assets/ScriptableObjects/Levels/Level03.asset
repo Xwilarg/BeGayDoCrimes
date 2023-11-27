@@ -19,5 +19,12 @@ MonoBehaviour:
   PostVictoryVN: {fileID: 4900000, guid: 99e6619a4ac95824c8cc4abc4d3a1bba, type: 3}
   MoveCamOnVictory: 0
   CamPosOnVictory: {x: 0, y: 0}
+  CamPoints:
+  - Name: girls
+    Position: {x: 2.47, y: 1.93, z: 10.47}
+    Rotation: {x: 9.35, y: -168.655, z: -0.102}
+  - Name: bandit
+    Position: {x: -3.24, y: 3.23, z: 5.34}
+    Rotation: {x: 24.132, y: 51.334, z: -0.107}
   FirecampSceneName: Level_03_Camp
   FirecampVN: {fileID: 0}

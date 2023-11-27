@@ -357,7 +357,7 @@ namespace YuriGameJam2023
                 {
                     obj.transform.GetChild(0).gameObject.SetActive(true);
                 }
-                ToggleCine(true);
+                //ToggleCine(true);
                 VNManager.Instance.ShowStory(GameManager.Instance.CurrentVictoryScene, () =>
                 {
                     UnlockSupport();
