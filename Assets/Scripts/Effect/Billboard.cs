@@ -6,6 +6,6 @@ public class Billboard : MonoBehaviour
 {
     void Update()
     {
-        this.transform.rotation = Camera.main.transform.rotation;
+        transform.rotation = Camera.main.transform.rotation;
     }
 }

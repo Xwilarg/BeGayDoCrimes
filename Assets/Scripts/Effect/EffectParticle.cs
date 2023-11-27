@@ -25,7 +25,7 @@ public class EffectParticle : MonoBehaviour
     TMP_Text _text;
     void Awake()
     {
-        _text = this.GetComponent<TMP_Text>();
+        _text = GetComponent<TMP_Text>();
     }
 
     public string Name
@@ -42,10 +42,10 @@ public class EffectParticle : MonoBehaviour
     void Update()
     {
         _lifetime += Time.deltaTime;
-        this.transform.localPosition += Vector3.up * speed;
+        transform.localPosition += Vector3.up * speed;
         if (_lifetime > _maxLifetime)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
