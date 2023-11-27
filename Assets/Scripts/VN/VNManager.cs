@@ -127,7 +127,7 @@ namespace YuriGameJam2023.VN
                         else Debug.LogError($"[STORY] Unable to find format {content}");
                         break;
 
-                    case "camera":
+                    case "CAMERA":
                         _onCamera?.Invoke(content.ToLower());
                         Debug.Log($"[STORY] Camera set to {content}");
                         break;

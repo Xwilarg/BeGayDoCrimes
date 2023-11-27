@@ -23,5 +23,8 @@ MonoBehaviour:
   - Name: house
     Position: {x: -2.87, y: 4.39, z: -2.64}
     Rotation: {x: 17.772, y: 79.637, z: -0.09}
+  - Name: street
+    Position: {x: -6.71, y: 2.95, z: -4.27}
+    Rotation: {x: 11.412, y: 6.63, z: -0.096}
   FirecampSceneName: Level_01_Camp
   FirecampVN: {fileID: 4900000, guid: f0a3527eb96f59d4bbf24df6dd1d1609, type: 3}

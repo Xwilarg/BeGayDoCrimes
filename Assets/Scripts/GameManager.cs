@@ -62,6 +62,8 @@ namespace YuriGameJam2023
             var currLevel = _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1];
             Action onDone = () =>
             {
+                CharacterManager.Instance.ToggleCine(false);
+
                 _explanationContainer.gameObject.SetActive(true);
                 _explanationText.text =
                     "Victory Condition:\n" +
@@ -85,7 +87,8 @@ namespace YuriGameJam2023
             };
             if (currLevel.PreBattleVN != null)
             {
-                VNManager.Instance.ShowStory(currLevel.PreBattleVN, onDone, SetCameraToPoint);
+                CharacterManager.Instance.ToggleCine(true);
+                VNManager.Instance.ShowStory(currLevel.PreBattleVN, onDone, CharacterManager.Instance.SetCineCam);
             }
             else
             {
@@ -99,19 +102,6 @@ namespace YuriGameJam2023
             _explanationText.text = text;
             _explanationPause.text = _explanationText.text;
             StartCoroutine(WaitAndRemoveText());
-        }
-
-        public void SetCameraToPoint(string point)
-        {
-            var p = CamPoints.FirstOrDefault(x => x.Name == point);
-
-            if (p == null)
-            {
-                Debug.LogError("Tried to set camera to non-existing point, make sure it's defined in the level SO");
-                return;
-            }
-
-            // TODO: change the camera position and rotation
         }
 
         public TextAsset CurrentVictoryScene => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].PostVictoryVN;
