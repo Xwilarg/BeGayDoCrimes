@@ -71,6 +71,9 @@ namespace YuriGameJam2023
         private CinemachineVirtualCamera _vCamCloseup;
 
         [SerializeField]
+        private CinemachineVirtualCamera _vCamCine;
+
+        [SerializeField]
         private Transform _cameraDefaultLookAtWorld;
         /// <summary>
         /// Remember where we were looking before a turn start
@@ -78,7 +81,7 @@ namespace YuriGameJam2023
         private Vector3 _worldCamPosRef;
 
         [SerializeField]
-        private GameObject _worldView, _closeupView;
+        private GameObject _worldView, _closeupView, _cineView;
 
         [SerializeField]
         [Tooltip("Object used to display spell Area Of Effect hints")]
@@ -221,6 +224,32 @@ namespace YuriGameJam2023
             SceneManager.LoadScene("Menu");
         }
 
+        public void ToggleCine(bool enabled)
+        {
+            // Don't enable the cine camera when there are no cam points
+            if (enabled && GameManager.Instance.CamPoints.Length == 0)
+            {
+                return;
+            }
+
+            _worldView.SetActive(!enabled);
+            _cineView.SetActive(enabled);
+        }
+
+        public void SetCineCam(string point)
+        {
+            var p = GameManager.Instance.CamPoints.FirstOrDefault(x => x.Name == point);
+
+            if (p == null)
+            {
+                Debug.LogError("Tried to set camera to non-existing point, make sure it's defined in the level SO");
+                return;
+            }
+
+            _vCamCine.transform.position = p.Position;
+            _vCamCine.transform.eulerAngles = p.Rotation;
+        }
+
         private bool _gameStarted;
         public void RegisterCharacter(Character c)
         {
@@ -328,11 +357,12 @@ namespace YuriGameJam2023
                 {
                     obj.transform.GetChild(0).gameObject.SetActive(true);
                 }
+                //ToggleCine(true);
                 VNManager.Instance.ShowStory(GameManager.Instance.CurrentVictoryScene, () =>
                 {
                     UnlockSupport();
                     SceneManager.LoadScene("Campfire");
-                }, GameManager.Instance.SetCameraToPoint);
+                }, SetCineCam);
             }
         }
 
