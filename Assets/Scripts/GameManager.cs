@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -84,7 +85,7 @@ namespace YuriGameJam2023
             };
             if (currLevel.PreBattleVN != null)
             {
-                VNManager.Instance.ShowStory(currLevel.PreBattleVN, onDone);
+                VNManager.Instance.ShowStory(currLevel.PreBattleVN, onDone, SetCameraToPoint);
             }
             else
             {
@@ -100,10 +101,24 @@ namespace YuriGameJam2023
             StartCoroutine(WaitAndRemoveText());
         }
 
+        public void SetCameraToPoint(string point)
+        {
+            var p = CamPoints.FirstOrDefault(x => x.Name == point);
+
+            if (p == null)
+            {
+                Debug.LogError("Tried to set camera to non-existing point, make sure it's defined in the level SO");
+                return;
+            }
+
+            // TODO: change the camera position and rotation
+        }
+
         public TextAsset CurrentVictoryScene => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].PostVictoryVN;
         public Vector2? CamPosOnVictory => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].MoveCamOnVictory ? _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].CamPosOnVictory : null;
         public VictoryCondition CurrentVictoryCondition => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].VictoryCondition;
         public DefeatCondition CurrentDefeatCondition => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].AdditionalDefeatCondition;
+        public CameraPoint[] CamPoints => _levels[PersistencyManager.Instance.SaveData.CurrentLevel - 1].CamPoints;
 
         private IEnumerator WaitAndRemoveText()
         {

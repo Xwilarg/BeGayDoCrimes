@@ -44,6 +44,7 @@ namespace YuriGameJam2023.VN
         private float _skipTimerRef = .1f;
 
         private Action _onDone;
+        private Action<string> _onCamera;
 
         private void Awake()
         {
@@ -71,12 +72,13 @@ namespace YuriGameJam2023.VN
             }
         }
 
-        public void ShowStory(TextAsset asset, Action onDone)
+        public void ShowStory(TextAsset asset, Action onDone, Action<string> onCamera = null)
         {
             Debug.Log($"[STORY] Playing {asset.name}");
             _display.SetStyle(FontStyles.Normal);
             _currentCharacter = new();
             _onDone = onDone;
+            _onCamera = onCamera;
             _story = new(asset.text);
             _isSkipEnabled = false;
             DisplayStory(_story.Continue());
@@ -123,6 +125,11 @@ namespace YuriGameJam2023.VN
                         if (content == "NONE") _display.SetStyle(FontStyles.Normal);
                         else if (content == "ITALIC") _display.SetStyle(FontStyles.Italic);
                         else Debug.LogError($"[STORY] Unable to find format {content}");
+                        break;
+
+                    case "camera":
+                        _onCamera?.Invoke(content.ToLower());
+                        Debug.Log($"[STORY] Camera set to {content}");
                         break;
 
                     default:

@@ -332,7 +332,7 @@ namespace YuriGameJam2023
                 {
                     UnlockSupport();
                     SceneManager.LoadScene("Campfire");
-                });
+                }, GameManager.Instance.SetCameraToPoint);
             }
         }
 
