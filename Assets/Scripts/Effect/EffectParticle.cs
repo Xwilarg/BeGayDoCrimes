@@ -5,55 +5,58 @@ using TMPro;
 using UnityEngine;
 using YuriGameJam2023.SO;
 
-[RequireComponent(typeof(TMP_Text))]
-[RequireComponent(typeof(Billboard))]
-public class EffectParticle : MonoBehaviour
+namespace YuriGameJam2023.Effect
 {
-    [SerializeField]
-    private float _maxLifetime = 3.0f;
-    [SerializeField]
-    private AnimationCurve _displayCurve = AnimationCurve.Linear(0.0f, 1.0f,1.0f, 0.0f);
-    [SerializeField]
-    private Color positiveColor = Color.white;
-    [SerializeField]
-    private Color negativeColor = Color.white;
-    [SerializeField]
-    private float speed = 1.0f;
-
-    private float _lifetime = 0.0f;
-
-    TMP_Text _text;
-    void Awake()
+    [RequireComponent(typeof(TMP_Text))]
+    [RequireComponent(typeof(Billboard))]
+    public class EffectParticle : MonoBehaviour
     {
-        _text = GetComponent<TMP_Text>();
-    }
+        [SerializeField]
+        private float _maxLifetime = 3.0f;
+        [SerializeField]
+        private AnimationCurve _displayCurve = AnimationCurve.Linear(0.0f, 1.0f,1.0f, 0.0f);
+        [SerializeField]
+        private Color positiveColor = Color.white;
+        [SerializeField]
+        private Color negativeColor = Color.white;
+        [SerializeField]
+        private float speed = 1.0f;
 
-    public string Name
-    {
-        set =>_text.text = value;
-    }
+        private float _lifetime = 0.0f;
 
-    public bool Added
-    {
-        set;
-        get;
-    }
-
-    void Update()
-    {
-        _lifetime += Time.deltaTime;
-        transform.localPosition += Vector3.up * speed;
-        if (_lifetime > _maxLifetime)
+        TMP_Text _text;
+        void Awake()
         {
-            Destroy(gameObject);
+            _text = GetComponent<TMP_Text>();
         }
-        else
+
+        public string Name
         {
-            Color current = Added ? negativeColor : positiveColor;
-            if (_maxLifetime > 0.0f) {
-                current.a *= _displayCurve.Evaluate(_lifetime / _maxLifetime);
+            set =>_text.text = value;
+        }
+
+        public bool Added
+        {
+            set;
+            get;
+        }
+
+        void Update()
+        {
+            _lifetime += Time.deltaTime;
+            transform.localPosition += Vector3.up * speed;
+            if (_lifetime > _maxLifetime)
+            {
+                Destroy(gameObject);
             }
-            _text.color = current;
+            else
+            {
+                Color current = Added ? negativeColor : positiveColor;
+                if (_maxLifetime > 0.0f) {
+                    current.a *= _displayCurve.Evaluate(_lifetime / _maxLifetime);
+                }
+                _text.color = current;
+            }
         }
     }
 }
