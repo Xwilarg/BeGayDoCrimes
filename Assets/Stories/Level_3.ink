@@ -1,4 +1,4 @@
-Makra as been gone for a long time, do you think she's okay? #speaker yuki
+Makra as been gone for a long time, do you think she's okay? #speaker yuki #camera girls
 
 I hope so, we found mostly nothing on our end. #speaker willow
 
@@ -42,7 +42,7 @@ What's that?  #speaker willow
 
 The guards are looking for us in the market, we will need to be careful while getting the rest of our material for the heist. #speaker Makra
 
- Sergeant! I found them!  #speaker none
+ Sergeant! I found them!  #speaker none #camera bandit
 
 Well f*ck that!  #speaker willow
 
