@@ -328,6 +328,7 @@ namespace YuriGameJam2023
                 if (_speConditionCountdown == -1)
                 {
                     GameManager.Instance.ShowNewMiddleText($"New Victory Condition:\nSurvive 5 turns");
+                    PreventFurtherReset();
                     _speConditionCountdown = 5;
                     _defeatCountdown = -1;
                     _defeatCountdownText.gameObject.SetActive(false);
@@ -531,6 +532,18 @@ namespace YuriGameJam2023
         {
             for (int i = 0; i < _skillBar.childCount; i++) Destroy(_skillBar.GetChild(i).gameObject);
             ResetEffectDisplay();
+        }
+
+        public void ResetCharacter() {
+            if (_currentPlayer != null) {
+                _currentPlayer.Reset();
+            }
+        }
+
+        public void PreventFurtherReset() {
+            if (_currentPlayer != null) {
+                _currentPlayer.PreventFurtherReset();
+            }
         }
 
         public void StartTurn(Character c)

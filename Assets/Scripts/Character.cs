@@ -108,6 +108,9 @@ namespace YuriGameJam2023
 
         protected bool _isTargetingHouse;
 
+        private float _resetDistance;
+        private Vector3 _resetPos;
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.CompareTag("DieZone"))
@@ -283,6 +286,8 @@ namespace YuriGameJam2023
             _lastPos = transform.position;
             PendingAutoDisable = false;
             _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : MaxDistance + MaxDistance * _effects.Sum(x => x.Key.IncreaseSpeed);
+            _resetDistance = _distance;
+            _resetPos = transform.position;
             CharacterManager.Instance.DisplayDistanceText(_distance);
             CurrentSkill = 0;
         }
@@ -294,6 +299,18 @@ namespace YuriGameJam2023
                 yield return new WaitForNextFrameUnit();
             }
             Disable();
+        }
+
+        public void Reset() {
+            _distance = _resetDistance;
+            _rb.velocity = Vector3.zero;
+            transform.position = _resetPos;
+            _lastPos = transform.position;
+        }
+
+        public void PreventFurtherReset() {
+            _resetDistance = _distance;
+            _resetPos = transform.position;
         }
 
         public virtual void Disable()
