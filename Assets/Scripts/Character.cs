@@ -286,8 +286,7 @@ namespace YuriGameJam2023
             _lastPos = transform.position;
             PendingAutoDisable = false;
             _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : MaxDistance + MaxDistance * _effects.Sum(x => x.Key.IncreaseSpeed);
-            _resetDistance = _distance;
-            _resetPos = transform.position;
+            PreventFurtherReset();
             CharacterManager.Instance.DisplayDistanceText(_distance);
             CurrentSkill = 0;
         }
@@ -301,14 +300,16 @@ namespace YuriGameJam2023
             Disable();
         }
 
-        public void Reset() {
+        public void ResetTurn()
+        {
             _distance = _resetDistance;
             _rb.velocity = Vector3.zero;
             transform.position = _resetPos;
             _lastPos = transform.position;
         }
 
-        public void PreventFurtherReset() {
+        public void PreventFurtherReset()
+        {
             _resetDistance = _distance;
             _resetPos = transform.position;
         }

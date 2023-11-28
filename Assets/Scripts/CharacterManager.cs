@@ -536,7 +536,7 @@ namespace YuriGameJam2023
 
         public void ResetCharacter() {
             if (_currentPlayer != null) {
-                _currentPlayer.Reset();
+                _currentPlayer.ResetTurn();
             }
         }
 
