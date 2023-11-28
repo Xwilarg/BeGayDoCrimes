@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Billboard : MonoBehaviour
+namespace YuriGameJam2023.Effect
 {
-    void Update()
+    public class Billboard : MonoBehaviour
     {
-        this.transform.rotation = Camera.main.transform.rotation;
+        void Update()
+        {
+            transform.rotation = Camera.main.transform.rotation;
+        }
     }
 }

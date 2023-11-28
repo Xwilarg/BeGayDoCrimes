@@ -19,5 +19,6 @@ MonoBehaviour:
   PostVictoryVN: {fileID: 4900000, guid: e1d9c018069c24546b044142a11d2502, type: 3}
   MoveCamOnVictory: 0
   CamPosOnVictory: {x: 0, y: 0}
+  CamPoints: []
   FirecampSceneName: Level_04_Camp
   FirecampVN: {fileID: 0}
