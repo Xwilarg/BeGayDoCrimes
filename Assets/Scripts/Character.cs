@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -273,7 +274,7 @@ namespace YuriGameJam2023
         {
             PendingAutoDisable = true;
             yield return new WaitForSeconds(timer);
-            Disable();
+            yield return WaitPhysicsAndDisable();
         }
 
         public virtual void Enable()
@@ -283,6 +284,15 @@ namespace YuriGameJam2023
             _distance = _effects.Any(x => x.Key.PreventMovement) ? 0f : MaxDistance + MaxDistance * _effects.Sum(x => x.Key.IncreaseSpeed);
             CharacterManager.Instance.DisplayDistanceText(_distance);
             CurrentSkill = 0;
+        }
+
+        public IEnumerator WaitPhysicsAndDisable()
+        {
+            while (Mathf.Abs(_rb.velocity.magnitude) > .01f)
+            {
+                yield return new WaitForNextFrameUnit();
+            }
+            Disable();
         }
 
         public virtual void Disable()

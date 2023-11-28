@@ -643,7 +643,7 @@ namespace YuriGameJam2023
         {
             if (_currentPlayer != null)
             {
-                _currentPlayer.Disable();
+                StartCoroutine(_currentPlayer.WaitPhysicsAndDisable());
             }
         }
 
