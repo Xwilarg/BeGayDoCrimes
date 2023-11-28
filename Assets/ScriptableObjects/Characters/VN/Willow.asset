@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: willow
   DisplayName: Willow
-  Sprite: {fileID: 21300000, guid: ef11dce937fa91e4996f124548db93ca, type: 3}
+  Sprite: {fileID: 21300000, guid: a01fc649c2ecdc5429d912e37e845c03, type: 3}
