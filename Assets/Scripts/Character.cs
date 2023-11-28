@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 using YuriGameJam2023.Achievement;
+using YuriGameJam2023.Effect;
 using YuriGameJam2023.Player;
 using YuriGameJam2023.SO;
 
