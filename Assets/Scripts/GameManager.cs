@@ -31,7 +31,7 @@ namespace YuriGameJam2023
         private AudioSource _bgm;
 
         [SerializeField]
-        private AudioClip _level4Bgm;
+        private AudioClip _level4Bgm, _level3Bgm;
 
         [SerializeField]
         private TMP_Text _explanationPause;
@@ -50,7 +50,12 @@ namespace YuriGameJam2023
             SceneManager.LoadScene(currLevel.SceneName, LoadSceneMode.Additive);
             SceneManager.LoadScene("DebugManager", LoadSceneMode.Additive);
 
-            if (PersistencyManager.Instance.SaveData.CurrentLevel == 4)
+            if (PersistencyManager.Instance.SaveData.CurrentLevel == 3)
+            {
+                _bgm.clip = _level3Bgm;
+                _bgm.Play();
+            }
+            else if (PersistencyManager.Instance.SaveData.CurrentLevel == 4)
             {
                 _bgm.clip = _level4Bgm;
                 _bgm.Play();

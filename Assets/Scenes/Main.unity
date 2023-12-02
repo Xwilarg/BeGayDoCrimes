@@ -5824,6 +5824,7 @@ MonoBehaviour:
   _explanationText: {fileID: 609469977}
   _bgm: {fileID: 254331261}
   _level4Bgm: {fileID: 8300000, guid: 9977047591ead6948a149e2c4a2a162e, type: 3}
+  _level3Bgm: {fileID: 8300000, guid: 302e738c16ea23d4a9449b64bffb4778, type: 3}
   _explanationPause: {fileID: 1499360851}
   _pauseMenu: {fileID: 645142098}
 --- !u!1 &1578787018
